@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 /// Created by heyanlin on 2023/9/22.
 
 final class Routes {
+  static const String splash = "/splash";
   static const String main = "/main";
   static const String search = "/search";
 
