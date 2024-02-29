@@ -10,6 +10,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:path/path.dart' as p;
+import 'package:logger/logger.dart';
 
 import '../db/novel/novel_db.dart';
 
@@ -34,6 +35,9 @@ class GlobalState {
   // 小说数据库
   NovelDB novelDB;
 
+  // 日志
+  Logger logger;
+
   GlobalState({
     required this.ctx,
     required this.packageInfo,
@@ -41,6 +45,7 @@ class GlobalState {
     required this.preferences,
     required this.mangaDB,
     required this.novelDB,
+    required this.logger,
   });
 }
 
@@ -55,6 +60,7 @@ class Global extends _$Global {
   // ignore: avoid_build_context_in_providers
   Future<void> init(BuildContext context) async {
     final i10n = AppLocalizations.of(context);
+
     final preferences = await SharedPreferences.getInstance();
 
     final dbFolder = await getApplicationDocumentsDirectory();
@@ -63,7 +69,10 @@ class Global extends _$Global {
 
     final novelDBFile = File(p.join(dbFolder.path, "Novel.sql"));
     final novelDB = NovelDB(NativeDatabase(novelDBFile));
+
     final packageInfo = await PackageInfo.fromPlatform();
+
+    final logger = Logger();
 
     final sta = GlobalState(
       // ignore: use_build_context_synchronously
@@ -73,6 +82,7 @@ class Global extends _$Global {
       preferences: preferences,
       mangaDB: mangaDB,
       novelDB: novelDB,
+      logger: logger,
     );
 
     await migrate(sta);
@@ -92,8 +102,12 @@ class Global extends _$Global {
 
 extension GlobalExt on AutoDisposeNotifier {
   GlobalState get global => ref.watch(globalProvider)!;
+
 }
 
 extension GlobalRefExt on Ref {
   GlobalState get global => watch(globalProvider)!;
+
+  AppLocalizations get S => global.l10n;
+  Logger get log => global.logger;
 }
