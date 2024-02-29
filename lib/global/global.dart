@@ -10,8 +10,13 @@ part 'global.g.dart';
 @freezed
 class GlobalState with _$GlobalState {
   factory GlobalState({
+    // 全局 ctx
     required BuildContext ctx,
+
+    // 国际化
     required AppLocalizations l10n,
+
+    // kv 数据存储
     required SharedPreferences preferences,
   }) = _GlobalState;
 }

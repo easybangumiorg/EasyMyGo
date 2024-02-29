@@ -16,8 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GlobalState {
-  BuildContext get ctx => throw _privateConstructorUsedError;
-  AppLocalizations get l10n => throw _privateConstructorUsedError;
+// 全局 ctx
+  BuildContext get ctx => throw _privateConstructorUsedError; // 国际化
+  AppLocalizations get l10n => throw _privateConstructorUsedError; // kv 数据存储
   SharedPreferences get preferences => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -119,10 +120,13 @@ class _$GlobalStateImpl implements _GlobalState {
   _$GlobalStateImpl(
       {required this.ctx, required this.l10n, required this.preferences});
 
+// 全局 ctx
   @override
   final BuildContext ctx;
+// 国际化
   @override
   final AppLocalizations l10n;
+// kv 数据存储
   @override
   final SharedPreferences preferences;
 
@@ -159,11 +163,11 @@ abstract class _GlobalState implements GlobalState {
       required final AppLocalizations l10n,
       required final SharedPreferences preferences}) = _$GlobalStateImpl;
 
-  @override
+  @override // 全局 ctx
   BuildContext get ctx;
-  @override
+  @override // 国际化
   AppLocalizations get l10n;
-  @override
+  @override // kv 数据存储
   SharedPreferences get preferences;
   @override
   @JsonKey(ignore: true)
