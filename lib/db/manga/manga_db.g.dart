@@ -1179,24 +1179,3 @@ abstract class _$MangaDB extends GeneratedDatabase {
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [mangaInfo];
 }
-
-// **************************************************************************
-// RiverpodGenerator
-// **************************************************************************
-
-String _$mangaDBHash() => r'59c14f9f2d78ebb2d4981b39355707734eefd4f2';
-
-/// See also [mangaDB].
-@ProviderFor(mangaDB)
-final mangaDBProvider = Provider<MangaDB>.internal(
-  mangaDB,
-  name: r'mangaDBProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$mangaDBHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef MangaDBRef = ProviderRef<MangaDB>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

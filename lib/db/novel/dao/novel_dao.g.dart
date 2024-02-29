@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'manga_dao.dart';
+part of 'novel_dao.dart';
 
 // ignore_for_file: type=lint
-mixin _$MangaDaoMixin on DatabaseAccessor<MangaDB> {
-  $MangaInfoTable get mangaInfo => attachedDatabase.mangaInfo;
+mixin _$NovelDaoMixin on DatabaseAccessor<NovelDB> {
+  $NovelInfoTable get novelInfo => attachedDatabase.novelInfo;
 }
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mangaDaoHash() => r'5ab575cebb2aa43d6a58f98263b91e9f6f0a0799';
+String _$novelDaoHash() => r'5b20db55d1a13ae993a5ad9011fa4d6392fa94de';
 
-/// See also [mangaDao].
-@ProviderFor(mangaDao)
-final mangaDaoProvider = Provider<MangaDao>.internal(
-  mangaDao,
-  name: r'mangaDaoProvider',
+/// See also [novelDao].
+@ProviderFor(novelDao)
+final novelDaoProvider = Provider<NovelDao>.internal(
+  novelDao,
+  name: r'novelDaoProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$mangaDaoHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$novelDaoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef MangaDaoRef = ProviderRef<MangaDao>;
+typedef NovelDaoRef = ProviderRef<NovelDao>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

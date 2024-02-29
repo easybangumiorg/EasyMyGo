@@ -1,13 +1,17 @@
 import 'package:drift/drift.dart';
 import 'package:easy_book/db/manga/manga_db.dart';
+import 'package:easy_book/global/global.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../entity/manga.dart';
 
 part 'manga_dao.g.dart';
 
-@DriftAccessor(tables: [MangaInfo])
-class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin{
+@Riverpod(keepAlive: true)
+MangaDao mangaDao(MangaDaoRef ref) => ref.global.mangaDB.mangaDao;
 
+@DriftAccessor(tables: [MangaInfo])
+class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin {
   // this constructor is required so that the main database can create an instance
   // of this object.
   MangaDao(super.db);
@@ -28,7 +32,7 @@ class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin{
 
   Stream<List<Manga>> watchHistory() {
     return (select(mangaInfo)
-      ..where((tbl) => tbl.lastHistoryTime.isBiggerThan(const Constant(0))))
+          ..where((tbl) => tbl.lastHistoryTime.isBiggerThan(const Constant(0))))
         .watch();
   }
 }
