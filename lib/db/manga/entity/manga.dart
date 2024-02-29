@@ -1,7 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:easy_book/db/drift.dart';
+import 'package:easy_book/db/db.dart';
+import 'package:flutter/foundation.dart';
+
+import '../manga_db.dart';
+import 'chapter.dart';
 
 @DataClassName("Manga")
 class MangaInfo extends Table {
@@ -55,9 +60,11 @@ class MangaInfo extends Table {
   TextColumn get sortKey =>
       text().named("sort_key").withDefault(const Constant(""))();
 
+  // 章节列表，存的 Json 数据
+  TextColumn get chapterListJson =>
+      text().named("chapter_list_json").withDefault(const Constant(""))();
 
   // History
-
   // 最后的历史数据添加时间
   IntColumn get lastHistoryTime =>
       integer().named("last_history_time").withDefault(const Constant(0))();
@@ -72,20 +79,20 @@ class MangaInfo extends Table {
 
   // 最后观看时总章节数
   IntColumn get lastChapterCount =>
-    integer().named("last_chapter_count").withDefault(const Constant(0))();
+      integer().named("last_chapter_count").withDefault(const Constant(0))();
 
   // 最后观看章节的总图片数
   IntColumn get lastImageIndex =>
       integer().named("last_image_index").withDefault(const Constant(0))();
 
   // 最后观看的所在章节的所在图片下标
-  IntColumn get lastChapterImageCount =>
-      integer().named("last_chapter_image_count").withDefault(const Constant(0))();
+  IntColumn get lastChapterImageCount => integer()
+      .named("last_chapter_image_count")
+      .withDefault(const Constant(0))();
 
   // Star
   // 当前漫画的标签 id "1， 2， 3"
-  TextColumn get tags =>
-      text().named("tags").withDefault(const Constant(""))();
+  TextColumn get tags => text().named("tags").withDefault(const Constant(""))();
 
   // 当前漫画收藏的时间，为 0 则没有收藏
   IntColumn get starTime =>
@@ -104,4 +111,30 @@ class MangaInfo extends Table {
 
   @override
   String get tableName => "Manga";
+}
+
+extension MangaExt on Manga {
+  static final _listChapterValues = Expando<List<Chapter>>();
+  List<Chapter> get chapterList {
+    final value = _listChapterValues[this];
+    if (value == null) {
+      if (chapterListJson.isEmpty) {
+        _listChapterValues[this] = null;
+        return List.empty();
+      }
+      try {
+        Iterable l = json.decode(chapterListJson);
+        List<Chapter> n = List<Chapter>.from(l.map((e) => Chapter.fromJson(e)));
+        _listChapterValues[this] = n;
+        return n;
+      } on FormatException catch (e) {
+        _listChapterValues[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return List.empty();
+    }
+    return value;
+  }
 }

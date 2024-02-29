@@ -21,7 +21,7 @@ class GlobalState with _$GlobalState {
   }) = _GlobalState;
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class Global extends _$Global {
   @override
   GlobalState? build() {

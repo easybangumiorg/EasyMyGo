@@ -6,12 +6,11 @@ part of 'global.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$globalHash() => r'f1cee1a2b9ae5b8d5a8046be5f630e5264908fd8';
+String _$globalHash() => r'18e754452201ec9b303f4dd602fe5617a55033f7';
 
 /// See also [Global].
 @ProviderFor(Global)
-final globalProvider =
-    AutoDisposeNotifierProvider<Global, GlobalState?>.internal(
+final globalProvider = NotifierProvider<Global, GlobalState?>.internal(
   Global.new,
   name: r'globalProvider',
   debugGetCreateSourceHash:
@@ -20,6 +19,6 @@ final globalProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$Global = AutoDisposeNotifier<GlobalState?>;
+typedef _$Global = Notifier<GlobalState?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
