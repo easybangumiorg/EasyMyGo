@@ -11,7 +11,7 @@ mixin _$MangaDaoMixin on DatabaseAccessor<MangaDB> {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mangaDaoHash() => r'5ab575cebb2aa43d6a58f98263b91e9f6f0a0799';
+String _$mangaDaoHash() => r'2cfe4ed3c41cfc92b1a9f409d0b600c936e2c05d';
 
 /// See also [mangaDao].
 @ProviderFor(mangaDao)

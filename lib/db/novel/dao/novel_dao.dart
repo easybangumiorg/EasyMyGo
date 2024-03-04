@@ -8,7 +8,7 @@ import '../novel_db.dart';
 part 'novel_dao.g.dart';
 
 @Riverpod(keepAlive: true)
-NovelDao novelDao(NovelDaoRef ref) => ref.global.novelDB.novelDao;
+NovelDao novelDao(NovelDaoRef ref) => ref.G.novelDB.novelDao;
 
 @DriftAccessor(tables: [NovelInfo])
 class NovelDao extends DatabaseAccessor<NovelDB> with _$NovelDaoMixin {

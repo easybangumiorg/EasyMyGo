@@ -1,80 +1,71 @@
-import 'package:easy_book/router.dart';
+import 'dart:ffi';
+
+import 'package:easy_book/global/global.dart';
+import 'package:easy_book/ui/main/history/history.dart';
 import 'package:easy_book/ui/main/home/home.dart';
+import 'package:easy_book/ui/main/more/more.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'library/library.dart';
 
 /// Created by heyanlin on 2023/9/22.
 
 
-class MainPage {
-  BottomNavigationBarItem navigationBarItem;
-  Widget widget;
-  MainPage(this.navigationBarItem, this.widget);
-}
 
-List<MainPage> mainPages = [
-  MainPage(
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-      ),
-      const HomePage()
-  ),
-  MainPage(
-      const BottomNavigationBarItem(icon: Icon(Icons.star)),
-      const HomePage()
-  ),
-];
+class MainScreen extends HookConsumerWidget {
+  MainScreen({super.key});
 
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-
-  // 当前子项索引
-  int currentIndex = 0;
+  final PageController _pageController = PageController();
 
 
   @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    Column(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = useState(0);
+    return Column(
       children: [
-        AppBar(
-          // TRY THIS: Try changing the color here to a specific color (to
-          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-          // change color while the other colors stay the same.
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(''),
+        Expanded(
+            child: PageView(
+              onPageChanged: (v) {
+                currentIndex.value = v;
+              },
+              controller: _pageController,
+              children: const [
+                HomePage(),
+                LibraryPage(),
+                HistoryPage(),
+                MorePage(),
+              ],
+            )
+        ),
+        BottomNavigationBar(
+          useLegacyColorScheme: false,
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.home),
+              label: ref.S.home
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.book),
+              label: ref.S.library
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.history),
+              label: ref.S.history
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.more_horiz),
+              label: ref.S.more
+            ),
+          ],
+          currentIndex: currentIndex.value,
+          onTap: (v){
+            currentIndex.value = v;
+            _pageController.jumpToPage(v);
+          },
         ),
       ],
-    );
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(''),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          //BottomNavigationBarItem(icon: icon)
-        ],
-      ),
     );
   }
 }

@@ -8,7 +8,7 @@ import '../entity/manga.dart';
 part 'manga_dao.g.dart';
 
 @Riverpod(keepAlive: true)
-MangaDao mangaDao(MangaDaoRef ref) => ref.global.mangaDB.mangaDao;
+MangaDao mangaDao(MangaDaoRef ref) => ref.G.mangaDB.mangaDao;
 
 @DriftAccessor(tables: [MangaInfo])
 class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin {

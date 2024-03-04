@@ -13,6 +13,7 @@ import 'package:path/path.dart' as p;
 import 'package:logger/logger.dart';
 
 import '../db/novel/novel_db.dart';
+import '../router.dart';
 
 part 'global.g.dart';
 
@@ -101,13 +102,33 @@ class Global extends _$Global {
 }
 
 extension GlobalExt on AutoDisposeNotifier {
-  GlobalState get global => ref.watch(globalProvider)!;
+  bool get isInit => ref.watch(globalProvider) != null;
+
+  GlobalState? get global => ref.watch(globalProvider);
+  GlobalState get G => global!;
+
+  AppLocalizations get S => G.l10n;
+  Logger get log => G.logger;
 
 }
 
 extension GlobalRefExt on Ref {
-  GlobalState get global => watch(globalProvider)!;
 
-  AppLocalizations get S => global.l10n;
-  Logger get log => global.logger;
+  bool get isInit => watch(globalProvider) != null;
+
+  GlobalState? get global => watch(globalProvider);
+  GlobalState get G => global!;
+
+  AppLocalizations get S => G.l10n;
+  Logger get log => G.logger;
+}
+
+extension WidgetRefExt on WidgetRef {
+  bool get isInit => watch(globalProvider) != null;
+
+  GlobalState? get global => watch(globalProvider);
+  GlobalState get G => global!;
+
+  AppLocalizations get S => G.l10n;
+  Logger get log => G.logger;
 }
