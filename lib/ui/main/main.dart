@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:easy_book/generated/l10n.dart';
 import 'package:easy_book/global/global.dart';
 import 'package:easy_book/ui/main/history/history.dart';
 import 'package:easy_book/ui/main/home/home.dart';
@@ -44,19 +45,19 @@ class MainScreen extends HookConsumerWidget {
           items: [
             BottomNavigationBarItem(
               icon: const Icon(Icons.home),
-              label: ref.S.home
+              label: S.of(context).home
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.book),
-              label: ref.S.library
+              label: S.of(context).library
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.history),
-              label: ref.S.history
+              label: S.of(context).history
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.more_horiz),
-              label: ref.S.more
+              label: S.of(context).more
             ),
           ],
           currentIndex: currentIndex.value,

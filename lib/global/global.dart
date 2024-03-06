@@ -8,7 +8,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:path/path.dart' as p;
 import 'package:logger/logger.dart';
 
@@ -23,9 +22,6 @@ class GlobalState {
 
   // 包信息
   PackageInfo packageInfo;
-
-  // 国际化
-  AppLocalizations l10n;
 
   // kv 数据存储
   SharedPreferences preferences;
@@ -42,7 +38,6 @@ class GlobalState {
   GlobalState({
     required this.ctx,
     required this.packageInfo,
-    required this.l10n,
     required this.preferences,
     required this.mangaDB,
     required this.novelDB,
@@ -60,8 +55,6 @@ class Global extends _$Global {
   // 初始化，闪屏页调用
   // ignore: avoid_build_context_in_providers
   Future<void> init(BuildContext context) async {
-    final i10n = AppLocalizations.of(context);
-
     final preferences = await SharedPreferences.getInstance();
 
     final dbFolder = await getApplicationDocumentsDirectory();
@@ -79,7 +72,6 @@ class Global extends _$Global {
       // ignore: use_build_context_synchronously
       ctx: context,
       packageInfo: packageInfo,
-      l10n: i10n,
       preferences: preferences,
       mangaDB: mangaDB,
       novelDB: novelDB,
@@ -107,7 +99,6 @@ extension GlobalExt on AutoDisposeNotifier {
   GlobalState? get global => ref.watch(globalProvider);
   GlobalState get G => global!;
 
-  AppLocalizations get S => G.l10n;
   Logger get log => G.logger;
 
 }
@@ -119,7 +110,6 @@ extension GlobalRefExt on Ref {
   GlobalState? get global => watch(globalProvider);
   GlobalState get G => global!;
 
-  AppLocalizations get S => G.l10n;
   Logger get log => G.logger;
 }
 
@@ -129,6 +119,5 @@ extension WidgetRefExt on WidgetRef {
   GlobalState? get global => watch(globalProvider);
   GlobalState get G => global!;
 
-  AppLocalizations get S => G.l10n;
   Logger get log => G.logger;
 }
