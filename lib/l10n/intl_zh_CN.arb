@@ -1,0 +1,11 @@
+{
+  "@@locale": "zh_CN",
+  "app_name": "纯纯看书",
+  "@app_name": {
+    "description": "软件名称"
+  },
+  "home": "主页",
+  "more": "更多",
+  "history": "历史",
+  "library": "书架"
+}
