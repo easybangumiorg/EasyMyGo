@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:easy_book/db/db.dart';
+import 'package:easy_mygo/db/db.dart';
 import 'package:flutter/foundation.dart';
 
 import '../manga_db.dart';

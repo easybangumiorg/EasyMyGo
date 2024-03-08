@@ -2,7 +2,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:drift/native.dart';
-import 'package:easy_book/db/manga/manga_db.dart';
+import 'package:easy_mygo/db/manga/manga_db.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

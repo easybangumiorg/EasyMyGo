@@ -1,4 +1,4 @@
-import 'package:easy_book/global/global.dart';
+import 'package:easy_mygo/global/global.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

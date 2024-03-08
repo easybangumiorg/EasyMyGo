@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
-import 'package:easy_book/db/manga/manga_db.dart';
-import 'package:easy_book/global/global.dart';
+import 'package:easy_mygo/db/manga/manga_db.dart';
+import 'package:easy_mygo/global/global.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../entity/manga.dart';
@@ -12,7 +12,7 @@ MangaDao mangaDao(MangaDaoRef ref) => ref.G.mangaDB.mangaDao;
 
 @DriftAccessor(tables: [MangaInfo])
 class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin {
-  // this constructor is required so that the main database can create an instance
+  // Rthis constructor is required so that the main database can create an instance
   // of this object.
   MangaDao(super.db);
 

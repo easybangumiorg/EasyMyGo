@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:easy_book/db/manga/dao/manga_dao.dart';
-import 'package:easy_book/db/manga/entity/manga.dart';
+import 'package:easy_mygo/db/manga/dao/manga_dao.dart';
+import 'package:easy_mygo/db/manga/entity/manga.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../db.dart';

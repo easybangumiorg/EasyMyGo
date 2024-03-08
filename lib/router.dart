@@ -1,5 +1,5 @@
-import 'package:easy_book/ui/main/main.dart';
-import 'package:easy_book/ui/splash/splash.dart';
+import 'package:easy_mygo/ui/main/main.dart';
+import 'package:easy_mygo/ui/splash/splash.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

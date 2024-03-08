@@ -1,4 +1,4 @@
-import 'package:easy_book/preferences/preferences.dart';
+import 'package:easy_mygo/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

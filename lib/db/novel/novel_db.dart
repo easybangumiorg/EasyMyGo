@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:easy_book/db/novel/entity/novel.dart';
+import 'package:easy_mygo/db/novel/entity/novel.dart';
 
 import 'dao/novel_dao.dart';
 
