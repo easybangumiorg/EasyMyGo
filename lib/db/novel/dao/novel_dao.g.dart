@@ -11,7 +11,7 @@ mixin _$NovelDaoMixin on DatabaseAccessor<NovelDB> {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$novelDaoHash() => r'e52f51d10885d286af2984417382995802b7d6d6';
+String _$novelDaoHash() => r'1dcd2113327c6310fd599160227d44a24dd61569';
 
 /// See also [novelDao].
 @ProviderFor(novelDao)

@@ -4,6 +4,7 @@ import 'package:easy_book/theme/theme.dart';
 import 'package:easy_book/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -25,7 +26,12 @@ class EasyBookApp extends HookConsumerWidget {
 
     return MaterialApp.router(
       onGenerateTitle: (context) => S.of(context).app_name,
-      localizationsDelegates: const [S.delegate],
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: themeState.seedColor),

@@ -3,10 +3,26 @@
 part of 'global.dart';
 
 // **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$VersionInfoImpl _$$VersionInfoImplFromJson(Map<String, dynamic> json) =>
+    _$VersionInfoImpl(
+      versionName: json['versionName'] as String,
+      versionCode: json['versionCode'] as int,
+    );
+
+Map<String, dynamic> _$$VersionInfoImplToJson(_$VersionInfoImpl instance) =>
+    <String, dynamic>{
+      'versionName': instance.versionName,
+      'versionCode': instance.versionCode,
+    };
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$globalHash() => r'54e256fa265e675231d33c01c95ca6c7db417219';
+String _$globalHash() => r'001de0bad9c51616e4d1f3e3e9aa0f8ab15df393';
 
 /// See also [Global].
 @ProviderFor(Global)

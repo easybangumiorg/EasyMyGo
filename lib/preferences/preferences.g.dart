@@ -25,7 +25,7 @@ Map<String, dynamic> _$$PreferenceStateImplToJson(
 // **************************************************************************
 
 String _$preferencesControllerHash() =>
-    r'21b09334e22d23f93081486bdac6ada2fabbe5e6';
+    r'94f99fcad44ad0fbcea1710c40a7ef38f5cfecbe';
 
 /// See also [PreferencesController].
 @ProviderFor(PreferencesController)
