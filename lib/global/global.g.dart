@@ -22,7 +22,7 @@ Map<String, dynamic> _$$VersionInfoImplToJson(_$VersionInfoImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$globalHash() => r'001de0bad9c51616e4d1f3e3e9aa0f8ab15df393';
+String _$globalHash() => r'51567d26130c11e5d0c4668a0a0fc179a51a028c';
 
 /// See also [Global].
 @ProviderFor(Global)
