@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.heyanle" "\0"
-            VALUE "FileDescription", "easy_book" "\0"
+            VALUE "FileDescription", "easy_mygo" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "easy_book" "\0"
+            VALUE "InternalName", "easy_mygo" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.heyanle. All rights reserved." "\0"
-            VALUE "OriginalFilename", "easy_book.exe" "\0"
-            VALUE "ProductName", "easy_book" "\0"
+            VALUE "OriginalFilename", "easy_mygo.exe" "\0"
+            VALUE "ProductName", "easy_mygo" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

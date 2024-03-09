@@ -1,6 +1,6 @@
 {
-    "name": "easy_book",
-    "short_name": "easy_book",
+    "name": "easy_mygo",
+    "short_name": "easy_mygo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

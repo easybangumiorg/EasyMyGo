@@ -1,4 +1,4 @@
-package com.heyanle.easy_book
+package com.heyanle.easy_mygo
 
 import io.flutter.embedding.android.FlutterActivity
 

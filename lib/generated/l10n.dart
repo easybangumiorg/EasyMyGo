@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `纯纯看书`
+  /// `纯纯 Mygo`
   String get app_name {
     return Intl.message(
-      '纯纯看书',
+      '纯纯 Mygo',
       name: 'app_name',
       desc: '软件名称',
       args: [],

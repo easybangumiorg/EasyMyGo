@@ -1,4 +1,4 @@
-# easy_book
+# easy_mygo
 
 this is easy book
 
