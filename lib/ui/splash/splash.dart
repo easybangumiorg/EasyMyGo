@@ -14,12 +14,12 @@ class SplashScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Global global = ref.watch(globalProvider.notifier);
-    GlobalState? globalState = ref.watch(globalProvider);
-    GoRouter router = ref.watch(routesProvider);
+    Global global = ref.watch(globalPod.notifier);
+    GlobalState globalState = ref.watch(globalPod);
+    GoRouter router = ref.watch(routesPod);
 
     useEffect(() {
-      if (globalState == null) {
+      if (!globalState.isReady) {
         Future.microtask(() => {
           global.init(router.routeInformationParser.configuration.navigatorKey.currentContext ?? context)
         });
@@ -29,7 +29,7 @@ class SplashScreen extends HookConsumerWidget {
         });
       }
       return null;
-    }, [globalState]);
+    }, [globalState.isReady]);
 
     return Text(S
         .of(context)

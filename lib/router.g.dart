@@ -12,9 +12,9 @@ String _$routesHash() => r'4f6b6f4e209cb95b88a5bf68431179b896b3c215';
 ///
 /// Copied from [Routes].
 @ProviderFor(Routes)
-final routesProvider = NotifierProvider<Routes, GoRouter>.internal(
+final routesPod = NotifierProvider<Routes, GoRouter>.internal(
   Routes.new,
-  name: r'routesProvider',
+  name: r'routesPod',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$routesHash,
   dependencies: null,

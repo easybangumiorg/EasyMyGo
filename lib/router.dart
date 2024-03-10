@@ -20,8 +20,8 @@ final class Routes extends _$Routes {
   GoRouter build() => GoRouter(
         initialLocation: splash,
         redirect: (BuildContext context, GoRouterState state) {
-          GlobalState? globalState = ref.watch(globalProvider);
-          if (globalState == null) {
+          GlobalState globalState = ref.watch(globalPod);
+          if (! globalState.isReady) {
             return splash;
           } else {
             return null;

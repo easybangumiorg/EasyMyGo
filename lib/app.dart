@@ -21,8 +21,8 @@ class EasyBookApp extends HookConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final GoRouter route = ref.watch(routesProvider);
-    final ThemeState themeState = ref.watch(themeControllerProvider);
+    final GoRouter route = ref.watch(routesPod);
+    final ThemeState themeState = ref.watch(themeControllerPod);
 
     return MaterialApp.router(
       onGenerateTitle: (context) => S.of(context).app_name,

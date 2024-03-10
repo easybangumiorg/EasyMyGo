@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:easy_mygo/db/db.dart';
 import 'package:flutter/foundation.dart';
 
-import '../manga_db.dart';
-import 'chapter.dart';
+import '../../database.dart';
+import 'chapter/chapter.dart';
 
 @DataClassName("Manga")
 class MangaInfo extends Table {

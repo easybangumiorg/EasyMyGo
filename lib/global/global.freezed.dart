@@ -14,34 +14,37 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-VersionInfo _$VersionInfoFromJson(Map<String, dynamic> json) {
-  return _VersionInfo.fromJson(json);
+GlobalState _$GlobalStateFromJson(Map<String, dynamic> json) {
+  return _GlobalState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$VersionInfo {
-  String get versionName => throw _privateConstructorUsedError;
-  int get versionCode => throw _privateConstructorUsedError;
+mixin _$GlobalState {
+// 是否在初始化中
+  bool get isInitialing => throw _privateConstructorUsedError; // 数据迁移进度，0~100
+  int get migratingProcess =>
+      throw _privateConstructorUsedError; // 是否准备好（进入 app）
+  bool get isReady => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VersionInfoCopyWith<VersionInfo> get copyWith =>
+  $GlobalStateCopyWith<GlobalState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VersionInfoCopyWith<$Res> {
-  factory $VersionInfoCopyWith(
-          VersionInfo value, $Res Function(VersionInfo) then) =
-      _$VersionInfoCopyWithImpl<$Res, VersionInfo>;
+abstract class $GlobalStateCopyWith<$Res> {
+  factory $GlobalStateCopyWith(
+          GlobalState value, $Res Function(GlobalState) then) =
+      _$GlobalStateCopyWithImpl<$Res, GlobalState>;
   @useResult
-  $Res call({String versionName, int versionCode});
+  $Res call({bool isInitialing, int migratingProcess, bool isReady});
 }
 
 /// @nodoc
-class _$VersionInfoCopyWithImpl<$Res, $Val extends VersionInfo>
-    implements $VersionInfoCopyWith<$Res> {
-  _$VersionInfoCopyWithImpl(this._value, this._then);
+class _$GlobalStateCopyWithImpl<$Res, $Val extends GlobalState>
+    implements $GlobalStateCopyWith<$Res> {
+  _$GlobalStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -51,121 +54,144 @@ class _$VersionInfoCopyWithImpl<$Res, $Val extends VersionInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? versionName = null,
-    Object? versionCode = null,
+    Object? isInitialing = null,
+    Object? migratingProcess = null,
+    Object? isReady = null,
   }) {
     return _then(_value.copyWith(
-      versionName: null == versionName
-          ? _value.versionName
-          : versionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      versionCode: null == versionCode
-          ? _value.versionCode
-          : versionCode // ignore: cast_nullable_to_non_nullable
+      isInitialing: null == isInitialing
+          ? _value.isInitialing
+          : isInitialing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      migratingProcess: null == migratingProcess
+          ? _value.migratingProcess
+          : migratingProcess // ignore: cast_nullable_to_non_nullable
               as int,
+      isReady: null == isReady
+          ? _value.isReady
+          : isReady // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$VersionInfoImplCopyWith<$Res>
-    implements $VersionInfoCopyWith<$Res> {
-  factory _$$VersionInfoImplCopyWith(
-          _$VersionInfoImpl value, $Res Function(_$VersionInfoImpl) then) =
-      __$$VersionInfoImplCopyWithImpl<$Res>;
+abstract class _$$GlobalStateImplCopyWith<$Res>
+    implements $GlobalStateCopyWith<$Res> {
+  factory _$$GlobalStateImplCopyWith(
+          _$GlobalStateImpl value, $Res Function(_$GlobalStateImpl) then) =
+      __$$GlobalStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String versionName, int versionCode});
+  $Res call({bool isInitialing, int migratingProcess, bool isReady});
 }
 
 /// @nodoc
-class __$$VersionInfoImplCopyWithImpl<$Res>
-    extends _$VersionInfoCopyWithImpl<$Res, _$VersionInfoImpl>
-    implements _$$VersionInfoImplCopyWith<$Res> {
-  __$$VersionInfoImplCopyWithImpl(
-      _$VersionInfoImpl _value, $Res Function(_$VersionInfoImpl) _then)
+class __$$GlobalStateImplCopyWithImpl<$Res>
+    extends _$GlobalStateCopyWithImpl<$Res, _$GlobalStateImpl>
+    implements _$$GlobalStateImplCopyWith<$Res> {
+  __$$GlobalStateImplCopyWithImpl(
+      _$GlobalStateImpl _value, $Res Function(_$GlobalStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? versionName = null,
-    Object? versionCode = null,
+    Object? isInitialing = null,
+    Object? migratingProcess = null,
+    Object? isReady = null,
   }) {
-    return _then(_$VersionInfoImpl(
-      versionName: null == versionName
-          ? _value.versionName
-          : versionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      versionCode: null == versionCode
-          ? _value.versionCode
-          : versionCode // ignore: cast_nullable_to_non_nullable
+    return _then(_$GlobalStateImpl(
+      isInitialing: null == isInitialing
+          ? _value.isInitialing
+          : isInitialing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      migratingProcess: null == migratingProcess
+          ? _value.migratingProcess
+          : migratingProcess // ignore: cast_nullable_to_non_nullable
               as int,
+      isReady: null == isReady
+          ? _value.isReady
+          : isReady // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$VersionInfoImpl implements _VersionInfo {
-  _$VersionInfoImpl({required this.versionName, required this.versionCode});
+class _$GlobalStateImpl implements _GlobalState {
+  _$GlobalStateImpl(
+      {required this.isInitialing,
+      required this.migratingProcess,
+      required this.isReady});
 
-  factory _$VersionInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VersionInfoImplFromJson(json);
+  factory _$GlobalStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GlobalStateImplFromJson(json);
 
+// 是否在初始化中
   @override
-  final String versionName;
+  final bool isInitialing;
+// 数据迁移进度，0~100
   @override
-  final int versionCode;
+  final int migratingProcess;
+// 是否准备好（进入 app）
+  @override
+  final bool isReady;
 
   @override
   String toString() {
-    return 'VersionInfo(versionName: $versionName, versionCode: $versionCode)';
+    return 'GlobalState(isInitialing: $isInitialing, migratingProcess: $migratingProcess, isReady: $isReady)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VersionInfoImpl &&
-            (identical(other.versionName, versionName) ||
-                other.versionName == versionName) &&
-            (identical(other.versionCode, versionCode) ||
-                other.versionCode == versionCode));
+            other is _$GlobalStateImpl &&
+            (identical(other.isInitialing, isInitialing) ||
+                other.isInitialing == isInitialing) &&
+            (identical(other.migratingProcess, migratingProcess) ||
+                other.migratingProcess == migratingProcess) &&
+            (identical(other.isReady, isReady) || other.isReady == isReady));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, versionName, versionCode);
+  int get hashCode =>
+      Object.hash(runtimeType, isInitialing, migratingProcess, isReady);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$VersionInfoImplCopyWith<_$VersionInfoImpl> get copyWith =>
-      __$$VersionInfoImplCopyWithImpl<_$VersionInfoImpl>(this, _$identity);
+  _$$GlobalStateImplCopyWith<_$GlobalStateImpl> get copyWith =>
+      __$$GlobalStateImplCopyWithImpl<_$GlobalStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$VersionInfoImplToJson(
+    return _$$GlobalStateImplToJson(
       this,
     );
   }
 }
 
-abstract class _VersionInfo implements VersionInfo {
-  factory _VersionInfo(
-      {required final String versionName,
-      required final int versionCode}) = _$VersionInfoImpl;
+abstract class _GlobalState implements GlobalState {
+  factory _GlobalState(
+      {required final bool isInitialing,
+      required final int migratingProcess,
+      required final bool isReady}) = _$GlobalStateImpl;
 
-  factory _VersionInfo.fromJson(Map<String, dynamic> json) =
-      _$VersionInfoImpl.fromJson;
+  factory _GlobalState.fromJson(Map<String, dynamic> json) =
+      _$GlobalStateImpl.fromJson;
 
-  @override
-  String get versionName;
-  @override
-  int get versionCode;
+  @override // 是否在初始化中
+  bool get isInitialing;
+  @override // 数据迁移进度，0~100
+  int get migratingProcess;
+  @override // 是否准备好（进入 app）
+  bool get isReady;
   @override
   @JsonKey(ignore: true)
-  _$$VersionInfoImplCopyWith<_$VersionInfoImpl> get copyWith =>
+  _$$GlobalStateImplCopyWith<_$GlobalStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,14 +6,14 @@ part of 'theme.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeControllerHash() => r'ba7b33098dc768c4c06807028b1ba00d3c32a794';
+String _$themeControllerHash() => r'fe3eaddad7481438113dd75482a69aca20f1f22e';
 
 /// See also [ThemeController].
 @ProviderFor(ThemeController)
-final themeControllerProvider =
+final themeControllerPod =
     AutoDisposeNotifierProvider<ThemeController, ThemeState>.internal(
   ThemeController.new,
-  name: r'themeControllerProvider',
+  name: r'themeControllerPod',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$themeControllerHash,

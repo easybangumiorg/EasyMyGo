@@ -2,13 +2,10 @@ import 'package:drift/drift.dart';
 import 'package:easy_mygo/global/global.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../entity/novel.dart';
-import '../novel_db.dart';
+import '../../database.dart';
+import '../../entity/novel/novel_info.dart';
 
 part 'novel_dao.g.dart';
-
-@Riverpod(keepAlive: true)
-NovelDao novelDao(NovelDaoRef ref) => ref.G.novelDB.novelDao;
 
 @DriftAccessor(tables: [NovelInfo])
 class NovelDao extends DatabaseAccessor<NovelDB> with _$NovelDaoMixin {

@@ -3,43 +3,23 @@
 part of 'preferences.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-_$PreferenceStateImpl _$$PreferenceStateImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PreferenceStateImpl(
-      themeIndex: json['themeIndex'] as int,
-      darkMode: json['darkMode'] as int,
-    );
-
-Map<String, dynamic> _$$PreferenceStateImplToJson(
-        _$PreferenceStateImpl instance) =>
-    <String, dynamic>{
-      'themeIndex': instance.themeIndex,
-      'darkMode': instance.darkMode,
-    };
-
-// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$preferencesControllerHash() =>
-    r'94f99fcad44ad0fbcea1710c40a7ef38f5cfecbe';
+String _$preferencesHash() => r'419d65b80a1159241bf4e8ffcd33754cf7854f20';
 
-/// See also [PreferencesController].
-@ProviderFor(PreferencesController)
-final preferencesControllerProvider = AutoDisposeNotifierProvider<
-    PreferencesController, PreferenceState>.internal(
-  PreferencesController.new,
-  name: r'preferencesControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$preferencesControllerHash,
+/// See also [Preferences].
+@ProviderFor(Preferences)
+final preferencesPod =
+    NotifierProvider<Preferences, Map<String, Object>>.internal(
+  Preferences.new,
+  name: r'preferencesPod',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$preferencesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$PreferencesController = AutoDisposeNotifier<PreferenceState>;
+typedef _$Preferences = Notifier<Map<String, Object>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

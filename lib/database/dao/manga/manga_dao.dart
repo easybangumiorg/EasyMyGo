@@ -1,14 +1,14 @@
 import 'package:drift/drift.dart';
-import 'package:easy_mygo/db/manga/manga_db.dart';
 import 'package:easy_mygo/global/global.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../entity/manga.dart';
+import '../../database.dart';
+import '../../entity/manga/manga_info.dart';
+
+
 
 part 'manga_dao.g.dart';
 
-@Riverpod(keepAlive: true)
-MangaDao mangaDao(MangaDaoRef ref) => ref.G.mangaDB.mangaDao;
 
 @DriftAccessor(tables: [MangaInfo])
 class MangaDao extends DatabaseAccessor<MangaDB> with _$MangaDaoMixin {

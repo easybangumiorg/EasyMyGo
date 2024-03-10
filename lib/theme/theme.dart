@@ -1,3 +1,4 @@
+import 'package:easy_mygo/preferences/preference_object.dart';
 import 'package:easy_mygo/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,15 +16,15 @@ class ThemeState with _$ThemeState {
 }
 
 
-@riverpod
+@Riverpod()
 class ThemeController extends _$ThemeController {
 
   static const List<MaterialColor> themeSeedColor = Colors.primaries;
 
   @override
   ThemeState build() {
-    final darkMode = ref.watch(preferencesControllerProvider.select((value) => value.darkMode));
-    final index = ref.watch(preferencesControllerProvider.select((value) => value.themeIndex));
+    final darkMode = Pref.darkMode.of(ref).watch();
+    final index = Pref.themeIndex.of(ref).watch();
     return ThemeState(seedColor: _getSeedColor(index), darkMode: darkMode);
   }
 
