@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ThemeState {
   MaterialColor get seedColor => throw _privateConstructorUsedError;
-  int get darkMode => throw _privateConstructorUsedError;
+  ThemeMode get darkMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ThemeStateCopyWith<ThemeState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ThemeStateCopyWith<$Res> {
           ThemeState value, $Res Function(ThemeState) then) =
       _$ThemeStateCopyWithImpl<$Res, ThemeState>;
   @useResult
-  $Res call({MaterialColor seedColor, int darkMode});
+  $Res call({MaterialColor seedColor, ThemeMode darkMode});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
       darkMode: null == darkMode
           ? _value.darkMode
           : darkMode // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ThemeMode,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$ThemeStateImplCopyWith<$Res>
       __$$ThemeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MaterialColor seedColor, int darkMode});
+  $Res call({MaterialColor seedColor, ThemeMode darkMode});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$ThemeStateImplCopyWithImpl<$Res>
       darkMode: null == darkMode
           ? _value.darkMode
           : darkMode // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ThemeMode,
     ));
   }
 }
@@ -108,7 +108,7 @@ class _$ThemeStateImpl implements _ThemeState {
   @override
   final MaterialColor seedColor;
   @override
-  final int darkMode;
+  final ThemeMode darkMode;
 
   @override
   String toString() {
@@ -139,12 +139,12 @@ class _$ThemeStateImpl implements _ThemeState {
 abstract class _ThemeState implements ThemeState {
   factory _ThemeState(
       {required final MaterialColor seedColor,
-      required final int darkMode}) = _$ThemeStateImpl;
+      required final ThemeMode darkMode}) = _$ThemeStateImpl;
 
   @override
   MaterialColor get seedColor;
   @override
-  int get darkMode;
+  ThemeMode get darkMode;
   @override
   @JsonKey(ignore: true)
   _$$ThemeStateImplCopyWith<_$ThemeStateImpl> get copyWith =>

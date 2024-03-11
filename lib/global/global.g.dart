@@ -24,7 +24,7 @@ Map<String, dynamic> _$$GlobalStateImplToJson(_$GlobalStateImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$globalHash() => r'1103990379482f35f6fdcda3418af38fe0320a56';
+String _$globalHash() => r'6f8eda13149e65f8a2a7667fba9ce7fc45c3407d';
 
 /// See also [Global].
 @ProviderFor(Global)

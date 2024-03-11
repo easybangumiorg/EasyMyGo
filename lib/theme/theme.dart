@@ -11,7 +11,7 @@ part 'theme.freezed.dart';
 class ThemeState with _$ThemeState {
   factory ThemeState({
     required MaterialColor seedColor,
-    required int darkMode,
+    required ThemeMode darkMode,
   }) = _ThemeState;
 }
 
@@ -23,9 +23,9 @@ class ThemeController extends _$ThemeController {
 
   @override
   ThemeState build() {
-    final darkMode = Pref.darkMode.of(ref).watch();
-    final index = Pref.themeIndex.of(ref).watch();
-    return ThemeState(seedColor: _getSeedColor(index), darkMode: darkMode);
+    final darkMode = Pref.darkMode.watch(ref);
+    final index = Pref.themeIndex.watch(ref);
+    return ThemeState(seedColor: _getSeedColor(index), darkMode: ThemeMode.values[darkMode]);
   }
 
   MaterialColor _getSeedColor(int index) {

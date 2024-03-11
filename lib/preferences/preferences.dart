@@ -9,6 +9,8 @@ part 'preferences.g.dart';
 class Pref {
 
   static final themeIndex = PrefConfig.ofInt("themeIndex", 0);
+
+  // 0->system 1->light ->dark
   static final darkMode = PrefConfig.ofInt("darkMode", 0);
 
 }
@@ -17,11 +19,17 @@ class Pref {
 @Riverpod(keepAlive: true)
 class Preferences extends _$Preferences {
 
+  static Preferences? _current;
+  static Preferences get current {
+    assert(_current != null,
+    'No instance of Preferences was loaded. It cant use before init.');
+    return _current!;
+  }
+
   SharedPreferences? _sharedPreferences;
 
   @override
   Map<String, Object> build() {
-
     return {};
   }
 
@@ -45,14 +53,23 @@ class Preferences extends _$Preferences {
     state = map;
   }
 
-  Set<String> getKeys() => _sharedPreferences?.getKeys() ?? {};
+  Set<String> getKeys() => Set<String>.from(state.keys);
 
-  Object? get(String key) => _sharedPreferences?.get(key);
-  bool? getBool(String key) => _sharedPreferences?.getBool(key);
-  int? getInt(String key) => _sharedPreferences?.getInt(key);
-  double? getDouble(String key) => _sharedPreferences?.getDouble(key);
-  String? getString(String key) => _sharedPreferences?.getString(key);
-  List<String>? getStringList(String key) => _sharedPreferences?.getStringList(key);
+  Object? get(String key) => state[key];
+  bool? getBool(String key) => state[key] as bool?;
+  int? getInt(String key) => state[key] as int?;
+  double? getDouble(String key) => state[key] as double?;
+  String? getString(String key) => state[key] as String?;
+
+  List<String>? getStringList(String key) {
+    List<dynamic>? list = state[key] as List<dynamic>?;
+    if (list != null && list is! List<String>) {
+      list = list.cast<String>().toList();
+      state[key] = list;
+    }
+    // Make a copy of the list so that later mutations won't propagate
+    return list?.toList() as List<String>?;
+  }
 
   bool containsKey(String key) =>
       _sharedPreferences?.containsKey(key) ?? false;
@@ -60,60 +77,50 @@ class Preferences extends _$Preferences {
 
 
   Future<bool> setBool(String key, bool value) async {
-    final res = await _sharedPreferences?.setBool(key, value) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map[key] = value;
+    state = map;
+    return await _sharedPreferences?.setBool(key, value) ?? false;
   }
 
   Future<bool> setInt(String key, int value) async {
-    final res = await _sharedPreferences?.setInt(key, value) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map[key] = value;
+    state = map;
+    return await _sharedPreferences?.setInt(key, value) ?? false;
   }
 
   Future<bool> setDouble(String key, double value) async {
-    final res = await _sharedPreferences?.setDouble(key, value) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map[key] = value;
+    state = map;
+    return await _sharedPreferences?.setDouble(key, value) ?? false;
   }
 
   Future<bool> setString(String key, String value) async {
-    final res = await _sharedPreferences?.setString(key, value) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map[key] = value;
+    state = map;
+    return await _sharedPreferences?.setString(key, value) ?? false;
   }
 
   Future<bool> setStringList(String key, List<String> value) async {
-    final res =
-        await _sharedPreferences?.setStringList(key, value) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map[key] = value;
+    state = map;
+    return await _sharedPreferences?.setStringList(key, value) ?? false;
   }
 
   Future<bool> remove(String key) async {
-    final res = await _sharedPreferences?.remove(key) ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    final Map<String, Object> map = Map.from(state);
+    map.remove(key);
+    state = map;
+    return await _sharedPreferences?.remove(key) ?? false;
   }
 
   Future<bool> clear() async {
-    final res = await _sharedPreferences?.clear() ?? false;
-    if (res) {
-      update();
-    }
-    return res;
+    state = {};
+    return await _sharedPreferences?.clear() ?? false;
   }
 
   Future<void> reload() async {
