@@ -225,6 +225,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.2"
+  dart_eval:
+    dependency: transitive
+    description:
+      name: dart_eval
+      sha256: "9394e59d74d84b9c6cc58739b07c252ac2baba3679213c39e43f180eb712530e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.8"
   dart_style:
     dependency: transitive
     description:
@@ -233,6 +241,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "49af28382aefc53562459104f64d16b9dfd1e8ef68c862d5af436cc8356ce5a8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.1"
+  directed_graph:
+    dependency: transitive
+    description:
+      name: directed_graph
+      sha256: cd9b6711bfa4265dae864ef87c68809cc2da5fb4260911caa975c9f33026dc2b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   drift:
     dependency: "direct main"
     description:
@@ -249,6 +273,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.16.0"
+  exception_templates:
+    dependency: transitive
+    description:
+      name: exception_templates
+      sha256: "378fa67f37cb1567162cbfd242fafb711e123d8c7127726a67aa5758dc2a8675"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   fake_async:
     dependency: transitive
     description:
@@ -286,6 +318,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_eval:
+    dependency: "direct main"
+    description:
+      name: flutter_eval
+      sha256: b99dc00ffd0adbd7827536bf0c6e7a8e8d98827986b1f912c67a4967d6727d2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4"
   flutter_hooks:
     dependency: "direct main"
     description:
@@ -453,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.7.1"
+  lazy_memo:
+    dependency: transitive
+    description:
+      name: lazy_memo
+      sha256: "3c58757c2bac430caa0467a4a86f8c69f24b17a4a6144f044b51024f5a915379"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2"
   leak_tracker:
     dependency: transitive
     description:
@@ -660,6 +708,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  quote_buffer:
+    dependency: transitive
+    description:
+      name: quote_buffer
+      sha256: a9eefd3ddc63bb310ffbc855b6ebe0363d925235485bc5778e28c492b1224b31
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.5"
   recase:
     dependency: transitive
     description:

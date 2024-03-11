@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
-import 'package:easy_mygo/generated/l10n.dart';
-import 'package:easy_mygo/global/global.dart';
+
+
 import 'package:easy_mygo/ui/main/history/history.dart';
 import 'package:easy_mygo/ui/main/home/home.dart';
 import 'package:easy_mygo/ui/main/more/more.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../l10n/l10n.dart';
 import 'library/library.dart';
 
 /// Created by heyanlin on 2023/9/22.

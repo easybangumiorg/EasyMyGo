@@ -52,6 +52,8 @@ dependencies:
   path: ^1.9.0
   logger: ^2.0.2+1
   package_info_plus: ^4.2.0
+  flutter_js: 0.8.0+0
+  dio: ^5.4.1
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +80,9 @@ dev_dependencies:
 flutter_intl:
   enabled: true
   main_locale: zh_CN
+  output_dir: lib/l10n
+  arb_dir: lib/l10n/arb
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

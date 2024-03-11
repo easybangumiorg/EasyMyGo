@@ -1,4 +1,4 @@
-import 'package:easy_mygo/generated/l10n.dart';
+
 import 'package:easy_mygo/global/global.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../l10n/l10n.dart';
 
 
 // 闪屏页，承载整个 app 的初始化

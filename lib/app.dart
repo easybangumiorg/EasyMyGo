@@ -7,7 +7,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'generated/l10n.dart';
+import 'l10n/l10n.dart';
+
 
 
 void main() {
@@ -22,6 +23,7 @@ class EasyBookApp extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final GoRouter route = ref.watch(routesPod);
     final ThemeState themeState = ref.watch(themeControllerPod);
+
 
     return MaterialApp.router(
       onGenerateTitle: (context) => S.of(context).app_name,
