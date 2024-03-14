@@ -37,6 +37,7 @@ class EasyBookApp extends HookConsumerWidget {
 
     // =============== 初始化相关代码 =====================
 
+    // 1.主题配置
     useEffect(() {
       if(themeConfig == ThemeConfig.none){
         Future.microtask(() async {
@@ -45,7 +46,6 @@ class EasyBookApp extends HookConsumerWidget {
       }
       return null;
     }, [themeConfig]);
-
 
 
     if (themeConfig == ThemeConfig.none){
