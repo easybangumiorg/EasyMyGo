@@ -1,39 +1,45 @@
-import 'package:easy_mygo/preferences/preference_object.dart';
-import 'package:easy_mygo/preferences/preferences.dart';
+import 'package:easy_mygo/hive/hive.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../hive/config/hive_config.dart';
+
 part 'theme.g.dart';
+
 part 'theme.freezed.dart';
 
 @freezed
-class ThemeState with _$ThemeState {
-  factory ThemeState({
-    required MaterialColor seedColor,
-    required ThemeMode darkMode,
-  }) = _ThemeState;
+class ThemeConfig with _$ThemeConfig {
+  factory ThemeConfig({
+    @Default(0) int seedColorIndex,
+    @Default(0) int darkModeIndex,
+  }) = _ThemeConfig;
+
+  factory ThemeConfig.fromJson(Map<String, Object?> json) =>
+      _$ThemeConfigFromJson(json);
 }
 
 
-@Riverpod()
+@riverpod
 class ThemeController extends _$ThemeController {
 
-  static const List<MaterialColor> themeSeedColor = Colors.primaries;
-
   @override
-  ThemeState build() {
-    final darkMode = Pref.darkMode.watch(ref);
-    final index = Pref.themeIndex.watch(ref);
-    return ThemeState(seedColor: _getSeedColor(index), darkMode: ThemeMode.values[darkMode]);
-  }
-
-  MaterialColor _getSeedColor(int index) {
-    if (index < 0 || index >= themeSeedColor.length) {
-      return themeSeedColor[0];
-    }else{
-      return themeSeedColor[index];
+  ThemeConfig build() {
+    final hiveConfig = ref.watch(HiveConfigProvider("theme_config"));
+    final value = hiveConfig.valueOrNull;
+    if (value != null) {
+      return ThemeConfig.fromJson(value);
+    } else {
+      return ThemeConfig();
     }
   }
-}
 
+
+  void changeThemeIndex(int index) async {
+    HiveConfig.put("theme_config", state.copyWith(seedColorIndex: index).toJson());
+  }
+
+
+}

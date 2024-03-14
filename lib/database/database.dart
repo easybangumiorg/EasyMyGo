@@ -17,7 +17,6 @@ enum UpdateStrategy { always, onlyStrict, never }
 
 enum Status { unknown, ongoing, completed }
 
-
 class DatabaseState {
   // 漫画数据库
   MangaDB mangaDB;
@@ -39,77 +38,55 @@ class DatabaseState {
   }
 }
 
-
-
 @Riverpod(keepAlive: true)
-class Database extends _$Database {
-
-  static DatabaseState? _current;
-
-  static DatabaseState get current {
-    assert(_current != null,
-        'No instance of DB was loaded. Try to initialize DB.');
-    return _current!;
-  }
-
-  @override
-  DatabaseState? build() {
-    return null;
-  }
-
-  Future<void> init() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final mangaDBFile = File(join(dbFolder.path, "Manga.sql"));
-    final mangaDB = MangaDB(NativeDatabase(mangaDBFile));
-
-    final novelDBFile = File(join(dbFolder.path, "Novel.sql"));
-    final novelDB = NovelDB(NativeDatabase(novelDBFile));
-
-    final sta = DatabaseState(mangaDB: mangaDB, novelDB: novelDB);
-    _current = sta;
-    state = sta;
-  }
-
-
+DatabaseState database(DatabaseRef ref) {
+  return DatabaseState(
+      mangaDB: MangaDB.createLazy(),
+      novelDB: NovelDB.createLazy());
 }
 
 @DriftDatabase(tables: [MangaInfo], daos: [MangaDao])
 class MangaDB extends _$MangaDB {
-  // we tell the database where to store the data with this constructor
+  static MangaDB createLazy() {
+    return MangaDB(LazyDatabase(() async {
+      final dbFolder = await getApplicationSupportDirectory();
+      final mangaDBFile = File(join(dbFolder.path, "Manga.sql"));
+      return NativeDatabase(mangaDBFile);
+    }));
+  }
 
-  // you should bump this number whenever you change or add a table definition. Migrations
-  // are covered later in this readme.
   @override
   int get schemaVersion => 1;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(onCreate: (Migrator m) {
-    return m.createAll();
-  }, onUpgrade: (Migrator m, int from, int to) async {
-    // 版本更新
-  });
+        return m.createAll();
+      }, onUpgrade: (Migrator m, int from, int to) async {
+        // 版本更新
+      });
 
-  MangaDB(NativeDatabase super.database);
-
+  MangaDB(super.database);
 }
 
 @DriftDatabase(tables: [NovelInfo], daos: [NovelDao])
 class NovelDB extends _$NovelDB {
-  // we tell the database where to store the data with this constructor
+  static NovelDB createLazy() {
+    return NovelDB(LazyDatabase(() async {
+      final dbFolder = await getApplicationSupportDirectory();
+      final novelDBFile = File(join(dbFolder.path, "Novel.sql"));
+      return NativeDatabase(novelDBFile);
+    }));
+  }
 
-  // you should bump this number whenever you change or add a table definition. Migrations
-  // are covered later in this readme.
   @override
   int get schemaVersion => 1;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(onCreate: (Migrator m) {
-    return m.createAll();
-  }, onUpgrade: (Migrator m, int from, int to) async {
-    // 版本更新
-  });
+        return m.createAll();
+      }, onUpgrade: (Migrator m, int from, int to) async {
+        // 版本更新
+      });
 
-  NovelDB(NativeDatabase super.database);
-
+  NovelDB(super.database);
 }
-

@@ -1,7 +1,6 @@
 
 import 'package:easy_mygo/c.dart';
 import 'package:easy_mygo/database/database.dart';
-import 'package:easy_mygo/preferences/preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -31,27 +30,36 @@ class GlobalState with _$GlobalState {
 
 @Riverpod(keepAlive: true)
 class Global extends _$Global {
+
+  static Global? _current;
+  static Global get current {
+    assert(_current != null,
+    'No instance of Preferences was loaded. It cant use before init.');
+    return _current!;
+  }
+
+
   @override
   GlobalState build() {
     return GlobalState(isInitialing: false, migratingProcess: 0, isReady: false);
   }
 
   // 初始化，闪屏页调用
-  // ignore: avoid_build_context_in_providers
   Future<void> init() async {
     state = state.copyWith(
       isInitialing: true,
       migratingProcess: 0,
       isReady: false,
     );
-    await ref.read(databasePod.notifier).init();
-    await ref.read(preferencesPod.notifier).init();
+    // await ref.read(databasePod.notifier).init();
+    // await ref.read(preferencesPod.notifier).init();
     state = state.copyWith(
       isInitialing: true,
       migratingProcess: 0,
       isReady: false,
     );
     await migrate();
+    _current = this;
   }
 
   // 数据更新，闪屏页调用
@@ -61,15 +69,8 @@ class Global extends _$Global {
       migratingProcess: 0,
       isReady: false,
     );
-    final preferences = ref.read(preferencesPod.notifier);
-    final cur = preferences.getInt("last_version") ?? BuildConfig.versionCode;
-    // 数据迁移代码
-    preferences.setInt("last_version", BuildConfig.versionCode);
-    state = state.copyWith(
-      isInitialing: false,
-      migratingProcess: 100,
-      isReady: true,
-    );
+
+
   }
 }
 

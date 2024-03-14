@@ -20,8 +20,9 @@ GlobalState _$GlobalStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GlobalState {
-// 是否在初始化中
-  bool get isInitialing => throw _privateConstructorUsedError; // 数据迁移进度，0~100
+// 是否在初始化中（包括数据迁移阶段也会为 true）
+  bool get isInitialing =>
+      throw _privateConstructorUsedError; // 数据迁移进度，0~100，为 0 则代表还在初始化组件
   int get migratingProcess =>
       throw _privateConstructorUsedError; // 是否准备好（进入 app）
   bool get isReady => throw _privateConstructorUsedError;
@@ -129,10 +130,10 @@ class _$GlobalStateImpl implements _GlobalState {
   factory _$GlobalStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$GlobalStateImplFromJson(json);
 
-// 是否在初始化中
+// 是否在初始化中（包括数据迁移阶段也会为 true）
   @override
   final bool isInitialing;
-// 数据迁移进度，0~100
+// 数据迁移进度，0~100，为 0 则代表还在初始化组件
   @override
   final int migratingProcess;
 // 是否准备好（进入 app）
@@ -184,9 +185,9 @@ abstract class _GlobalState implements GlobalState {
   factory _GlobalState.fromJson(Map<String, dynamic> json) =
       _$GlobalStateImpl.fromJson;
 
-  @override // 是否在初始化中
+  @override // 是否在初始化中（包括数据迁移阶段也会为 true）
   bool get isInitialing;
-  @override // 数据迁移进度，0~100
+  @override // 数据迁移进度，0~100，为 0 则代表还在初始化组件
   int get migratingProcess;
   @override // 是否准备好（进入 app）
   bool get isReady;

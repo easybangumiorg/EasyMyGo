@@ -14,29 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-/// @nodoc
-mixin _$ThemeState {
-  MaterialColor get seedColor => throw _privateConstructorUsedError;
-  ThemeMode get darkMode => throw _privateConstructorUsedError;
+ThemeConfig _$ThemeConfigFromJson(Map<String, dynamic> json) {
+  return _ThemeConfig.fromJson(json);
+}
 
+/// @nodoc
+mixin _$ThemeConfig {
+  int get seedColorIndex => throw _privateConstructorUsedError;
+  int get darkModeIndex => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ThemeStateCopyWith<ThemeState> get copyWith =>
+  $ThemeConfigCopyWith<ThemeConfig> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ThemeStateCopyWith<$Res> {
-  factory $ThemeStateCopyWith(
-          ThemeState value, $Res Function(ThemeState) then) =
-      _$ThemeStateCopyWithImpl<$Res, ThemeState>;
+abstract class $ThemeConfigCopyWith<$Res> {
+  factory $ThemeConfigCopyWith(
+          ThemeConfig value, $Res Function(ThemeConfig) then) =
+      _$ThemeConfigCopyWithImpl<$Res, ThemeConfig>;
   @useResult
-  $Res call({MaterialColor seedColor, ThemeMode darkMode});
+  $Res call({int seedColorIndex, int darkModeIndex});
 }
 
 /// @nodoc
-class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
-    implements $ThemeStateCopyWith<$Res> {
-  _$ThemeStateCopyWithImpl(this._value, this._then);
+class _$ThemeConfigCopyWithImpl<$Res, $Val extends ThemeConfig>
+    implements $ThemeConfigCopyWith<$Res> {
+  _$ThemeConfigCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -46,107 +51,122 @@ class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? seedColor = null,
-    Object? darkMode = null,
+    Object? seedColorIndex = null,
+    Object? darkModeIndex = null,
   }) {
     return _then(_value.copyWith(
-      seedColor: null == seedColor
-          ? _value.seedColor
-          : seedColor // ignore: cast_nullable_to_non_nullable
-              as MaterialColor,
-      darkMode: null == darkMode
-          ? _value.darkMode
-          : darkMode // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
+      seedColorIndex: null == seedColorIndex
+          ? _value.seedColorIndex
+          : seedColorIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      darkModeIndex: null == darkModeIndex
+          ? _value.darkModeIndex
+          : darkModeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ThemeStateImplCopyWith<$Res>
-    implements $ThemeStateCopyWith<$Res> {
-  factory _$$ThemeStateImplCopyWith(
-          _$ThemeStateImpl value, $Res Function(_$ThemeStateImpl) then) =
-      __$$ThemeStateImplCopyWithImpl<$Res>;
+abstract class _$$ThemeConfigImplCopyWith<$Res>
+    implements $ThemeConfigCopyWith<$Res> {
+  factory _$$ThemeConfigImplCopyWith(
+          _$ThemeConfigImpl value, $Res Function(_$ThemeConfigImpl) then) =
+      __$$ThemeConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MaterialColor seedColor, ThemeMode darkMode});
+  $Res call({int seedColorIndex, int darkModeIndex});
 }
 
 /// @nodoc
-class __$$ThemeStateImplCopyWithImpl<$Res>
-    extends _$ThemeStateCopyWithImpl<$Res, _$ThemeStateImpl>
-    implements _$$ThemeStateImplCopyWith<$Res> {
-  __$$ThemeStateImplCopyWithImpl(
-      _$ThemeStateImpl _value, $Res Function(_$ThemeStateImpl) _then)
+class __$$ThemeConfigImplCopyWithImpl<$Res>
+    extends _$ThemeConfigCopyWithImpl<$Res, _$ThemeConfigImpl>
+    implements _$$ThemeConfigImplCopyWith<$Res> {
+  __$$ThemeConfigImplCopyWithImpl(
+      _$ThemeConfigImpl _value, $Res Function(_$ThemeConfigImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? seedColor = null,
-    Object? darkMode = null,
+    Object? seedColorIndex = null,
+    Object? darkModeIndex = null,
   }) {
-    return _then(_$ThemeStateImpl(
-      seedColor: null == seedColor
-          ? _value.seedColor
-          : seedColor // ignore: cast_nullable_to_non_nullable
-              as MaterialColor,
-      darkMode: null == darkMode
-          ? _value.darkMode
-          : darkMode // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
+    return _then(_$ThemeConfigImpl(
+      seedColorIndex: null == seedColorIndex
+          ? _value.seedColorIndex
+          : seedColorIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      darkModeIndex: null == darkModeIndex
+          ? _value.darkModeIndex
+          : darkModeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$ThemeConfigImpl implements _ThemeConfig {
+  _$ThemeConfigImpl({this.seedColorIndex = 0, this.darkModeIndex = 0});
 
-class _$ThemeStateImpl implements _ThemeState {
-  _$ThemeStateImpl({required this.seedColor, required this.darkMode});
+  factory _$ThemeConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ThemeConfigImplFromJson(json);
 
   @override
-  final MaterialColor seedColor;
+  @JsonKey()
+  final int seedColorIndex;
   @override
-  final ThemeMode darkMode;
+  @JsonKey()
+  final int darkModeIndex;
 
   @override
   String toString() {
-    return 'ThemeState(seedColor: $seedColor, darkMode: $darkMode)';
+    return 'ThemeConfig(seedColorIndex: $seedColorIndex, darkModeIndex: $darkModeIndex)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ThemeStateImpl &&
-            (identical(other.seedColor, seedColor) ||
-                other.seedColor == seedColor) &&
-            (identical(other.darkMode, darkMode) ||
-                other.darkMode == darkMode));
+            other is _$ThemeConfigImpl &&
+            (identical(other.seedColorIndex, seedColorIndex) ||
+                other.seedColorIndex == seedColorIndex) &&
+            (identical(other.darkModeIndex, darkModeIndex) ||
+                other.darkModeIndex == darkModeIndex));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, seedColor, darkMode);
+  int get hashCode => Object.hash(runtimeType, seedColorIndex, darkModeIndex);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ThemeStateImplCopyWith<_$ThemeStateImpl> get copyWith =>
-      __$$ThemeStateImplCopyWithImpl<_$ThemeStateImpl>(this, _$identity);
+  _$$ThemeConfigImplCopyWith<_$ThemeConfigImpl> get copyWith =>
+      __$$ThemeConfigImplCopyWithImpl<_$ThemeConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ThemeConfigImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _ThemeState implements ThemeState {
-  factory _ThemeState(
-      {required final MaterialColor seedColor,
-      required final ThemeMode darkMode}) = _$ThemeStateImpl;
+abstract class _ThemeConfig implements ThemeConfig {
+  factory _ThemeConfig({final int seedColorIndex, final int darkModeIndex}) =
+      _$ThemeConfigImpl;
+
+  factory _ThemeConfig.fromJson(Map<String, dynamic> json) =
+      _$ThemeConfigImpl.fromJson;
 
   @override
-  MaterialColor get seedColor;
+  int get seedColorIndex;
   @override
-  ThemeMode get darkMode;
+  int get darkModeIndex;
   @override
   @JsonKey(ignore: true)
-  _$$ThemeStateImplCopyWith<_$ThemeStateImpl> get copyWith =>
+  _$$ThemeConfigImplCopyWith<_$ThemeConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

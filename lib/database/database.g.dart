@@ -1374,12 +1374,12 @@ abstract class _$NovelDB extends GeneratedDatabase {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$databaseHash() => r'aee1557eb39009f2587c9e86af4fa850206aecb0';
+String _$databaseHash() => r'ca7a3b62b355adb60bc5163386c8fa23acf362d3';
 
-/// See also [Database].
-@ProviderFor(Database)
-final databasePod = NotifierProvider<Database, DatabaseState?>.internal(
-  Database.new,
+/// See also [database].
+@ProviderFor(database)
+final databasePod = Provider<DatabaseState>.internal(
+  database,
   name: r'databasePod',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$databaseHash,
@@ -1387,6 +1387,6 @@ final databasePod = NotifierProvider<Database, DatabaseState?>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$Database = Notifier<DatabaseState?>;
+typedef DatabaseRef = ProviderRef<DatabaseState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
