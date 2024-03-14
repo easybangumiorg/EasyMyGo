@@ -6,8 +6,6 @@ import 'package:path/path.dart';
 
 class HiveBox {
 
-  static var completer = Completer();
-
   static final init = Future(() async {
     final applicationDir = await Constant.applicationPath;
     Hive.init(join(applicationDir.path, "hive"));
@@ -23,7 +21,6 @@ class HiveBox {
 }
 
 extension BoxExt<E> on Box<E> {
-
   E? getSingle({E? defaultValue}) => get(HiveBox.key, defaultValue: defaultValue);
   void putSingle(E value) => put(HiveBox.key, value);
 }
