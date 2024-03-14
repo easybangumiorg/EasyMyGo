@@ -22,7 +22,7 @@ Map<String, dynamic> _$$ThemeConfigImplToJson(_$ThemeConfigImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeControllerHash() => r'72f40e267dc3a550bf5223f11215bd22e7156280';
+String _$themeControllerHash() => r'068620a0c8090c3e5b07933d12a02b7dcfe1adf4';
 
 /// See also [ThemeController].
 @ProviderFor(ThemeController)

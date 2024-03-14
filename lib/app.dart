@@ -1,10 +1,12 @@
 import 'dart:io';
 
-import 'package:easy_mygo/global/global.dart';
+
+import 'package:easy_mygo/hive/hive.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
@@ -17,22 +19,46 @@ import 'l10n/l10n.dart';
 
 
 void main() async {
-  final hiveFolder = await getApplicationSupportDirectory();
-  Hive.init(join(hiveFolder.path, "hive"));
-  runApp(const ProviderScope(child: EasyBookApp()));
+  runApp(const ProviderScope(
+      child: EasyBookApp()
+  ));
 }
 
 class EasyBookApp extends HookConsumerWidget {
   const EasyBookApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+
+
+    // =============== 初始化前监听 ======================
+    final ThemeConfig themeConfig = ref.watch(themeControllerPod);
+    final ThemeController themeController = ref.watch(themeControllerPod.notifier);
+
+    // =============== 初始化相关代码 =====================
+
+    useEffect(() {
+      if(themeConfig == ThemeConfig.none){
+        Future.microtask(() async {
+          await themeController.init();
+        });
+      }
+      return null;
+    }, [themeConfig]);
+
+
+
+    if (themeConfig == ThemeConfig.none){
+      return const SplashScreen();
+    }
+    // =============== 初始化结束 =====================
+
+
     final GoRouter route = ref.watch(routesPod);
 
-    final ThemeConfig themeConfig = ref.watch(themeControllerPod);
     final seedColor = Colors.primaries.elementAtOrNull(themeConfig.seedColorIndex) ?? Colors.red;
     final darkMode = ThemeMode.values.elementAtOrNull(themeConfig.darkModeIndex) ?? ThemeMode.system;
+
 
     return MaterialApp.router(
       onGenerateTitle: (context) => S.of(context).app_name,

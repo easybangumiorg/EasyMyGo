@@ -1,6 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:easy_mygo/global/global.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../database.dart';
 import '../../entity/manga/manga_info.dart';
