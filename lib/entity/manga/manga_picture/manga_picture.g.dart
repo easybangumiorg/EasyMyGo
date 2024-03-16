@@ -10,7 +10,7 @@ _$MangaPictureImpl _$$MangaPictureImplFromJson(Map<String, dynamic> json) =>
     _$MangaPictureImpl(
       url: json['url'] as String? ?? "",
       type: $enumDecodeNullable(_$PictureTypeEnumMap, json['type']) ??
-          PictureType.normal,
+          PictureLoadType.normal,
       parameter: (json['parameter'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$MangaPictureImplToJson(_$MangaPictureImpl instance) =>
     };
 
 const _$PictureTypeEnumMap = {
-  PictureType.normal: 'normal',
+  PictureLoadType.normal: 'normal',
 };

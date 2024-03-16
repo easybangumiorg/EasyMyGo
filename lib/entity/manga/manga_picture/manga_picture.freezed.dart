@@ -22,7 +22,7 @@ MangaPicture _$MangaPictureFromJson(Map<String, dynamic> json) {
 mixin _$MangaPicture {
 // 图片 Url
   String get url => throw _privateConstructorUsedError;
-  PictureType get type => throw _privateConstructorUsedError;
+  PictureLoadType get type => throw _privateConstructorUsedError;
   Map<String, String> get parameter => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $MangaPictureCopyWith<$Res> {
           MangaPicture value, $Res Function(MangaPicture) then) =
       _$MangaPictureCopyWithImpl<$Res, MangaPicture>;
   @useResult
-  $Res call({String url, PictureType type, Map<String, String> parameter});
+  $Res call({String url, PictureLoadType type, Map<String, String> parameter});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$MangaPictureCopyWithImpl<$Res, $Val extends MangaPicture>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as PictureType,
+              as PictureLoadType,
       parameter: null == parameter
           ? _value.parameter
           : parameter // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$MangaPictureImplCopyWith<$Res>
       __$$MangaPictureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, PictureType type, Map<String, String> parameter});
+  $Res call({String url, PictureLoadType type, Map<String, String> parameter});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$$MangaPictureImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as PictureType,
+              as PictureLoadType,
       parameter: null == parameter
           ? _value._parameter
           : parameter // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class __$$MangaPictureImplCopyWithImpl<$Res>
 class _$MangaPictureImpl implements _MangaPicture {
   _$MangaPictureImpl(
       {this.url = "",
-      this.type = PictureType.normal,
+      this.type = PictureLoadType.normal,
       final Map<String, String> parameter = const {}})
       : _parameter = parameter;
 
@@ -135,7 +135,7 @@ class _$MangaPictureImpl implements _MangaPicture {
   final String url;
   @override
   @JsonKey()
-  final PictureType type;
+  final PictureLoadType type;
   final Map<String, String> _parameter;
   @override
   @JsonKey()
@@ -183,7 +183,7 @@ class _$MangaPictureImpl implements _MangaPicture {
 abstract class _MangaPicture implements MangaPicture {
   factory _MangaPicture(
       {final String url,
-      final PictureType type,
+      final PictureLoadType type,
       final Map<String, String> parameter}) = _$MangaPictureImpl;
 
   factory _MangaPicture.fromJson(Map<String, dynamic> json) =
@@ -192,7 +192,7 @@ abstract class _MangaPicture implements MangaPicture {
   @override // 图片 Url
   String get url;
   @override
-  PictureType get type;
+  PictureLoadType get type;
   @override
   Map<String, String> get parameter;
   @override

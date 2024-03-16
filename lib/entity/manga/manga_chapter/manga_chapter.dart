@@ -1,13 +1,10 @@
+import 'package:easy_mygo/entity/manga/manga_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'manga_chapter.freezed.dart';
 part 'manga_chapter.g.dart';
 
-// 章节展示的类型
-enum ChapterShowType {
-  normal,         // 普通类型，一个 Chapter 分为多个 Picture
-  singlePicture   // 单图片类型，一章只有一张大的 Picture，展示端需要适配（裁切或者只支持上下滑动模式）
-}
+
 
 @freezed
 class MangaChapter with _$MangaChapter {
