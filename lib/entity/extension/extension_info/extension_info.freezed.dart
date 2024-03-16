@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'extension.dart';
+part of 'extension_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -20,15 +20,21 @@ ExtensionInfo _$ExtensionInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ExtensionInfo {
-  String get key => throw _privateConstructorUsedError;
+// 包名唯一
+  String get package => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
-  String get pkgName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'version_name')
   String get versionName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'version_code')
   int get versionCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lib_version')
   int get libVersion => throw _privateConstructorUsedError;
-  int get loadType => throw _privateConstructorUsedError;
-  String get path => throw _privateConstructorUsedError;
-  String get read => throw _privateConstructorUsedError;
+  @JsonKey(name: 'extension_load_type')
+  ExtensionLoaderType get loadType => throw _privateConstructorUsedError;
+  String get path =>
+      throw _privateConstructorUsedError; // 头像 url，本地文件就 file:// 开头
+  String get cover => throw _privateConstructorUsedError;
+  String get readme => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,15 +49,15 @@ abstract class $ExtensionInfoCopyWith<$Res> {
       _$ExtensionInfoCopyWithImpl<$Res, ExtensionInfo>;
   @useResult
   $Res call(
-      {String key,
+      {String package,
       String label,
-      String pkgName,
-      String versionName,
-      int versionCode,
-      int libVersion,
-      int loadType,
+      @JsonKey(name: 'version_name') String versionName,
+      @JsonKey(name: 'version_code') int versionCode,
+      @JsonKey(name: 'lib_version') int libVersion,
+      @JsonKey(name: 'extension_load_type') ExtensionLoaderType loadType,
       String path,
-      String read});
+      String cover,
+      String readme});
 }
 
 /// @nodoc
@@ -67,28 +73,24 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = null,
+    Object? package = null,
     Object? label = null,
-    Object? pkgName = null,
     Object? versionName = null,
     Object? versionCode = null,
     Object? libVersion = null,
     Object? loadType = null,
     Object? path = null,
-    Object? read = null,
+    Object? cover = null,
+    Object? readme = null,
   }) {
     return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
+      package: null == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
               as String,
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      pkgName: null == pkgName
-          ? _value.pkgName
-          : pkgName // ignore: cast_nullable_to_non_nullable
               as String,
       versionName: null == versionName
           ? _value.versionName
@@ -105,14 +107,18 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
       loadType: null == loadType
           ? _value.loadType
           : loadType // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ExtensionLoaderType,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      read: null == read
-          ? _value.read
-          : read // ignore: cast_nullable_to_non_nullable
+      cover: null == cover
+          ? _value.cover
+          : cover // ignore: cast_nullable_to_non_nullable
+              as String,
+      readme: null == readme
+          ? _value.readme
+          : readme // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -127,15 +133,15 @@ abstract class _$$ExtensionInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String key,
+      {String package,
       String label,
-      String pkgName,
-      String versionName,
-      int versionCode,
-      int libVersion,
-      int loadType,
+      @JsonKey(name: 'version_name') String versionName,
+      @JsonKey(name: 'version_code') int versionCode,
+      @JsonKey(name: 'lib_version') int libVersion,
+      @JsonKey(name: 'extension_load_type') ExtensionLoaderType loadType,
       String path,
-      String read});
+      String cover,
+      String readme});
 }
 
 /// @nodoc
@@ -149,28 +155,24 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = null,
+    Object? package = null,
     Object? label = null,
-    Object? pkgName = null,
     Object? versionName = null,
     Object? versionCode = null,
     Object? libVersion = null,
     Object? loadType = null,
     Object? path = null,
-    Object? read = null,
+    Object? cover = null,
+    Object? readme = null,
   }) {
     return _then(_$ExtensionInfoImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
+      package: null == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
               as String,
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      pkgName: null == pkgName
-          ? _value.pkgName
-          : pkgName // ignore: cast_nullable_to_non_nullable
               as String,
       versionName: null == versionName
           ? _value.versionName
@@ -187,14 +189,18 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
       loadType: null == loadType
           ? _value.loadType
           : loadType // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ExtensionLoaderType,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      read: null == read
-          ? _value.read
-          : read // ignore: cast_nullable_to_non_nullable
+      cover: null == cover
+          ? _value.cover
+          : cover // ignore: cast_nullable_to_non_nullable
+              as String,
+      readme: null == readme
+          ? _value.readme
+          : readme // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -204,42 +210,49 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExtensionInfoImpl implements _ExtensionInfo {
   _$ExtensionInfoImpl(
-      {required this.key,
+      {required this.package,
       required this.label,
-      required this.pkgName,
-      required this.versionName,
-      required this.versionCode,
-      required this.libVersion,
-      required this.loadType,
+      @JsonKey(name: 'version_name') required this.versionName,
+      @JsonKey(name: 'version_code') required this.versionCode,
+      @JsonKey(name: 'lib_version') required this.libVersion,
+      @JsonKey(name: 'extension_load_type') required this.loadType,
       required this.path,
-      this.read = ""});
+      this.cover = "",
+      this.readme = ""});
 
   factory _$ExtensionInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExtensionInfoImplFromJson(json);
 
+// 包名唯一
   @override
-  final String key;
+  final String package;
   @override
   final String label;
   @override
-  final String pkgName;
-  @override
+  @JsonKey(name: 'version_name')
   final String versionName;
   @override
+  @JsonKey(name: 'version_code')
   final int versionCode;
   @override
+  @JsonKey(name: 'lib_version')
   final int libVersion;
   @override
-  final int loadType;
+  @JsonKey(name: 'extension_load_type')
+  final ExtensionLoaderType loadType;
   @override
   final String path;
+// 头像 url，本地文件就 file:// 开头
   @override
   @JsonKey()
-  final String read;
+  final String cover;
+  @override
+  @JsonKey()
+  final String readme;
 
   @override
   String toString() {
-    return 'ExtensionInfo(key: $key, label: $label, pkgName: $pkgName, versionName: $versionName, versionCode: $versionCode, libVersion: $libVersion, loadType: $loadType, path: $path, read: $read)';
+    return 'ExtensionInfo(package: $package, label: $label, versionName: $versionName, versionCode: $versionCode, libVersion: $libVersion, loadType: $loadType, path: $path, cover: $cover, readme: $readme)';
   }
 
   @override
@@ -247,9 +260,8 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExtensionInfoImpl &&
-            (identical(other.key, key) || other.key == key) &&
+            (identical(other.package, package) || other.package == package) &&
             (identical(other.label, label) || other.label == label) &&
-            (identical(other.pkgName, pkgName) || other.pkgName == pkgName) &&
             (identical(other.versionName, versionName) ||
                 other.versionName == versionName) &&
             (identical(other.versionCode, versionCode) ||
@@ -259,13 +271,14 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
             (identical(other.loadType, loadType) ||
                 other.loadType == loadType) &&
             (identical(other.path, path) || other.path == path) &&
-            (identical(other.read, read) || other.read == read));
+            (identical(other.cover, cover) || other.cover == cover) &&
+            (identical(other.readme, readme) || other.readme == readme));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key, label, pkgName, versionName,
-      versionCode, libVersion, loadType, path, read);
+  int get hashCode => Object.hash(runtimeType, package, label, versionName,
+      versionCode, libVersion, loadType, path, cover, readme);
 
   @JsonKey(ignore: true)
   @override
@@ -283,37 +296,42 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
 
 abstract class _ExtensionInfo implements ExtensionInfo {
   factory _ExtensionInfo(
-      {required final String key,
+      {required final String package,
       required final String label,
-      required final String pkgName,
-      required final String versionName,
-      required final int versionCode,
-      required final int libVersion,
-      required final int loadType,
+      @JsonKey(name: 'version_name') required final String versionName,
+      @JsonKey(name: 'version_code') required final int versionCode,
+      @JsonKey(name: 'lib_version') required final int libVersion,
+      @JsonKey(name: 'extension_load_type')
+      required final ExtensionLoaderType loadType,
       required final String path,
-      final String read}) = _$ExtensionInfoImpl;
+      final String cover,
+      final String readme}) = _$ExtensionInfoImpl;
 
   factory _ExtensionInfo.fromJson(Map<String, dynamic> json) =
       _$ExtensionInfoImpl.fromJson;
 
-  @override
-  String get key;
+  @override // 包名唯一
+  String get package;
   @override
   String get label;
   @override
-  String get pkgName;
-  @override
+  @JsonKey(name: 'version_name')
   String get versionName;
   @override
+  @JsonKey(name: 'version_code')
   int get versionCode;
   @override
+  @JsonKey(name: 'lib_version')
   int get libVersion;
   @override
-  int get loadType;
+  @JsonKey(name: 'extension_load_type')
+  ExtensionLoaderType get loadType;
   @override
   String get path;
+  @override // 头像 url，本地文件就 file:// 开头
+  String get cover;
   @override
-  String get read;
+  String get readme;
   @override
   @JsonKey(ignore: true)
   _$$ExtensionInfoImplCopyWith<_$ExtensionInfoImpl> get copyWith =>

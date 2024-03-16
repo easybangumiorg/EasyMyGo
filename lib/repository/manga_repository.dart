@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:easy_mygo/repository/entity/manga_info/manga_info.dart';
+import 'package:easy_mygo/entity/manga/manga_info/manga_info.dart';
 import 'package:easy_mygo/utils/hive/hive.dart';
 import 'package:easy_mygo/utils/riverpod/mutable_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

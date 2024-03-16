@@ -21,7 +21,7 @@ MangaInfo _$MangaInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MangaInfo {
 // 必要信息
-  String get key => throw _privateConstructorUsedError;
+  String get source => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError; // cover 信息
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
@@ -30,9 +30,9 @@ mixin _$MangaInfo {
   bool get isDetailedLoad => throw _privateConstructorUsedError;
   String get genre => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int get updateStrategy => throw _privateConstructorUsedError;
+  MangaUpdateStrategy get updateStrategy => throw _privateConstructorUsedError;
   bool get isUpdate => throw _privateConstructorUsedError;
-  int get status => throw _privateConstructorUsedError; // 本地存的一些配置
+  MangaStatus get status => throw _privateConstructorUsedError; // 本地存的一些配置
   int get lastUpdateTime => throw _privateConstructorUsedError;
   String get sourceName => throw _privateConstructorUsedError;
   bool get isReversal => throw _privateConstructorUsedError;
@@ -44,11 +44,13 @@ mixin _$MangaInfo {
   String get lastReadChapterId => throw _privateConstructorUsedError;
   String get lastReadChapterName => throw _privateConstructorUsedError;
   int get lastReadChapterPageCount => throw _privateConstructorUsedError;
-  int get lastReadChapterPageIndex => throw _privateConstructorUsedError;
+  int get lastReadChapterPageIndex =>
+      throw _privateConstructorUsedError; // 加入书架的记录
   int get starTime => throw _privateConstructorUsedError;
   int get pinTime => throw _privateConstructorUsedError;
   List<String> get tagsId => throw _privateConstructorUsedError;
-  String get customOrder => throw _privateConstructorUsedError;
+  String get customOrder => throw _privateConstructorUsedError; // 由源维护的额外字段
+  String get ext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,7 +64,7 @@ abstract class $MangaInfoCopyWith<$Res> {
       _$MangaInfoCopyWithImpl<$Res, MangaInfo>;
   @useResult
   $Res call(
-      {String key,
+      {String source,
       String id,
       String label,
       String cover,
@@ -71,9 +73,9 @@ abstract class $MangaInfoCopyWith<$Res> {
       bool isDetailedLoad,
       String genre,
       String description,
-      int updateStrategy,
+      MangaUpdateStrategy updateStrategy,
       bool isUpdate,
-      int status,
+      MangaStatus status,
       int lastUpdateTime,
       String sourceName,
       bool isReversal,
@@ -88,7 +90,8 @@ abstract class $MangaInfoCopyWith<$Res> {
       int starTime,
       int pinTime,
       List<String> tagsId,
-      String customOrder});
+      String customOrder,
+      String ext});
 }
 
 /// @nodoc
@@ -104,7 +107,7 @@ class _$MangaInfoCopyWithImpl<$Res, $Val extends MangaInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = null,
+    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -131,11 +134,12 @@ class _$MangaInfoCopyWithImpl<$Res, $Val extends MangaInfo>
     Object? pinTime = null,
     Object? tagsId = null,
     Object? customOrder = null,
+    Object? ext = null,
   }) {
     return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -172,7 +176,7 @@ class _$MangaInfoCopyWithImpl<$Res, $Val extends MangaInfo>
       updateStrategy: null == updateStrategy
           ? _value.updateStrategy
           : updateStrategy // ignore: cast_nullable_to_non_nullable
-              as int,
+              as MangaUpdateStrategy,
       isUpdate: null == isUpdate
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
@@ -180,7 +184,7 @@ class _$MangaInfoCopyWithImpl<$Res, $Val extends MangaInfo>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int,
+              as MangaStatus,
       lastUpdateTime: null == lastUpdateTime
           ? _value.lastUpdateTime
           : lastUpdateTime // ignore: cast_nullable_to_non_nullable
@@ -241,6 +245,10 @@ class _$MangaInfoCopyWithImpl<$Res, $Val extends MangaInfo>
           ? _value.customOrder
           : customOrder // ignore: cast_nullable_to_non_nullable
               as String,
+      ext: null == ext
+          ? _value.ext
+          : ext // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -254,7 +262,7 @@ abstract class _$$MangaInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String key,
+      {String source,
       String id,
       String label,
       String cover,
@@ -263,9 +271,9 @@ abstract class _$$MangaInfoImplCopyWith<$Res>
       bool isDetailedLoad,
       String genre,
       String description,
-      int updateStrategy,
+      MangaUpdateStrategy updateStrategy,
       bool isUpdate,
-      int status,
+      MangaStatus status,
       int lastUpdateTime,
       String sourceName,
       bool isReversal,
@@ -280,7 +288,8 @@ abstract class _$$MangaInfoImplCopyWith<$Res>
       int starTime,
       int pinTime,
       List<String> tagsId,
-      String customOrder});
+      String customOrder,
+      String ext});
 }
 
 /// @nodoc
@@ -294,7 +303,7 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = null,
+    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -321,11 +330,12 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
     Object? pinTime = null,
     Object? tagsId = null,
     Object? customOrder = null,
+    Object? ext = null,
   }) {
     return _then(_$MangaInfoImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -362,7 +372,7 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
       updateStrategy: null == updateStrategy
           ? _value.updateStrategy
           : updateStrategy // ignore: cast_nullable_to_non_nullable
-              as int,
+              as MangaUpdateStrategy,
       isUpdate: null == isUpdate
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
@@ -370,7 +380,7 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int,
+              as MangaStatus,
       lastUpdateTime: null == lastUpdateTime
           ? _value.lastUpdateTime
           : lastUpdateTime // ignore: cast_nullable_to_non_nullable
@@ -431,6 +441,10 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
           ? _value.customOrder
           : customOrder // ignore: cast_nullable_to_non_nullable
               as String,
+      ext: null == ext
+          ? _value.ext
+          : ext // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -439,7 +453,7 @@ class __$$MangaInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MangaInfoImpl implements _MangaInfo {
   _$MangaInfoImpl(
-      {required this.key,
+      {required this.source,
       required this.id,
       required this.label,
       required this.cover,
@@ -448,9 +462,9 @@ class _$MangaInfoImpl implements _MangaInfo {
       this.isDetailedLoad = false,
       this.genre = "",
       this.description = "",
-      this.updateStrategy = 0,
+      this.updateStrategy = MangaUpdateStrategy.always,
       this.isUpdate = false,
-      this.status = 0,
+      this.status = MangaStatus.unknown,
       this.lastUpdateTime = 0,
       this.sourceName = "",
       this.isReversal = false,
@@ -465,7 +479,8 @@ class _$MangaInfoImpl implements _MangaInfo {
       this.starTime = 0,
       this.pinTime = -1,
       final List<String> tagsId = const [],
-      this.customOrder = ""})
+      this.customOrder = "",
+      this.ext = ""})
       : _chapterListTemp = chapterListTemp,
         _tagsId = tagsId;
 
@@ -474,7 +489,7 @@ class _$MangaInfoImpl implements _MangaInfo {
 
 // 必要信息
   @override
-  final String key;
+  final String source;
   @override
   final String id;
 // cover 信息
@@ -498,13 +513,13 @@ class _$MangaInfoImpl implements _MangaInfo {
   final String description;
   @override
   @JsonKey()
-  final int updateStrategy;
+  final MangaUpdateStrategy updateStrategy;
   @override
   @JsonKey()
   final bool isUpdate;
   @override
   @JsonKey()
-  final int status;
+  final MangaStatus status;
 // 本地存的一些配置
   @override
   @JsonKey()
@@ -546,6 +561,7 @@ class _$MangaInfoImpl implements _MangaInfo {
   @override
   @JsonKey()
   final int lastReadChapterPageIndex;
+// 加入书架的记录
   @override
   @JsonKey()
   final int starTime;
@@ -564,10 +580,14 @@ class _$MangaInfoImpl implements _MangaInfo {
   @override
   @JsonKey()
   final String customOrder;
+// 由源维护的额外字段
+  @override
+  @JsonKey()
+  final String ext;
 
   @override
   String toString() {
-    return 'MangaInfo(key: $key, id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, isDetailedLoad: $isDetailedLoad, genre: $genre, description: $description, updateStrategy: $updateStrategy, isUpdate: $isUpdate, status: $status, lastUpdateTime: $lastUpdateTime, sourceName: $sourceName, isReversal: $isReversal, sortKey: $sortKey, chapterListTemp: $chapterListTemp, lastHistoryTime: $lastHistoryTime, lastReadChapterCount: $lastReadChapterCount, lastReadChapterId: $lastReadChapterId, lastReadChapterName: $lastReadChapterName, lastReadChapterPageCount: $lastReadChapterPageCount, lastReadChapterPageIndex: $lastReadChapterPageIndex, starTime: $starTime, pinTime: $pinTime, tagsId: $tagsId, customOrder: $customOrder)';
+    return 'MangaInfo(source: $source, id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, isDetailedLoad: $isDetailedLoad, genre: $genre, description: $description, updateStrategy: $updateStrategy, isUpdate: $isUpdate, status: $status, lastUpdateTime: $lastUpdateTime, sourceName: $sourceName, isReversal: $isReversal, sortKey: $sortKey, chapterListTemp: $chapterListTemp, lastHistoryTime: $lastHistoryTime, lastReadChapterCount: $lastReadChapterCount, lastReadChapterId: $lastReadChapterId, lastReadChapterName: $lastReadChapterName, lastReadChapterPageCount: $lastReadChapterPageCount, lastReadChapterPageIndex: $lastReadChapterPageIndex, starTime: $starTime, pinTime: $pinTime, tagsId: $tagsId, customOrder: $customOrder, ext: $ext)';
   }
 
   @override
@@ -575,7 +595,7 @@ class _$MangaInfoImpl implements _MangaInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MangaInfoImpl &&
-            (identical(other.key, key) || other.key == key) &&
+            (identical(other.source, source) || other.source == source) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.cover, cover) || other.cover == cover) &&
@@ -619,14 +639,15 @@ class _$MangaInfoImpl implements _MangaInfo {
             (identical(other.pinTime, pinTime) || other.pinTime == pinTime) &&
             const DeepCollectionEquality().equals(other._tagsId, _tagsId) &&
             (identical(other.customOrder, customOrder) ||
-                other.customOrder == customOrder));
+                other.customOrder == customOrder) &&
+            (identical(other.ext, ext) || other.ext == ext));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        key,
+        source,
         id,
         label,
         cover,
@@ -652,7 +673,8 @@ class _$MangaInfoImpl implements _MangaInfo {
         starTime,
         pinTime,
         const DeepCollectionEquality().hash(_tagsId),
-        customOrder
+        customOrder,
+        ext
       ]);
 
   @JsonKey(ignore: true)
@@ -671,7 +693,7 @@ class _$MangaInfoImpl implements _MangaInfo {
 
 abstract class _MangaInfo implements MangaInfo {
   factory _MangaInfo(
-      {required final String key,
+      {required final String source,
       required final String id,
       required final String label,
       required final String cover,
@@ -680,9 +702,9 @@ abstract class _MangaInfo implements MangaInfo {
       final bool isDetailedLoad,
       final String genre,
       final String description,
-      final int updateStrategy,
+      final MangaUpdateStrategy updateStrategy,
       final bool isUpdate,
-      final int status,
+      final MangaStatus status,
       final int lastUpdateTime,
       final String sourceName,
       final bool isReversal,
@@ -697,13 +719,14 @@ abstract class _MangaInfo implements MangaInfo {
       final int starTime,
       final int pinTime,
       final List<String> tagsId,
-      final String customOrder}) = _$MangaInfoImpl;
+      final String customOrder,
+      final String ext}) = _$MangaInfoImpl;
 
   factory _MangaInfo.fromJson(Map<String, dynamic> json) =
       _$MangaInfoImpl.fromJson;
 
   @override // 必要信息
-  String get key;
+  String get source;
   @override
   String get id;
   @override // cover 信息
@@ -721,11 +744,11 @@ abstract class _MangaInfo implements MangaInfo {
   @override
   String get description;
   @override
-  int get updateStrategy;
+  MangaUpdateStrategy get updateStrategy;
   @override
   bool get isUpdate;
   @override
-  int get status;
+  MangaStatus get status;
   @override // 本地存的一些配置
   int get lastUpdateTime;
   @override
@@ -748,7 +771,7 @@ abstract class _MangaInfo implements MangaInfo {
   int get lastReadChapterPageCount;
   @override
   int get lastReadChapterPageIndex;
-  @override
+  @override // 加入书架的记录
   int get starTime;
   @override
   int get pinTime;
@@ -756,6 +779,8 @@ abstract class _MangaInfo implements MangaInfo {
   List<String> get tagsId;
   @override
   String get customOrder;
+  @override // 由源维护的额外字段
+  String get ext;
   @override
   @JsonKey(ignore: true)
   _$$MangaInfoImplCopyWith<_$MangaInfoImpl> get copyWith =>
