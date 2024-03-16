@@ -1,7 +1,6 @@
 import 'dart:io';
 
 
-import 'package:easy_mygo/hive/hive.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';

@@ -1,12 +1,12 @@
-import 'package:easy_mygo/riverpod/mutable_notifier.dart';
-import 'package:easy_mygo/ui/splash/splash.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../hive/hive.dart';
+import '../utils/hive/hive.dart';
+import '../utils/riverpod/mutable_notifier.dart';
+
+
 
 part 'theme.g.dart';
 
@@ -26,19 +26,20 @@ class ThemeConfig with _$ThemeConfig {
       _$ThemeConfigFromJson(json);
 }
 
-final themeControllerPod = Provider((ref) => ThemeController(ref));
+final themeControllerPod = Provider((ref) => ThemeController._(ref));
 class ThemeController {
 
   final ProviderRef _ref;
   final config = mutableNotifier(ThemeConfig.none);
   late Future<void> _init;
 
-  ThemeController(this._ref){
+  ThemeController._(this._ref){
     _init = Future(() async {
       final box = await HiveBox.themeConfig();
       final themeMap = await box.getSingle() ?? {};
       final themeConfig = ThemeConfig.fromJson(themeMap);
       config.update(_ref, (p0) => themeConfig);
+      await box.close();
     });
   }
 
@@ -50,6 +51,7 @@ class ThemeController {
     final newConfig = curConfig.copyWith(seedColorIndex: index);
     config.update(_ref, (p0) => newConfig);
     await box.putSingle(newConfig.toJson());
+    await box.close();
   }
 
   Future<void> setDarkMode(int mode) async {
@@ -59,6 +61,7 @@ class ThemeController {
     final newConfig = curConfig.copyWith(darkModeIndex: mode);
     config.update(_ref, (p0) => newConfig);
     await box.putSingle(newConfig.toJson());
+    await box.close();
   }
 
 }

@@ -18,6 +18,16 @@ class HiveBox {
     return Hive.openLazyBox<Map<String, dynamic>>("theme_config");
   }
 
+  static Future<LazyBox<Map<String, dynamic>>> mangaInfo() async {
+    await init;
+    return Hive.openLazyBox<Map<String, dynamic>>("manga_info");
+  }
+
+  static Future<LazyBox<Map<String, dynamic>>> novelInfo() async {
+    await init;
+    return Hive.openLazyBox<Map<String, dynamic>>("novel_info");
+  }
+
 }
 
 extension BoxExt<E> on Box<E> {
