@@ -1,7 +1,7 @@
 
 
 import 'package:easy_mygo/plugin/component/component.dart';
-import 'package:easy_mygo/plugin/component/manga/search/item/search_item.dart';
+import 'package:easy_mygo/plugin/component/manga/search/resp/search_resp.dart';
 
 abstract class MangeSearchComponent extends Component {
 
@@ -9,6 +9,6 @@ abstract class MangeSearchComponent extends Component {
 
   Future<String> getInitKey(String key);
 
-  Future<SearchItem> getMangaDetailed(String key, String keyword);
+  Future<SearchResp> getMangaDetailed(String key, String keyword);
 
 }

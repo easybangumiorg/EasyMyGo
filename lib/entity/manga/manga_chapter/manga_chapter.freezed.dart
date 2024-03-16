@@ -24,7 +24,8 @@ mixin _$MangaChapter {
   String get label => throw _privateConstructorUsedError; // 章节 Id
   String get id => throw _privateConstructorUsedError; // 展示类型
   @JsonKey(name: "show_type")
-  ChapterShowType get showType => throw _privateConstructorUsedError;
+  ChapterShowType get showType =>
+      throw _privateConstructorUsedError; // 最终会传递给阅读器的参数，这里先预埋
   Map<String, String> get parameter => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -160,7 +161,9 @@ class _$MangaChapterImpl implements _MangaChapter {
   @override
   @JsonKey(name: "show_type")
   final ChapterShowType showType;
+// 最终会传递给阅读器的参数，这里先预埋
   final Map<String, String> _parameter;
+// 最终会传递给阅读器的参数，这里先预埋
   @override
   @JsonKey()
   Map<String, String> get parameter {
@@ -223,7 +226,7 @@ abstract class _MangaChapter implements MangaChapter {
   @override // 展示类型
   @JsonKey(name: "show_type")
   ChapterShowType get showType;
-  @override
+  @override // 最终会传递给阅读器的参数，这里先预埋
   Map<String, String> get parameter;
   @override
   @JsonKey(ignore: true)

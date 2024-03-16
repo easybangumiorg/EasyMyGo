@@ -9,7 +9,7 @@ part of 'manga_picture.dart';
 _$MangaPictureImpl _$$MangaPictureImplFromJson(Map<String, dynamic> json) =>
     _$MangaPictureImpl(
       url: json['url'] as String? ?? "",
-      type: $enumDecodeNullable(_$PictureTypeEnumMap, json['type']) ??
+      type: $enumDecodeNullable(_$PictureLoadTypeEnumMap, json['type']) ??
           PictureLoadType.normal,
       parameter: (json['parameter'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
@@ -20,10 +20,10 @@ _$MangaPictureImpl _$$MangaPictureImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MangaPictureImplToJson(_$MangaPictureImpl instance) =>
     <String, dynamic>{
       'url': instance.url,
-      'type': _$PictureTypeEnumMap[instance.type]!,
+      'type': _$PictureLoadTypeEnumMap[instance.type]!,
       'parameter': instance.parameter,
     };
 
-const _$PictureTypeEnumMap = {
+const _$PictureLoadTypeEnumMap = {
   PictureLoadType.normal: 'normal',
 };
