@@ -1369,24 +1369,3 @@ abstract class _$NovelDB extends GeneratedDatabase {
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [novelInfo];
 }
-
-// **************************************************************************
-// RiverpodGenerator
-// **************************************************************************
-
-String _$databaseHash() => r'ca7a3b62b355adb60bc5163386c8fa23acf362d3';
-
-/// See also [database].
-@ProviderFor(database)
-final databasePod = Provider<DatabaseState>.internal(
-  database,
-  name: r'databasePod',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$databaseHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef DatabaseRef = ProviderRef<DatabaseState>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

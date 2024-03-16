@@ -38,12 +38,9 @@ class DatabaseState {
   }
 }
 
-@Riverpod(keepAlive: true)
-DatabaseState database(DatabaseRef ref) {
-  return DatabaseState(
-      mangaDB: MangaDB.createLazy(),
-      novelDB: NovelDB.createLazy());
-}
+final database = Provider((ref) => DatabaseState(
+    mangaDB: MangaDB.createLazy(),
+    novelDB: NovelDB.createLazy()));
 
 @DriftDatabase(tables: [MangaInfo], daos: [MangaDao])
 class MangaDB extends _$MangaDB {
