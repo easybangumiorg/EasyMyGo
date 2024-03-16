@@ -1,7 +1,9 @@
+import 'package:easy_mygo/riverpod/mutable_notifier.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../hive/hive.dart';
@@ -24,35 +26,39 @@ class ThemeConfig with _$ThemeConfig {
       _$ThemeConfigFromJson(json);
 }
 
+final themeControllerPod = Provider((ref) => ThemeController(ref));
+class ThemeController {
 
-@riverpod
-class ThemeController extends _$ThemeController {
+  final ProviderRef _ref;
+  final config = mutableNotifier(ThemeConfig.none);
+  late Future<void> _init;
 
-  @override
-  ThemeConfig build() => ThemeConfig.none;
-
-  Future<void> init() async {
-    if (state != ThemeConfig.none){
-      return;
-    }
-    final box = await HiveBox.themeConfig();
-    final themeMap = await box.getSingle() ?? {};
-    final themeConfig = ThemeConfig.fromJson(themeMap);
-    state = themeConfig;
+  ThemeController(this._ref){
+    _init = Future(() async {
+      final box = await HiveBox.themeConfig();
+      final themeMap = await box.getSingle() ?? {};
+      final themeConfig = ThemeConfig.fromJson(themeMap);
+      config.update(_ref, (p0) => themeConfig);
+    });
   }
 
+
   Future<void> setTheme(int index) async {
+    await _init;
     final box = await HiveBox.themeConfig();
-    final newConfig = state.copyWith(seedColorIndex: index);
-    state = newConfig;
+    final curConfig = _ref.read(config);
+    final newConfig = curConfig.copyWith(seedColorIndex: index);
+    config.update(_ref, (p0) => newConfig);
     await box.putSingle(newConfig.toJson());
   }
 
   Future<void> setDarkMode(int mode) async {
+    await _init;
     final box = await HiveBox.themeConfig();
-    final newConfig = state.copyWith(darkModeIndex: mode);
-    state = newConfig;
-    await box.putSingle( newConfig.toJson());
+    final curConfig = _ref.read(config);
+    final newConfig = curConfig.copyWith(darkModeIndex: mode);
+    config.update(_ref, (p0) => newConfig);
+    await box.putSingle(newConfig.toJson());
   }
 
 }

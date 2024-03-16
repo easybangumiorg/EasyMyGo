@@ -32,22 +32,13 @@ class EasyBookApp extends HookConsumerWidget {
 
 
     // =============== 初始化前监听 ======================
-    final ThemeConfig themeConfig = ref.watch(themeControllerPod);
-    final ThemeController themeController = ref.watch(themeControllerPod.notifier);
+
+    final ThemeController themeController = ref.read(themeControllerPod);
+    final ThemeConfig themeConfig = ref.watch(themeController.config);
 
     // =============== 初始化相关代码 =====================
 
     // 1.主题配置
-    useEffect(() {
-      if(themeConfig == ThemeConfig.none){
-        Future.microtask(() async {
-          await themeController.init();
-        });
-      }
-      return null;
-    }, [themeConfig]);
-
-
     if (themeConfig == ThemeConfig.none){
       return const SplashScreen();
     }

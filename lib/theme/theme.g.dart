@@ -17,26 +17,3 @@ Map<String, dynamic> _$$ThemeConfigImplToJson(_$ThemeConfigImpl instance) =>
       'seedColorIndex': instance.seedColorIndex,
       'darkModeIndex': instance.darkModeIndex,
     };
-
-// **************************************************************************
-// RiverpodGenerator
-// **************************************************************************
-
-String _$themeControllerHash() => r'068620a0c8090c3e5b07933d12a02b7dcfe1adf4';
-
-/// See also [ThemeController].
-@ProviderFor(ThemeController)
-final themeControllerPod =
-    AutoDisposeNotifierProvider<ThemeController, ThemeConfig>.internal(
-  ThemeController.new,
-  name: r'themeControllerPod',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$themeControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$ThemeController = AutoDisposeNotifier<ThemeConfig>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
