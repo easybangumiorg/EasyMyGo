@@ -20,13 +20,13 @@ class MangaDetailed with _$MangaDetailed {
     required String label,
     required String cover,
     required String intro,
-    required String jumpUrl,
+    @JsonKey(name: "jump_url")  required String jumpUrl,
 
     // detailed
-    @Default(false) bool isDetailedLoad,
+    @Default(false) @JsonKey(name: "is_detailed_load") bool isDetailedLoad,
     @Default("") String genre,
     @Default("") String description,
-    @Default(MangaUpdateStrategy.always) MangaUpdateStrategy updateStrategy,
+    @JsonKey(name: "update_strategy")  @Default(MangaUpdateStrategy.always) MangaUpdateStrategy updateStrategy,
     @Default(false) bool isUpdate,
     @Default(MangaStatus.unknown) MangaStatus status,
 

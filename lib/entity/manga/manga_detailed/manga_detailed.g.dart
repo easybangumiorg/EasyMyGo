@@ -13,12 +13,12 @@ _$MangaDetailedImpl _$$MangaDetailedImplFromJson(Map<String, dynamic> json) =>
       label: json['label'] as String,
       cover: json['cover'] as String,
       intro: json['intro'] as String,
-      jumpUrl: json['jumpUrl'] as String,
-      isDetailedLoad: json['isDetailedLoad'] as bool? ?? false,
+      jumpUrl: json['jump_url'] as String,
+      isDetailedLoad: json['is_detailed_load'] as bool? ?? false,
       genre: json['genre'] as String? ?? "",
       description: json['description'] as String? ?? "",
       updateStrategy: $enumDecodeNullable(
-              _$MangaUpdateStrategyEnumMap, json['updateStrategy']) ??
+              _$MangaUpdateStrategyEnumMap, json['update_strategy']) ??
           MangaUpdateStrategy.always,
       isUpdate: json['isUpdate'] as bool? ?? false,
       status: $enumDecodeNullable(_$MangaStatusEnumMap, json['status']) ??
@@ -33,11 +33,11 @@ Map<String, dynamic> _$$MangaDetailedImplToJson(_$MangaDetailedImpl instance) =>
       'label': instance.label,
       'cover': instance.cover,
       'intro': instance.intro,
-      'jumpUrl': instance.jumpUrl,
-      'isDetailedLoad': instance.isDetailedLoad,
+      'jump_url': instance.jumpUrl,
+      'is_detailed_load': instance.isDetailedLoad,
       'genre': instance.genre,
       'description': instance.description,
-      'updateStrategy': _$MangaUpdateStrategyEnumMap[instance.updateStrategy]!,
+      'update_strategy': _$MangaUpdateStrategyEnumMap[instance.updateStrategy]!,
       'isUpdate': instance.isUpdate,
       'status': _$MangaStatusEnumMap[instance.status]!,
       'ext': instance.ext,

@@ -26,10 +26,13 @@ mixin _$MangaDetailed {
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
   String get intro => throw _privateConstructorUsedError;
+  @JsonKey(name: "jump_url")
   String get jumpUrl => throw _privateConstructorUsedError; // detailed
+  @JsonKey(name: "is_detailed_load")
   bool get isDetailedLoad => throw _privateConstructorUsedError;
   String get genre => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "update_strategy")
   MangaUpdateStrategy get updateStrategy => throw _privateConstructorUsedError;
   bool get isUpdate => throw _privateConstructorUsedError;
   MangaStatus get status => throw _privateConstructorUsedError; // 额外字段
@@ -53,11 +56,11 @@ abstract class $MangaDetailedCopyWith<$Res> {
       String label,
       String cover,
       String intro,
-      String jumpUrl,
-      bool isDetailedLoad,
+      @JsonKey(name: "jump_url") String jumpUrl,
+      @JsonKey(name: "is_detailed_load") bool isDetailedLoad,
       String genre,
       String description,
-      MangaUpdateStrategy updateStrategy,
+      @JsonKey(name: "update_strategy") MangaUpdateStrategy updateStrategy,
       bool isUpdate,
       MangaStatus status,
       String ext});
@@ -161,11 +164,11 @@ abstract class _$$MangaDetailedImplCopyWith<$Res>
       String label,
       String cover,
       String intro,
-      String jumpUrl,
-      bool isDetailedLoad,
+      @JsonKey(name: "jump_url") String jumpUrl,
+      @JsonKey(name: "is_detailed_load") bool isDetailedLoad,
       String genre,
       String description,
-      MangaUpdateStrategy updateStrategy,
+      @JsonKey(name: "update_strategy") MangaUpdateStrategy updateStrategy,
       bool isUpdate,
       MangaStatus status,
       String ext});
@@ -262,10 +265,11 @@ class _$MangaDetailedImpl implements _MangaDetailed {
       required this.label,
       required this.cover,
       required this.intro,
-      required this.jumpUrl,
-      this.isDetailedLoad = false,
+      @JsonKey(name: "jump_url") required this.jumpUrl,
+      @JsonKey(name: "is_detailed_load") this.isDetailedLoad = false,
       this.genre = "",
       this.description = "",
+      @JsonKey(name: "update_strategy")
       this.updateStrategy = MangaUpdateStrategy.always,
       this.isUpdate = false,
       this.status = MangaStatus.unknown,
@@ -287,10 +291,11 @@ class _$MangaDetailedImpl implements _MangaDetailed {
   @override
   final String intro;
   @override
+  @JsonKey(name: "jump_url")
   final String jumpUrl;
 // detailed
   @override
-  @JsonKey()
+  @JsonKey(name: "is_detailed_load")
   final bool isDetailedLoad;
   @override
   @JsonKey()
@@ -299,7 +304,7 @@ class _$MangaDetailedImpl implements _MangaDetailed {
   @JsonKey()
   final String description;
   @override
-  @JsonKey()
+  @JsonKey(name: "update_strategy")
   final MangaUpdateStrategy updateStrategy;
   @override
   @JsonKey()
@@ -380,10 +385,11 @@ abstract class _MangaDetailed implements MangaDetailed {
       required final String label,
       required final String cover,
       required final String intro,
-      required final String jumpUrl,
-      final bool isDetailedLoad,
+      @JsonKey(name: "jump_url") required final String jumpUrl,
+      @JsonKey(name: "is_detailed_load") final bool isDetailedLoad,
       final String genre,
       final String description,
+      @JsonKey(name: "update_strategy")
       final MangaUpdateStrategy updateStrategy,
       final bool isUpdate,
       final MangaStatus status,
@@ -403,14 +409,17 @@ abstract class _MangaDetailed implements MangaDetailed {
   @override
   String get intro;
   @override
+  @JsonKey(name: "jump_url")
   String get jumpUrl;
   @override // detailed
+  @JsonKey(name: "is_detailed_load")
   bool get isDetailedLoad;
   @override
   String get genre;
   @override
   String get description;
   @override
+  @JsonKey(name: "update_strategy")
   MangaUpdateStrategy get updateStrategy;
   @override
   bool get isUpdate;

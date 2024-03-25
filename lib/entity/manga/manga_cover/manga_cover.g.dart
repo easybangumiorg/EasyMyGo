@@ -13,7 +13,7 @@ _$MangaCoverImpl _$$MangaCoverImplFromJson(Map<String, dynamic> json) =>
       label: json['label'] as String,
       cover: json['cover'] as String,
       intro: json['intro'] as String,
-      jumpUrl: json['jumpUrl'] as String,
+      jumpUrl: json['jump_url'] as String,
       ext: json['ext'] as String? ?? "",
     );
 
@@ -24,6 +24,6 @@ Map<String, dynamic> _$$MangaCoverImplToJson(_$MangaCoverImpl instance) =>
       'label': instance.label,
       'cover': instance.cover,
       'intro': instance.intro,
-      'jumpUrl': instance.jumpUrl,
+      'jump_url': instance.jumpUrl,
       'ext': instance.ext,
     };

@@ -19,6 +19,8 @@ class MangaCover with _$MangaCover {
     required String label,
     required String cover,
     required String intro,
+
+    @JsonKey(name: "jump_url")
     required String jumpUrl,
 
     // 额外字段

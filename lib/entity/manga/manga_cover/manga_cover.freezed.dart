@@ -26,6 +26,7 @@ mixin _$MangaCover {
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
   String get intro => throw _privateConstructorUsedError;
+  @JsonKey(name: "jump_url")
   String get jumpUrl => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
@@ -47,7 +48,7 @@ abstract class $MangaCoverCopyWith<$Res> {
       String label,
       String cover,
       String intro,
-      String jumpUrl,
+      @JsonKey(name: "jump_url") String jumpUrl,
       String ext});
 }
 
@@ -119,7 +120,7 @@ abstract class _$$MangaCoverImplCopyWith<$Res>
       String label,
       String cover,
       String intro,
-      String jumpUrl,
+      @JsonKey(name: "jump_url") String jumpUrl,
       String ext});
 }
 
@@ -184,7 +185,7 @@ class _$MangaCoverImpl implements _MangaCover {
       required this.label,
       required this.cover,
       required this.intro,
-      required this.jumpUrl,
+      @JsonKey(name: "jump_url") required this.jumpUrl,
       this.ext = ""});
 
   factory _$MangaCoverImpl.fromJson(Map<String, dynamic> json) =>
@@ -203,6 +204,7 @@ class _$MangaCoverImpl implements _MangaCover {
   @override
   final String intro;
   @override
+  @JsonKey(name: "jump_url")
   final String jumpUrl;
 // 额外字段
   @override
@@ -254,7 +256,7 @@ abstract class _MangaCover implements MangaCover {
       required final String label,
       required final String cover,
       required final String intro,
-      required final String jumpUrl,
+      @JsonKey(name: "jump_url") required final String jumpUrl,
       final String ext}) = _$MangaCoverImpl;
 
   factory _MangaCover.fromJson(Map<String, dynamic> json) =
@@ -271,6 +273,7 @@ abstract class _MangaCover implements MangaCover {
   @override
   String get intro;
   @override
+  @JsonKey(name: "jump_url")
   String get jumpUrl;
   @override // 额外字段
   String get ext;

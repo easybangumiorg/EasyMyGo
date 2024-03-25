@@ -1,6 +1,7 @@
 import 'dart:io';
 
 
+import 'package:easy_mygo/database/database.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';
@@ -35,12 +36,26 @@ class EasyBookApp extends HookConsumerWidget {
     final ThemeController themeController = ref.read(themeControllerPod);
     final ThemeConfig themeConfig = ref.watch(themeController.config);
 
+    final DB db = ref.read(dbPod);
+    final DatabaseState dbSta = ref.watch(db.state);
+
+
+
     // =============== 初始化相关代码 =====================
 
     // 1.主题配置
     if (themeConfig == ThemeConfig.none){
       return const SplashScreen();
     }
+
+    // 2.数据库
+    if (dbSta is DatabaseStateLoading) {
+      return const SplashScreen();
+    }else if (dbSta is DatabaseStateError) {
+      // TODO retry screen
+      return const SplashScreen();
+    }
+
     // =============== 初始化结束 =====================
 
 

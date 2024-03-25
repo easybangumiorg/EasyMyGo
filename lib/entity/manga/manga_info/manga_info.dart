@@ -1,11 +1,14 @@
 
+import 'dart:convert';
+
+import 'package:drift/drift.dart';
+import 'package:easy_mygo/database/db/manga/manga_db.dart';
 import 'package:easy_mygo/entity/manga/manga_chapter/manga_chapter.dart';
 import 'package:easy_mygo/entity/manga/manga_enum.dart';
 import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'manga_info.g.dart';
-part 'manga_info.freezed.dart';
 
 /// 一部漫画在整个软件中的聚合，包括以下数据：
 /// 来自插件：
@@ -19,72 +22,163 @@ part 'manga_info.freezed.dart';
 /// 来自业务需要
 /// 本地的一些针对单部漫画的配置和缓存比如章节排序方式、章节列表缓存等
 
-@freezed
-class MangaInfo with _$MangaInfo {
-  factory MangaInfo({
+@DataClassName("MangaInfo")
+class MangaTable extends Table {
+  // 源 key
+  TextColumn get source => text().named("source")();
 
-    // 必要信息
-    required String source,
-    required String id,
+  // 漫画 id，和 source 联合主键，插件需要自己确保唯一
+  TextColumn get id => text().named("id")();
 
-    // cover 信息
-    required String label,
-    required String cover,
-    required String intro,
-    required String jumpUrl,
+  // Cover
+  TextColumn get label =>
+      text().named("label").withDefault(const Constant(""))();
 
-    // detailed
-    @Default(false) bool isDetailedLoad,
-    @Default("") String genre,
-    @Default("") String description,
-    @Default(MangaUpdateStrategy.always) MangaUpdateStrategy updateStrategy,
-    @Default(false) bool isUpdate,
-    @Default(MangaStatus.unknown) MangaStatus status,
+  TextColumn get cover =>
+      text().named("cover").withDefault(const Constant(""))();
 
-    // 本地存的一些配置
-    @Default(0) int lastUpdateTime,
-    @Default("") String sourceName,
-    @Default(false) bool isReversal,
-    @Default("") String sortKey,
-    @Default([]) List<MangaChapter> chapterListTemp,
+  TextColumn get intro =>
+      text().named("intro").withDefault(const Constant(""))();
 
-    // 历史记录数据
-    @Default(0) int lastHistoryTime,
+  TextColumn get jumpUrl =>
+      text().named("jump_url").withDefault(const Constant(""))();
 
-    @Default(0) int lastReadChapterCount,
-    @Default("") String lastReadChapterId,
-    @Default("") String lastReadChapterName,
+  // Detailed
+  BoolColumn get isDetailedLoad =>
+      boolean().named("is_detailed_load").withDefault(const Constant(false))();
 
-    @Default(0) int lastReadChapterPageCount,
-    @Default(0) int lastReadChapterPageIndex,
+  TextColumn get genre =>
+      text().named("genre").withDefault(const Constant(""))();
 
-    // 加入书架的记录
-    @Default(0) int starTime,
-    @Default(-1) int pinTime,
+  TextColumn get description =>
+      text().named("description").withDefault(const Constant(""))();
 
-    @Default([])List<String> tagsId,
-    @Default("") String customOrder,
+  IntColumn get updateStrategy => intEnum<MangaUpdateStrategy>()
+      .named("update_strategy")
+      .withDefault(const Constant(0))();
 
-    // 由源维护的额外字段
-    @Default("") String ext,
+  BoolColumn get isUpdate =>
+      boolean().named("is_update").withDefault(const Constant(false))();
+
+  IntColumn get status => intEnum<MangaStatus>().named("status")();
 
 
-  }) = _MangaInfo;
+  // 本地存的一些配置
+  IntColumn get lastUpdateTime =>
+      integer().named("last_update_time").withDefault(const Constant(0))();
 
-  factory MangaInfo.fromJson(Map<String, Object?> json) =>
-      _$MangaInfoFromJson(json);
+  TextColumn get sourceName =>
+      text().named("source_name").withDefault(const Constant(""))();
+
+  BoolColumn get isReversal =>
+      boolean().named("is_reversal").withDefault(const Constant(false))();
+
+  TextColumn get sortKey =>
+      text().named("sort_key").withDefault(const Constant(""))();
+
+  // 章节列表，存的 Json 数据，只做 temp 可能不是最新
+  TextColumn get chapterListJson =>
+      text().named("chapter_list_json").withDefault(const Constant(""))();
+
+  // History
+  // 最后的历史数据添加时间
+  IntColumn get lastHistoryTime =>
+      integer().named("last_history_time").withDefault(const Constant(0))();
+
+  // 最后观看章节 Id
+  TextColumn get lastReadChapterId =>
+      text().named("last_read_chapter_id").withDefault(const Constant(""))();
+
+  // 最后观看章节名称
+  TextColumn get lastReadChapterLabel =>
+      text().named("last_read_chapter_label").withDefault(const Constant(""))();
+
+  // 最后观看时总章节数
+  IntColumn get lastReadChapterCount =>
+      integer().named("last_read_chapter_count").withDefault(const Constant(0))();
+
+  // 最后观看章节的总图片数
+  IntColumn get lastReadImageIndex =>
+      integer().named("last_read_page_index").withDefault(const Constant(0))();
+
+  // 最后观看的所在章节的所在图片下标
+  IntColumn get lastReadChapterImageCount => integer()
+      .named("last_read_chapter_page_count")
+      .withDefault(const Constant(0))();
+
+  // Star
+  // 当前漫画的标签 id "1， 2， 3"
+  TextColumn get tags => text().named("tags_id").withDefault(const Constant(""))();
+
+  // 当前漫画收藏的时间，为 0 则没有收藏
+  IntColumn get starTime =>
+      integer().named("star_time").withDefault(const Constant(0))();
+
+  // 置顶时间，为 0 则没有设置置顶
+  IntColumn get pinTime =>
+      integer().named("pin_time").withDefault(const Constant(0))();
+
+  // 自定义排序状态或者置顶状态的顺序
+  IntColumn get customOrder =>
+      integer().named("custom_order").withDefault(const Constant(0))();
+
+  // 本地存的一些配置
+  TextColumn get ext =>
+      text().named("ext").withDefault(const Constant(""))();
+
+  @override
+  Set<Column> get primaryKey => {source, id};
+
+  @override
+  String get tableName => "MangaInfo";
 }
 
 extension MangaInfoExt on MangaInfo {
-
-  static final _identifyValues = Expando<String>();
-  String get identify {
-    return _identifyValues[this] ??= "$id-|-$source";
+  static final _listChapterValues = Expando<List<MangaChapter>>();
+  List<MangaChapter> get chapterList {
+    final value = _listChapterValues[this];
+    if (value == null) {
+      if (chapterListJson.isEmpty) {
+        _listChapterValues[this] = null;
+        return List.empty();
+      }
+      try {
+        Iterable l = json.decode(chapterListJson);
+        List<MangaChapter> n = List<MangaChapter>.from(l.map((e) => MangaChapter.fromJson(e)));
+        _listChapterValues[this] = n;
+        return n;
+      } on FormatException catch (e) {
+        _listChapterValues[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return List.empty();
+    }
+    return value;
   }
 
-  static final _summaryValues = Expando<MangaSummary>();
-  MangaSummary get mangaSummary {
-    return _summaryValues[this] ??= MangaSummary(source: source, id: id);
+  static final _listTagsId = Expando<List<String>>();
+  List<String> get tagsIdList {
+    final value = _listTagsId[this];
+    if (value == null) {
+      if (tags.isEmpty) {
+        _listTagsId[this] = null;
+        return List.empty();
+      }
+      try {
+        Iterable l = tags.split(",");
+        List<String> n = List<String>.from(l);
+        _listTagsId[this] = n;
+        return n ?? List.empty();
+      } on FormatException catch (e) {
+        _listTagsId[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return List.empty();
+    }
+    return value;
   }
-
 }

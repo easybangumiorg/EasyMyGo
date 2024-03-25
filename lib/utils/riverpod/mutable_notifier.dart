@@ -25,4 +25,30 @@ extension NotifierProviderExt<State> on NotifierProvider<MutableNotifier<State>,
     final n = ref.read(notifier);
     n.update(covert);
   }
+
+  State get(Ref ref){
+    final n = ref.read(this);
+    return n;
+  }
+
+  State watch(Ref ref){
+    final n = ref.watch(this);
+    return n;
+  }
+
 }
+
+extension ProviderExt<State> on Provider<State> {
+
+  State get(Ref ref){
+    final n = ref.read(this);
+    return n;
+  }
+
+  State watch(Ref ref){
+    final n = ref.watch(this);
+    return n;
+  }
+
+}
+
