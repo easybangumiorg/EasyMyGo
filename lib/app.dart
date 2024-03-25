@@ -5,6 +5,7 @@ import 'package:easy_mygo/database/database.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';
+import 'package:easy_mygo/utils/riverpod/mutable_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -36,9 +37,7 @@ class EasyBookApp extends HookConsumerWidget {
     final ThemeController themeController = ref.read(themeControllerPod);
     final ThemeConfig themeConfig = ref.watch(themeController.config);
 
-    final DB db = ref.read(dbPod);
-    final DatabaseState dbSta = ref.watch(db.state);
-
+    final DatabaseState dbSta = DB.state.watch(ref);
 
 
     // =============== 初始化相关代码 =====================
@@ -55,6 +54,7 @@ class EasyBookApp extends HookConsumerWidget {
       // TODO retry screen
       return const SplashScreen();
     }
+
 
     // =============== 初始化结束 =====================
 

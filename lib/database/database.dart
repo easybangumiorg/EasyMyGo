@@ -11,9 +11,6 @@ import 'package:path/path.dart';
 import 'db/dao/manga_dao.dart';
 import 'db/manga/manga_db.dart';
 
-
-final dbPod = Provider((ref) => DB._(ref));
-
 sealed class DatabaseState {
   const DatabaseState();
 }
@@ -35,39 +32,35 @@ class DatabaseStateReady extends DatabaseState {
   MangaDao get mangaDao => mangaDB.mangaDao;
 }
 
-
 class DB {
 
   static DatabaseStateReady? _current;
   static DatabaseStateReady get current => _current!;
 
-  final ProviderRef _ref;
-  late Future<void> _initJob;
+  static Future<void>? _initJob;
 
-  final state = mutableNotifier<DatabaseState>(DatabaseStateLoading.current);
+  static final state = mutableNotifier<DatabaseState>(DatabaseStateLoading.current, onInit: (Ref ref){
+    _initJob = _init(ref);
+  });
 
-  DB._(this._ref) {
-    _initJob = _init();
-  }
-
-  void retry() async {
+  static void retry(Ref ref) async {
     await _initJob;
-    _initJob = _init();
+    _initJob = _init(ref);
   }
 
-  Future<void> _init() async {
+  static Future<void> _init(Ref ref) async {
     try {
-      state.update(_ref, (p0) => DatabaseStateLoading.current);
+      state.update(ref, (p0) => DatabaseStateLoading.current);
       final applicationDir = await C.Constant.applicationPath;
       final mangaFile = File(join(applicationDir.path, "manga.db"));
       final mangaDB = MangaDB(NativeDatabase(mangaFile));
       final sta = DatabaseStateReady(mangaDB: mangaDB);
       _current = sta;
-      state.update(_ref, (p0) => sta);
+      state.update(ref, (p0) => sta);
     } catch (e) {
       final sta = DatabaseStateError(e.toString());
       _current = null;
-      state.update(_ref, (p0) => sta);
+      state.update(ref, (p0) => sta);
     }
   }
 
