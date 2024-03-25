@@ -19,8 +19,10 @@ import 'l10n/l10n.dart';
 
 
 
-void main() async {
-  runApp(const ProviderScope(
+Future<void> main() async {
+
+
+  return runApp(const ProviderScope(
       child: EasyBookApp()
   ));
 }
@@ -34,10 +36,10 @@ class EasyBookApp extends HookConsumerWidget {
 
     // =============== 初始化前监听 ======================
 
-    final ThemeController themeController = ref.read(themeControllerPod);
-    final ThemeConfig themeConfig = ref.watch(themeController.config);
+    final ThemeConfig themeConfig = ref.watch(themeNotifierPod);
 
-    final DatabaseState dbSta = DB.state.watch(ref);
+    final DatabaseController databaseController = ref.read(databasePod);
+    final DatabaseState dbSta = ref.watch(databaseController.state);
 
 
     // =============== 初始化相关代码 =====================
@@ -46,6 +48,7 @@ class EasyBookApp extends HookConsumerWidget {
     if (themeConfig == ThemeConfig.none){
       return const SplashScreen();
     }
+
 
     // 2.数据库
     if (dbSta is DatabaseStateLoading) {

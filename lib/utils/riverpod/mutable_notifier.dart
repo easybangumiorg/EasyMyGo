@@ -38,38 +38,44 @@ extension NotifierProviderExt<State> on NotifierProvider<MutableNotifier<State>,
     n.update(covert);
   }
 
-  State get(Ref ref){
-    final n = ref.read(this);
-    return n;
+  State watch(dynamic ref){
+    if(ref is Ref){
+      return ref.watch(this);
+    }else if(ref is WidgetRef){
+      return ref.watch(this);
+    }
+    throw Exception("only support Ref or WidgetRef");
   }
 
-  State of(Ref ref){
-    final n = ref.watch(this);
-    return n;
-  }
-
-  State watch(WidgetRef ref){
-    final n = ref.watch(this);
-    return n;
+  State read(dynamic ref){
+    if(ref is Ref){
+      return ref.read(this);
+    }else if(ref is WidgetRef){
+      return ref.read(this);
+    }
+    throw Exception("only support Ref or WidgetRef");
   }
 
 }
 
 extension ProviderExt<State> on Provider<State> {
 
-  State get(Ref ref){
-    final n = ref.read(this);
-    return n;
+  State watch(dynamic ref){
+    if(ref is Ref){
+      return ref.watch(this);
+    }else if(ref is WidgetRef){
+      return ref.watch(this);
+    }
+    throw Exception("only support Ref or WidgetRef");
   }
 
-  State of(Ref ref){
-    final n = ref.watch(this);
-    return n;
-  }
-
-  State watch(WidgetRef ref){
-    final n = ref.watch(this);
-    return n;
+  State read(dynamic ref){
+    if(ref is Ref){
+      return ref.read(this);
+    }else if(ref is WidgetRef){
+      return ref.read(this);
+    }
+    throw Exception("only support Ref or WidgetRef");
   }
 }
 

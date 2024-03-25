@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 class HiveBox {
 
   static final init = Future(() async {
-    final applicationDir = await Constant.applicationPath;
+    final applicationDir = await EasyConstant.applicationPath;
     Hive.init(join(applicationDir.path, "hive"));
   });
 
