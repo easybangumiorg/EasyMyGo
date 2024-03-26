@@ -7,6 +7,8 @@ class MygopackExtensionLoader extends ExtensionLoader {
 
   @override
   List<SourceInfo> load(ExtensionInfo extensionInfo) {
+    // 1. 解压
+    // 2. 解析
     throw UnimplementedError();
   }
 
