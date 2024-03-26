@@ -48,6 +48,8 @@ class HiveBox {
 }
 ```
 
+Hive 的 box 即用即关，需要调用 close 方法关闭！
+
 #### Drift
 
 关系型数据使用 drift 存储，如需要新增表需要改动四个地方：
