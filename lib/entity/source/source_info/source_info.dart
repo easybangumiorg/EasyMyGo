@@ -31,6 +31,6 @@ extension SourceInfoExt on SourceInfo {
   static final _identifyValues = Expando<String>();
 
   String get identify {
-    return _identifyValues[this] ??= "$key-|-$key-|-${type.name}";
+    return _identifyValues[this] ??= "$fromPackage-|-$key";
   }
 }

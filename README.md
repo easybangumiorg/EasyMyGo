@@ -45,7 +45,7 @@ class ExtensionInfo with _$ExtensionInfo {
 ### Source
 
 Source 是一个源的抽象  
-一个源要么是漫画，要么是小说。如果是爬的同一个目标可以将两个源打包成一个插件。  
+一个源要么是漫画，要么是小说。如果是爬的同一个目标可以将两个源打包成一个插件。 
 最终会根据 LoaderType 使用特定的 Loader 加载成各种 Component  
 
 源的实体如下：
@@ -71,14 +71,6 @@ class SourceInfo with _$SourceInfo {
 
   factory SourceInfo.fromJson(Map<String, dynamic> json) =>
       _$SourceInfoFromJson(json);
-}
-
-extension SourceInfoExt on SourceInfo {
-  static final _identifyValues = Expando<String>();
-
-  String get identify {
-    return _identifyValues[this] ??= "$key-|-$key-|-${type.name}";
-  }
 }
 
 ```
