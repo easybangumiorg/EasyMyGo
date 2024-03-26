@@ -36,10 +36,10 @@ class HiveBox {
 
 关系型数据使用 drift 存储，如需要新增表需要改动四个地方：
 
-1. \$ 在 `lib/entity` 中依照业务新增一个表实体，可参考 `lib/entity/manga/manga_info/manga_info.dart`
+1.  在 `lib/entity` 中依照业务新增一个表实体，可参考 `lib/entity/manga/manga_info/manga_info.dart`
 2.  在 `lib/database/dao` 中按照业务新增一个 Dao，格式可参考 `lib/database/dao/manga/manga_dao.dart`
-3. \$ 在 `lib/database/db` 中按照业务新增一个 Database，格式可参考 `lib/database/db/manga/manga_db.dart`
-4. \$ 在 `lib/database/database.dart` 中 DatabaseStateReady 实体新增一个变量持有新增的 DB，并在 DatabaseController#_innerInit 中进行初始化
+3.  在 `lib/database/db` 中按照业务新增一个 Database，格式可参考 `lib/database/db/manga/manga_db.dart`
+4.  在 `lib/database/database.dart` 中 DatabaseStateReady 实体新增一个变量持有新增的 DB，并在 DatabaseController#_innerInit 中进行初始化
 
 其中 dao 允许返回 Stream 对象，可以使用以下两种方式转成 Provider：
 ```dart
@@ -51,7 +51,6 @@ static final _watchAllProvider = StreamProvider.autoDispose<List<MangaInfo>>((re
 
 
 ```dart
-/// $
 @Riverpod
 Future<List<MangaInfo>> watchAll(WatchAllRef ref) async* {
   yiled* DB.current.mangaDao.watchAll();
