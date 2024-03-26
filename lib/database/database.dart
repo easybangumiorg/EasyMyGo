@@ -1,16 +1,17 @@
 
 import 'dart:io';
 
-import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:easy_mygo/c.dart';
-import 'package:easy_mygo/utils/riverpod/mutable_notifier.dart';
+import 'package:easy_mygo/database/dao/manga/manga_dao.dart';
+import 'package:easy_mygo/database/db/manga/manga_db.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'db/dao/manga_dao.dart';
-import 'db/manga/manga_db.dart';
 
+
+part 'database.g.dart';
 
 sealed class DatabaseState {
   const DatabaseState();
@@ -33,54 +34,52 @@ class DatabaseStateReady extends DatabaseState {
   MangaDao get mangaDao => mangaDB.mangaDao;
 }
 
-
-// 快速访问
 class DB {
   static DatabaseStateReady? _current;
   static DatabaseStateReady get current => _current!;
 }
 
-// 数据库管理
-final databasePod = Provider((ref) => DatabaseController._(ref));
-class DatabaseController {
 
-  static DatabaseController? _instance;
-  static DatabaseController get instance => _instance!;
+@Riverpod(keepAlive: true)
+class DatabaseController extends _$DatabaseController {
 
-  final ProviderRef _ref;
+  static DatabaseController of(WidgetRef ref)
+    => ref.watch(databaseControllerPod.notifier);
+
+  static DatabaseState watch(WidgetRef ref)
+    => ref.watch(databaseControllerPod);
+
   late Future<void> _initJob;
 
-
-  DatabaseController._(this._ref){
-    _initJob = _init(_ref);
-    _instance = this;
-
-    Future.microtask((){
-      _init(_ref);
+  DatabaseController(){
+    _initJob = Future.microtask((){
+      _innerInit();
     });
   }
 
-  final state = mutableNotifier<DatabaseState>(DatabaseStateLoading.current);
-
-  void retry() async {
-    await _initJob;
-    _initJob = _init(_ref);
+  @override
+  DatabaseState build() {
+    return DatabaseStateLoading.current;
   }
 
-  Future<void> _init(Ref ref) async {
+  Future<void> retry() async {
+    await _initJob;
+    await _innerInit();
+  }
+
+  Future<void> _innerInit() async {
     try {
-      state.update(ref, (p0) => DatabaseStateLoading.current);
+      state = DatabaseStateLoading.current;
       final applicationDir = await EasyConstant.applicationPath;
       final mangaFile = File(join(applicationDir.path, "manga.db"));
       final mangaDB = MangaDB(NativeDatabase(mangaFile));
       final sta = DatabaseStateReady(mangaDB: mangaDB);
       DB._current = sta;
-      state.update(ref, (p0) => sta);
+      state = sta;
     } catch (e) {
       final sta = DatabaseStateError(e.toString());
       DB._current = null;
-      state.update(ref, (p0) => sta);
+      state = sta;
     }
   }
-
 }

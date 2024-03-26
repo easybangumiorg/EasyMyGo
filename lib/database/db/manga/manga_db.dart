@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:easy_mygo/database/db/dao/manga_dao.dart';
+import 'package:easy_mygo/database/dao/manga/manga_dao.dart';
 import 'package:easy_mygo/entity/manga/manga_enum.dart';
 import 'package:easy_mygo/entity/manga/manga_info/manga_info.dart';
 

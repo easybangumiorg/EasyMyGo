@@ -1,19 +1,16 @@
-
+import 'package:easy_mygo/database/database.dart';
+import 'package:easy_mygo/utils/hive/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../utils/hive/hive.dart';
-import '../utils/riverpod/mutable_notifier.dart';
-
-
 
 part 'theme.g.dart';
+
 part 'theme.freezed.dart';
 
 @freezed
 class ThemeConfig with _$ThemeConfig {
-
   static ThemeConfig none = ThemeConfig(seedColorIndex: -1, darkModeIndex: -1);
 
   factory ThemeConfig({
@@ -25,21 +22,25 @@ class ThemeConfig with _$ThemeConfig {
       _$ThemeConfigFromJson(json);
 }
 
-
 @Riverpod()
-class ThemeNotifier extends _$ThemeNotifier {
+class ThemeController extends _$ThemeController {
+
+  static ThemeController of(WidgetRef ref) =>
+      ref.watch(themeControllerPod.notifier);
+
+  static ThemeConfig watch(WidgetRef ref) =>
+      ref.watch(themeControllerPod);
 
   late Future<void> _init;
 
+  ThemeController(){
+    _init = Future.microtask(() {
+      _innerInit();
+    });
+  }
+
   @override
   ThemeConfig build() {
-    ref.onResume(() {
-      _init = Future.microtask((){
-        _innerInit();
-      });
-    });
-
-
     return ThemeConfig.none;
   }
 

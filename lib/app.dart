@@ -20,8 +20,6 @@ import 'l10n/l10n.dart';
 
 
 Future<void> main() async {
-
-
   return runApp(const ProviderScope(
       child: EasyBookApp()
   ));
@@ -36,10 +34,10 @@ class EasyBookApp extends HookConsumerWidget {
 
     // =============== 初始化前监听 ======================
 
-    final ThemeConfig themeConfig = ref.watch(themeNotifierPod);
+    final ThemeConfig themeConfig = ThemeController.watch(ref);
 
-    final DatabaseController databaseController = ref.read(databasePod);
-    final DatabaseState dbSta = ref.watch(databaseController.state);
+    final DatabaseController databaseController = DatabaseController.of(ref);
+    final DatabaseState dbSta = DatabaseController.watch(ref);
 
 
     // =============== 初始化相关代码 =====================
