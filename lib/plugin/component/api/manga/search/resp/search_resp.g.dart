@@ -8,18 +8,18 @@ part of 'search_resp.dart';
 
 _$SearchRespImpl _$$SearchRespImplFromJson(Map<String, dynamic> json) =>
     _$SearchRespImpl(
-      data: (json['data'] as List<dynamic>)
-          .map((e) => MangaCover.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      nextKey: json['next_key'] as String?,
-      code: json['code'] as int? ?? 0,
-      msg: json['msg'] as String? ?? "",
+      data: (json['data'] as List<dynamic>?)
+              ?.map((e) => MangaCover.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          null,
+      nextKey: json['next_key'] as String? ?? null,
+      payload:
+          ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SearchRespImplToJson(_$SearchRespImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'next_key': instance.nextKey,
-      'code': instance.code,
-      'msg': instance.msg,
+      'payload': instance.payload,
     };

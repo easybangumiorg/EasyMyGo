@@ -15,6 +15,7 @@ _$SourceInfoImpl _$$SourceInfoImplFromJson(Map<String, dynamic> json) =>
       versionName: json['version_name'] as String,
       versionCode: json['version_code'] as int,
       path: json['path'] as String,
+      loaderType: $enumDecode(_$SourceLoaderTypeEnumMap, json['loader_type']),
       description: json['description'] as String? ?? "",
     );
 
@@ -27,10 +28,15 @@ Map<String, dynamic> _$$SourceInfoImplToJson(_$SourceInfoImpl instance) =>
       'version_name': instance.versionName,
       'version_code': instance.versionCode,
       'path': instance.path,
+      'loader_type': _$SourceLoaderTypeEnumMap[instance.loaderType]!,
       'description': instance.description,
     };
 
 const _$SourceTypeEnumMap = {
   SourceType.manga: 'manga',
   SourceType.novel: 'novel',
+};
+
+const _$SourceLoaderTypeEnumMap = {
+  SourceLoaderType.js: 'js',
 };

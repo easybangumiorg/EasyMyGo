@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'dart:io';
 
 
 import 'package:easy_mygo/database/database.dart';
+import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';
 import 'package:easy_mygo/ui/splash/splash.dart';
 import 'package:easy_mygo/utils/riverpod/mutable_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
@@ -61,7 +62,7 @@ class EasyBookApp extends HookConsumerWidget {
 
 
     final GoRouter route = ref.watch(easyRouterPod);
-    
+
     final seedColor = Colors.primaries.elementAtOrNull(themeConfig.seedColorIndex) ?? Colors.red;
     final darkMode = ThemeMode.values.elementAtOrNull(themeConfig.darkModeIndex) ?? ThemeMode.system;
 

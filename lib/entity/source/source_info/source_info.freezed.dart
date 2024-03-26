@@ -31,6 +31,8 @@ mixin _$SourceInfo {
   @JsonKey(name: 'version_code')
   int get versionCode => throw _privateConstructorUsedError;
   String get path => throw _privateConstructorUsedError;
+  @JsonKey(name: 'loader_type')
+  SourceLoaderType get loaderType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,6 +55,7 @@ abstract class $SourceInfoCopyWith<$Res> {
       @JsonKey(name: 'version_name') String versionName,
       @JsonKey(name: 'version_code') int versionCode,
       String path,
+      @JsonKey(name: 'loader_type') SourceLoaderType loaderType,
       String description});
 }
 
@@ -76,6 +79,7 @@ class _$SourceInfoCopyWithImpl<$Res, $Val extends SourceInfo>
     Object? versionName = null,
     Object? versionCode = null,
     Object? path = null,
+    Object? loaderType = null,
     Object? description = null,
   }) {
     return _then(_value.copyWith(
@@ -107,6 +111,10 @@ class _$SourceInfoCopyWithImpl<$Res, $Val extends SourceInfo>
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
+      loaderType: null == loaderType
+          ? _value.loaderType
+          : loaderType // ignore: cast_nullable_to_non_nullable
+              as SourceLoaderType,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -131,6 +139,7 @@ abstract class _$$SourceInfoImplCopyWith<$Res>
       @JsonKey(name: 'version_name') String versionName,
       @JsonKey(name: 'version_code') int versionCode,
       String path,
+      @JsonKey(name: 'loader_type') SourceLoaderType loaderType,
       String description});
 }
 
@@ -152,6 +161,7 @@ class __$$SourceInfoImplCopyWithImpl<$Res>
     Object? versionName = null,
     Object? versionCode = null,
     Object? path = null,
+    Object? loaderType = null,
     Object? description = null,
   }) {
     return _then(_$SourceInfoImpl(
@@ -183,6 +193,10 @@ class __$$SourceInfoImplCopyWithImpl<$Res>
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
+      loaderType: null == loaderType
+          ? _value.loaderType
+          : loaderType // ignore: cast_nullable_to_non_nullable
+              as SourceLoaderType,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -202,6 +216,7 @@ class _$SourceInfoImpl implements _SourceInfo {
       @JsonKey(name: 'version_name') required this.versionName,
       @JsonKey(name: 'version_code') required this.versionCode,
       required this.path,
+      @JsonKey(name: 'loader_type') required this.loaderType,
       this.description = ""});
 
   factory _$SourceInfoImpl.fromJson(Map<String, dynamic> json) =>
@@ -227,12 +242,15 @@ class _$SourceInfoImpl implements _SourceInfo {
   @override
   final String path;
   @override
+  @JsonKey(name: 'loader_type')
+  final SourceLoaderType loaderType;
+  @override
   @JsonKey()
   final String description;
 
   @override
   String toString() {
-    return 'SourceInfo(key: $key, fromPackage: $fromPackage, label: $label, type: $type, versionName: $versionName, versionCode: $versionCode, path: $path, description: $description)';
+    return 'SourceInfo(key: $key, fromPackage: $fromPackage, label: $label, type: $type, versionName: $versionName, versionCode: $versionCode, path: $path, loaderType: $loaderType, description: $description)';
   }
 
   @override
@@ -250,6 +268,8 @@ class _$SourceInfoImpl implements _SourceInfo {
             (identical(other.versionCode, versionCode) ||
                 other.versionCode == versionCode) &&
             (identical(other.path, path) || other.path == path) &&
+            (identical(other.loaderType, loaderType) ||
+                other.loaderType == loaderType) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
@@ -257,7 +277,7 @@ class _$SourceInfoImpl implements _SourceInfo {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, key, fromPackage, label, type,
-      versionName, versionCode, path, description);
+      versionName, versionCode, path, loaderType, description);
 
   @JsonKey(ignore: true)
   @override
@@ -282,6 +302,7 @@ abstract class _SourceInfo implements SourceInfo {
       @JsonKey(name: 'version_name') required final String versionName,
       @JsonKey(name: 'version_code') required final int versionCode,
       required final String path,
+      @JsonKey(name: 'loader_type') required final SourceLoaderType loaderType,
       final String description}) = _$SourceInfoImpl;
 
   factory _SourceInfo.fromJson(Map<String, dynamic> json) =
@@ -304,6 +325,9 @@ abstract class _SourceInfo implements SourceInfo {
   int get versionCode;
   @override
   String get path;
+  @override
+  @JsonKey(name: 'loader_type')
+  SourceLoaderType get loaderType;
   @override
   String get description;
   @override

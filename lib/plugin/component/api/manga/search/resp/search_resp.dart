@@ -1,4 +1,5 @@
 import 'package:easy_mygo/entity/manga/manga_cover/manga_cover.dart';
+import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_resp.g.dart';
@@ -9,15 +10,11 @@ class SearchResp with _$SearchResp {
 
   factory SearchResp({
     // 当页结果
-    required List<MangaCover> data,
+    @Default(null)  List<MangaCover>? data,
 
     // 下一页的 key，为 null 则代表没有下一页
-    @JsonKey(name: "next_key") required  String? nextKey,
-
-    @Default(0) int code,
-    @Default("") String msg,
-
-
+    @Default(null) @JsonKey(name: "next_key") String? nextKey,
+    required ComponentPayload payload,
   }) = _SearchResp;
 
   factory SearchResp.fromJson(Map<String, Object?> json) =>

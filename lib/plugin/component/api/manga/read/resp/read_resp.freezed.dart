@@ -20,9 +20,8 @@ ReadResp _$ReadRespFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReadResp {
-  List<MangaPicture> get pictures => throw _privateConstructorUsedError;
-  int get code => throw _privateConstructorUsedError;
-  String get msg => throw _privateConstructorUsedError;
+  List<MangaPicture>? get pictures => throw _privateConstructorUsedError;
+  ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +34,9 @@ abstract class $ReadRespCopyWith<$Res> {
   factory $ReadRespCopyWith(ReadResp value, $Res Function(ReadResp) then) =
       _$ReadRespCopyWithImpl<$Res, ReadResp>;
   @useResult
-  $Res call({List<MangaPicture> pictures, int code, String msg});
+  $Res call({List<MangaPicture>? pictures, ComponentPayload payload});
+
+  $ComponentPayloadCopyWith<$Res> get payload;
 }
 
 /// @nodoc
@@ -51,24 +52,27 @@ class _$ReadRespCopyWithImpl<$Res, $Val extends ReadResp>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pictures = null,
-    Object? code = null,
-    Object? msg = null,
+    Object? pictures = freezed,
+    Object? payload = null,
   }) {
     return _then(_value.copyWith(
-      pictures: null == pictures
+      pictures: freezed == pictures
           ? _value.pictures
           : pictures // ignore: cast_nullable_to_non_nullable
-              as List<MangaPicture>,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-      msg: null == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<MangaPicture>?,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as ComponentPayload,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ComponentPayloadCopyWith<$Res> get payload {
+    return $ComponentPayloadCopyWith<$Res>(_value.payload, (value) {
+      return _then(_value.copyWith(payload: value) as $Val);
+    });
   }
 }
 
@@ -80,7 +84,10 @@ abstract class _$$ReadRespImplCopyWith<$Res>
       __$$ReadRespImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MangaPicture> pictures, int code, String msg});
+  $Res call({List<MangaPicture>? pictures, ComponentPayload payload});
+
+  @override
+  $ComponentPayloadCopyWith<$Res> get payload;
 }
 
 /// @nodoc
@@ -94,23 +101,18 @@ class __$$ReadRespImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pictures = null,
-    Object? code = null,
-    Object? msg = null,
+    Object? pictures = freezed,
+    Object? payload = null,
   }) {
     return _then(_$ReadRespImpl(
-      pictures: null == pictures
+      pictures: freezed == pictures
           ? _value._pictures
           : pictures // ignore: cast_nullable_to_non_nullable
-              as List<MangaPicture>,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-      msg: null == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<MangaPicture>?,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as ComponentPayload,
     ));
   }
 }
@@ -119,32 +121,29 @@ class __$$ReadRespImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ReadRespImpl implements _ReadResp {
   _$ReadRespImpl(
-      {required final List<MangaPicture> pictures,
-      this.code = 0,
-      this.msg = ""})
+      {final List<MangaPicture>? pictures = null, required this.payload})
       : _pictures = pictures;
 
   factory _$ReadRespImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReadRespImplFromJson(json);
 
-  final List<MangaPicture> _pictures;
+  final List<MangaPicture>? _pictures;
   @override
-  List<MangaPicture> get pictures {
+  @JsonKey()
+  List<MangaPicture>? get pictures {
+    final value = _pictures;
+    if (value == null) return null;
     if (_pictures is EqualUnmodifiableListView) return _pictures;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_pictures);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  @JsonKey()
-  final int code;
-  @override
-  @JsonKey()
-  final String msg;
+  final ComponentPayload payload;
 
   @override
   String toString() {
-    return 'ReadResp(pictures: $pictures, code: $code, msg: $msg)';
+    return 'ReadResp(pictures: $pictures, payload: $payload)';
   }
 
   @override
@@ -153,14 +152,13 @@ class _$ReadRespImpl implements _ReadResp {
         (other.runtimeType == runtimeType &&
             other is _$ReadRespImpl &&
             const DeepCollectionEquality().equals(other._pictures, _pictures) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.msg, msg) || other.msg == msg));
+            (identical(other.payload, payload) || other.payload == payload));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_pictures), code, msg);
+      runtimeType, const DeepCollectionEquality().hash(_pictures), payload);
 
   @JsonKey(ignore: true)
   @override
@@ -178,19 +176,16 @@ class _$ReadRespImpl implements _ReadResp {
 
 abstract class _ReadResp implements ReadResp {
   factory _ReadResp(
-      {required final List<MangaPicture> pictures,
-      final int code,
-      final String msg}) = _$ReadRespImpl;
+      {final List<MangaPicture>? pictures,
+      required final ComponentPayload payload}) = _$ReadRespImpl;
 
   factory _ReadResp.fromJson(Map<String, dynamic> json) =
       _$ReadRespImpl.fromJson;
 
   @override
-  List<MangaPicture> get pictures;
+  List<MangaPicture>? get pictures;
   @override
-  int get code;
-  @override
-  String get msg;
+  ComponentPayload get payload;
   @override
   @JsonKey(ignore: true)
   _$$ReadRespImplCopyWith<_$ReadRespImpl> get copyWith =>

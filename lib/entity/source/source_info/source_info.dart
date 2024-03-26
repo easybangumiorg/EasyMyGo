@@ -19,6 +19,7 @@ class SourceInfo with _$SourceInfo {
     @JsonKey(name: 'version_name') required String versionName,
     @JsonKey(name: 'version_code') required int versionCode,
     required String path,
+    @JsonKey(name: 'loader_type') required SourceLoaderType loaderType,
     @Default("") String description,
   }) = _SourceInfo;
 

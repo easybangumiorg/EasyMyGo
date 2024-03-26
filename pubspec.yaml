@@ -61,6 +61,8 @@ dependencies:
 
   sqlite3_flutter_libs: ^0.5.20
 
+  flutter_js: ^0.8.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

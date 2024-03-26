@@ -21,12 +21,11 @@ SearchResp _$SearchRespFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SearchResp {
 // 当页结果
-  List<MangaCover> get data =>
+  List<MangaCover>? get data =>
       throw _privateConstructorUsedError; // 下一页的 key，为 null 则代表没有下一页
   @JsonKey(name: "next_key")
   String? get nextKey => throw _privateConstructorUsedError;
-  int get code => throw _privateConstructorUsedError;
-  String get msg => throw _privateConstructorUsedError;
+  ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,10 +40,11 @@ abstract class $SearchRespCopyWith<$Res> {
       _$SearchRespCopyWithImpl<$Res, SearchResp>;
   @useResult
   $Res call(
-      {List<MangaCover> data,
+      {List<MangaCover>? data,
       @JsonKey(name: "next_key") String? nextKey,
-      int code,
-      String msg});
+      ComponentPayload payload});
+
+  $ComponentPayloadCopyWith<$Res> get payload;
 }
 
 /// @nodoc
@@ -60,29 +60,32 @@ class _$SearchRespCopyWithImpl<$Res, $Val extends SearchResp>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? nextKey = freezed,
-    Object? code = null,
-    Object? msg = null,
+    Object? payload = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<MangaCover>,
+              as List<MangaCover>?,
       nextKey: freezed == nextKey
           ? _value.nextKey
           : nextKey // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-      msg: null == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as ComponentPayload,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ComponentPayloadCopyWith<$Res> get payload {
+    return $ComponentPayloadCopyWith<$Res>(_value.payload, (value) {
+      return _then(_value.copyWith(payload: value) as $Val);
+    });
   }
 }
 
@@ -95,10 +98,12 @@ abstract class _$$SearchRespImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<MangaCover> data,
+      {List<MangaCover>? data,
       @JsonKey(name: "next_key") String? nextKey,
-      int code,
-      String msg});
+      ComponentPayload payload});
+
+  @override
+  $ComponentPayloadCopyWith<$Res> get payload;
 }
 
 /// @nodoc
@@ -112,28 +117,23 @@ class __$$SearchRespImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? nextKey = freezed,
-    Object? code = null,
-    Object? msg = null,
+    Object? payload = null,
   }) {
     return _then(_$SearchRespImpl(
-      data: null == data
+      data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<MangaCover>,
+              as List<MangaCover>?,
       nextKey: freezed == nextKey
           ? _value.nextKey
           : nextKey // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-      msg: null == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as ComponentPayload,
     ));
   }
 }
@@ -142,23 +142,25 @@ class __$$SearchRespImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SearchRespImpl implements _SearchResp {
   _$SearchRespImpl(
-      {required final List<MangaCover> data,
-      @JsonKey(name: "next_key") required this.nextKey,
-      this.code = 0,
-      this.msg = ""})
+      {final List<MangaCover>? data = null,
+      @JsonKey(name: "next_key") this.nextKey = null,
+      required this.payload})
       : _data = data;
 
   factory _$SearchRespImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchRespImplFromJson(json);
 
 // 当页结果
-  final List<MangaCover> _data;
+  final List<MangaCover>? _data;
 // 当页结果
   @override
-  List<MangaCover> get data {
+  @JsonKey()
+  List<MangaCover>? get data {
+    final value = _data;
+    if (value == null) return null;
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(value);
   }
 
 // 下一页的 key，为 null 则代表没有下一页
@@ -166,15 +168,11 @@ class _$SearchRespImpl implements _SearchResp {
   @JsonKey(name: "next_key")
   final String? nextKey;
   @override
-  @JsonKey()
-  final int code;
-  @override
-  @JsonKey()
-  final String msg;
+  final ComponentPayload payload;
 
   @override
   String toString() {
-    return 'SearchResp(data: $data, nextKey: $nextKey, code: $code, msg: $msg)';
+    return 'SearchResp(data: $data, nextKey: $nextKey, payload: $payload)';
   }
 
   @override
@@ -184,14 +182,13 @@ class _$SearchRespImpl implements _SearchResp {
             other is _$SearchRespImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.nextKey, nextKey) || other.nextKey == nextKey) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.msg, msg) || other.msg == msg));
+            (identical(other.payload, payload) || other.payload == payload));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_data), nextKey, code, msg);
+      const DeepCollectionEquality().hash(_data), nextKey, payload);
 
   @JsonKey(ignore: true)
   @override
@@ -209,23 +206,20 @@ class _$SearchRespImpl implements _SearchResp {
 
 abstract class _SearchResp implements SearchResp {
   factory _SearchResp(
-      {required final List<MangaCover> data,
-      @JsonKey(name: "next_key") required final String? nextKey,
-      final int code,
-      final String msg}) = _$SearchRespImpl;
+      {final List<MangaCover>? data,
+      @JsonKey(name: "next_key") final String? nextKey,
+      required final ComponentPayload payload}) = _$SearchRespImpl;
 
   factory _SearchResp.fromJson(Map<String, dynamic> json) =
       _$SearchRespImpl.fromJson;
 
   @override // 当页结果
-  List<MangaCover> get data;
+  List<MangaCover>? get data;
   @override // 下一页的 key，为 null 则代表没有下一页
   @JsonKey(name: "next_key")
   String? get nextKey;
   @override
-  int get code;
-  @override
-  String get msg;
+  ComponentPayload get payload;
   @override
   @JsonKey(ignore: true)
   _$$SearchRespImplCopyWith<_$SearchRespImpl> get copyWith =>
