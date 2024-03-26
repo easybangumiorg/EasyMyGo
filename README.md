@@ -12,6 +12,22 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 ```
+2、本项目大部分使用注解 + build_runner 的形式，对此有以下规定：
+
+* 对应代码开发后需要再项目根目录运行 `dart run build_runner build` 指令生成对应的代码
+* 生成的代码文件 (.g.dart) 或者 (.freezed.dart) 需要手动调用 git add 添加后 push 到仓库
+* 生成的代码文件与原文件尽量在同一个单独文件，而该文件夹不允许有其他文件。例如以下代码层级：
+
+  * lib/entity/manga  
+    * manga_chapter  
+      * manga_chapter.dart  
+        manga_chapter.g.dart  
+        manga_chapter.freezed.dart  
+    * manga_cover
+      * manga_cover.dart  
+        manga_cover.g.dart  
+        manga_cover.freezed.dart
+    
 
 2、项目使用 MVC 架构，各层说明见下。其中 View 层不允许直接调用 Model 层。
 
