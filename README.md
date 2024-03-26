@@ -2,6 +2,105 @@
 
 this is easy book
 
+## 插件加载
+
+插件分为 Extension，Source，Component 三层
+
+### Extension
+
+Extension 是插件的抽象，一个插件可以有多个源，一般一个插件对应一个文件。  
+目前支持两种文件：纯 js 和 mygopack（具体压缩格式待定）  
+最终会根据 LoaderType 使用特定 Loader 加载成 SourceInfo  
+
+插件的实体如下：
+```dart
+enum ExtensionLoaderType {
+  // 单个纯 js 文件
+  js,
+  // mygo 包,包里的文件格式交给 loader 去处理了
+  mygopack
+}
+
+@freezed
+class ExtensionInfo with _$ExtensionInfo {
+  factory ExtensionInfo({
+    // 包名唯一
+    required String package,
+    required String label,
+    @JsonKey(name: 'version_name') required String versionName,
+    @JsonKey(name: 'version_code') required int versionCode,
+    @JsonKey(name: 'lib_version') required int libVersion,
+    @JsonKey(name: 'extension_load_type') required ExtensionLoaderType loadType,
+    required String path,
+    // 头像 url，本地文件就 file:// 开头
+    @Default("") String cover,
+    @Default("") String readme,
+  }) = _ExtensionInfo;
+
+  factory ExtensionInfo.fromJson(Map<String, Object?> json) =>
+      _$ExtensionInfoFromJson(json);
+}
+```
+
+### Source
+
+Source 是一个源的抽象  
+一个源要么是漫画，要么是小说。如果是爬的同一个目标可以将两个源打包成一个插件。  
+最终会根据 LoaderType 使用特定的 Loader 加载成各种 Component  
+
+源的实体如下：
+```dart
+enum SourceType { manga, novel }
+enum SourceLoaderType { js }
+
+@freezed
+class SourceInfo with _$SourceInfo {
+  factory SourceInfo({
+    // 单个 Extension 里的所有 Source 的 key 需要唯一
+    required String key,
+    // 所在 Extension 的包名
+    @JsonKey(name: 'from_package') required String fromPackage,
+    required String label,
+    required SourceType type,
+    @JsonKey(name: 'version_name') required String versionName,
+    @JsonKey(name: 'version_code') required int versionCode,
+    required String path,
+    @JsonKey(name: 'loader_type') required SourceLoaderType loaderType,
+    @Default("") String description,
+  }) = _SourceInfo;
+
+  factory SourceInfo.fromJson(Map<String, dynamic> json) =>
+      _$SourceInfoFromJson(json);
+}
+
+extension SourceInfoExt on SourceInfo {
+  static final _identifyValues = Expando<String>();
+
+  String get identify {
+    return _identifyValues[this] ??= "$key-|-$key-|-${type.name}";
+  }
+}
+
+```
+
+### Component
+
+最终的业务承载，目前有以下四种业务：
+
+* home 首页数据加载
+* detailed 详情页数据加载，包括详情数据和章节数据
+* read 获取最终的小说文本或漫画图片
+* search 搜索
+
+以上四种业务分别有小说和漫画两种接口共 8 个接口，最终由业务调用。  
+可以看 ```lib/plugin/component/api```  相关代码   
+
+### SourceBundle
+
+插件业务对外暴露的一个 final 类型
+* 根据 Component 的类型维护多个 map，其中 key 由插件 package 和 源 key 决定。
+* 同时维护源和配置（排序，开关）最终一起暴露给其他业务。
+
 ## 开发规范（持续更新中）
 
 1、导入需要写全路径，如：
