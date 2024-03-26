@@ -6,21 +6,19 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routesHash() => r'31325046c35e5190b15f52585a98bc85ca6596e8';
+String _$easyRouterHash() => r'6194305c526c8b1ee64ea055291a8f63b352305d';
 
-/// Created by heyanlin on 2023/9/22.
-///
-/// Copied from [Routes].
-@ProviderFor(Routes)
-final routesPod = NotifierProvider<Routes, GoRouter>.internal(
-  Routes.new,
-  name: r'routesPod',
+/// See also [easyRouter].
+@ProviderFor(easyRouter)
+final easyRouterPod = Provider<GoRouter>.internal(
+  easyRouter,
+  name: r'easyRouterPod',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$routesHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$easyRouterHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Routes = Notifier<GoRouter>;
+typedef EasyRouterRef = ProviderRef<GoRouter>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

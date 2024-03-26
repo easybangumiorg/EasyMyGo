@@ -7,7 +7,7 @@ part of 'database.dart';
 // **************************************************************************
 
 String _$databaseControllerHash() =>
-    r'ffb20976aff46a183dc26f30ac049add19bbccb6';
+    r'e1b2379eae78f2f27dd912a21ad53b41ecd08396';
 
 /// See also [DatabaseController].
 @ProviderFor(DatabaseController)

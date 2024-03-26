@@ -29,7 +29,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
         manga_cover.freezed.dart
     
 
-2、项目使用 MVC 架构，各层说明见下。其中 View 层不允许直接调用 Model 层。
+2、项目使用 MVC 架构，各层说明见下。其中做出以下规定
+
+* View 层不允许直接调用 Model 层
+* Controller 层不允许直接调用 View 层（包括路由跳转），除了弹全局通知
+* Model 层需要无状态
 
 ### Model
 
@@ -78,12 +82,16 @@ Future<List<MangaInfo>> watchAll(WatchAllRef ref) async* {
 
 Controller 层使用 Riverpod_generator 生成的 NotifierProvider 实现，将 Notifier 直接作为 Controller。具体可参考 `lib/theme/theme.dart`，其中做出以下约束：
 
-* 如果 Controller 需要异步初始化。  
-**注：_innerInit 中不能使用 ref 读取其他 Provider，如果需要依赖则直接在 build 中 watch**
+* 如果 Controller 需要异步初始化：  
+
+a、_innerInit 中不能使用 ref 读取其他 Provider，如果需要依赖则直接在 build 中 watch  
+b、只有 keepAlive 为 true 的 Controller 才能使用异步初始化
+c、异步初始化需要给加载态，然后再异步方法中更新状态
+d、异步初始化需要在 View 层添加闪屏页，可参考 下文 介绍
 
 ```dart
 
-@Riverpod()
+@Riverpod(keepAlive: true)
 class ThemeController extends _$ThemeController {
   late Future<void> _init;
 
@@ -92,9 +100,16 @@ class ThemeController extends _$ThemeController {
       _innerInit();
     });
   }
+  
+  @override
+  ThemeConfig build() {
+    // 加载态
+    return ThemeConfig.none;
+  }
 
   Future<void> _innerInit() async {
     // 初始化代码，这里不能使用 ref 读取或观察其他 Provider，因为可能目标 Controller 还未初始化成功
+    // 加载后使用 state = XX 来更新状态
   }
   // 其他业务代码
 }
@@ -128,8 +143,49 @@ Target combineAB(CombineABRef ref){
 ```
 
 
-
-
-
 ### View
+
+* 国际化 —— arb 文件位于 lib/l10n/arb/intl_zh_CN.arb，这在里面添加文案，使用时使用 S.current 调用
+
+* 闪屏页 —— 所有异步初始化的 Controller 都需要在闪屏页添加相关加载态页面 ```lib/app.dart``` ：
+```dart
+class EasyBookApp extends HookConsumerWidget {
+  const EasyBookApp({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+
+
+
+    // =============== 初始化前监听 ======================
+
+    final ThemeConfig themeConfig = ThemeController.watch(ref);
+
+    final DatabaseController databaseController = DatabaseController.of(ref);
+    final DatabaseState dbSta = DatabaseController.watch(ref);
+
+
+    // =============== 初始化相关代码 =====================
+
+    // 1.主题配置
+    if (themeConfig == ThemeConfig.none){
+      return const SplashScreen();
+    }
+
+
+    // 2.数据库
+    if (dbSta is DatabaseStateLoading) {
+      return const SplashScreen();
+    }else if (dbSta is DatabaseStateError) {
+      // TODO retry screen
+      return const SplashScreen();
+    }
+
+
+    // =============== 初始化结束 =====================
+
+    // 其他业务代码
+}
+```
+
+* 路由 —— 路由声明位于 ```lib/router.dart```，参考其他路由添加即可。跳转时使用 context.go 进行跳转。这里只能 View 层才可以跳转，业务层不允许。
 

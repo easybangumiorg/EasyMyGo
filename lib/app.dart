@@ -60,11 +60,10 @@ class EasyBookApp extends HookConsumerWidget {
     // =============== 初始化结束 =====================
 
 
-    final GoRouter route = ref.watch(routesPod);
-
+    final GoRouter route = ref.watch(easyRouterPod);
+    
     final seedColor = Colors.primaries.elementAtOrNull(themeConfig.seedColorIndex) ?? Colors.red;
     final darkMode = ThemeMode.values.elementAtOrNull(themeConfig.darkModeIndex) ?? ThemeMode.system;
-
 
     return MaterialApp.router(
       onGenerateTitle: (context) => S.of(context).app_name,
