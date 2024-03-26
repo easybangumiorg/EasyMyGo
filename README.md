@@ -84,10 +84,10 @@ Controller 层使用 Riverpod_generator 生成的 NotifierProvider 实现，将 
 
 * 如果 Controller 需要异步初始化：  
 
-a、_innerInit 中不能使用 ref 读取其他 Provider，如果需要依赖则直接在 build 中 watch  
-b、只有 keepAlive 为 true 的 Controller 才能使用异步初始化
-c、异步初始化需要给加载态，然后再异步方法中更新状态
-d、异步初始化需要在 View 层添加闪屏页，可参考 下文 介绍
+a、_innerInit 中不能使用 ref 读取其他 Provider，如果需要依赖则直接在 build 中 watch   
+b、只有 keepAlive 为 true 的 Controller 才能使用异步初始化  
+c、异步初始化需要给加载态，然后再异步方法中更新状态  
+d、异步初始化需要在 View 层添加闪屏页，可参考 下文 介绍  
 
 ```dart
 
