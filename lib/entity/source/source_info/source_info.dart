@@ -21,6 +21,7 @@ class SourceInfo with _$SourceInfo {
     required String path,
     @JsonKey(name: 'loader_type') required SourceLoaderType loaderType,
     @Default("") String description,
+    @Default("") String header,
   }) = _SourceInfo;
 
   factory SourceInfo.fromJson(Map<String, dynamic> json) =>

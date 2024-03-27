@@ -1,7 +1,7 @@
 
 
+import 'package:easy_mygo/entity/extension/extension_data/extension_data.dart';
 import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
-import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/extension/loader/js/js_extension_loader.dart';
 
 import 'mygopack/mygopack_extension_loader.dart';
@@ -19,6 +19,8 @@ abstract class ExtensionLoader {
 
   ExtensionLoaderType get type;
 
-  List<SourceInfo> load(ExtensionInfo extensionInfo);
+  Future<ExtensionInfo?> parse(String file);
+
+  Future<ExtensionData?> load(ExtensionInfo extensionInfo);
 
 }

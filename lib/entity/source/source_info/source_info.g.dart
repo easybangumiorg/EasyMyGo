@@ -17,6 +17,7 @@ _$SourceInfoImpl _$$SourceInfoImplFromJson(Map<String, dynamic> json) =>
       path: json['path'] as String,
       loaderType: $enumDecode(_$SourceLoaderTypeEnumMap, json['loader_type']),
       description: json['description'] as String? ?? "",
+      header: json['header'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$SourceInfoImplToJson(_$SourceInfoImpl instance) =>
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$SourceInfoImplToJson(_$SourceInfoImpl instance) =>
       'path': instance.path,
       'loader_type': _$SourceLoaderTypeEnumMap[instance.loaderType]!,
       'description': instance.description,
+      'header': instance.header,
     };
 
 const _$SourceTypeEnumMap = {

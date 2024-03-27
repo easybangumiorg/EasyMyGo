@@ -5,9 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:easy_mygo/database/db/manga/manga_db.dart';
 import 'package:easy_mygo/entity/manga/manga_chapter/manga_chapter.dart';
 import 'package:easy_mygo/entity/manga/manga_enum.dart';
-import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
 import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 
 /// 一部漫画在整个软件中的聚合，包括以下数据：

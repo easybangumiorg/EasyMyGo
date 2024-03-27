@@ -34,6 +34,7 @@ mixin _$SourceInfo {
   @JsonKey(name: 'loader_type')
   SourceLoaderType get loaderType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get header => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +57,8 @@ abstract class $SourceInfoCopyWith<$Res> {
       @JsonKey(name: 'version_code') int versionCode,
       String path,
       @JsonKey(name: 'loader_type') SourceLoaderType loaderType,
-      String description});
+      String description,
+      String header});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$SourceInfoCopyWithImpl<$Res, $Val extends SourceInfo>
     Object? path = null,
     Object? loaderType = null,
     Object? description = null,
+    Object? header = null,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -119,6 +122,10 @@ class _$SourceInfoCopyWithImpl<$Res, $Val extends SourceInfo>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -140,7 +147,8 @@ abstract class _$$SourceInfoImplCopyWith<$Res>
       @JsonKey(name: 'version_code') int versionCode,
       String path,
       @JsonKey(name: 'loader_type') SourceLoaderType loaderType,
-      String description});
+      String description,
+      String header});
 }
 
 /// @nodoc
@@ -163,6 +171,7 @@ class __$$SourceInfoImplCopyWithImpl<$Res>
     Object? path = null,
     Object? loaderType = null,
     Object? description = null,
+    Object? header = null,
   }) {
     return _then(_$SourceInfoImpl(
       key: null == key
@@ -201,6 +210,10 @@ class __$$SourceInfoImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -217,7 +230,8 @@ class _$SourceInfoImpl implements _SourceInfo {
       @JsonKey(name: 'version_code') required this.versionCode,
       required this.path,
       @JsonKey(name: 'loader_type') required this.loaderType,
-      this.description = ""});
+      this.description = "",
+      this.header = ""});
 
   factory _$SourceInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$SourceInfoImplFromJson(json);
@@ -247,10 +261,13 @@ class _$SourceInfoImpl implements _SourceInfo {
   @override
   @JsonKey()
   final String description;
+  @override
+  @JsonKey()
+  final String header;
 
   @override
   String toString() {
-    return 'SourceInfo(key: $key, fromPackage: $fromPackage, label: $label, type: $type, versionName: $versionName, versionCode: $versionCode, path: $path, loaderType: $loaderType, description: $description)';
+    return 'SourceInfo(key: $key, fromPackage: $fromPackage, label: $label, type: $type, versionName: $versionName, versionCode: $versionCode, path: $path, loaderType: $loaderType, description: $description, header: $header)';
   }
 
   @override
@@ -271,13 +288,14 @@ class _$SourceInfoImpl implements _SourceInfo {
             (identical(other.loaderType, loaderType) ||
                 other.loaderType == loaderType) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.header, header) || other.header == header));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, key, fromPackage, label, type,
-      versionName, versionCode, path, loaderType, description);
+      versionName, versionCode, path, loaderType, description, header);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +321,8 @@ abstract class _SourceInfo implements SourceInfo {
       @JsonKey(name: 'version_code') required final int versionCode,
       required final String path,
       @JsonKey(name: 'loader_type') required final SourceLoaderType loaderType,
-      final String description}) = _$SourceInfoImpl;
+      final String description,
+      final String header}) = _$SourceInfoImpl;
 
   factory _SourceInfo.fromJson(Map<String, dynamic> json) =
       _$SourceInfoImpl.fromJson;
@@ -330,6 +349,8 @@ abstract class _SourceInfo implements SourceInfo {
   SourceLoaderType get loaderType;
   @override
   String get description;
+  @override
+  String get header;
   @override
   @JsonKey(ignore: true)
   _$$SourceInfoImplCopyWith<_$SourceInfoImpl> get copyWith =>

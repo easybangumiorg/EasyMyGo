@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'extension_info.dart';
+part of 'mygopack_manifest_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ExtensionInfo _$ExtensionInfoFromJson(Map<String, dynamic> json) {
-  return _ExtensionInfo.fromJson(json);
+MygoPackManifest _$MygoPackManifestFromJson(Map<String, dynamic> json) {
+  return _MygoPackManifest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ExtensionInfo {
+mixin _$MygoPackManifest {
 // 包名唯一
   String get package => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
@@ -29,22 +29,19 @@ mixin _$ExtensionInfo {
   int get versionCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'lib_version')
   int get libVersion => throw _privateConstructorUsedError;
-  @JsonKey(name: 'extension_load_type')
-  ExtensionLoaderType get loadType => throw _privateConstructorUsedError;
-  String get path => throw _privateConstructorUsedError;
   String get readme => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ExtensionInfoCopyWith<ExtensionInfo> get copyWith =>
+  $MygoPackManifestCopyWith<MygoPackManifest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExtensionInfoCopyWith<$Res> {
-  factory $ExtensionInfoCopyWith(
-          ExtensionInfo value, $Res Function(ExtensionInfo) then) =
-      _$ExtensionInfoCopyWithImpl<$Res, ExtensionInfo>;
+abstract class $MygoPackManifestCopyWith<$Res> {
+  factory $MygoPackManifestCopyWith(
+          MygoPackManifest value, $Res Function(MygoPackManifest) then) =
+      _$MygoPackManifestCopyWithImpl<$Res, MygoPackManifest>;
   @useResult
   $Res call(
       {String package,
@@ -52,15 +49,13 @@ abstract class $ExtensionInfoCopyWith<$Res> {
       @JsonKey(name: 'version_name') String versionName,
       @JsonKey(name: 'version_code') int versionCode,
       @JsonKey(name: 'lib_version') int libVersion,
-      @JsonKey(name: 'extension_load_type') ExtensionLoaderType loadType,
-      String path,
       String readme});
 }
 
 /// @nodoc
-class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
-    implements $ExtensionInfoCopyWith<$Res> {
-  _$ExtensionInfoCopyWithImpl(this._value, this._then);
+class _$MygoPackManifestCopyWithImpl<$Res, $Val extends MygoPackManifest>
+    implements $MygoPackManifestCopyWith<$Res> {
+  _$MygoPackManifestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,8 +70,6 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
     Object? versionName = null,
     Object? versionCode = null,
     Object? libVersion = null,
-    Object? loadType = null,
-    Object? path = null,
     Object? readme = null,
   }) {
     return _then(_value.copyWith(
@@ -100,14 +93,6 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
           ? _value.libVersion
           : libVersion // ignore: cast_nullable_to_non_nullable
               as int,
-      loadType: null == loadType
-          ? _value.loadType
-          : loadType // ignore: cast_nullable_to_non_nullable
-              as ExtensionLoaderType,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
       readme: null == readme
           ? _value.readme
           : readme // ignore: cast_nullable_to_non_nullable
@@ -117,11 +102,11 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
 }
 
 /// @nodoc
-abstract class _$$ExtensionInfoImplCopyWith<$Res>
-    implements $ExtensionInfoCopyWith<$Res> {
-  factory _$$ExtensionInfoImplCopyWith(
-          _$ExtensionInfoImpl value, $Res Function(_$ExtensionInfoImpl) then) =
-      __$$ExtensionInfoImplCopyWithImpl<$Res>;
+abstract class _$$MygoPackManifestImplCopyWith<$Res>
+    implements $MygoPackManifestCopyWith<$Res> {
+  factory _$$MygoPackManifestImplCopyWith(_$MygoPackManifestImpl value,
+          $Res Function(_$MygoPackManifestImpl) then) =
+      __$$MygoPackManifestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -130,17 +115,15 @@ abstract class _$$ExtensionInfoImplCopyWith<$Res>
       @JsonKey(name: 'version_name') String versionName,
       @JsonKey(name: 'version_code') int versionCode,
       @JsonKey(name: 'lib_version') int libVersion,
-      @JsonKey(name: 'extension_load_type') ExtensionLoaderType loadType,
-      String path,
       String readme});
 }
 
 /// @nodoc
-class __$$ExtensionInfoImplCopyWithImpl<$Res>
-    extends _$ExtensionInfoCopyWithImpl<$Res, _$ExtensionInfoImpl>
-    implements _$$ExtensionInfoImplCopyWith<$Res> {
-  __$$ExtensionInfoImplCopyWithImpl(
-      _$ExtensionInfoImpl _value, $Res Function(_$ExtensionInfoImpl) _then)
+class __$$MygoPackManifestImplCopyWithImpl<$Res>
+    extends _$MygoPackManifestCopyWithImpl<$Res, _$MygoPackManifestImpl>
+    implements _$$MygoPackManifestImplCopyWith<$Res> {
+  __$$MygoPackManifestImplCopyWithImpl(_$MygoPackManifestImpl _value,
+      $Res Function(_$MygoPackManifestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,11 +134,9 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
     Object? versionName = null,
     Object? versionCode = null,
     Object? libVersion = null,
-    Object? loadType = null,
-    Object? path = null,
     Object? readme = null,
   }) {
-    return _then(_$ExtensionInfoImpl(
+    return _then(_$MygoPackManifestImpl(
       package: null == package
           ? _value.package
           : package // ignore: cast_nullable_to_non_nullable
@@ -176,14 +157,6 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
           ? _value.libVersion
           : libVersion // ignore: cast_nullable_to_non_nullable
               as int,
-      loadType: null == loadType
-          ? _value.loadType
-          : loadType // ignore: cast_nullable_to_non_nullable
-              as ExtensionLoaderType,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
       readme: null == readme
           ? _value.readme
           : readme // ignore: cast_nullable_to_non_nullable
@@ -194,19 +167,17 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ExtensionInfoImpl implements _ExtensionInfo {
-  _$ExtensionInfoImpl(
+class _$MygoPackManifestImpl implements _MygoPackManifest {
+  _$MygoPackManifestImpl(
       {required this.package,
       required this.label,
       @JsonKey(name: 'version_name') required this.versionName,
       @JsonKey(name: 'version_code') required this.versionCode,
       @JsonKey(name: 'lib_version') required this.libVersion,
-      @JsonKey(name: 'extension_load_type') required this.loadType,
-      required this.path,
       this.readme = ""});
 
-  factory _$ExtensionInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ExtensionInfoImplFromJson(json);
+  factory _$MygoPackManifestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MygoPackManifestImplFromJson(json);
 
 // 包名唯一
   @override
@@ -223,24 +194,19 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
   @JsonKey(name: 'lib_version')
   final int libVersion;
   @override
-  @JsonKey(name: 'extension_load_type')
-  final ExtensionLoaderType loadType;
-  @override
-  final String path;
-  @override
   @JsonKey()
   final String readme;
 
   @override
   String toString() {
-    return 'ExtensionInfo(package: $package, label: $label, versionName: $versionName, versionCode: $versionCode, libVersion: $libVersion, loadType: $loadType, path: $path, readme: $readme)';
+    return 'MygoPackManifest(package: $package, label: $label, versionName: $versionName, versionCode: $versionCode, libVersion: $libVersion, readme: $readme)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExtensionInfoImpl &&
+            other is _$MygoPackManifestImpl &&
             (identical(other.package, package) || other.package == package) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.versionName, versionName) ||
@@ -249,45 +215,40 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
                 other.versionCode == versionCode) &&
             (identical(other.libVersion, libVersion) ||
                 other.libVersion == libVersion) &&
-            (identical(other.loadType, loadType) ||
-                other.loadType == loadType) &&
-            (identical(other.path, path) || other.path == path) &&
             (identical(other.readme, readme) || other.readme == readme));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, package, label, versionName,
-      versionCode, libVersion, loadType, path, readme);
+      versionCode, libVersion, readme);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExtensionInfoImplCopyWith<_$ExtensionInfoImpl> get copyWith =>
-      __$$ExtensionInfoImplCopyWithImpl<_$ExtensionInfoImpl>(this, _$identity);
+  _$$MygoPackManifestImplCopyWith<_$MygoPackManifestImpl> get copyWith =>
+      __$$MygoPackManifestImplCopyWithImpl<_$MygoPackManifestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExtensionInfoImplToJson(
+    return _$$MygoPackManifestImplToJson(
       this,
     );
   }
 }
 
-abstract class _ExtensionInfo implements ExtensionInfo {
-  factory _ExtensionInfo(
+abstract class _MygoPackManifest implements MygoPackManifest {
+  factory _MygoPackManifest(
       {required final String package,
       required final String label,
       @JsonKey(name: 'version_name') required final String versionName,
       @JsonKey(name: 'version_code') required final int versionCode,
       @JsonKey(name: 'lib_version') required final int libVersion,
-      @JsonKey(name: 'extension_load_type')
-      required final ExtensionLoaderType loadType,
-      required final String path,
-      final String readme}) = _$ExtensionInfoImpl;
+      final String readme}) = _$MygoPackManifestImpl;
 
-  factory _ExtensionInfo.fromJson(Map<String, dynamic> json) =
-      _$ExtensionInfoImpl.fromJson;
+  factory _MygoPackManifest.fromJson(Map<String, dynamic> json) =
+      _$MygoPackManifestImpl.fromJson;
 
   @override // 包名唯一
   String get package;
@@ -303,14 +264,9 @@ abstract class _ExtensionInfo implements ExtensionInfo {
   @JsonKey(name: 'lib_version')
   int get libVersion;
   @override
-  @JsonKey(name: 'extension_load_type')
-  ExtensionLoaderType get loadType;
-  @override
-  String get path;
-  @override
   String get readme;
   @override
   @JsonKey(ignore: true)
-  _$$ExtensionInfoImplCopyWith<_$ExtensionInfoImpl> get copyWith =>
+  _$$MygoPackManifestImplCopyWith<_$MygoPackManifestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

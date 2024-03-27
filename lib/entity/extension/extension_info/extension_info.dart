@@ -22,8 +22,6 @@ class ExtensionInfo with _$ExtensionInfo {
     @JsonKey(name: 'lib_version') required int libVersion,
     @JsonKey(name: 'extension_load_type') required ExtensionLoaderType loadType,
     required String path,
-    // 头像 url，本地文件就 file:// 开头
-    @Default("") String cover,
     @Default("") String readme,
   }) = _ExtensionInfo;
 
