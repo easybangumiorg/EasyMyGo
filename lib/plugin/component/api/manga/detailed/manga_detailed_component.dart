@@ -31,4 +31,6 @@ abstract class MangeDetailedComponent extends Component {
 
 
 
+
+
 }

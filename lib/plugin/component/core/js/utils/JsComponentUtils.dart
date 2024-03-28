@@ -11,6 +11,7 @@ class JsComponentUtils {
   /// throws ComponentPayload
   static Future<JsEvalResult> evaluateAsync(JavascriptRuntime runtime, String js) async {
     final res = await runtime.evaluateAsync(js);
+
     if(res.isError){
       throw ComponentPayload(
           code: ComponentPayload.codeCallError,
@@ -21,13 +22,22 @@ class JsComponentUtils {
   }
 
   /// throws ComponentPayload
-  static dynamic jsonDecodeWithCheck(JsEvalResult jsEvalResult) {
-    final json = jsonDecode(jsEvalResult.stringResult);
-    if(json == null){
+  static Future<dynamic> jsonDecodeWithCheck(JavascriptRuntime runtime, JsEvalResult jsEvalResult) async {
+    try {
+      final json = jsonDecode(jsEvalResult.stringResult);
+      if(json == null){
+        throw ComponentPayload(
+            code: ComponentPayload.codeParseResultError,
+            msg: "jsDecode is null",
+            raw: jsEvalResult.rawResult);
+      }
+      return json;
+    }catch(e){
       throw ComponentPayload(
           code: ComponentPayload.codeParseResultError,
-          msg: "jsDecode is null",
+          msg: "jsDecode error",
           raw: jsEvalResult.rawResult);
     }
+
   }
 }

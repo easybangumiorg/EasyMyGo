@@ -13,9 +13,10 @@ class ComponentPayload with _$ComponentPayload {
   // 解析错误 - 插件返回的数据无法解析成对应实体
   static const codeParseResultError = -10085;
 
+  // 业务错误 - 一般是插件手动抛出的异常
+  static const codeBusinessError = -10084;
+
   factory ComponentPayload({
-    // 特别的小于 -10086 为调用错误
-    // 其他为业务端自行返回的错误码
     @JsonKey(name: "code") @Default(0) int code,
     @JsonKey(name: "msg") @Default("") String msg,
 

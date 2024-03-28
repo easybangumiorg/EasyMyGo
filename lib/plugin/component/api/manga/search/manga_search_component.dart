@@ -10,11 +10,11 @@ abstract class MangeSearchComponent extends Component {
 
   Future<String> getInitKey(String key);
 
-  Future<SearchResp> getMangaDetailed(String key, String keyword);
+  Future<SearchResp> search(String key, String keyword);
 
-  Future<SearchResp> performGetMangaDetailed(String key, String keyword) async {
+  Future<SearchResp> performSearch(String key, String keyword) async {
     try {
-      return await getMangaDetailed(key, keyword);
+      return await search(key, keyword);
     } catch (e) {
       if (e is ComponentPayload) {
         return SearchResp(payload: e);

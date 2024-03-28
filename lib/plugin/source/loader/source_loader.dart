@@ -2,6 +2,7 @@
 
 
 
+import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/source/loader/js/js_source_loader.dart';
 
@@ -28,4 +29,6 @@ abstract class SourceLoader {
   SourceLoaderType get type;
 
   Future<SourceInfo?> parse(String fromExtension, String filePath);
+
+  Future<SourceData> load(String fromExtension, SourceInfo sourceInfo);
 }

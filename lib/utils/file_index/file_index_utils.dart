@@ -40,7 +40,8 @@ class FileIndexUtils {
       }
     }
 
-    final content = jsonEncode(indexList.map((e) => e.toJson()));
+    final d = indexList.map((e) => e.toJson()).toList();
+    final content = jsonEncode(d);
     await indexFile.create();
     await indexFile.writeAsString(content);
   }
@@ -58,25 +59,29 @@ class FileIndexUtils {
       return false;
     }
 
-    final content = await indexFile.readAsString();
-    List<Map<String, dynamic>> jsonList = jsonDecode(content);
-    final indexList = jsonList.map((e) => FileIndexItem.fromJson(e));
-    for (var value in indexList) {
-      final p = join(path, joinAll(value.path));
-      final file = File(p);
+    try {
+      final content = await indexFile.readAsString();
+      List<dynamic> jsonList = jsonDecode(content);
+      final indexList = jsonList.map((e) => FileIndexItem.fromJson(e));
+      for (var value in indexList) {
+        final p = join(path, joinAll(value.path));
+        final file = File(p);
 
-      /// 文件被删了，验证不通过
-      if(! await file.exists() && value.size > 0){
-        return false;
+        /// 文件被删了，验证不通过
+        if (!await file.exists() && value.size > 0) {
+          return false;
+        }
+
+        final size = await file.length();
+
+        /// 文件被修改（大小变化），验证不通过
+        if (size != value.size) {
+          return false;
+        }
       }
-
-      final size = await file.length();
-
-      /// 文件被修改（大小变化），验证不通过
-      if (size != value.size){
-        return false;
-      }
+      return true;
+    }catch(e){
+      return false;
     }
-    return true;
   }
 }
