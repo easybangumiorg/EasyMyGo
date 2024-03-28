@@ -19,5 +19,5 @@ enum ChapterShowType {
 
 // 图片加载类型，后续可能添加裁切功能？
 enum PictureLoadType {
-  normal,         // 普通类型，直接加载 MangaPicture 中 url 的图片（网络或文字）
+  normal,         // 普通类型，直接加载 MangaPicture 中 url 的图片（网络或本地）
 }

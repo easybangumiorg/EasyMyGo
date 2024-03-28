@@ -11,8 +11,6 @@ import 'package:easy_mygo/plugin/component/core/js/manga/read/js_manga_read_comp
 import 'package:easy_mygo/plugin/component/core/js/manga/search/js_manga_search_component.dart';
 import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
-import 'package:flutter_js/flutter_js.dart';
-import 'package:path/path.dart';
 
 class JsSourceLoader extends SourceLoader {
 
@@ -44,7 +42,7 @@ class JsSourceLoader extends SourceLoader {
         return null;
       }
       final key = ss[0].replaceFirst("@", "").trim();
-      final val = joinAll(ss.sublist(1));
+      final val = ss.sublist(1).join(" ");
       if (key == "version_code"){
         map[key] = int.tryParse(val);
       }else{

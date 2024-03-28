@@ -28,21 +28,7 @@ import 'package:path_provider/path_provider.dart';
 import 'l10n/l10n.dart';
 
 Future<void> main() async {
-
-  // JscFfi.lib = Platform.isIOS || Platform.isMacOS
-  //     ? DynamicLibrary.open('JavaScriptCore.framework/JavaScriptCore')
-  //     : Platform.isWindows
-  //     ? DynamicLibrary.open('JavaScriptCore.dll')
-  //     : Platform.isLinux
-  //     ? DynamicLibrary.open('libjavascriptcoregtk-4.0.so.18')
-  //     : DynamicLibrary.open('libjsc.so');
-
   runApp(const ProviderScope(child: EasyBookApp()));
-
-
-
-
-
 }
 
 class EasyBookApp extends HookConsumerWidget {

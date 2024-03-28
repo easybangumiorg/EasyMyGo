@@ -19,8 +19,10 @@ abstract class ExtensionLoader {
 
   ExtensionLoaderType get type;
 
+  /// 解析拓展元数据
   Future<ExtensionInfo?> parse(String file);
 
+  /// 加载拓展
   Future<ExtensionData?> load(ExtensionInfo extensionInfo);
 
 }
