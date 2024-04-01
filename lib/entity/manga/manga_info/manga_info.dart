@@ -120,6 +120,10 @@ class MangaTable extends Table {
   IntColumn get customOrder =>
       integer().named("custom_order").withDefault(const Constant(0))();
 
+  // 书签 json
+  TextColumn get markJson =>
+      text().named("markJson").withDefault(const Constant(""))();
+
   // 本地存的一些配置
   TextColumn get ext =>
       text().named("ext").withDefault(const Constant(""))();

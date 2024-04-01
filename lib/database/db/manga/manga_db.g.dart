@@ -221,6 +221,14 @@ class $MangaTableTable extends MangaTable
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
+  static const VerificationMeta _markJsonMeta =
+      const VerificationMeta('markJson');
+  @override
+  late final GeneratedColumn<String> markJson = GeneratedColumn<String>(
+      'markJson', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(""));
   static const VerificationMeta _extMeta = const VerificationMeta('ext');
   @override
   late final GeneratedColumn<String> ext = GeneratedColumn<String>(
@@ -257,6 +265,7 @@ class $MangaTableTable extends MangaTable
         starTime,
         pinTime,
         customOrder,
+        markJson,
         ext
       ];
   @override
@@ -401,6 +410,10 @@ class $MangaTableTable extends MangaTable
           customOrder.isAcceptableOrUnknown(
               data['custom_order']!, _customOrderMeta));
     }
+    if (data.containsKey('markJson')) {
+      context.handle(_markJsonMeta,
+          markJson.isAcceptableOrUnknown(data['markJson']!, _markJsonMeta));
+    }
     if (data.containsKey('ext')) {
       context.handle(
           _extMeta, ext.isAcceptableOrUnknown(data['ext']!, _extMeta));
@@ -472,6 +485,8 @@ class $MangaTableTable extends MangaTable
           .read(DriftSqlType.int, data['${effectivePrefix}pin_time'])!,
       customOrder: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}custom_order'])!,
+      markJson: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}markJson'])!,
       ext: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ext'])!,
     );
@@ -517,6 +532,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
   final int starTime;
   final int pinTime;
   final int customOrder;
+  final String markJson;
   final String ext;
   const MangaInfo(
       {required this.source,
@@ -546,6 +562,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       required this.starTime,
       required this.pinTime,
       required this.customOrder,
+      required this.markJson,
       required this.ext});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -584,6 +601,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
     map['star_time'] = Variable<int>(starTime);
     map['pin_time'] = Variable<int>(pinTime);
     map['custom_order'] = Variable<int>(customOrder);
+    map['markJson'] = Variable<String>(markJson);
     map['ext'] = Variable<String>(ext);
     return map;
   }
@@ -617,6 +635,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       starTime: Value(starTime),
       pinTime: Value(pinTime),
       customOrder: Value(customOrder),
+      markJson: Value(markJson),
       ext: Value(ext),
     );
   }
@@ -657,6 +676,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       starTime: serializer.fromJson<int>(json['starTime']),
       pinTime: serializer.fromJson<int>(json['pinTime']),
       customOrder: serializer.fromJson<int>(json['customOrder']),
+      markJson: serializer.fromJson<String>(json['markJson']),
       ext: serializer.fromJson<String>(json['ext']),
     );
   }
@@ -694,6 +714,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       'starTime': serializer.toJson<int>(starTime),
       'pinTime': serializer.toJson<int>(pinTime),
       'customOrder': serializer.toJson<int>(customOrder),
+      'markJson': serializer.toJson<String>(markJson),
       'ext': serializer.toJson<String>(ext),
     };
   }
@@ -726,6 +747,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           int? starTime,
           int? pinTime,
           int? customOrder,
+          String? markJson,
           String? ext}) =>
       MangaInfo(
         source: source ?? this.source,
@@ -756,6 +778,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
         starTime: starTime ?? this.starTime,
         pinTime: pinTime ?? this.pinTime,
         customOrder: customOrder ?? this.customOrder,
+        markJson: markJson ?? this.markJson,
         ext: ext ?? this.ext,
       );
   @override
@@ -788,6 +811,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           ..write('starTime: $starTime, ')
           ..write('pinTime: $pinTime, ')
           ..write('customOrder: $customOrder, ')
+          ..write('markJson: $markJson, ')
           ..write('ext: $ext')
           ..write(')'))
         .toString();
@@ -822,6 +846,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
         starTime,
         pinTime,
         customOrder,
+        markJson,
         ext
       ]);
   @override
@@ -855,6 +880,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           other.starTime == this.starTime &&
           other.pinTime == this.pinTime &&
           other.customOrder == this.customOrder &&
+          other.markJson == this.markJson &&
           other.ext == this.ext);
 }
 
@@ -886,6 +912,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
   final Value<int> starTime;
   final Value<int> pinTime;
   final Value<int> customOrder;
+  final Value<String> markJson;
   final Value<String> ext;
   final Value<int> rowid;
   const MangaTableCompanion({
@@ -916,6 +943,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     this.starTime = const Value.absent(),
     this.pinTime = const Value.absent(),
     this.customOrder = const Value.absent(),
+    this.markJson = const Value.absent(),
     this.ext = const Value.absent(),
     this.rowid = const Value.absent(),
   });
@@ -947,6 +975,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     this.starTime = const Value.absent(),
     this.pinTime = const Value.absent(),
     this.customOrder = const Value.absent(),
+    this.markJson = const Value.absent(),
     this.ext = const Value.absent(),
     this.rowid = const Value.absent(),
   })  : source = Value(source),
@@ -980,6 +1009,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     Expression<int>? starTime,
     Expression<int>? pinTime,
     Expression<int>? customOrder,
+    Expression<String>? markJson,
     Expression<String>? ext,
     Expression<int>? rowid,
   }) {
@@ -1015,6 +1045,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       if (starTime != null) 'star_time': starTime,
       if (pinTime != null) 'pin_time': pinTime,
       if (customOrder != null) 'custom_order': customOrder,
+      if (markJson != null) 'markJson': markJson,
       if (ext != null) 'ext': ext,
       if (rowid != null) 'rowid': rowid,
     });
@@ -1048,6 +1079,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       Value<int>? starTime,
       Value<int>? pinTime,
       Value<int>? customOrder,
+      Value<String>? markJson,
       Value<String>? ext,
       Value<int>? rowid}) {
     return MangaTableCompanion(
@@ -1079,6 +1111,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       starTime: starTime ?? this.starTime,
       pinTime: pinTime ?? this.pinTime,
       customOrder: customOrder ?? this.customOrder,
+      markJson: markJson ?? this.markJson,
       ext: ext ?? this.ext,
       rowid: rowid ?? this.rowid,
     );
@@ -1174,6 +1207,9 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     if (customOrder.present) {
       map['custom_order'] = Variable<int>(customOrder.value);
     }
+    if (markJson.present) {
+      map['markJson'] = Variable<String>(markJson.value);
+    }
     if (ext.present) {
       map['ext'] = Variable<String>(ext.value);
     }
@@ -1213,6 +1249,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
           ..write('starTime: $starTime, ')
           ..write('pinTime: $pinTime, ')
           ..write('customOrder: $customOrder, ')
+          ..write('markJson: $markJson, ')
           ..write('ext: $ext, ')
           ..write('rowid: $rowid')
           ..write(')'))

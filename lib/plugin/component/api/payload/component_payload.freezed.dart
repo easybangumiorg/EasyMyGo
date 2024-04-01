@@ -20,8 +20,6 @@ ComponentPayload _$ComponentPayloadFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ComponentPayload {
-// 特别的小于 -10086 为调用错误
-// 其他为业务端自行返回的错误码
   @JsonKey(name: "code")
   int get code => throw _privateConstructorUsedError;
   @JsonKey(name: "msg")
@@ -138,8 +136,6 @@ class _$ComponentPayloadImpl implements _ComponentPayload {
   factory _$ComponentPayloadImpl.fromJson(Map<String, dynamic> json) =>
       _$$ComponentPayloadImplFromJson(json);
 
-// 特别的小于 -10086 为调用错误
-// 其他为业务端自行返回的错误码
   @override
   @JsonKey(name: "code")
   final int code;
@@ -195,8 +191,7 @@ abstract class _ComponentPayload implements ComponentPayload {
   factory _ComponentPayload.fromJson(Map<String, dynamic> json) =
       _$ComponentPayloadImpl.fromJson;
 
-  @override // 特别的小于 -10086 为调用错误
-// 其他为业务端自行返回的错误码
+  @override
   @JsonKey(name: "code")
   int get code;
   @override
