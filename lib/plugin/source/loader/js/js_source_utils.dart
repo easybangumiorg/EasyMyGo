@@ -44,17 +44,25 @@ class JsSourceUtils {
   static String _parseActionJSCode() {
     final StringBuffer sb = StringBuffer();
     for (var action in SourceAction.actions) {
-      sb.write("function ${action.clazz}(...constructorArgs){");
-      sb.write("""
+      if(action.constructorArgsCount > 0){
+        sb.write("""
         function ${action.clazz}(...constructorArgs){
           if(constructorArgs.length < ${action.constructorArgsCount}){
             throw new MygoError("constructorArgs length must be ${action.constructorArgsCount}");
           }
           return {
             ${action.funcNames.map((e) => "$e: async function (...args){ await sendMessage('${action.clazz}_$e', constructorArgs.concat(args)) }").join(",")
-          }
+        }
         };
       """);
+      }else{
+        sb.write("""
+        let ${action.clazz} = {
+            ${action.funcNames.map((e) => "$e: async function (...args){ await sendMessage('${action.clazz}_$e', args) }").join(",")}
+          };
+      """);
+      }
+
     }
     return sb.toString();
   }
