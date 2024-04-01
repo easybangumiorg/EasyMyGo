@@ -64,7 +64,7 @@ class JsSourceLoader extends SourceLoader {
   Future<SourceData> load(String fromExtension, SourceInfo sourceInfo) async {
 
     try {
-      final runtime = JsSourceUtils.newRuntime();
+      final runtime = JsSourceUtils.newRuntime(sourceInfo);
       final file = File(sourceInfo.path);
       if (!await file.exists()) {
         return SourceData(

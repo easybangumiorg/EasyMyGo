@@ -9,6 +9,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:puppeteer/puppeteer.dart';
 
 /// Created by heyanlin on 2023/9/22.
 
@@ -20,31 +21,10 @@ class HomePage extends HookConsumerWidget {
     // TODO: implement build
     return RawMaterialButton(
       onPressed: () async {
-        final loader = ExtensionLoader.of(ExtensionLoaderType.mygopack);
-        final sourceLoader = SourceLoader.of(SourceLoaderType.js);
-        FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-        if (result != null) {
-          final info = await loader.parse(result.files.single.path!);
-          if (info != null) {
-            final extensionData = await loader.load(info);
-            if (extensionData != null) {
-              for (var value in extensionData.sources!) {
-                final SourceData ddd =
-                    await sourceLoader.load(info.package, value);
-                for (var value1 in ddd.components!) {
-                  if (value1 is JsMangaSearchComponent) {
-                    print(await value1.performSearch("1", ""));
-                    print(await value1.performSearch("2", ""));
-                    print(await value1.performSearch("3", ""));
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          // User canceled the picker
-        }
+        var browser = await puppeteer.launch();
+        var page = await browser.newPage();
+        await page.goto('https://pub.dev/documentation/puppeteer/latest/',
+            wait: Until.networkIdle);
       },
     );
   }

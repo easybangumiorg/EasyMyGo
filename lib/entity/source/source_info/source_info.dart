@@ -1,3 +1,4 @@
+import 'package:easy_mygo/utils/source/source_utils_scope.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'source_info.freezed.dart';
@@ -33,5 +34,10 @@ extension SourceInfoExt on SourceInfo {
 
   String get identify {
     return _identifyValues[this] ??= "$fromPackage-|-$key";
+  }
+
+  static final _sourceUtilsScopeValues = Expando<SourceUtilsScope>();
+  SourceUtilsScope get sourceUtilsScope {
+    return _sourceUtilsScopeValues[this] ??= SourceUtilsScope(this);
   }
 }

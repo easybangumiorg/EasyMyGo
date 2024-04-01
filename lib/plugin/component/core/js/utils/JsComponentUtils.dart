@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
+import 'package:flutter_js/flutter_js.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 import 'package:flutter_js/js_eval_result.dart';
 
@@ -10,8 +11,8 @@ class JsComponentUtils {
 
   /// throws ComponentPayload
   static Future<JsEvalResult> evaluateAsync(JavascriptRuntime runtime, String js) async {
-    final res = await runtime.evaluateAsync(js);
-
+    final promise = await runtime.evaluateAsync(js);
+    final res = await runtime.handlePromise(promise);
     if(res.isError){
       throw ComponentPayload(
           code: ComponentPayload.codeCallError,

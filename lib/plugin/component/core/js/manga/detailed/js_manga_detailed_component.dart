@@ -16,9 +16,9 @@ class JsMangaDetailedComponent extends MangeDetailedComponent {
   static const _performMethodName = "perform_manga_detailed_getMangaDetailed";
 
   static const _performJSCode = """
-  function $_performMethodName(summary) {
+  async function $_performMethodName(summary) {
     try{
-      let resp = $methodName(summary);
+      let resp = await $methodName(summary);
       return JSON.stringify({
         detailed: resp.detailed,
         chapters: resp.chapters,

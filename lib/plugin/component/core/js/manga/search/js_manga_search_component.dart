@@ -17,9 +17,9 @@ class JsMangaSearchComponent extends MangeSearchComponent {
   static const methodNameInitKey = "manga_search_init_key";
 
   static const _performSearchJSCode = """
-  function $_performMethodSearch(summary) {
+  async function $_performMethodSearch(summary) {
     try{
-      let resp = $methodNameSearch(summary);
+      let resp = await $methodNameSearch(summary);
       return JSON.stringify({
         data: resp.data,
         next_key: resp.next_key,

@@ -16,9 +16,9 @@ class JsMangaReadComponent extends MangeReadComponent {
   static const _performMethodName = "perform_manga_read_getMangaPicture";
 
   static const _performJSCode = """
-  function $_performMethodName(detailed, chapter) {
+  async function $_performMethodName(detailed, chapter) {
     try {
-      let resp = $methodName(detailed, chapter);
+      let resp = await $methodName(detailed, chapter);
       return JSON.stringify({
         pictures: resp.pictures,
         payload: {
