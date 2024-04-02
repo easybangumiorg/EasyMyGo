@@ -14,7 +14,7 @@ _$ExtensionDataImpl _$$ExtensionDataImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           null,
       state: $enumDecodeNullable(_$ExtensionStateEnumMap, json['state']) ??
-          ExtensionState.none,
+          ExtensionState.loaded,
       errorMsg: json['error_msg'] as String? ?? "",
       folderPath: json['folder_path'] as String,
     );
@@ -29,8 +29,6 @@ Map<String, dynamic> _$$ExtensionDataImplToJson(_$ExtensionDataImpl instance) =>
     };
 
 const _$ExtensionStateEnumMap = {
-  ExtensionState.loading: 'loading',
-  ExtensionState.none: 'none',
   ExtensionState.loaded: 'loaded',
   ExtensionState.error: 'error',
 };

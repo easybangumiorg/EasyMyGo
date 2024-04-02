@@ -28,9 +28,12 @@ Map<String, dynamic> _$$ExtensionStateImplToJson(
 // **************************************************************************
 
 String _$extensionControllerHash() =>
-    r'1dad765291c6087c1a2cfc369b1febc97f725972';
+    r'89429db4d87220074636aef87e2867eb33feead9';
 
-/// See also [ExtensionController].
+/// 负责拓展加载，只加载拓展，不加载源
+/// 最终源的加载在 SourceController
+///
+/// Copied from [ExtensionController].
 @ProviderFor(ExtensionController)
 final extensionControllerPod =
     NotifierProvider<ExtensionController, ExtensionState>.internal(

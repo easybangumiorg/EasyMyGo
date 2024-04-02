@@ -169,7 +169,7 @@ class _$ExtensionDataImpl implements _ExtensionData {
   _$ExtensionDataImpl(
       {required this.info,
       final List<SourceInfo>? sources = null,
-      this.state = ExtensionState.none,
+      this.state = ExtensionState.loaded,
       @JsonKey(name: "error_msg") this.errorMsg = "",
       @JsonKey(name: "folder_path") required this.folderPath})
       : _sources = sources;
