@@ -1,5 +1,5 @@
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/utils/source/action/source_action.dart';
+import 'package:easy_mygo/plugin/source/utils/action/source_action.dart';
 import 'package:flutter_js/flutter_js.dart';
 
 class JsSourceUtils {
@@ -28,10 +28,14 @@ class JsSourceUtils {
           } else {
             as.add(args.toString());
           }
-          if (as.length < action.constructorArgsCount){
+          if (as.length < action.constructorArgsCount) {
             return "";
           }
-          return await action.execute(sourceInfo, funcName, as.sublist(0, action.constructorArgsCount), as.sublist(action.constructorArgsCount));
+          return await action.execute(
+              sourceInfo,
+              funcName,
+              as.sublist(0, action.constructorArgsCount),
+              as.sublist(action.constructorArgsCount));
         });
       }
     }
@@ -39,7 +43,6 @@ class JsSourceUtils {
 
     return runtime;
   }
-
 
   /// 对于 constructorArgsCount 为 0 的 Action，直接生成变量
   /// let XXUtils = {
@@ -59,25 +62,36 @@ class JsSourceUtils {
   static String _parseActionJSCode() {
     final StringBuffer sb = StringBuffer();
     for (var action in SourceAction.actions) {
-      if(action.constructorArgsCount > 0){
+      if (action.constructorArgsCount > 0) {
         sb.write("""
         function ${action.clazz}(...constructorArgs){
           if(constructorArgs.length < ${action.constructorArgsCount}){
             throw new MygoError("constructorArgs length must be ${action.constructorArgsCount}");
           }
           return {
-            ${action.funcNames.map((e) => "$e: async function (...args){ await sendMessage('${action.clazz}_$e', constructorArgs.concat(args)) }").join(",")
-        }
+            ${action.funcNames.map((e) => """
+            $e: async function (...args){ 
+              let a = constructorArgs.concat(args).map(function(currentValue,index,arr){
+                JSON.stringify(currentValue);
+              });
+              await sendMessage('${action.clazz}_$e', a) 
+            }""".trim()).join(",")}
         };
       """);
-      }else{
+      } else {
         sb.write("""
         let ${action.clazz} = {
-            ${action.funcNames.map((e) => "$e: async function (...args){ await sendMessage('${action.clazz}_$e', args) }").join(",")}
+            ${action.funcNames.map((e) => """
+            $e: async function (...args){
+               let a = args.map(function(currentValue,index,arr){
+                JSON.stringify(currentValue);
+              });
+              await sendMessage('${action.clazz}_$e', a)
+            }
+          """.trim()).join(",")}
           };
       """);
       }
-
     }
     return sb.toString();
   }

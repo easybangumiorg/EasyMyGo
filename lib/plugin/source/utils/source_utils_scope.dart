@@ -3,7 +3,7 @@
 import 'dart:collection';
 
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/utils/source/buffer_utils.dart';
+import 'package:easy_mygo/plugin/source/utils/buffer_utils.dart';
 
 class SourceUtilsScope {
 

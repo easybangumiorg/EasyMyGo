@@ -1,10 +1,12 @@
 
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:drift/drift.dart';
 import 'package:easy_mygo/database/db/manga/manga_db.dart';
 import 'package:easy_mygo/entity/manga/manga_chapter/manga_chapter.dart';
 import 'package:easy_mygo/entity/manga/manga_enum.dart';
+import 'package:easy_mygo/entity/manga/manga_picture/manga_picture.dart';
 import 'package:flutter/foundation.dart';
 
 
@@ -77,6 +79,10 @@ class MangaTable extends Table {
   // 章节列表，存的 Json 数据，只做 temp 可能不是最新
   TextColumn get chapterListJson =>
       text().named("chapter_list_json").withDefault(const Constant(""))();
+
+  // 图片 Map，存的 Json 数据， key 为 Chapter id，value 为 List<MangaPicture>
+  TextColumn get pictureMapJson =>
+      text().named("picture_map_json").withDefault(const Constant(""))();
 
   // History
   // 最后的历史数据添加时间
@@ -183,4 +189,36 @@ extension MangaInfoExt on MangaInfo {
     }
     return value;
   }
+
+  static final _mapPicture = Expando<Map<String, List<MangaPicture>>>();
+  Map<String, List<MangaPicture>> get pictureMap {
+    final value = _mapPicture[this];
+    if(value == null){
+      if (pictureMapJson.isEmpty) {
+        _mapPicture[this] = null;
+        return {};
+      }
+      try {
+        Map<String, dynamic> m = json.decode(pictureMapJson);
+        HashMap<String, List<MangaPicture>> res = HashMap();
+        final keys = m.keys;
+        for(String key in keys){
+          final Iterable value = m[key];
+          final list = value.map((e) => MangaPicture.fromJson(json.decode(e))).toList(growable: false);
+          res[key] = list;
+        }
+
+        _mapPicture[this] = res;
+        return res;
+      } on FormatException catch (e) {
+        _listChapterValues[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return {};
+    }
+    return value;
+  }
+
 }

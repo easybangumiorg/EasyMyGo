@@ -142,6 +142,14 @@ class $NovelTableTable extends NovelTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant(""));
+  static const VerificationMeta _chapterMapJsonMeta =
+      const VerificationMeta('chapterMapJson');
+  @override
+  late final GeneratedColumn<String> chapterMapJson = GeneratedColumn<String>(
+      'chapter_map_json', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(""));
   static const VerificationMeta _lastHistoryTimeMeta =
       const VerificationMeta('lastHistoryTime');
   @override
@@ -263,6 +271,7 @@ class $NovelTableTable extends NovelTable
         isReversal,
         sortKey,
         volumeListJson,
+        chapterMapJson,
         lastHistoryTime,
         lastReadVolumeId,
         lastReadVolumeLabel,
@@ -363,6 +372,12 @@ class $NovelTableTable extends NovelTable
           _volumeListJsonMeta,
           volumeListJson.isAcceptableOrUnknown(
               data['volume_list_json']!, _volumeListJsonMeta));
+    }
+    if (data.containsKey('chapter_map_json')) {
+      context.handle(
+          _chapterMapJsonMeta,
+          chapterMapJson.isAcceptableOrUnknown(
+              data['chapter_map_json']!, _chapterMapJsonMeta));
     }
     if (data.containsKey('last_history_time')) {
       context.handle(
@@ -479,6 +494,8 @@ class $NovelTableTable extends NovelTable
           .read(DriftSqlType.string, data['${effectivePrefix}sort_key'])!,
       volumeListJson: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}volume_list_json'])!,
+      chapterMapJson: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}chapter_map_json'])!,
       lastHistoryTime: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}last_history_time'])!,
       lastReadVolumeId: attachedDatabase.typeMapping.read(
@@ -541,6 +558,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
   final bool isReversal;
   final String sortKey;
   final String volumeListJson;
+  final String chapterMapJson;
   final int lastHistoryTime;
   final String lastReadVolumeId;
   final String lastReadVolumeLabel;
@@ -572,6 +590,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       required this.isReversal,
       required this.sortKey,
       required this.volumeListJson,
+      required this.chapterMapJson,
       required this.lastHistoryTime,
       required this.lastReadVolumeId,
       required this.lastReadVolumeLabel,
@@ -611,6 +630,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
     map['is_reversal'] = Variable<bool>(isReversal);
     map['sort_key'] = Variable<String>(sortKey);
     map['volume_list_json'] = Variable<String>(volumeListJson);
+    map['chapter_map_json'] = Variable<String>(chapterMapJson);
     map['last_history_time'] = Variable<int>(lastHistoryTime);
     map['last_read_volume_id'] = Variable<String>(lastReadVolumeId);
     map['last_read_volume_label'] = Variable<String>(lastReadVolumeLabel);
@@ -646,6 +666,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       isReversal: Value(isReversal),
       sortKey: Value(sortKey),
       volumeListJson: Value(volumeListJson),
+      chapterMapJson: Value(chapterMapJson),
       lastHistoryTime: Value(lastHistoryTime),
       lastReadVolumeId: Value(lastReadVolumeId),
       lastReadVolumeLabel: Value(lastReadVolumeLabel),
@@ -685,6 +706,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       isReversal: serializer.fromJson<bool>(json['isReversal']),
       sortKey: serializer.fromJson<String>(json['sortKey']),
       volumeListJson: serializer.fromJson<String>(json['volumeListJson']),
+      chapterMapJson: serializer.fromJson<String>(json['chapterMapJson']),
       lastHistoryTime: serializer.fromJson<int>(json['lastHistoryTime']),
       lastReadVolumeId: serializer.fromJson<String>(json['lastReadVolumeId']),
       lastReadVolumeLabel:
@@ -728,6 +750,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       'isReversal': serializer.toJson<bool>(isReversal),
       'sortKey': serializer.toJson<String>(sortKey),
       'volumeListJson': serializer.toJson<String>(volumeListJson),
+      'chapterMapJson': serializer.toJson<String>(chapterMapJson),
       'lastHistoryTime': serializer.toJson<int>(lastHistoryTime),
       'lastReadVolumeId': serializer.toJson<String>(lastReadVolumeId),
       'lastReadVolumeLabel': serializer.toJson<String>(lastReadVolumeLabel),
@@ -762,6 +785,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           bool? isReversal,
           String? sortKey,
           String? volumeListJson,
+          String? chapterMapJson,
           int? lastHistoryTime,
           String? lastReadVolumeId,
           String? lastReadVolumeLabel,
@@ -793,6 +817,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
         isReversal: isReversal ?? this.isReversal,
         sortKey: sortKey ?? this.sortKey,
         volumeListJson: volumeListJson ?? this.volumeListJson,
+        chapterMapJson: chapterMapJson ?? this.chapterMapJson,
         lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
         lastReadVolumeId: lastReadVolumeId ?? this.lastReadVolumeId,
         lastReadVolumeLabel: lastReadVolumeLabel ?? this.lastReadVolumeLabel,
@@ -828,6 +853,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
           ..write('volumeListJson: $volumeListJson, ')
+          ..write('chapterMapJson: $chapterMapJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
           ..write('lastReadVolumeId: $lastReadVolumeId, ')
           ..write('lastReadVolumeLabel: $lastReadVolumeLabel, ')
@@ -864,6 +890,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
         isReversal,
         sortKey,
         volumeListJson,
+        chapterMapJson,
         lastHistoryTime,
         lastReadVolumeId,
         lastReadVolumeLabel,
@@ -899,6 +926,7 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           other.isReversal == this.isReversal &&
           other.sortKey == this.sortKey &&
           other.volumeListJson == this.volumeListJson &&
+          other.chapterMapJson == this.chapterMapJson &&
           other.lastHistoryTime == this.lastHistoryTime &&
           other.lastReadVolumeId == this.lastReadVolumeId &&
           other.lastReadVolumeLabel == this.lastReadVolumeLabel &&
@@ -932,6 +960,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
   final Value<bool> isReversal;
   final Value<String> sortKey;
   final Value<String> volumeListJson;
+  final Value<String> chapterMapJson;
   final Value<int> lastHistoryTime;
   final Value<String> lastReadVolumeId;
   final Value<String> lastReadVolumeLabel;
@@ -964,6 +993,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
     this.volumeListJson = const Value.absent(),
+    this.chapterMapJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
     this.lastReadVolumeId = const Value.absent(),
     this.lastReadVolumeLabel = const Value.absent(),
@@ -997,6 +1027,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
     this.volumeListJson = const Value.absent(),
+    this.chapterMapJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
     this.lastReadVolumeId = const Value.absent(),
     this.lastReadVolumeLabel = const Value.absent(),
@@ -1032,6 +1063,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     Expression<bool>? isReversal,
     Expression<String>? sortKey,
     Expression<String>? volumeListJson,
+    Expression<String>? chapterMapJson,
     Expression<int>? lastHistoryTime,
     Expression<String>? lastReadVolumeId,
     Expression<String>? lastReadVolumeLabel,
@@ -1065,6 +1097,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       if (isReversal != null) 'is_reversal': isReversal,
       if (sortKey != null) 'sort_key': sortKey,
       if (volumeListJson != null) 'volume_list_json': volumeListJson,
+      if (chapterMapJson != null) 'chapter_map_json': chapterMapJson,
       if (lastHistoryTime != null) 'last_history_time': lastHistoryTime,
       if (lastReadVolumeId != null) 'last_read_volume_id': lastReadVolumeId,
       if (lastReadVolumeLabel != null)
@@ -1105,6 +1138,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       Value<bool>? isReversal,
       Value<String>? sortKey,
       Value<String>? volumeListJson,
+      Value<String>? chapterMapJson,
       Value<int>? lastHistoryTime,
       Value<String>? lastReadVolumeId,
       Value<String>? lastReadVolumeLabel,
@@ -1137,6 +1171,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       isReversal: isReversal ?? this.isReversal,
       sortKey: sortKey ?? this.sortKey,
       volumeListJson: volumeListJson ?? this.volumeListJson,
+      chapterMapJson: chapterMapJson ?? this.chapterMapJson,
       lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
       lastReadVolumeId: lastReadVolumeId ?? this.lastReadVolumeId,
       lastReadVolumeLabel: lastReadVolumeLabel ?? this.lastReadVolumeLabel,
@@ -1212,6 +1247,9 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     if (volumeListJson.present) {
       map['volume_list_json'] = Variable<String>(volumeListJson.value);
     }
+    if (chapterMapJson.present) {
+      map['chapter_map_json'] = Variable<String>(chapterMapJson.value);
+    }
     if (lastHistoryTime.present) {
       map['last_history_time'] = Variable<int>(lastHistoryTime.value);
     }
@@ -1281,6 +1319,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
           ..write('volumeListJson: $volumeListJson, ')
+          ..write('chapterMapJson: $chapterMapJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
           ..write('lastReadVolumeId: $lastReadVolumeId, ')
           ..write('lastReadVolumeLabel: $lastReadVolumeLabel, ')

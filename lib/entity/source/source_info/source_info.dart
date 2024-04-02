@@ -1,4 +1,4 @@
-import 'package:easy_mygo/utils/source/source_utils_scope.dart';
+import 'package:easy_mygo/plugin/source/utils/source_utils_scope.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'source_info.freezed.dart';

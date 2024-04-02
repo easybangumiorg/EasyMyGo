@@ -142,6 +142,14 @@ class $MangaTableTable extends MangaTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant(""));
+  static const VerificationMeta _pictureMapJsonMeta =
+      const VerificationMeta('pictureMapJson');
+  @override
+  late final GeneratedColumn<String> pictureMapJson = GeneratedColumn<String>(
+      'picture_map_json', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(""));
   static const VerificationMeta _lastHistoryTimeMeta =
       const VerificationMeta('lastHistoryTime');
   @override
@@ -255,6 +263,7 @@ class $MangaTableTable extends MangaTable
         isReversal,
         sortKey,
         chapterListJson,
+        pictureMapJson,
         lastHistoryTime,
         lastReadChapterId,
         lastReadChapterLabel,
@@ -354,6 +363,12 @@ class $MangaTableTable extends MangaTable
           _chapterListJsonMeta,
           chapterListJson.isAcceptableOrUnknown(
               data['chapter_list_json']!, _chapterListJsonMeta));
+    }
+    if (data.containsKey('picture_map_json')) {
+      context.handle(
+          _pictureMapJsonMeta,
+          pictureMapJson.isAcceptableOrUnknown(
+              data['picture_map_json']!, _pictureMapJsonMeta));
     }
     if (data.containsKey('last_history_time')) {
       context.handle(
@@ -463,6 +478,8 @@ class $MangaTableTable extends MangaTable
           .read(DriftSqlType.string, data['${effectivePrefix}sort_key'])!,
       chapterListJson: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}chapter_list_json'])!,
+      pictureMapJson: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}picture_map_json'])!,
       lastHistoryTime: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}last_history_time'])!,
       lastReadChapterId: attachedDatabase.typeMapping.read(
@@ -522,6 +539,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
   final bool isReversal;
   final String sortKey;
   final String chapterListJson;
+  final String pictureMapJson;
   final int lastHistoryTime;
   final String lastReadChapterId;
   final String lastReadChapterLabel;
@@ -552,6 +570,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       required this.isReversal,
       required this.sortKey,
       required this.chapterListJson,
+      required this.pictureMapJson,
       required this.lastHistoryTime,
       required this.lastReadChapterId,
       required this.lastReadChapterLabel,
@@ -590,6 +609,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
     map['is_reversal'] = Variable<bool>(isReversal);
     map['sort_key'] = Variable<String>(sortKey);
     map['chapter_list_json'] = Variable<String>(chapterListJson);
+    map['picture_map_json'] = Variable<String>(pictureMapJson);
     map['last_history_time'] = Variable<int>(lastHistoryTime);
     map['last_read_chapter_id'] = Variable<String>(lastReadChapterId);
     map['last_read_chapter_label'] = Variable<String>(lastReadChapterLabel);
@@ -625,6 +645,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       isReversal: Value(isReversal),
       sortKey: Value(sortKey),
       chapterListJson: Value(chapterListJson),
+      pictureMapJson: Value(pictureMapJson),
       lastHistoryTime: Value(lastHistoryTime),
       lastReadChapterId: Value(lastReadChapterId),
       lastReadChapterLabel: Value(lastReadChapterLabel),
@@ -663,6 +684,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       isReversal: serializer.fromJson<bool>(json['isReversal']),
       sortKey: serializer.fromJson<String>(json['sortKey']),
       chapterListJson: serializer.fromJson<String>(json['chapterListJson']),
+      pictureMapJson: serializer.fromJson<String>(json['pictureMapJson']),
       lastHistoryTime: serializer.fromJson<int>(json['lastHistoryTime']),
       lastReadChapterId: serializer.fromJson<String>(json['lastReadChapterId']),
       lastReadChapterLabel:
@@ -703,6 +725,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
       'isReversal': serializer.toJson<bool>(isReversal),
       'sortKey': serializer.toJson<String>(sortKey),
       'chapterListJson': serializer.toJson<String>(chapterListJson),
+      'pictureMapJson': serializer.toJson<String>(pictureMapJson),
       'lastHistoryTime': serializer.toJson<int>(lastHistoryTime),
       'lastReadChapterId': serializer.toJson<String>(lastReadChapterId),
       'lastReadChapterLabel': serializer.toJson<String>(lastReadChapterLabel),
@@ -737,6 +760,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           bool? isReversal,
           String? sortKey,
           String? chapterListJson,
+          String? pictureMapJson,
           int? lastHistoryTime,
           String? lastReadChapterId,
           String? lastReadChapterLabel,
@@ -767,6 +791,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
         isReversal: isReversal ?? this.isReversal,
         sortKey: sortKey ?? this.sortKey,
         chapterListJson: chapterListJson ?? this.chapterListJson,
+        pictureMapJson: pictureMapJson ?? this.pictureMapJson,
         lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
         lastReadChapterId: lastReadChapterId ?? this.lastReadChapterId,
         lastReadChapterLabel: lastReadChapterLabel ?? this.lastReadChapterLabel,
@@ -801,6 +826,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
           ..write('chapterListJson: $chapterListJson, ')
+          ..write('pictureMapJson: $pictureMapJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
           ..write('lastReadChapterId: $lastReadChapterId, ')
           ..write('lastReadChapterLabel: $lastReadChapterLabel, ')
@@ -836,6 +862,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
         isReversal,
         sortKey,
         chapterListJson,
+        pictureMapJson,
         lastHistoryTime,
         lastReadChapterId,
         lastReadChapterLabel,
@@ -870,6 +897,7 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
           other.isReversal == this.isReversal &&
           other.sortKey == this.sortKey &&
           other.chapterListJson == this.chapterListJson &&
+          other.pictureMapJson == this.pictureMapJson &&
           other.lastHistoryTime == this.lastHistoryTime &&
           other.lastReadChapterId == this.lastReadChapterId &&
           other.lastReadChapterLabel == this.lastReadChapterLabel &&
@@ -902,6 +930,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
   final Value<bool> isReversal;
   final Value<String> sortKey;
   final Value<String> chapterListJson;
+  final Value<String> pictureMapJson;
   final Value<int> lastHistoryTime;
   final Value<String> lastReadChapterId;
   final Value<String> lastReadChapterLabel;
@@ -933,6 +962,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
     this.chapterListJson = const Value.absent(),
+    this.pictureMapJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
     this.lastReadChapterId = const Value.absent(),
     this.lastReadChapterLabel = const Value.absent(),
@@ -965,6 +995,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
     this.chapterListJson = const Value.absent(),
+    this.pictureMapJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
     this.lastReadChapterId = const Value.absent(),
     this.lastReadChapterLabel = const Value.absent(),
@@ -999,6 +1030,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     Expression<bool>? isReversal,
     Expression<String>? sortKey,
     Expression<String>? chapterListJson,
+    Expression<String>? pictureMapJson,
     Expression<int>? lastHistoryTime,
     Expression<String>? lastReadChapterId,
     Expression<String>? lastReadChapterLabel,
@@ -1031,6 +1063,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       if (isReversal != null) 'is_reversal': isReversal,
       if (sortKey != null) 'sort_key': sortKey,
       if (chapterListJson != null) 'chapter_list_json': chapterListJson,
+      if (pictureMapJson != null) 'picture_map_json': pictureMapJson,
       if (lastHistoryTime != null) 'last_history_time': lastHistoryTime,
       if (lastReadChapterId != null) 'last_read_chapter_id': lastReadChapterId,
       if (lastReadChapterLabel != null)
@@ -1069,6 +1102,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       Value<bool>? isReversal,
       Value<String>? sortKey,
       Value<String>? chapterListJson,
+      Value<String>? pictureMapJson,
       Value<int>? lastHistoryTime,
       Value<String>? lastReadChapterId,
       Value<String>? lastReadChapterLabel,
@@ -1100,6 +1134,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
       isReversal: isReversal ?? this.isReversal,
       sortKey: sortKey ?? this.sortKey,
       chapterListJson: chapterListJson ?? this.chapterListJson,
+      pictureMapJson: pictureMapJson ?? this.pictureMapJson,
       lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
       lastReadChapterId: lastReadChapterId ?? this.lastReadChapterId,
       lastReadChapterLabel: lastReadChapterLabel ?? this.lastReadChapterLabel,
@@ -1174,6 +1209,9 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
     if (chapterListJson.present) {
       map['chapter_list_json'] = Variable<String>(chapterListJson.value);
     }
+    if (pictureMapJson.present) {
+      map['picture_map_json'] = Variable<String>(pictureMapJson.value);
+    }
     if (lastHistoryTime.present) {
       map['last_history_time'] = Variable<int>(lastHistoryTime.value);
     }
@@ -1239,6 +1277,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
           ..write('chapterListJson: $chapterListJson, ')
+          ..write('pictureMapJson: $pictureMapJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
           ..write('lastReadChapterId: $lastReadChapterId, ')
           ..write('lastReadChapterLabel: $lastReadChapterLabel, ')

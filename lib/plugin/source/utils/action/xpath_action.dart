@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/utils/source/action/source_action.dart';
+import 'package:easy_mygo/plugin/source/utils/action/source_action.dart';
 import 'package:html/dom.dart';
 import 'package:xpath_selector_html_parser/xpath_selector_html_parser.dart';
 

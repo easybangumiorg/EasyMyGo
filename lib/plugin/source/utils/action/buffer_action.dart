@@ -1,5 +1,5 @@
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/utils/source/action/source_action.dart';
+import 'package:easy_mygo/plugin/source/utils/action/source_action.dart';
 
 
 class BufferAction extends SourceAction {

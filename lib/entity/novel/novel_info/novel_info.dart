@@ -1,5 +1,12 @@
+import 'dart:collection';
+import 'dart:convert';
+
 import 'package:drift/drift.dart';
+import 'package:easy_mygo/database/db/novel/novel_db.dart';
+import 'package:easy_mygo/entity/novel/novel_chapter/novel_chapter.dart';
 import 'package:easy_mygo/entity/novel/novel_enum.dart';
+import 'package:easy_mygo/entity/novel/novel_volume/novel_volume.dart';
+import 'package:flutter/foundation.dart';
 
 /// 一部小说在整个软件中的聚合，包括以下数据：
 /// 来自插件：
@@ -73,6 +80,9 @@ class NovelTable extends Table {
   TextColumn get volumeListJson =>
       text().named("volume_list_json").withDefault(const Constant(""))();
 
+  // 章节 map，存的 Json 数据，其中 key 是 卷 id
+  TextColumn get chapterMapJson =>
+      text().named("chapter_map_json").withDefault(const Constant(""))();
   // History
   // 最后的历史数据添加时间
   IntColumn get lastHistoryTime =>
@@ -137,4 +147,86 @@ class NovelTable extends Table {
 
   @override
   String get tableName => "NovelInfo";
+}
+
+extension NovelInfoExt on NovelInfo {
+  static final _listVolumeValues = Expando<List<NovelVolume>>();
+  List<NovelVolume> get volumeList {
+    final value = _listVolumeValues[this];
+    if (value == null) {
+      if (volumeListJson.isEmpty) {
+        _listVolumeValues[this] = null;
+        return List.empty();
+      }
+      try {
+        Iterable l = json.decode(volumeListJson);
+        List<NovelVolume> n = List<NovelVolume>.from(l.map((e) => NovelVolume.fromJson(e)));
+        _listVolumeValues[this] = n;
+        return n;
+      } on FormatException catch (e) {
+        _listVolumeValues[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return List.empty();
+    }
+    return value;
+  }
+
+  static final _listTagsId = Expando<List<String>>();
+  List<String> get tagsIdList {
+    final value = _listTagsId[this];
+    if (value == null) {
+      if (tags.isEmpty) {
+        _listTagsId[this] = null;
+        return List.empty();
+      }
+      try {
+        Iterable l = tags.split(",");
+        List<String> n = List<String>.from(l);
+        _listTagsId[this] = n;
+        return n ?? List.empty();
+      } on FormatException catch (e) {
+        _listTagsId[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return List.empty();
+    }
+    return value;
+  }
+
+  static final _mapChapter = Expando<Map<String, List<NovelChapter>>>();
+  Map<String, List<NovelChapter>> get pictureMap {
+    final value = _mapChapter[this];
+    if(value == null){
+      if (chapterMapJson.isEmpty) {
+        _mapChapter[this] = null;
+        return {};
+      }
+      try {
+        Map<String, dynamic> m = json.decode(chapterMapJson);
+        HashMap<String, List<NovelChapter>> res = HashMap();
+        final keys = m.keys;
+        for(String key in keys){
+          final Iterable value = m[key];
+          final list = value.map((e) => NovelChapter.fromJson(json.decode(e))).toList(growable: false);
+          res[key] = list;
+        }
+
+        _mapChapter[this] = res;
+        return res;
+      } on FormatException catch (e) {
+        _listVolumeValues[this] = null;
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+      return {};
+    }
+    return value;
+  }
+
 }
