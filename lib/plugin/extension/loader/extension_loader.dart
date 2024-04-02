@@ -20,6 +20,16 @@ abstract class ExtensionLoader {
     return _loaders[type]!;
   }
 
+  static ExtensionLoader? ofName(String name) {
+    for (var key in _loaders.keys) {
+      final loader = _loaders[key];
+      if(loader?.type.name == name){
+        return loader;
+      }
+    }
+    return null;
+  }
+
 
   ExtensionLoaderType get type;
 
@@ -27,6 +37,6 @@ abstract class ExtensionLoader {
   Future<ExtensionInfo?> parse(String file);
 
   /// 加载拓展
-  Future<ExtensionData?> load(ExtensionInfo extensionInfo);
+  Future<ExtensionData> load(ExtensionInfo extensionInfo);
 
 }

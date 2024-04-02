@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:drift/native.dart';
 import 'package:easy_mygo/c.dart';
 import 'package:easy_mygo/database/dao/manga/manga_dao.dart';
+import 'package:easy_mygo/database/dao/novel/novel_dao.dart';
 import 'package:easy_mygo/database/db/manga/manga_db.dart';
+import 'package:easy_mygo/database/db/novel/novel_db.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'dao/novel/novel_dao.dart';
-import 'db/novel/novel_db.dart';
 
 part 'database.g.dart';
 

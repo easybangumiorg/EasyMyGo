@@ -26,7 +26,7 @@ class MygopackExtensionLoader extends ExtensionLoader {
 
   /// 加载 mygopack，这里会将插件包解压到软件插件目录
   @override
-  Future<ExtensionData?> load(ExtensionInfo extensionInfo) async {
+  Future<ExtensionData> load(ExtensionInfo extensionInfo) async {
     final path = await ExtensionUtils.getFolder(
         extensionInfo.loadType, extensionInfo.package);
     final dir = Directory(path).absolute; // 这里取绝对路径

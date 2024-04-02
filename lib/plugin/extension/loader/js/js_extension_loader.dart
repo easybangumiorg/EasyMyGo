@@ -10,7 +10,7 @@ class JsExtensionLoader extends ExtensionLoader {
   
 
   @override
-  Future<ExtensionData?> load(ExtensionInfo extensionInfo) {
+  Future<ExtensionData> load(ExtensionInfo extensionInfo) {
     throw UnimplementedError();
   }
 
