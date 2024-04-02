@@ -6,17 +6,17 @@ part 'search_resp.g.dart';
 part 'search_resp.freezed.dart';
 
 @freezed
-class SearchResp with _$SearchResp {
+class MangaSearchResp with _$MangaSearchResp {
 
-  factory SearchResp({
+  factory MangaSearchResp({
     // 当页结果
     @Default(null)  List<MangaCover>? data,
 
     // 下一页的 key，为 null 则代表没有下一页
     @Default(null) @JsonKey(name: "next_key") String? nextKey,
     required ComponentPayload payload,
-  }) = _SearchResp;
+  }) = _MangaSearchResp;
 
-  factory SearchResp.fromJson(Map<String, Object?> json) =>
-      _$SearchRespFromJson(json);
+  factory MangaSearchResp.fromJson(Map<String, Object?> json) =>
+      _$MangaSearchRespFromJson(json);
 }

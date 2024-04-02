@@ -31,6 +31,22 @@ class MygopackExtensionLoader extends ExtensionLoader {
         extensionInfo.loadType, extensionInfo.package);
     final dir = Directory(path).absolute; // 这里取绝对路径
 
+    // 版本检查
+    if (extensionInfo.libVersion < ExtensionLoader.libVersionMin ) {
+      return ExtensionData(
+          info: extensionInfo,
+          folderPath: dir.path,
+          state: ExtensionState.error,
+          errorMsg: "插件版本过旧！");
+    }
+    if (extensionInfo.libVersion > ExtensionLoader.libVersionMax ) {
+      return ExtensionData(
+          info: extensionInfo,
+          folderPath: dir.path,
+          state: ExtensionState.error,
+          errorMsg: "纯纯 Mygo 版本过旧，请升级版本！");
+    }
+
     // 1.解压
     final (unzipResult, errorMsg) = await _loadUnzip(extensionInfo, dir);
     if (unzipResult == 2) {

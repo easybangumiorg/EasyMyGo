@@ -7,20 +7,20 @@ import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/detailed/resp/detailed_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 
-abstract class MangeDetailedComponent extends Component {
+abstract class MangaDetailedComponent extends Component {
 
-  MangeDetailedComponent(super.sourceInfo);
+  MangaDetailedComponent(super.sourceInfo);
 
-  Future<DetailedResp> getMangaDetailed(MangaSummary summary);
+  Future<MangaDetailedResp> getMangaDetailed(MangaSummary summary);
 
-  Future<DetailedResp> performGetMangaDetailed(MangaSummary summary) async {
+  Future<MangaDetailedResp> performGetMangaDetailed(MangaSummary summary) async {
     try {
       return await getMangaDetailed(summary);
     } catch (e) {
       if (e is ComponentPayload) {
-        return DetailedResp(payload: e);
+        return MangaDetailedResp(payload: e);
       } else {
-        return DetailedResp(
+        return MangaDetailedResp(
             payload: ComponentPayload(
                 code: ComponentPayload.codeCallError,
                 msg: e.toString(),

@@ -9,14 +9,14 @@ part 'detailed_resp.freezed.dart';
 part 'detailed_resp.g.dart';
 
 @freezed
-class DetailedResp with _$DetailedResp {
+class MangaDetailedResp with _$MangaDetailedResp {
 
-  factory DetailedResp({
+  factory MangaDetailedResp({
     @Default(null) MangaDetailed? detailed,
     @Default(null) List<MangaChapter>? chapters,
     required ComponentPayload payload,
-  }) = _DetailedResp;
+  }) = _MangaDetailedResp;
 
-  factory DetailedResp.fromJson(Map<String, Object?> json)
-  => _$DetailedRespFromJson(json);
+  factory MangaDetailedResp.fromJson(Map<String, Object?> json)
+  => _$MangaDetailedRespFromJson(json);
 }

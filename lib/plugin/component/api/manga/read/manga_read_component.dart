@@ -5,22 +5,22 @@ import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/read/resp/read_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 
-abstract class MangeReadComponent extends Component {
-  MangeReadComponent(super.sourceInfo);
+abstract class MangaReadComponent extends Component {
+  MangaReadComponent(super.sourceInfo);
 
   /// throws: ComponentPayload
-  Future<ReadResp> getMangaPicture(
+  Future<MangaReadResp> getMangaPicture(
       MangaDetailed detailed, MangaChapter chapter);
 
-  Future<ReadResp> performGetMangaPicture(
+  Future<MangaReadResp> performGetMangaPicture(
       MangaDetailed detailed, MangaChapter chapter) async {
     try {
       return await getMangaPicture(detailed, chapter);
     } catch (e) {
       if (e is ComponentPayload) {
-        return ReadResp(payload: e);
+        return MangaReadResp(payload: e);
       } else {
-        return ReadResp(
+        return MangaReadResp(
             payload: ComponentPayload(
                 code: ComponentPayload.codeCallError,
                 msg: e.toString(),

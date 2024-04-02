@@ -8,6 +8,9 @@ import 'mygopack/mygopack_extension_loader.dart';
 
 abstract class ExtensionLoader {
 
+  static const libVersionMin = 1;
+  static const libVersionMax = 1;
+
   static final _loaders = <ExtensionLoaderType, ExtensionLoader>{
     ExtensionLoaderType.js: JsExtensionLoader(),
     ExtensionLoaderType.mygopack: MygopackExtensionLoader(),
@@ -16,6 +19,7 @@ abstract class ExtensionLoader {
   static ExtensionLoader of(ExtensionLoaderType type) {
     return _loaders[type]!;
   }
+
 
   ExtensionLoaderType get type;
 

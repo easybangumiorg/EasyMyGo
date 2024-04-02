@@ -17,6 +17,7 @@ _$MangaChapterImpl _$$MangaChapterImplFromJson(Map<String, dynamic> json) =>
             (k, e) => MapEntry(k, e as String),
           ) ??
           const {},
+      ext: json['ext'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$MangaChapterImplToJson(_$MangaChapterImpl instance) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$MangaChapterImplToJson(_$MangaChapterImpl instance) =>
       'id': instance.id,
       'show_type': _$ChapterShowTypeEnumMap[instance.showType]!,
       'parameter': instance.parameter,
+      'ext': instance.ext,
     };
 
 const _$ChapterShowTypeEnumMap = {

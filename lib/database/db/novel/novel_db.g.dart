@@ -134,11 +134,11 @@ class $NovelTableTable extends NovelTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant(""));
-  static const VerificationMeta _seasonListJsonMeta =
-      const VerificationMeta('seasonListJson');
+  static const VerificationMeta _volumeListJsonMeta =
+      const VerificationMeta('volumeListJson');
   @override
-  late final GeneratedColumn<String> seasonListJson = GeneratedColumn<String>(
-      'season_list_json', aliasedName, false,
+  late final GeneratedColumn<String> volumeListJson = GeneratedColumn<String>(
+      'volume_list_json', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant(""));
@@ -150,27 +150,27 @@ class $NovelTableTable extends NovelTable
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
-  static const VerificationMeta _lastReadSeasonIdMeta =
-      const VerificationMeta('lastReadSeasonId');
+  static const VerificationMeta _lastReadVolumeIdMeta =
+      const VerificationMeta('lastReadVolumeId');
   @override
-  late final GeneratedColumn<String> lastReadSeasonId = GeneratedColumn<String>(
-      'last_read_season_id', aliasedName, false,
+  late final GeneratedColumn<String> lastReadVolumeId = GeneratedColumn<String>(
+      'last_read_volume_id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant(""));
-  static const VerificationMeta _lastReadSeasonLabelMeta =
-      const VerificationMeta('lastReadSeasonLabel');
+  static const VerificationMeta _lastReadVolumeLabelMeta =
+      const VerificationMeta('lastReadVolumeLabel');
   @override
-  late final GeneratedColumn<String> lastReadSeasonLabel =
-      GeneratedColumn<String>('last_read_season_label', aliasedName, false,
+  late final GeneratedColumn<String> lastReadVolumeLabel =
+      GeneratedColumn<String>('last_read_volume_label', aliasedName, false,
           type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultValue: const Constant(""));
-  static const VerificationMeta _lastReadSeasonIndexMeta =
-      const VerificationMeta('lastReadSeasonIndex');
+  static const VerificationMeta _lastReadVolumeIndexMeta =
+      const VerificationMeta('lastReadVolumeIndex');
   @override
-  late final GeneratedColumn<int> lastReadSeasonIndex = GeneratedColumn<int>(
-      'last_read_season_index', aliasedName, false,
+  late final GeneratedColumn<int> lastReadVolumeIndex = GeneratedColumn<int>(
+      'last_read_volume_index', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
@@ -190,22 +190,22 @@ class $NovelTableTable extends NovelTable
           type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultValue: const Constant(""));
-  static const VerificationMeta _lastReadSeasonProcessMeta =
-      const VerificationMeta('lastReadSeasonProcess');
+  static const VerificationMeta _lastReadVolumeProcessMeta =
+      const VerificationMeta('lastReadVolumeProcess');
   @override
-  late final GeneratedColumn<int> lastReadSeasonProcess = GeneratedColumn<int>(
-      'last_read_season_process', aliasedName, false,
+  late final GeneratedColumn<int> lastReadVolumeProcess = GeneratedColumn<int>(
+      'last_read_volume_process', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
   static const VerificationMeta _lastReadBookMarkJsonMeta =
       const VerificationMeta('lastReadBookMarkJson');
   @override
-  late final GeneratedColumn<int> lastReadBookMarkJson = GeneratedColumn<int>(
-      'last_read_book_mark_json', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultValue: const Constant(0));
+  late final GeneratedColumn<String> lastReadBookMarkJson =
+      GeneratedColumn<String>('last_read_book_mark_json', aliasedName, false,
+          type: DriftSqlType.string,
+          requiredDuringInsert: false,
+          defaultValue: const Constant(''));
   static const VerificationMeta _tagsMeta = const VerificationMeta('tags');
   @override
   late final GeneratedColumn<String> tags = GeneratedColumn<String>(
@@ -262,14 +262,14 @@ class $NovelTableTable extends NovelTable
         sourceName,
         isReversal,
         sortKey,
-        seasonListJson,
+        volumeListJson,
         lastHistoryTime,
-        lastReadSeasonId,
-        lastReadSeasonLabel,
-        lastReadSeasonIndex,
+        lastReadVolumeId,
+        lastReadVolumeLabel,
+        lastReadVolumeIndex,
         lastReadChapterId,
         lastReadChapterLabel,
-        lastReadSeasonProcess,
+        lastReadVolumeProcess,
         lastReadBookMarkJson,
         tags,
         starTime,
@@ -358,11 +358,11 @@ class $NovelTableTable extends NovelTable
       context.handle(_sortKeyMeta,
           sortKey.isAcceptableOrUnknown(data['sort_key']!, _sortKeyMeta));
     }
-    if (data.containsKey('season_list_json')) {
+    if (data.containsKey('volume_list_json')) {
       context.handle(
-          _seasonListJsonMeta,
-          seasonListJson.isAcceptableOrUnknown(
-              data['season_list_json']!, _seasonListJsonMeta));
+          _volumeListJsonMeta,
+          volumeListJson.isAcceptableOrUnknown(
+              data['volume_list_json']!, _volumeListJsonMeta));
     }
     if (data.containsKey('last_history_time')) {
       context.handle(
@@ -370,23 +370,23 @@ class $NovelTableTable extends NovelTable
           lastHistoryTime.isAcceptableOrUnknown(
               data['last_history_time']!, _lastHistoryTimeMeta));
     }
-    if (data.containsKey('last_read_season_id')) {
+    if (data.containsKey('last_read_volume_id')) {
       context.handle(
-          _lastReadSeasonIdMeta,
-          lastReadSeasonId.isAcceptableOrUnknown(
-              data['last_read_season_id']!, _lastReadSeasonIdMeta));
+          _lastReadVolumeIdMeta,
+          lastReadVolumeId.isAcceptableOrUnknown(
+              data['last_read_volume_id']!, _lastReadVolumeIdMeta));
     }
-    if (data.containsKey('last_read_season_label')) {
+    if (data.containsKey('last_read_volume_label')) {
       context.handle(
-          _lastReadSeasonLabelMeta,
-          lastReadSeasonLabel.isAcceptableOrUnknown(
-              data['last_read_season_label']!, _lastReadSeasonLabelMeta));
+          _lastReadVolumeLabelMeta,
+          lastReadVolumeLabel.isAcceptableOrUnknown(
+              data['last_read_volume_label']!, _lastReadVolumeLabelMeta));
     }
-    if (data.containsKey('last_read_season_index')) {
+    if (data.containsKey('last_read_volume_index')) {
       context.handle(
-          _lastReadSeasonIndexMeta,
-          lastReadSeasonIndex.isAcceptableOrUnknown(
-              data['last_read_season_index']!, _lastReadSeasonIndexMeta));
+          _lastReadVolumeIndexMeta,
+          lastReadVolumeIndex.isAcceptableOrUnknown(
+              data['last_read_volume_index']!, _lastReadVolumeIndexMeta));
     }
     if (data.containsKey('last_read_chapter_id')) {
       context.handle(
@@ -400,11 +400,11 @@ class $NovelTableTable extends NovelTable
           lastReadChapterLabel.isAcceptableOrUnknown(
               data['last_read_chapter_label']!, _lastReadChapterLabelMeta));
     }
-    if (data.containsKey('last_read_season_process')) {
+    if (data.containsKey('last_read_volume_process')) {
       context.handle(
-          _lastReadSeasonProcessMeta,
-          lastReadSeasonProcess.isAcceptableOrUnknown(
-              data['last_read_season_process']!, _lastReadSeasonProcessMeta));
+          _lastReadVolumeProcessMeta,
+          lastReadVolumeProcess.isAcceptableOrUnknown(
+              data['last_read_volume_process']!, _lastReadVolumeProcessMeta));
     }
     if (data.containsKey('last_read_book_mark_json')) {
       context.handle(
@@ -477,25 +477,26 @@ class $NovelTableTable extends NovelTable
           .read(DriftSqlType.bool, data['${effectivePrefix}is_reversal'])!,
       sortKey: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}sort_key'])!,
-      seasonListJson: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}season_list_json'])!,
+      volumeListJson: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}volume_list_json'])!,
       lastHistoryTime: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}last_history_time'])!,
-      lastReadSeasonId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}last_read_season_id'])!,
-      lastReadSeasonLabel: attachedDatabase.typeMapping.read(
+      lastReadVolumeId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}last_read_volume_id'])!,
+      lastReadVolumeLabel: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
-          data['${effectivePrefix}last_read_season_label'])!,
-      lastReadSeasonIndex: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}last_read_season_index'])!,
+          data['${effectivePrefix}last_read_volume_label'])!,
+      lastReadVolumeIndex: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}last_read_volume_index'])!,
       lastReadChapterId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}last_read_chapter_id'])!,
       lastReadChapterLabel: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}last_read_chapter_label'])!,
-      lastReadSeasonProcess: attachedDatabase.typeMapping.read(DriftSqlType.int,
-          data['${effectivePrefix}last_read_season_process'])!,
-      lastReadBookMarkJson: attachedDatabase.typeMapping.read(DriftSqlType.int,
+      lastReadVolumeProcess: attachedDatabase.typeMapping.read(DriftSqlType.int,
+          data['${effectivePrefix}last_read_volume_process'])!,
+      lastReadBookMarkJson: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
           data['${effectivePrefix}last_read_book_mark_json'])!,
       tags: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}tags_id'])!,
@@ -539,15 +540,15 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
   final String sourceName;
   final bool isReversal;
   final String sortKey;
-  final String seasonListJson;
+  final String volumeListJson;
   final int lastHistoryTime;
-  final String lastReadSeasonId;
-  final String lastReadSeasonLabel;
-  final int lastReadSeasonIndex;
+  final String lastReadVolumeId;
+  final String lastReadVolumeLabel;
+  final int lastReadVolumeIndex;
   final String lastReadChapterId;
   final String lastReadChapterLabel;
-  final int lastReadSeasonProcess;
-  final int lastReadBookMarkJson;
+  final int lastReadVolumeProcess;
+  final String lastReadBookMarkJson;
   final String tags;
   final int starTime;
   final int pinTime;
@@ -570,14 +571,14 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       required this.sourceName,
       required this.isReversal,
       required this.sortKey,
-      required this.seasonListJson,
+      required this.volumeListJson,
       required this.lastHistoryTime,
-      required this.lastReadSeasonId,
-      required this.lastReadSeasonLabel,
-      required this.lastReadSeasonIndex,
+      required this.lastReadVolumeId,
+      required this.lastReadVolumeLabel,
+      required this.lastReadVolumeIndex,
       required this.lastReadChapterId,
       required this.lastReadChapterLabel,
-      required this.lastReadSeasonProcess,
+      required this.lastReadVolumeProcess,
       required this.lastReadBookMarkJson,
       required this.tags,
       required this.starTime,
@@ -609,15 +610,15 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
     map['source_name'] = Variable<String>(sourceName);
     map['is_reversal'] = Variable<bool>(isReversal);
     map['sort_key'] = Variable<String>(sortKey);
-    map['season_list_json'] = Variable<String>(seasonListJson);
+    map['volume_list_json'] = Variable<String>(volumeListJson);
     map['last_history_time'] = Variable<int>(lastHistoryTime);
-    map['last_read_season_id'] = Variable<String>(lastReadSeasonId);
-    map['last_read_season_label'] = Variable<String>(lastReadSeasonLabel);
-    map['last_read_season_index'] = Variable<int>(lastReadSeasonIndex);
+    map['last_read_volume_id'] = Variable<String>(lastReadVolumeId);
+    map['last_read_volume_label'] = Variable<String>(lastReadVolumeLabel);
+    map['last_read_volume_index'] = Variable<int>(lastReadVolumeIndex);
     map['last_read_chapter_id'] = Variable<String>(lastReadChapterId);
     map['last_read_chapter_label'] = Variable<String>(lastReadChapterLabel);
-    map['last_read_season_process'] = Variable<int>(lastReadSeasonProcess);
-    map['last_read_book_mark_json'] = Variable<int>(lastReadBookMarkJson);
+    map['last_read_volume_process'] = Variable<int>(lastReadVolumeProcess);
+    map['last_read_book_mark_json'] = Variable<String>(lastReadBookMarkJson);
     map['tags_id'] = Variable<String>(tags);
     map['star_time'] = Variable<int>(starTime);
     map['pin_time'] = Variable<int>(pinTime);
@@ -644,14 +645,14 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       sourceName: Value(sourceName),
       isReversal: Value(isReversal),
       sortKey: Value(sortKey),
-      seasonListJson: Value(seasonListJson),
+      volumeListJson: Value(volumeListJson),
       lastHistoryTime: Value(lastHistoryTime),
-      lastReadSeasonId: Value(lastReadSeasonId),
-      lastReadSeasonLabel: Value(lastReadSeasonLabel),
-      lastReadSeasonIndex: Value(lastReadSeasonIndex),
+      lastReadVolumeId: Value(lastReadVolumeId),
+      lastReadVolumeLabel: Value(lastReadVolumeLabel),
+      lastReadVolumeIndex: Value(lastReadVolumeIndex),
       lastReadChapterId: Value(lastReadChapterId),
       lastReadChapterLabel: Value(lastReadChapterLabel),
-      lastReadSeasonProcess: Value(lastReadSeasonProcess),
+      lastReadVolumeProcess: Value(lastReadVolumeProcess),
       lastReadBookMarkJson: Value(lastReadBookMarkJson),
       tags: Value(tags),
       starTime: Value(starTime),
@@ -683,20 +684,20 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       sourceName: serializer.fromJson<String>(json['sourceName']),
       isReversal: serializer.fromJson<bool>(json['isReversal']),
       sortKey: serializer.fromJson<String>(json['sortKey']),
-      seasonListJson: serializer.fromJson<String>(json['seasonListJson']),
+      volumeListJson: serializer.fromJson<String>(json['volumeListJson']),
       lastHistoryTime: serializer.fromJson<int>(json['lastHistoryTime']),
-      lastReadSeasonId: serializer.fromJson<String>(json['lastReadSeasonId']),
-      lastReadSeasonLabel:
-          serializer.fromJson<String>(json['lastReadSeasonLabel']),
-      lastReadSeasonIndex:
-          serializer.fromJson<int>(json['lastReadSeasonIndex']),
+      lastReadVolumeId: serializer.fromJson<String>(json['lastReadVolumeId']),
+      lastReadVolumeLabel:
+          serializer.fromJson<String>(json['lastReadVolumeLabel']),
+      lastReadVolumeIndex:
+          serializer.fromJson<int>(json['lastReadVolumeIndex']),
       lastReadChapterId: serializer.fromJson<String>(json['lastReadChapterId']),
       lastReadChapterLabel:
           serializer.fromJson<String>(json['lastReadChapterLabel']),
-      lastReadSeasonProcess:
-          serializer.fromJson<int>(json['lastReadSeasonProcess']),
+      lastReadVolumeProcess:
+          serializer.fromJson<int>(json['lastReadVolumeProcess']),
       lastReadBookMarkJson:
-          serializer.fromJson<int>(json['lastReadBookMarkJson']),
+          serializer.fromJson<String>(json['lastReadBookMarkJson']),
       tags: serializer.fromJson<String>(json['tags']),
       starTime: serializer.fromJson<int>(json['starTime']),
       pinTime: serializer.fromJson<int>(json['pinTime']),
@@ -726,15 +727,15 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
       'sourceName': serializer.toJson<String>(sourceName),
       'isReversal': serializer.toJson<bool>(isReversal),
       'sortKey': serializer.toJson<String>(sortKey),
-      'seasonListJson': serializer.toJson<String>(seasonListJson),
+      'volumeListJson': serializer.toJson<String>(volumeListJson),
       'lastHistoryTime': serializer.toJson<int>(lastHistoryTime),
-      'lastReadSeasonId': serializer.toJson<String>(lastReadSeasonId),
-      'lastReadSeasonLabel': serializer.toJson<String>(lastReadSeasonLabel),
-      'lastReadSeasonIndex': serializer.toJson<int>(lastReadSeasonIndex),
+      'lastReadVolumeId': serializer.toJson<String>(lastReadVolumeId),
+      'lastReadVolumeLabel': serializer.toJson<String>(lastReadVolumeLabel),
+      'lastReadVolumeIndex': serializer.toJson<int>(lastReadVolumeIndex),
       'lastReadChapterId': serializer.toJson<String>(lastReadChapterId),
       'lastReadChapterLabel': serializer.toJson<String>(lastReadChapterLabel),
-      'lastReadSeasonProcess': serializer.toJson<int>(lastReadSeasonProcess),
-      'lastReadBookMarkJson': serializer.toJson<int>(lastReadBookMarkJson),
+      'lastReadVolumeProcess': serializer.toJson<int>(lastReadVolumeProcess),
+      'lastReadBookMarkJson': serializer.toJson<String>(lastReadBookMarkJson),
       'tags': serializer.toJson<String>(tags),
       'starTime': serializer.toJson<int>(starTime),
       'pinTime': serializer.toJson<int>(pinTime),
@@ -760,15 +761,15 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           String? sourceName,
           bool? isReversal,
           String? sortKey,
-          String? seasonListJson,
+          String? volumeListJson,
           int? lastHistoryTime,
-          String? lastReadSeasonId,
-          String? lastReadSeasonLabel,
-          int? lastReadSeasonIndex,
+          String? lastReadVolumeId,
+          String? lastReadVolumeLabel,
+          int? lastReadVolumeIndex,
           String? lastReadChapterId,
           String? lastReadChapterLabel,
-          int? lastReadSeasonProcess,
-          int? lastReadBookMarkJson,
+          int? lastReadVolumeProcess,
+          String? lastReadBookMarkJson,
           String? tags,
           int? starTime,
           int? pinTime,
@@ -791,15 +792,15 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
         sourceName: sourceName ?? this.sourceName,
         isReversal: isReversal ?? this.isReversal,
         sortKey: sortKey ?? this.sortKey,
-        seasonListJson: seasonListJson ?? this.seasonListJson,
+        volumeListJson: volumeListJson ?? this.volumeListJson,
         lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
-        lastReadSeasonId: lastReadSeasonId ?? this.lastReadSeasonId,
-        lastReadSeasonLabel: lastReadSeasonLabel ?? this.lastReadSeasonLabel,
-        lastReadSeasonIndex: lastReadSeasonIndex ?? this.lastReadSeasonIndex,
+        lastReadVolumeId: lastReadVolumeId ?? this.lastReadVolumeId,
+        lastReadVolumeLabel: lastReadVolumeLabel ?? this.lastReadVolumeLabel,
+        lastReadVolumeIndex: lastReadVolumeIndex ?? this.lastReadVolumeIndex,
         lastReadChapterId: lastReadChapterId ?? this.lastReadChapterId,
         lastReadChapterLabel: lastReadChapterLabel ?? this.lastReadChapterLabel,
-        lastReadSeasonProcess:
-            lastReadSeasonProcess ?? this.lastReadSeasonProcess,
+        lastReadVolumeProcess:
+            lastReadVolumeProcess ?? this.lastReadVolumeProcess,
         lastReadBookMarkJson: lastReadBookMarkJson ?? this.lastReadBookMarkJson,
         tags: tags ?? this.tags,
         starTime: starTime ?? this.starTime,
@@ -826,14 +827,14 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           ..write('sourceName: $sourceName, ')
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
-          ..write('seasonListJson: $seasonListJson, ')
+          ..write('volumeListJson: $volumeListJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
-          ..write('lastReadSeasonId: $lastReadSeasonId, ')
-          ..write('lastReadSeasonLabel: $lastReadSeasonLabel, ')
-          ..write('lastReadSeasonIndex: $lastReadSeasonIndex, ')
+          ..write('lastReadVolumeId: $lastReadVolumeId, ')
+          ..write('lastReadVolumeLabel: $lastReadVolumeLabel, ')
+          ..write('lastReadVolumeIndex: $lastReadVolumeIndex, ')
           ..write('lastReadChapterId: $lastReadChapterId, ')
           ..write('lastReadChapterLabel: $lastReadChapterLabel, ')
-          ..write('lastReadSeasonProcess: $lastReadSeasonProcess, ')
+          ..write('lastReadVolumeProcess: $lastReadVolumeProcess, ')
           ..write('lastReadBookMarkJson: $lastReadBookMarkJson, ')
           ..write('tags: $tags, ')
           ..write('starTime: $starTime, ')
@@ -862,14 +863,14 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
         sourceName,
         isReversal,
         sortKey,
-        seasonListJson,
+        volumeListJson,
         lastHistoryTime,
-        lastReadSeasonId,
-        lastReadSeasonLabel,
-        lastReadSeasonIndex,
+        lastReadVolumeId,
+        lastReadVolumeLabel,
+        lastReadVolumeIndex,
         lastReadChapterId,
         lastReadChapterLabel,
-        lastReadSeasonProcess,
+        lastReadVolumeProcess,
         lastReadBookMarkJson,
         tags,
         starTime,
@@ -897,14 +898,14 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
           other.sourceName == this.sourceName &&
           other.isReversal == this.isReversal &&
           other.sortKey == this.sortKey &&
-          other.seasonListJson == this.seasonListJson &&
+          other.volumeListJson == this.volumeListJson &&
           other.lastHistoryTime == this.lastHistoryTime &&
-          other.lastReadSeasonId == this.lastReadSeasonId &&
-          other.lastReadSeasonLabel == this.lastReadSeasonLabel &&
-          other.lastReadSeasonIndex == this.lastReadSeasonIndex &&
+          other.lastReadVolumeId == this.lastReadVolumeId &&
+          other.lastReadVolumeLabel == this.lastReadVolumeLabel &&
+          other.lastReadVolumeIndex == this.lastReadVolumeIndex &&
           other.lastReadChapterId == this.lastReadChapterId &&
           other.lastReadChapterLabel == this.lastReadChapterLabel &&
-          other.lastReadSeasonProcess == this.lastReadSeasonProcess &&
+          other.lastReadVolumeProcess == this.lastReadVolumeProcess &&
           other.lastReadBookMarkJson == this.lastReadBookMarkJson &&
           other.tags == this.tags &&
           other.starTime == this.starTime &&
@@ -930,15 +931,15 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
   final Value<String> sourceName;
   final Value<bool> isReversal;
   final Value<String> sortKey;
-  final Value<String> seasonListJson;
+  final Value<String> volumeListJson;
   final Value<int> lastHistoryTime;
-  final Value<String> lastReadSeasonId;
-  final Value<String> lastReadSeasonLabel;
-  final Value<int> lastReadSeasonIndex;
+  final Value<String> lastReadVolumeId;
+  final Value<String> lastReadVolumeLabel;
+  final Value<int> lastReadVolumeIndex;
   final Value<String> lastReadChapterId;
   final Value<String> lastReadChapterLabel;
-  final Value<int> lastReadSeasonProcess;
-  final Value<int> lastReadBookMarkJson;
+  final Value<int> lastReadVolumeProcess;
+  final Value<String> lastReadBookMarkJson;
   final Value<String> tags;
   final Value<int> starTime;
   final Value<int> pinTime;
@@ -962,14 +963,14 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     this.sourceName = const Value.absent(),
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
-    this.seasonListJson = const Value.absent(),
+    this.volumeListJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
-    this.lastReadSeasonId = const Value.absent(),
-    this.lastReadSeasonLabel = const Value.absent(),
-    this.lastReadSeasonIndex = const Value.absent(),
+    this.lastReadVolumeId = const Value.absent(),
+    this.lastReadVolumeLabel = const Value.absent(),
+    this.lastReadVolumeIndex = const Value.absent(),
     this.lastReadChapterId = const Value.absent(),
     this.lastReadChapterLabel = const Value.absent(),
-    this.lastReadSeasonProcess = const Value.absent(),
+    this.lastReadVolumeProcess = const Value.absent(),
     this.lastReadBookMarkJson = const Value.absent(),
     this.tags = const Value.absent(),
     this.starTime = const Value.absent(),
@@ -995,14 +996,14 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     this.sourceName = const Value.absent(),
     this.isReversal = const Value.absent(),
     this.sortKey = const Value.absent(),
-    this.seasonListJson = const Value.absent(),
+    this.volumeListJson = const Value.absent(),
     this.lastHistoryTime = const Value.absent(),
-    this.lastReadSeasonId = const Value.absent(),
-    this.lastReadSeasonLabel = const Value.absent(),
-    this.lastReadSeasonIndex = const Value.absent(),
+    this.lastReadVolumeId = const Value.absent(),
+    this.lastReadVolumeLabel = const Value.absent(),
+    this.lastReadVolumeIndex = const Value.absent(),
     this.lastReadChapterId = const Value.absent(),
     this.lastReadChapterLabel = const Value.absent(),
-    this.lastReadSeasonProcess = const Value.absent(),
+    this.lastReadVolumeProcess = const Value.absent(),
     this.lastReadBookMarkJson = const Value.absent(),
     this.tags = const Value.absent(),
     this.starTime = const Value.absent(),
@@ -1030,15 +1031,15 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     Expression<String>? sourceName,
     Expression<bool>? isReversal,
     Expression<String>? sortKey,
-    Expression<String>? seasonListJson,
+    Expression<String>? volumeListJson,
     Expression<int>? lastHistoryTime,
-    Expression<String>? lastReadSeasonId,
-    Expression<String>? lastReadSeasonLabel,
-    Expression<int>? lastReadSeasonIndex,
+    Expression<String>? lastReadVolumeId,
+    Expression<String>? lastReadVolumeLabel,
+    Expression<int>? lastReadVolumeIndex,
     Expression<String>? lastReadChapterId,
     Expression<String>? lastReadChapterLabel,
-    Expression<int>? lastReadSeasonProcess,
-    Expression<int>? lastReadBookMarkJson,
+    Expression<int>? lastReadVolumeProcess,
+    Expression<String>? lastReadBookMarkJson,
     Expression<String>? tags,
     Expression<int>? starTime,
     Expression<int>? pinTime,
@@ -1063,18 +1064,18 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       if (sourceName != null) 'source_name': sourceName,
       if (isReversal != null) 'is_reversal': isReversal,
       if (sortKey != null) 'sort_key': sortKey,
-      if (seasonListJson != null) 'season_list_json': seasonListJson,
+      if (volumeListJson != null) 'volume_list_json': volumeListJson,
       if (lastHistoryTime != null) 'last_history_time': lastHistoryTime,
-      if (lastReadSeasonId != null) 'last_read_season_id': lastReadSeasonId,
-      if (lastReadSeasonLabel != null)
-        'last_read_season_label': lastReadSeasonLabel,
-      if (lastReadSeasonIndex != null)
-        'last_read_season_index': lastReadSeasonIndex,
+      if (lastReadVolumeId != null) 'last_read_volume_id': lastReadVolumeId,
+      if (lastReadVolumeLabel != null)
+        'last_read_volume_label': lastReadVolumeLabel,
+      if (lastReadVolumeIndex != null)
+        'last_read_volume_index': lastReadVolumeIndex,
       if (lastReadChapterId != null) 'last_read_chapter_id': lastReadChapterId,
       if (lastReadChapterLabel != null)
         'last_read_chapter_label': lastReadChapterLabel,
-      if (lastReadSeasonProcess != null)
-        'last_read_season_process': lastReadSeasonProcess,
+      if (lastReadVolumeProcess != null)
+        'last_read_volume_process': lastReadVolumeProcess,
       if (lastReadBookMarkJson != null)
         'last_read_book_mark_json': lastReadBookMarkJson,
       if (tags != null) 'tags_id': tags,
@@ -1103,15 +1104,15 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       Value<String>? sourceName,
       Value<bool>? isReversal,
       Value<String>? sortKey,
-      Value<String>? seasonListJson,
+      Value<String>? volumeListJson,
       Value<int>? lastHistoryTime,
-      Value<String>? lastReadSeasonId,
-      Value<String>? lastReadSeasonLabel,
-      Value<int>? lastReadSeasonIndex,
+      Value<String>? lastReadVolumeId,
+      Value<String>? lastReadVolumeLabel,
+      Value<int>? lastReadVolumeIndex,
       Value<String>? lastReadChapterId,
       Value<String>? lastReadChapterLabel,
-      Value<int>? lastReadSeasonProcess,
-      Value<int>? lastReadBookMarkJson,
+      Value<int>? lastReadVolumeProcess,
+      Value<String>? lastReadBookMarkJson,
       Value<String>? tags,
       Value<int>? starTime,
       Value<int>? pinTime,
@@ -1135,15 +1136,15 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       sourceName: sourceName ?? this.sourceName,
       isReversal: isReversal ?? this.isReversal,
       sortKey: sortKey ?? this.sortKey,
-      seasonListJson: seasonListJson ?? this.seasonListJson,
+      volumeListJson: volumeListJson ?? this.volumeListJson,
       lastHistoryTime: lastHistoryTime ?? this.lastHistoryTime,
-      lastReadSeasonId: lastReadSeasonId ?? this.lastReadSeasonId,
-      lastReadSeasonLabel: lastReadSeasonLabel ?? this.lastReadSeasonLabel,
-      lastReadSeasonIndex: lastReadSeasonIndex ?? this.lastReadSeasonIndex,
+      lastReadVolumeId: lastReadVolumeId ?? this.lastReadVolumeId,
+      lastReadVolumeLabel: lastReadVolumeLabel ?? this.lastReadVolumeLabel,
+      lastReadVolumeIndex: lastReadVolumeIndex ?? this.lastReadVolumeIndex,
       lastReadChapterId: lastReadChapterId ?? this.lastReadChapterId,
       lastReadChapterLabel: lastReadChapterLabel ?? this.lastReadChapterLabel,
-      lastReadSeasonProcess:
-          lastReadSeasonProcess ?? this.lastReadSeasonProcess,
+      lastReadVolumeProcess:
+          lastReadVolumeProcess ?? this.lastReadVolumeProcess,
       lastReadBookMarkJson: lastReadBookMarkJson ?? this.lastReadBookMarkJson,
       tags: tags ?? this.tags,
       starTime: starTime ?? this.starTime,
@@ -1208,21 +1209,21 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
     if (sortKey.present) {
       map['sort_key'] = Variable<String>(sortKey.value);
     }
-    if (seasonListJson.present) {
-      map['season_list_json'] = Variable<String>(seasonListJson.value);
+    if (volumeListJson.present) {
+      map['volume_list_json'] = Variable<String>(volumeListJson.value);
     }
     if (lastHistoryTime.present) {
       map['last_history_time'] = Variable<int>(lastHistoryTime.value);
     }
-    if (lastReadSeasonId.present) {
-      map['last_read_season_id'] = Variable<String>(lastReadSeasonId.value);
+    if (lastReadVolumeId.present) {
+      map['last_read_volume_id'] = Variable<String>(lastReadVolumeId.value);
     }
-    if (lastReadSeasonLabel.present) {
-      map['last_read_season_label'] =
-          Variable<String>(lastReadSeasonLabel.value);
+    if (lastReadVolumeLabel.present) {
+      map['last_read_volume_label'] =
+          Variable<String>(lastReadVolumeLabel.value);
     }
-    if (lastReadSeasonIndex.present) {
-      map['last_read_season_index'] = Variable<int>(lastReadSeasonIndex.value);
+    if (lastReadVolumeIndex.present) {
+      map['last_read_volume_index'] = Variable<int>(lastReadVolumeIndex.value);
     }
     if (lastReadChapterId.present) {
       map['last_read_chapter_id'] = Variable<String>(lastReadChapterId.value);
@@ -1231,13 +1232,13 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
       map['last_read_chapter_label'] =
           Variable<String>(lastReadChapterLabel.value);
     }
-    if (lastReadSeasonProcess.present) {
-      map['last_read_season_process'] =
-          Variable<int>(lastReadSeasonProcess.value);
+    if (lastReadVolumeProcess.present) {
+      map['last_read_volume_process'] =
+          Variable<int>(lastReadVolumeProcess.value);
     }
     if (lastReadBookMarkJson.present) {
       map['last_read_book_mark_json'] =
-          Variable<int>(lastReadBookMarkJson.value);
+          Variable<String>(lastReadBookMarkJson.value);
     }
     if (tags.present) {
       map['tags_id'] = Variable<String>(tags.value);
@@ -1279,14 +1280,14 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
           ..write('sourceName: $sourceName, ')
           ..write('isReversal: $isReversal, ')
           ..write('sortKey: $sortKey, ')
-          ..write('seasonListJson: $seasonListJson, ')
+          ..write('volumeListJson: $volumeListJson, ')
           ..write('lastHistoryTime: $lastHistoryTime, ')
-          ..write('lastReadSeasonId: $lastReadSeasonId, ')
-          ..write('lastReadSeasonLabel: $lastReadSeasonLabel, ')
-          ..write('lastReadSeasonIndex: $lastReadSeasonIndex, ')
+          ..write('lastReadVolumeId: $lastReadVolumeId, ')
+          ..write('lastReadVolumeLabel: $lastReadVolumeLabel, ')
+          ..write('lastReadVolumeIndex: $lastReadVolumeIndex, ')
           ..write('lastReadChapterId: $lastReadChapterId, ')
           ..write('lastReadChapterLabel: $lastReadChapterLabel, ')
-          ..write('lastReadSeasonProcess: $lastReadSeasonProcess, ')
+          ..write('lastReadVolumeProcess: $lastReadVolumeProcess, ')
           ..write('lastReadBookMarkJson: $lastReadBookMarkJson, ')
           ..write('tags: $tags, ')
           ..write('starTime: $starTime, ')

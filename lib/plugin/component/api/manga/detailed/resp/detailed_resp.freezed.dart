@@ -14,27 +14,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-DetailedResp _$DetailedRespFromJson(Map<String, dynamic> json) {
-  return _DetailedResp.fromJson(json);
+MangaDetailedResp _$MangaDetailedRespFromJson(Map<String, dynamic> json) {
+  return _MangaDetailedResp.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DetailedResp {
+mixin _$MangaDetailedResp {
   MangaDetailed? get detailed => throw _privateConstructorUsedError;
   List<MangaChapter>? get chapters => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DetailedRespCopyWith<DetailedResp> get copyWith =>
+  $MangaDetailedRespCopyWith<MangaDetailedResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DetailedRespCopyWith<$Res> {
-  factory $DetailedRespCopyWith(
-          DetailedResp value, $Res Function(DetailedResp) then) =
-      _$DetailedRespCopyWithImpl<$Res, DetailedResp>;
+abstract class $MangaDetailedRespCopyWith<$Res> {
+  factory $MangaDetailedRespCopyWith(
+          MangaDetailedResp value, $Res Function(MangaDetailedResp) then) =
+      _$MangaDetailedRespCopyWithImpl<$Res, MangaDetailedResp>;
   @useResult
   $Res call(
       {MangaDetailed? detailed,
@@ -46,9 +46,9 @@ abstract class $DetailedRespCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DetailedRespCopyWithImpl<$Res, $Val extends DetailedResp>
-    implements $DetailedRespCopyWith<$Res> {
-  _$DetailedRespCopyWithImpl(this._value, this._then);
+class _$MangaDetailedRespCopyWithImpl<$Res, $Val extends MangaDetailedResp>
+    implements $MangaDetailedRespCopyWith<$Res> {
+  _$MangaDetailedRespCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -100,11 +100,11 @@ class _$DetailedRespCopyWithImpl<$Res, $Val extends DetailedResp>
 }
 
 /// @nodoc
-abstract class _$$DetailedRespImplCopyWith<$Res>
-    implements $DetailedRespCopyWith<$Res> {
-  factory _$$DetailedRespImplCopyWith(
-          _$DetailedRespImpl value, $Res Function(_$DetailedRespImpl) then) =
-      __$$DetailedRespImplCopyWithImpl<$Res>;
+abstract class _$$MangaDetailedRespImplCopyWith<$Res>
+    implements $MangaDetailedRespCopyWith<$Res> {
+  factory _$$MangaDetailedRespImplCopyWith(_$MangaDetailedRespImpl value,
+          $Res Function(_$MangaDetailedRespImpl) then) =
+      __$$MangaDetailedRespImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -119,11 +119,11 @@ abstract class _$$DetailedRespImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DetailedRespImplCopyWithImpl<$Res>
-    extends _$DetailedRespCopyWithImpl<$Res, _$DetailedRespImpl>
-    implements _$$DetailedRespImplCopyWith<$Res> {
-  __$$DetailedRespImplCopyWithImpl(
-      _$DetailedRespImpl _value, $Res Function(_$DetailedRespImpl) _then)
+class __$$MangaDetailedRespImplCopyWithImpl<$Res>
+    extends _$MangaDetailedRespCopyWithImpl<$Res, _$MangaDetailedRespImpl>
+    implements _$$MangaDetailedRespImplCopyWith<$Res> {
+  __$$MangaDetailedRespImplCopyWithImpl(_$MangaDetailedRespImpl _value,
+      $Res Function(_$MangaDetailedRespImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$DetailedRespImplCopyWithImpl<$Res>
     Object? chapters = freezed,
     Object? payload = null,
   }) {
-    return _then(_$DetailedRespImpl(
+    return _then(_$MangaDetailedRespImpl(
       detailed: freezed == detailed
           ? _value.detailed
           : detailed // ignore: cast_nullable_to_non_nullable
@@ -152,15 +152,15 @@ class __$$DetailedRespImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DetailedRespImpl implements _DetailedResp {
-  _$DetailedRespImpl(
+class _$MangaDetailedRespImpl implements _MangaDetailedResp {
+  _$MangaDetailedRespImpl(
       {this.detailed = null,
       final List<MangaChapter>? chapters = null,
       required this.payload})
       : _chapters = chapters;
 
-  factory _$DetailedRespImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DetailedRespImplFromJson(json);
+  factory _$MangaDetailedRespImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MangaDetailedRespImplFromJson(json);
 
   @override
   @JsonKey()
@@ -181,14 +181,14 @@ class _$DetailedRespImpl implements _DetailedResp {
 
   @override
   String toString() {
-    return 'DetailedResp(detailed: $detailed, chapters: $chapters, payload: $payload)';
+    return 'MangaDetailedResp(detailed: $detailed, chapters: $chapters, payload: $payload)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailedRespImpl &&
+            other is _$MangaDetailedRespImpl &&
             (identical(other.detailed, detailed) ||
                 other.detailed == detailed) &&
             const DeepCollectionEquality().equals(other._chapters, _chapters) &&
@@ -203,25 +203,26 @@ class _$DetailedRespImpl implements _DetailedResp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DetailedRespImplCopyWith<_$DetailedRespImpl> get copyWith =>
-      __$$DetailedRespImplCopyWithImpl<_$DetailedRespImpl>(this, _$identity);
+  _$$MangaDetailedRespImplCopyWith<_$MangaDetailedRespImpl> get copyWith =>
+      __$$MangaDetailedRespImplCopyWithImpl<_$MangaDetailedRespImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailedRespImplToJson(
+    return _$$MangaDetailedRespImplToJson(
       this,
     );
   }
 }
 
-abstract class _DetailedResp implements DetailedResp {
-  factory _DetailedResp(
+abstract class _MangaDetailedResp implements MangaDetailedResp {
+  factory _MangaDetailedResp(
       {final MangaDetailed? detailed,
       final List<MangaChapter>? chapters,
-      required final ComponentPayload payload}) = _$DetailedRespImpl;
+      required final ComponentPayload payload}) = _$MangaDetailedRespImpl;
 
-  factory _DetailedResp.fromJson(Map<String, dynamic> json) =
-      _$DetailedRespImpl.fromJson;
+  factory _MangaDetailedResp.fromJson(Map<String, dynamic> json) =
+      _$MangaDetailedRespImpl.fromJson;
 
   @override
   MangaDetailed? get detailed;
@@ -231,6 +232,6 @@ abstract class _DetailedResp implements DetailedResp {
   ComponentPayload get payload;
   @override
   @JsonKey(ignore: true)
-  _$$DetailedRespImplCopyWith<_$DetailedRespImpl> get copyWith =>
+  _$$MangaDetailedRespImplCopyWith<_$MangaDetailedRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

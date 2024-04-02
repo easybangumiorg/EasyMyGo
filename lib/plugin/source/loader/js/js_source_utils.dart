@@ -41,6 +41,21 @@ class JsSourceUtils {
   }
 
 
+  /// 对于 constructorArgsCount 为 0 的 Action，直接生成变量
+  /// let XXUtils = {
+  ///   "fun1": async function(...args){ await sendMessage('XXUtils_fun1', args)},
+  ///   "fun2": async function(...args){ await sendMessage('XXUtils_fun2', args)},
+  /// }
+  /// 对于 constructorArgsCount 为 X，X > 0 的生成闭包
+  /// function XXUtils(...constructorArgs){
+  ///   if(constructorArgs.length < X}){
+  ///     throw new MygoError("constructorArgs length must be X");
+  ///   }
+  ///   return {
+  ///     "fun1": async function(...args){ await sendMessage('XXUtils_fun1', constructorArgs.concat(args))},
+  ///     "fun2": async function(...args){ await sendMessage('XXUtils_fun2', constructorArgs.concat(args))},
+  ///   }
+  /// }
   static String _parseActionJSCode() {
     final StringBuffer sb = StringBuffer();
     for (var action in SourceAction.actions) {

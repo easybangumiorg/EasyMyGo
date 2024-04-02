@@ -66,29 +66,29 @@ class NovelTable extends Table {
   TextColumn get sortKey =>
       text().named("sort_key").withDefault(const Constant(""))();
 
-  // 部列表，存的 Json 数据，只做 temp 可能不是最新
-  // 对于文库版，可以是第一部第二部（本）
+  // 卷列表，存的 Json 数据，只做 temp 可能不是最新
+  // 对于文库版，可以是第一本第二本
   // 对于 web 版，则可以是第一卷（章）第二卷（章）
   // 最终会在详情页中展示，而里面再分的 NovelChapter 则需要进入到阅读器展示
-  TextColumn get seasonListJson =>
-      text().named("season_list_json").withDefault(const Constant(""))();
+  TextColumn get volumeListJson =>
+      text().named("volume_list_json").withDefault(const Constant(""))();
 
   // History
   // 最后的历史数据添加时间
   IntColumn get lastHistoryTime =>
       integer().named("last_history_time").withDefault(const Constant(0))();
 
-  // 最后观看的 部 Id
-  TextColumn get lastReadSeasonId =>
-      text().named("last_read_season_id").withDefault(const Constant(""))();
+  // 最后观看的 卷 Id
+  TextColumn get lastReadVolumeId =>
+      text().named("last_read_volume_id").withDefault(const Constant(""))();
 
-  // 最后观看 部名称
-  TextColumn get lastReadSeasonLabel =>
-      text().named("last_read_season_label").withDefault(const Constant(""))();
+  // 最后观看 卷名称
+  TextColumn get lastReadVolumeLabel =>
+      text().named("last_read_volume_label").withDefault(const Constant(""))();
 
-  // 最后观看的 部 下标
-  IntColumn get lastReadSeasonIndex => integer()
-      .named("last_read_season_index")
+  // 最后观看的 卷 下标
+  IntColumn get lastReadVolumeIndex => integer()
+      .named("last_read_volume_index")
       .withDefault(const Constant(0))();
 
   // 最后观看的 章节 Id
@@ -99,17 +99,17 @@ class NovelTable extends Table {
   TextColumn get lastReadChapterLabel =>
       text().named("last_read_chapter_label").withDefault(const Constant(""))();
 
-  // 最后观看的部的阅读进度
+  // 最后观看的卷的阅读进度
   // 单位 %
-  IntColumn get lastReadSeasonProcess => integer()
-      .named("last_read_season_process")
+  IntColumn get lastReadVolumeProcess => integer()
+      .named("last_read_volume_process")
       .withDefault(const Constant(0))();
 
   // 最后观看位置的书签数据结构
   // 扁平化 Map<String, String>，和阅读器组件的书签可能不一致
-  IntColumn get lastReadBookMarkJson => integer()
+  TextColumn get lastReadBookMarkJson => text()
       .named("last_read_book_mark_json")
-      .withDefault(const Constant(0))();
+      .withDefault(const Constant(''))();
 
   // Star
   // 当前漫画的标签 id "1， 2， 3"

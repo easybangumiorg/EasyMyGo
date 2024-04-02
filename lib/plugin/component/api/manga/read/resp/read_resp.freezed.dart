@@ -14,25 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ReadResp _$ReadRespFromJson(Map<String, dynamic> json) {
-  return _ReadResp.fromJson(json);
+MangaReadResp _$MangaReadRespFromJson(Map<String, dynamic> json) {
+  return _MangaReadResp.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ReadResp {
+mixin _$MangaReadResp {
   List<MangaPicture>? get pictures => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ReadRespCopyWith<ReadResp> get copyWith =>
+  $MangaReadRespCopyWith<MangaReadResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ReadRespCopyWith<$Res> {
-  factory $ReadRespCopyWith(ReadResp value, $Res Function(ReadResp) then) =
-      _$ReadRespCopyWithImpl<$Res, ReadResp>;
+abstract class $MangaReadRespCopyWith<$Res> {
+  factory $MangaReadRespCopyWith(
+          MangaReadResp value, $Res Function(MangaReadResp) then) =
+      _$MangaReadRespCopyWithImpl<$Res, MangaReadResp>;
   @useResult
   $Res call({List<MangaPicture>? pictures, ComponentPayload payload});
 
@@ -40,9 +41,9 @@ abstract class $ReadRespCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReadRespCopyWithImpl<$Res, $Val extends ReadResp>
-    implements $ReadRespCopyWith<$Res> {
-  _$ReadRespCopyWithImpl(this._value, this._then);
+class _$MangaReadRespCopyWithImpl<$Res, $Val extends MangaReadResp>
+    implements $MangaReadRespCopyWith<$Res> {
+  _$MangaReadRespCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,11 +78,11 @@ class _$ReadRespCopyWithImpl<$Res, $Val extends ReadResp>
 }
 
 /// @nodoc
-abstract class _$$ReadRespImplCopyWith<$Res>
-    implements $ReadRespCopyWith<$Res> {
-  factory _$$ReadRespImplCopyWith(
-          _$ReadRespImpl value, $Res Function(_$ReadRespImpl) then) =
-      __$$ReadRespImplCopyWithImpl<$Res>;
+abstract class _$$MangaReadRespImplCopyWith<$Res>
+    implements $MangaReadRespCopyWith<$Res> {
+  factory _$$MangaReadRespImplCopyWith(
+          _$MangaReadRespImpl value, $Res Function(_$MangaReadRespImpl) then) =
+      __$$MangaReadRespImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<MangaPicture>? pictures, ComponentPayload payload});
@@ -91,11 +92,11 @@ abstract class _$$ReadRespImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ReadRespImplCopyWithImpl<$Res>
-    extends _$ReadRespCopyWithImpl<$Res, _$ReadRespImpl>
-    implements _$$ReadRespImplCopyWith<$Res> {
-  __$$ReadRespImplCopyWithImpl(
-      _$ReadRespImpl _value, $Res Function(_$ReadRespImpl) _then)
+class __$$MangaReadRespImplCopyWithImpl<$Res>
+    extends _$MangaReadRespCopyWithImpl<$Res, _$MangaReadRespImpl>
+    implements _$$MangaReadRespImplCopyWith<$Res> {
+  __$$MangaReadRespImplCopyWithImpl(
+      _$MangaReadRespImpl _value, $Res Function(_$MangaReadRespImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +105,7 @@ class __$$ReadRespImplCopyWithImpl<$Res>
     Object? pictures = freezed,
     Object? payload = null,
   }) {
-    return _then(_$ReadRespImpl(
+    return _then(_$MangaReadRespImpl(
       pictures: freezed == pictures
           ? _value._pictures
           : pictures // ignore: cast_nullable_to_non_nullable
@@ -119,13 +120,13 @@ class __$$ReadRespImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ReadRespImpl implements _ReadResp {
-  _$ReadRespImpl(
+class _$MangaReadRespImpl implements _MangaReadResp {
+  _$MangaReadRespImpl(
       {final List<MangaPicture>? pictures = null, required this.payload})
       : _pictures = pictures;
 
-  factory _$ReadRespImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReadRespImplFromJson(json);
+  factory _$MangaReadRespImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MangaReadRespImplFromJson(json);
 
   final List<MangaPicture>? _pictures;
   @override
@@ -143,14 +144,14 @@ class _$ReadRespImpl implements _ReadResp {
 
   @override
   String toString() {
-    return 'ReadResp(pictures: $pictures, payload: $payload)';
+    return 'MangaReadResp(pictures: $pictures, payload: $payload)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadRespImpl &&
+            other is _$MangaReadRespImpl &&
             const DeepCollectionEquality().equals(other._pictures, _pictures) &&
             (identical(other.payload, payload) || other.payload == payload));
   }
@@ -163,24 +164,24 @@ class _$ReadRespImpl implements _ReadResp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReadRespImplCopyWith<_$ReadRespImpl> get copyWith =>
-      __$$ReadRespImplCopyWithImpl<_$ReadRespImpl>(this, _$identity);
+  _$$MangaReadRespImplCopyWith<_$MangaReadRespImpl> get copyWith =>
+      __$$MangaReadRespImplCopyWithImpl<_$MangaReadRespImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReadRespImplToJson(
+    return _$$MangaReadRespImplToJson(
       this,
     );
   }
 }
 
-abstract class _ReadResp implements ReadResp {
-  factory _ReadResp(
+abstract class _MangaReadResp implements MangaReadResp {
+  factory _MangaReadResp(
       {final List<MangaPicture>? pictures,
-      required final ComponentPayload payload}) = _$ReadRespImpl;
+      required final ComponentPayload payload}) = _$MangaReadRespImpl;
 
-  factory _ReadResp.fromJson(Map<String, dynamic> json) =
-      _$ReadRespImpl.fromJson;
+  factory _MangaReadResp.fromJson(Map<String, dynamic> json) =
+      _$MangaReadRespImpl.fromJson;
 
   @override
   List<MangaPicture>? get pictures;
@@ -188,6 +189,6 @@ abstract class _ReadResp implements ReadResp {
   ComponentPayload get payload;
   @override
   @JsonKey(ignore: true)
-  _$$ReadRespImplCopyWith<_$ReadRespImpl> get copyWith =>
+  _$$MangaReadRespImplCopyWith<_$MangaReadRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

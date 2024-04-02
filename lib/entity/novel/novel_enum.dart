@@ -13,18 +13,28 @@ enum NovelUpdateStrategy {
   never
 }
 
-enum NovelSeasonOrganizeType {
-  // Season 中的 ChapterList 是一个一个章节，一般用于 web 版，一个 Chapter 最终会被缓存成一个 txt，业务需要打包多个 txt 后再输入阅读器
+enum NovelVolumeOrganizeType {
+  // 最终返回的 List<Chapter> 是一个一个章节，一般用于 web 版，
+  // 一个 Chapter 最终会被缓存成一个 txt，业务需要打包多个 txt 后再输入阅读器
   multiChapter,
 
-  // 一个 Season 里就是一个 Chapter，一般用于 epub 等电子书文件格式，Chapter 由文件本身区分
+  // 最终返回的 List<Chapter> 中只有一个 Chapter，
+  // 一般用于 文库版，比如 epub 等电子书文件格式，Chapter 由文件本身区分
   singleChapter,
 }
 
+// 加载方式
+// url 文件或网络
+// 直出
+enum NovelChapterLoadFrom {
+  url,
+  direct,
+}
 
-// 字符串直出类型最终会缓存到本地 txt 以 txt 进行加载。
-enum NovelChapterType {
-  epub, // epub, path 为文件路径
+// 加载类型（数据类型）
+enum NovelChapterLoadType {
+  epub, // epub
   txt, // txt
   pdf, // pdf
+  html, // 支持一些标签
 }

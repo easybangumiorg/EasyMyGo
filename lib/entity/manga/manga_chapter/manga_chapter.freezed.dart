@@ -26,7 +26,9 @@ mixin _$MangaChapter {
   @JsonKey(name: "show_type")
   ChapterShowType get showType =>
       throw _privateConstructorUsedError; // 最终会传递给阅读器的参数，这里先预埋
-  Map<String, String> get parameter => throw _privateConstructorUsedError;
+  Map<String, String> get parameter =>
+      throw _privateConstructorUsedError; // 交给源维护，可以用于透传一些东西
+  String get ext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +46,8 @@ abstract class $MangaChapterCopyWith<$Res> {
       {String label,
       String id,
       @JsonKey(name: "show_type") ChapterShowType showType,
-      Map<String, String> parameter});
+      Map<String, String> parameter,
+      String ext});
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$MangaChapterCopyWithImpl<$Res, $Val extends MangaChapter>
     Object? id = null,
     Object? showType = null,
     Object? parameter = null,
+    Object? ext = null,
   }) {
     return _then(_value.copyWith(
       label: null == label
@@ -82,6 +86,10 @@ class _$MangaChapterCopyWithImpl<$Res, $Val extends MangaChapter>
           ? _value.parameter
           : parameter // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      ext: null == ext
+          ? _value.ext
+          : ext // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -98,7 +106,8 @@ abstract class _$$MangaChapterImplCopyWith<$Res>
       {String label,
       String id,
       @JsonKey(name: "show_type") ChapterShowType showType,
-      Map<String, String> parameter});
+      Map<String, String> parameter,
+      String ext});
 }
 
 /// @nodoc
@@ -116,6 +125,7 @@ class __$$MangaChapterImplCopyWithImpl<$Res>
     Object? id = null,
     Object? showType = null,
     Object? parameter = null,
+    Object? ext = null,
   }) {
     return _then(_$MangaChapterImpl(
       label: null == label
@@ -134,6 +144,10 @@ class __$$MangaChapterImplCopyWithImpl<$Res>
           ? _value._parameter
           : parameter // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      ext: null == ext
+          ? _value.ext
+          : ext // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -145,7 +159,8 @@ class _$MangaChapterImpl implements _MangaChapter {
       {required this.label,
       required this.id,
       @JsonKey(name: "show_type") this.showType = ChapterShowType.normal,
-      final Map<String, String> parameter = const {}})
+      final Map<String, String> parameter = const {},
+      this.ext = ''})
       : _parameter = parameter;
 
   factory _$MangaChapterImpl.fromJson(Map<String, dynamic> json) =>
@@ -172,9 +187,14 @@ class _$MangaChapterImpl implements _MangaChapter {
     return EqualUnmodifiableMapView(_parameter);
   }
 
+// 交给源维护，可以用于透传一些东西
+  @override
+  @JsonKey()
+  final String ext;
+
   @override
   String toString() {
-    return 'MangaChapter(label: $label, id: $id, showType: $showType, parameter: $parameter)';
+    return 'MangaChapter(label: $label, id: $id, showType: $showType, parameter: $parameter, ext: $ext)';
   }
 
   @override
@@ -187,13 +207,14 @@ class _$MangaChapterImpl implements _MangaChapter {
             (identical(other.showType, showType) ||
                 other.showType == showType) &&
             const DeepCollectionEquality()
-                .equals(other._parameter, _parameter));
+                .equals(other._parameter, _parameter) &&
+            (identical(other.ext, ext) || other.ext == ext));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, label, id, showType,
-      const DeepCollectionEquality().hash(_parameter));
+      const DeepCollectionEquality().hash(_parameter), ext);
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +235,8 @@ abstract class _MangaChapter implements MangaChapter {
       {required final String label,
       required final String id,
       @JsonKey(name: "show_type") final ChapterShowType showType,
-      final Map<String, String> parameter}) = _$MangaChapterImpl;
+      final Map<String, String> parameter,
+      final String ext}) = _$MangaChapterImpl;
 
   factory _MangaChapter.fromJson(Map<String, dynamic> json) =
       _$MangaChapterImpl.fromJson;
@@ -228,6 +250,8 @@ abstract class _MangaChapter implements MangaChapter {
   ChapterShowType get showType;
   @override // 最终会传递给阅读器的参数，这里先预埋
   Map<String, String> get parameter;
+  @override // 交给源维护，可以用于透传一些东西
+  String get ext;
   @override
   @JsonKey(ignore: true)
   _$$MangaChapterImplCopyWith<_$MangaChapterImpl> get copyWith =>

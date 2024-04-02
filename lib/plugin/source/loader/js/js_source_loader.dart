@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';
+import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/manga/detailed/js_manga_detailed_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/manga/read/js_manga_read_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/manga/search/js_manga_search_component.dart';
@@ -75,26 +76,12 @@ class JsSourceLoader extends SourceLoader {
 
 
       final List<Component> componentList = [];
-
-      final detailedContain = await runtime.evaluateAsync(
-          "typeof ${JsMangaDetailedComponent.methodName} === typeof(Function)");
-      if (detailedContain.stringResult == "true") {
-        componentList.add(JsMangaDetailedComponent(
-            sourceInfo: sourceInfo, jsRuntime: runtime));
-      }
-
-      final readContain = await runtime.evaluateAsync(
-          "typeof  ${JsMangaReadComponent.methodName} === typeof(Function)");
-      if (readContain.stringResult == "true") {
-        componentList.add(
-            JsMangaReadComponent(sourceInfo: sourceInfo, jsRuntime: runtime));
-      }
-
-      final searchContain = await runtime.evaluateAsync(
-          "typeof ${JsMangaSearchComponent.methodNameSearch} === typeof(Function)");
-      if (searchContain.stringResult == "true") {
-        componentList.add(
-            JsMangaSearchComponent(sourceInfo: sourceInfo, jsRuntime: runtime));
+      final List<JsComponent> jsComponentList = JsComponent.create(sourceInfo, runtime);
+      for (var value in jsComponentList) {
+        if(await value.isAvailable()){
+          await value.onLoad();
+          componentList.add(value);
+        }
       }
 
       return SourceData(info: sourceInfo,

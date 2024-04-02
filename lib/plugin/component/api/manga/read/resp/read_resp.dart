@@ -9,12 +9,12 @@ part 'read_resp.freezed.dart';
 part 'read_resp.g.dart';
 
 @freezed
-class ReadResp with _$ReadResp {
-  factory ReadResp({
+class MangaReadResp with _$MangaReadResp {
+  factory MangaReadResp({
     @Default(null) List<MangaPicture>? pictures,
     required ComponentPayload payload,
-  }) = _ReadResp;
+  }) = _MangaReadResp;
 
-  factory ReadResp.fromJson(Map<String, Object?> json)
-  => _$ReadRespFromJson(json);
+  factory MangaReadResp.fromJson(Map<String, Object?> json)
+  => _$MangaReadRespFromJson(json);
 }

@@ -6,8 +6,8 @@ part of 'read_resp.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReadRespImpl _$$ReadRespImplFromJson(Map<String, dynamic> json) =>
-    _$ReadRespImpl(
+_$MangaReadRespImpl _$$MangaReadRespImplFromJson(Map<String, dynamic> json) =>
+    _$MangaReadRespImpl(
       pictures: (json['pictures'] as List<dynamic>?)
               ?.map((e) => MangaPicture.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -16,7 +16,7 @@ _$ReadRespImpl _$$ReadRespImplFromJson(Map<String, dynamic> json) =>
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$ReadRespImplToJson(_$ReadRespImpl instance) =>
+Map<String, dynamic> _$$MangaReadRespImplToJson(_$MangaReadRespImpl instance) =>
     <String, dynamic>{
       'pictures': instance.pictures,
       'payload': instance.payload,

@@ -3,11 +3,12 @@ import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/manga/search/manga_search_component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/search/resp/search_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
-import 'package:easy_mygo/plugin/component/core/js/utils/JsComponentUtils.dart';
+import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
+import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart';
 import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 
-class JsMangaSearchComponent extends MangeSearchComponent {
+class JsMangaSearchComponent extends MangaSearchComponent implements JsComponent {
 
 
 
@@ -16,53 +17,15 @@ class JsMangaSearchComponent extends MangeSearchComponent {
 
   static const methodNameInitKey = "manga_search_init_key";
 
-  static const _performSearchJSCode = """
-  async function $_performMethodSearch(summary) {
-    try{
-      let resp = await $methodNameSearch(summary);
-      return JSON.stringify({
-        data: resp.data,
-        next_key: resp.next_key,
-        payload: {
-          code: 0,
-          msg: 'ok'
-        }
-      });
-    }catch(e){
-      if(e instanceof ${JsSourceUtils.easyErrorName}){
-        return JSON.stringify({
-          data: null,
-          next_key: null,
-          payload: {
-            code: ${ComponentPayload.codeBusinessError},
-            msg: e.message
-          }
-        });
-      }else{
-        return JSON.stringify({
-          data: null,
-          next_key: null,
-          payload: {
-            code: ${ComponentPayload.codeCallError},
-            msg: e
-          }
-        });
-      }
-    }
-  }
-  """;
+  static final _performSearchJSCode = JsComponentUtils.getPerformFunctionJsCode(_performMethodSearch, methodNameSearch, 1);
 
   late JavascriptRuntime _runtime;
-  late Future<void> _initJob;
 
   JsMangaSearchComponent({
     required SourceInfo sourceInfo,
     required JavascriptRuntime jsRuntime,
   }) : super(sourceInfo) {
     _runtime = jsRuntime;
-    _initJob = Future(() async {
-      await jsRuntime.evaluateAsync(_performSearchJSCode);
-    });
   }
 
   @override
@@ -77,12 +40,11 @@ class JsMangaSearchComponent extends MangeSearchComponent {
   }
 
   @override
-  Future<SearchResp> search(String key, String keyword) async {
-    await _initJob;
+  Future<MangaSearchResp> search(String key, String keyword) async {
     final res = await JsComponentUtils.evaluateAsync(_runtime,
         "$_performMethodSearch($key,$keyword)");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
-    final respTemp = SearchResp.fromJson(json);
+    final respTemp = MangaSearchResp.fromJson(json);
 
     if (respTemp.data == null && respTemp.payload.code == 0) {
       throw ComponentPayload(
@@ -95,6 +57,16 @@ class JsMangaSearchComponent extends MangeSearchComponent {
           raw: res.rawResult,
         )
     );
+  }
+
+  @override
+  Future<bool> isAvailable() async {
+    return JsComponentUtils.checkFunction(_runtime, [methodNameSearch, methodNameInitKey], [_performMethodSearch]);
+  }
+
+  @override
+  Future<void> onLoad() async {
+    await _runtime.evaluateAsync(_performSearchJSCode);
   }
 
 

@@ -5,73 +5,35 @@ import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/manga/detailed/manga_detailed_component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/detailed/resp/detailed_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
-import 'package:easy_mygo/plugin/component/core/js/utils/JsComponentUtils.dart';
+import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
+import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart';
 import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 
-class JsMangaDetailedComponent extends MangeDetailedComponent {
+class JsMangaDetailedComponent extends MangaDetailedComponent implements JsComponent {
 
 
   static const methodName = "manga_detailed_getMangaDetailed";
   static const _performMethodName = "perform_manga_detailed_getMangaDetailed";
 
-  static const _performJSCode = """
-  async function $_performMethodName(summary) {
-    try{
-      let resp = await $methodName(summary);
-      return JSON.stringify({
-        detailed: resp.detailed,
-        chapters: resp.chapters,
-        payload: {
-          code: 0,
-          msg: 'ok'
-        }
-      });
-    }catch(e){
-      if(e instanceof ${JsSourceUtils.easyErrorName}){
-        return JSON.stringify({
-          detailed: null,
-          chapters: null,
-          payload: {
-            code: ${ComponentPayload.codeBusinessError},
-            msg: e.message
-          }
-        });
-      }else{
-        return JSON.stringify({
-          detailed: null,
-          chapters: null,
-          payload: {
-            code: ${ComponentPayload.codeCallError},
-            msg: e
-          }
-        });
-      }
-    }
-  }
-  """;
+  static final _performJSCode = JsComponentUtils.getPerformFunctionJsCode(_performMethodName, methodName, 1);
 
   late JavascriptRuntime _runtime;
-  late Future<void> _initJob;
 
   JsMangaDetailedComponent({
     required SourceInfo sourceInfo,
     required JavascriptRuntime jsRuntime,
   }) : super(sourceInfo) {
     _runtime = jsRuntime;
-    _initJob = Future(() async {
-      await jsRuntime.evaluateAsync(_performJSCode);
-    });
   }
 
   @override
-  Future<DetailedResp> getMangaDetailed(MangaSummary summary) async {
-    await _initJob;
+  Future<MangaDetailedResp> getMangaDetailed(MangaSummary summary) async {
     final res = await JsComponentUtils.evaluateAsync(
         _runtime, "$_performMethodName(${jsonEncode(summary.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
 
-    final respTemp = DetailedResp.fromJson(json);
+    final respTemp = MangaDetailedResp.fromJson(json);
     if (respTemp.detailed == null &&
         respTemp.chapters == null &&
         respTemp.payload.code == 0 ) {
@@ -85,5 +47,15 @@ class JsMangaDetailedComponent extends MangeDetailedComponent {
           raw: res.rawResult,
         )
     );
+  }
+
+  @override
+  Future<bool> isAvailable() async {
+    return await JsComponentUtils.checkFunction(_runtime, [methodName], [_performMethodName]);
+  }
+
+  @override
+  Future<void> onLoad() async {
+    await _runtime.evaluateAsync(_performJSCode);
   }
 }

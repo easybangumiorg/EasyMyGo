@@ -6,8 +6,9 @@ part of 'detailed_resp.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DetailedRespImpl _$$DetailedRespImplFromJson(Map<String, dynamic> json) =>
-    _$DetailedRespImpl(
+_$MangaDetailedRespImpl _$$MangaDetailedRespImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MangaDetailedRespImpl(
       detailed: json['detailed'] == null
           ? null
           : MangaDetailed.fromJson(json['detailed'] as Map<String, dynamic>),
@@ -19,7 +20,8 @@ _$DetailedRespImpl _$$DetailedRespImplFromJson(Map<String, dynamic> json) =>
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$DetailedRespImplToJson(_$DetailedRespImpl instance) =>
+Map<String, dynamic> _$$MangaDetailedRespImplToJson(
+        _$MangaDetailedRespImpl instance) =>
     <String, dynamic>{
       'detailed': instance.detailed,
       'chapters': instance.chapters,
