@@ -98,7 +98,7 @@ class HomeViewModel extends _$HomeViewModel with CancelableWorkerContainer<Sourc
     String currentIdentify = "";
     int currentSourceIndex = state.currentSourceIndex;
     final box = await HiveBox.config();
-    final configMap = await box.getSingle() ?? <dynamic, dynamic>{};
+    final configMap = await box.getSingle() ?? <String, dynamic>{};
     if (isFirst){
       currentType = SourceType.values.elementAtOrNull(int.tryParse(configMap[configCurrentSourceType]??"0")??0) ?? currentType;
       currentIdentify = configMap[configCurrentSourceKey]??"";
