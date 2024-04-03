@@ -34,4 +34,5 @@ Map<String, dynamic> _$$ExtensionInfoImplToJson(_$ExtensionInfoImpl instance) =>
 const _$ExtensionLoaderTypeEnumMap = {
   ExtensionLoaderType.js: 'js',
   ExtensionLoaderType.mygopack: 'mygopack',
+  ExtensionLoaderType.inner: 'inner',
 };

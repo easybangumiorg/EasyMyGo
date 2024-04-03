@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'package:easy_mygo/c.dart';
 import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
 import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/core/js/manga/search/js_manga_search_component.dart';
 import 'package:easy_mygo/plugin/extension/loader/extension_loader.dart';
+import 'package:easy_mygo/plugin/source/controller/source_controller.dart';
 import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
+import 'package:easy_mygo/ui/main/home/view_model/home_view_model.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:puppeteer/puppeteer.dart';
@@ -18,14 +21,10 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final state = HomeViewModel.watch(ref);
+
     // TODO: implement build
-    return RawMaterialButton(
-      onPressed: () async {
-        var browser = await puppeteer.launch();
-        var page = await browser.newPage();
-        await page.goto('https://pub.dev/documentation/puppeteer/latest/',
-            wait: Until.networkIdle);
-      },
-    );
+    return Text(jsonEncode(state.toJson()));
   }
 }

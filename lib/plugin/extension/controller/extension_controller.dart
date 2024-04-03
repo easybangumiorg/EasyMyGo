@@ -1,16 +1,16 @@
 import 'dart:collection';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:easy_mygo/c.dart';
-import 'package:easy_mygo/database/database.dart';
 import 'package:easy_mygo/entity/extension/extension_data/extension_data.dart';
 import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
 import 'package:easy_mygo/plugin/extension/loader/extension_loader.dart';
+import 'package:easy_mygo/plugin/inner/inner_source.dart';
+import 'package:easy_mygo/utils/cancelable_task/cancelable_task.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:async/async.dart';
 
 part 'extension_controller.g.dart';
 
@@ -31,30 +31,25 @@ class ExtensionState with _$ExtensionState {
 
 /// 负责拓展加载，只加载拓展，不加载源
 /// 最终源的加载在 SourceController
-@Riverpod(keepAlive: true)
-class ExtensionController extends _$ExtensionController {
-  static ExtensionController of(WidgetRef ref) =>
+@Riverpod()
+class ExtensionController extends _$ExtensionController
+    with CancelableWorkerContainer<void> {
+  static ExtensionController of(dynamic ref) =>
       ref.watch(extensionControllerPod.notifier);
 
-  static ExtensionState watch(WidgetRef ref) =>
-      ref.watch(extensionControllerPod);
+  static ExtensionState watch(dynamic ref) => ref.watch(extensionControllerPod);
 
-  static List<ExtensionData> watchExtensionsOnly(WidgetRef ref) =>
+  static List<ExtensionData> watchExtensionsOnly(dynamic ref) =>
       ref.watch(extensionControllerPod
           .select((value) => value.extensions.values.toList(growable: false)));
 
-  static bool watchLoadingOnly(WidgetRef ref) =>
+  static bool watchLoadingOnly(dynamic ref) =>
       ref.watch(extensionControllerPod.select((value) => value.loading));
-
-  CancelableOperation<int>? _lastLoadJob;
-  // 当前加载的版本，启动时第一次加载为 0 ，后续递增
-  int _version = -1;
 
   ExtensionController() {
     Future.microtask(() {
-      _innerLoadStart();
+      performWork(null);
     });
-
   }
 
   @override
@@ -64,47 +59,48 @@ class ExtensionController extends _$ExtensionController {
 
   /// 触发刷新
   Future<void> refresh() async {
-    await _innerLoadStart();
+    await performWork(null);
   }
 
-  Future<void> _innerLoadStart() async {
-    final lastVersion = (await _lastLoadJob?.cancel()) ?? _version;
-    _lastLoadJob = null;
-    _lastLoadJob = _newOperation(lastVersion + 1);
-    _lastLoadJob?.then((version) async {
-      await _innerLoad(version);
-    });
-  }
+  @override
+  Future<void> onWork(CancelableTask task, void input) async {
+    task.checkCancel();
+    state = state.copyWith(loading: true);
 
-  Future<void> _innerLoad(int version) async {
-    _updateWithVersion(version, (p0) => p0.copyWith(loading: true));
     final applicationDir = await EasyConstant.applicationPath;
     final extensionsPath = join(applicationDir.path, "extensions");
     final extensionsDir = Directory(extensionsPath);
     // 为空
-    if (!await extensionsDir.exists()){
+    if (!await extensionsDir.exists()) {
       await extensionsDir.create(recursive: true);
-      _updateWithVersion(version, (p0) => p0.copyWith(loading: false, extensions: {}));
+      task.checkCancel();
+      state = state.copyWith(loading: false, extensions: {});
       return;
     }
 
-    final List<Future<ExtensionInfo?>> parsing = [];
+    // 先加载内置源
+    final List<Future<ExtensionInfo?>> parsing = [
+      Future(() => InnerSourceFactory.innerExtensionInfo)
+    ];
 
     // 子文件夹名称为加载方式
-    final dirList = await extensionsDir.list(recursive: true, followLinks: false).toList();
-    _checkVersion(version);
+    final dirList =
+        await extensionsDir.list(recursive: true, followLinks: false).toList();
+    task.checkCancel();
     for (var dir in dirList) {
-      if(! await FileSystemEntity.isDirectory(dir.path)){
+      if (!await FileSystemEntity.isDirectory(dir.path)) {
         continue;
       }
       final name = basename(dir.path);
       final loader = ExtensionLoader.ofName(name);
-      if(loader == null){
+      if (loader == null) {
         continue;
       }
-      final fileList = await Directory(dir.path).list(recursive: false, followLinks: false).toList();
+      final fileList = await Directory(dir.path)
+          .list(recursive: false, followLinks: false)
+          .toList();
       for (var file in fileList) {
-        if (! await FileSystemEntity.isFile(file.path)){
+        if (!await FileSystemEntity.isFile(file.path)) {
           continue;
         }
         // 异步解析
@@ -114,9 +110,9 @@ class ExtensionController extends _$ExtensionController {
 
     final List<Future<ExtensionData>> extensionDataList = [];
     for (var value in parsing) {
-      _checkVersion(version);
+      task.checkCancel();
       final res = await value;
-      if(res != null){
+      if (res != null) {
         final loader = ExtensionLoader.of(res.loadType);
         extensionDataList.add(loader.load(res));
       }
@@ -124,36 +120,11 @@ class ExtensionController extends _$ExtensionController {
 
     final HashMap<String, ExtensionData> data = HashMap();
     for (var value1 in extensionDataList) {
-      _checkVersion(version);
+      task.checkCancel();
       final r = await value1;
       data[r.info.package] = r;
     }
-
-    _updateWithVersion(version, (p0) => p0.copyWith(loading: false, extensions: data));
+    task.checkCancel();
+    state = state.copyWith(loading: false, extensions: data);
   }
-
-  void _updateWithVersion(
-      int version, ExtensionState Function(ExtensionState) covert) {
-    // 版本检查
-    final curVersion = _version;
-    if (version == curVersion) {
-      state = covert(state);
-      return;
-    }
-    throw Exception("Future has been canceled");
-  }
-
-  void _checkVersion(int version){
-    final curVersion = _version;
-    if(version != curVersion){
-      throw Exception("Future has been canceled");
-    }
-  }
-
-  CancelableOperation<int> _newOperation(int version) =>
-      CancelableOperation.fromFuture(Future((){
-        _version = version;
-        return version;
-      }),
-          onCancel: () => version);
 }

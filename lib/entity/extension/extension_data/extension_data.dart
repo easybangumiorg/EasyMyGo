@@ -9,14 +9,14 @@ part 'extension_data.freezed.dart';
 /// ExtensionInfo 加载结果
 /// 拓展管理界面依赖的实体
 
-enum ExtensionState { loaded, error }
+enum ExtensionLoadState { loaded, error }
 
 @freezed
 class ExtensionData with _$ExtensionData {
   factory ExtensionData({
     required ExtensionInfo info,
     @Default(null) List<SourceInfo>? sources,
-    @Default(ExtensionState.loaded) ExtensionState state,
+    @Default(ExtensionLoadState.loaded) ExtensionLoadState state,
     @JsonKey(name: "error_msg") @Default("") String errorMsg,
     // 该插件的文件夹
     @JsonKey(name: "folder_path") required String folderPath,

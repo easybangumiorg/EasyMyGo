@@ -13,13 +13,13 @@ import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart
 import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 
-class JsNovelDetailedComponent extends NovelDetailedComponent implements JsComponent {
-
-
+class JsNovelDetailedComponent extends NovelDetailedComponent
+    implements JsComponent {
   static const methodName = "novel_detailed_getNovelDetailed";
   static const _performMethodName = "perform_novel_detailed_getNovelDetailed";
 
-  static final _performJSCode = JsComponentUtils.getPerformFunctionJsCode(_performMethodName, methodName, 1);
+  static final _performJSCode = JsComponentUtils.getPerformFunctionJsCode(
+      _performMethodName, methodName, 1);
 
   late JavascriptRuntime _runtime;
 
@@ -35,11 +35,14 @@ class JsNovelDetailedComponent extends NovelDetailedComponent implements JsCompo
     final res = await JsComponentUtils.evaluateAsync(
         _runtime, "$_performMethodName(${jsonEncode(summary.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
-
-    final respTemp = NovelDetailedResp.fromJson(json);
+    final rt = NovelDetailedResp.fromJson(json);
+    final respTemp = rt.copyWith(
+        detailed: rt.detailed?.copyWith(
+      source: sourceInfo.identify,
+    ));
     if (respTemp.detailed == null &&
         respTemp.volumes == null &&
-        respTemp.payload.code == 0 ) {
+        respTemp.payload.code == 0) {
       throw ComponentPayload(
           code: ComponentPayload.codeParseResultError,
           msg: "parse error",
@@ -47,19 +50,18 @@ class JsNovelDetailedComponent extends NovelDetailedComponent implements JsCompo
     }
     return respTemp.copyWith(
         payload: respTemp.payload.copyWith(
-          raw: res.rawResult,
-        )
-    );
+      raw: res.rawResult,
+    ));
   }
 
   @override
   Future<bool> isAvailable() async {
-    return await JsComponentUtils.checkFunction(_runtime, [methodName], [_performMethodName]);
+    return await JsComponentUtils.checkFunction(
+        _runtime, [methodName], [_performMethodName]);
   }
 
   @override
   Future<void> onLoad() async {
     await _runtime.evaluateAsync(_performJSCode);
   }
-
 }

@@ -11,8 +11,7 @@ part 'manga_cover.freezed.dart';
 class MangaCover with _$MangaCover {
 
   factory MangaCover({
-    // 必要信息
-    required String source,
+
     required String id,
 
     // cover 信息
@@ -22,6 +21,9 @@ class MangaCover with _$MangaCover {
 
     @JsonKey(name: "jump_url")
     required String jumpUrl,
+
+    // 必要信息，但是由 Component 填充
+    @Default("") String source,
 
     // 额外字段
     @Default("") String ext,

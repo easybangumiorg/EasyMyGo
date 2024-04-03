@@ -22,7 +22,7 @@ ExtensionData _$ExtensionDataFromJson(Map<String, dynamic> json) {
 mixin _$ExtensionData {
   ExtensionInfo get info => throw _privateConstructorUsedError;
   List<SourceInfo>? get sources => throw _privateConstructorUsedError;
-  ExtensionState get state => throw _privateConstructorUsedError;
+  ExtensionLoadState get state => throw _privateConstructorUsedError;
   @JsonKey(name: "error_msg")
   String get errorMsg => throw _privateConstructorUsedError; // 该插件的文件夹
   @JsonKey(name: "folder_path")
@@ -43,7 +43,7 @@ abstract class $ExtensionDataCopyWith<$Res> {
   $Res call(
       {ExtensionInfo info,
       List<SourceInfo>? sources,
-      ExtensionState state,
+      ExtensionLoadState state,
       @JsonKey(name: "error_msg") String errorMsg,
       @JsonKey(name: "folder_path") String folderPath});
 
@@ -81,7 +81,7 @@ class _$ExtensionDataCopyWithImpl<$Res, $Val extends ExtensionData>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as ExtensionState,
+              as ExtensionLoadState,
       errorMsg: null == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$ExtensionDataImplCopyWith<$Res>
   $Res call(
       {ExtensionInfo info,
       List<SourceInfo>? sources,
-      ExtensionState state,
+      ExtensionLoadState state,
       @JsonKey(name: "error_msg") String errorMsg,
       @JsonKey(name: "folder_path") String folderPath});
 
@@ -150,7 +150,7 @@ class __$$ExtensionDataImplCopyWithImpl<$Res>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as ExtensionState,
+              as ExtensionLoadState,
       errorMsg: null == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -169,7 +169,7 @@ class _$ExtensionDataImpl implements _ExtensionData {
   _$ExtensionDataImpl(
       {required this.info,
       final List<SourceInfo>? sources = null,
-      this.state = ExtensionState.loaded,
+      this.state = ExtensionLoadState.loaded,
       @JsonKey(name: "error_msg") this.errorMsg = "",
       @JsonKey(name: "folder_path") required this.folderPath})
       : _sources = sources;
@@ -192,7 +192,7 @@ class _$ExtensionDataImpl implements _ExtensionData {
 
   @override
   @JsonKey()
-  final ExtensionState state;
+  final ExtensionLoadState state;
   @override
   @JsonKey(name: "error_msg")
   final String errorMsg;
@@ -248,7 +248,7 @@ abstract class _ExtensionData implements ExtensionData {
   factory _ExtensionData(
           {required final ExtensionInfo info,
           final List<SourceInfo>? sources,
-          final ExtensionState state,
+          final ExtensionLoadState state,
           @JsonKey(name: "error_msg") final String errorMsg,
           @JsonKey(name: "folder_path") required final String folderPath}) =
       _$ExtensionDataImpl;
@@ -261,7 +261,7 @@ abstract class _ExtensionData implements ExtensionData {
   @override
   List<SourceInfo>? get sources;
   @override
-  ExtensionState get state;
+  ExtensionLoadState get state;
   @override
   @JsonKey(name: "error_msg")
   String get errorMsg;

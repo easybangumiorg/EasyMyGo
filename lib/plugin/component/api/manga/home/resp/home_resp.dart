@@ -13,7 +13,7 @@ part 'home_resp.freezed.dart';
 @freezed
 class MangaGetHomeTabResp with _$MangaGetHomeTabResp {
   factory MangaGetHomeTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<MangaHomeTab>? tabList,
+    @JsonKey(name: "tab_list") @Default(null) List<MangaHomeTab>? tabList,
     required ComponentPayload payload,
   }) = _MangaGetHomeTabResp;
 

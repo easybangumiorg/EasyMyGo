@@ -36,14 +36,14 @@ class MygopackExtensionLoader extends ExtensionLoader {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,
-          state: ExtensionState.error,
+          state: ExtensionLoadState.error,
           errorMsg: "插件版本过旧！");
     }
     if (extensionInfo.libVersion > ExtensionLoader.libVersionMax ) {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,
-          state: ExtensionState.error,
+          state: ExtensionLoadState.error,
           errorMsg: "纯纯 Mygo 版本过旧，请升级版本！");
     }
 
@@ -53,7 +53,7 @@ class MygopackExtensionLoader extends ExtensionLoader {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,
-          state: ExtensionState.error,
+          state: ExtensionLoadState.error,
           errorMsg: errorMsg ?? "解压失败或文件不存在");
     }
 
@@ -118,7 +118,7 @@ class MygopackExtensionLoader extends ExtensionLoader {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,
-          state: ExtensionState.error,
+          state: ExtensionLoadState.error,
           errorMsg: e.toString());
     }
   }

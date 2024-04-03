@@ -28,7 +28,7 @@ Map<String, dynamic> _$$ExtensionStateImplToJson(
 // **************************************************************************
 
 String _$extensionControllerHash() =>
-    r'89429db4d87220074636aef87e2867eb33feead9';
+    r'6fac9145cac481baa7b2ca9006efb2442e78d8fe';
 
 /// 负责拓展加载，只加载拓展，不加载源
 /// 最终源的加载在 SourceController
@@ -36,7 +36,7 @@ String _$extensionControllerHash() =>
 /// Copied from [ExtensionController].
 @ProviderFor(ExtensionController)
 final extensionControllerPod =
-    NotifierProvider<ExtensionController, ExtensionState>.internal(
+    AutoDisposeNotifierProvider<ExtensionController, ExtensionState>.internal(
   ExtensionController.new,
   name: r'extensionControllerPod',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -46,6 +46,6 @@ final extensionControllerPod =
   allTransitiveDependencies: null,
 );
 
-typedef _$ExtensionController = Notifier<ExtensionState>;
+typedef _$ExtensionController = AutoDisposeNotifier<ExtensionState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

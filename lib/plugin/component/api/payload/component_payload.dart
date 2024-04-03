@@ -7,6 +7,8 @@ part 'component_payload.freezed.dart';
 @freezed
 class ComponentPayload with _$ComponentPayload {
 
+  static ComponentPayload ok() => ComponentPayload();
+
   // 调用错误 - 插件崩溃，运行时调用错误等
   static const codeCallError = -10086;
 
@@ -26,4 +28,16 @@ class ComponentPayload with _$ComponentPayload {
 
   factory ComponentPayload.fromJson(Map<String, Object?> json) =>
       _$ComponentPayloadFromJson(json);
+}
+
+extension ComponentPayloadExt on ComponentPayload{
+  static final _errorMsgValues = Expando<String>();
+  String get errorMsg {
+    return _errorMsgValues[this] ??= "${
+      code == ComponentPayload.codeCallError ? "调用错误 $msg" :
+      code == ComponentPayload.codeParseResultError ? "解析错误 $msg" :
+      code == ComponentPayload.codeBusinessError ? msg :
+      "未知错误 $code $msg"
+    } ";
+  }
 }

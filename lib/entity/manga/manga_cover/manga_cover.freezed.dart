@@ -20,14 +20,14 @@ MangaCover _$MangaCoverFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MangaCover {
-// 必要信息
-  String get source => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError; // cover 信息
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
   String get intro => throw _privateConstructorUsedError;
   @JsonKey(name: "jump_url")
-  String get jumpUrl => throw _privateConstructorUsedError; // 额外字段
+  String get jumpUrl =>
+      throw _privateConstructorUsedError; // 必要信息，但是由 Component 填充
+  String get source => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,12 +43,12 @@ abstract class $MangaCoverCopyWith<$Res> {
       _$MangaCoverCopyWithImpl<$Res, MangaCover>;
   @useResult
   $Res call(
-      {String source,
-      String id,
+      {String id,
       String label,
       String cover,
       String intro,
       @JsonKey(name: "jump_url") String jumpUrl,
+      String source,
       String ext});
 }
 
@@ -65,19 +65,15 @@ class _$MangaCoverCopyWithImpl<$Res, $Val extends MangaCover>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
     Object? intro = null,
     Object? jumpUrl = null,
+    Object? source = null,
     Object? ext = null,
   }) {
     return _then(_value.copyWith(
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -97,6 +93,10 @@ class _$MangaCoverCopyWithImpl<$Res, $Val extends MangaCover>
       jumpUrl: null == jumpUrl
           ? _value.jumpUrl
           : jumpUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String,
       ext: null == ext
           ? _value.ext
@@ -115,12 +115,12 @@ abstract class _$$MangaCoverImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String source,
-      String id,
+      {String id,
       String label,
       String cover,
       String intro,
       @JsonKey(name: "jump_url") String jumpUrl,
+      String source,
       String ext});
 }
 
@@ -135,19 +135,15 @@ class __$$MangaCoverImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
     Object? intro = null,
     Object? jumpUrl = null,
+    Object? source = null,
     Object? ext = null,
   }) {
     return _then(_$MangaCoverImpl(
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -168,6 +164,10 @@ class __$$MangaCoverImplCopyWithImpl<$Res>
           ? _value.jumpUrl
           : jumpUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String,
       ext: null == ext
           ? _value.ext
           : ext // ignore: cast_nullable_to_non_nullable
@@ -180,20 +180,17 @@ class __$$MangaCoverImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MangaCoverImpl implements _MangaCover {
   _$MangaCoverImpl(
-      {required this.source,
-      required this.id,
+      {required this.id,
       required this.label,
       required this.cover,
       required this.intro,
       @JsonKey(name: "jump_url") required this.jumpUrl,
+      this.source = "",
       this.ext = ""});
 
   factory _$MangaCoverImpl.fromJson(Map<String, dynamic> json) =>
       _$$MangaCoverImplFromJson(json);
 
-// 必要信息
-  @override
-  final String source;
   @override
   final String id;
 // cover 信息
@@ -206,6 +203,10 @@ class _$MangaCoverImpl implements _MangaCover {
   @override
   @JsonKey(name: "jump_url")
   final String jumpUrl;
+// 必要信息，但是由 Component 填充
+  @override
+  @JsonKey()
+  final String source;
 // 额外字段
   @override
   @JsonKey()
@@ -213,7 +214,7 @@ class _$MangaCoverImpl implements _MangaCover {
 
   @override
   String toString() {
-    return 'MangaCover(source: $source, id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, ext: $ext)';
+    return 'MangaCover(id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, source: $source, ext: $ext)';
   }
 
   @override
@@ -221,19 +222,19 @@ class _$MangaCoverImpl implements _MangaCover {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MangaCoverImpl &&
-            (identical(other.source, source) || other.source == source) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.cover, cover) || other.cover == cover) &&
             (identical(other.intro, intro) || other.intro == intro) &&
             (identical(other.jumpUrl, jumpUrl) || other.jumpUrl == jumpUrl) &&
+            (identical(other.source, source) || other.source == source) &&
             (identical(other.ext, ext) || other.ext == ext));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, source, id, label, cover, intro, jumpUrl, ext);
+      Object.hash(runtimeType, id, label, cover, intro, jumpUrl, source, ext);
 
   @JsonKey(ignore: true)
   @override
@@ -251,19 +252,17 @@ class _$MangaCoverImpl implements _MangaCover {
 
 abstract class _MangaCover implements MangaCover {
   factory _MangaCover(
-      {required final String source,
-      required final String id,
+      {required final String id,
       required final String label,
       required final String cover,
       required final String intro,
       @JsonKey(name: "jump_url") required final String jumpUrl,
+      final String source,
       final String ext}) = _$MangaCoverImpl;
 
   factory _MangaCover.fromJson(Map<String, dynamic> json) =
       _$MangaCoverImpl.fromJson;
 
-  @override // 必要信息
-  String get source;
   @override
   String get id;
   @override // cover 信息
@@ -275,6 +274,8 @@ abstract class _MangaCover implements MangaCover {
   @override
   @JsonKey(name: "jump_url")
   String get jumpUrl;
+  @override // 必要信息，但是由 Component 填充
+  String get source;
   @override // 额外字段
   String get ext;
   @override

@@ -33,7 +33,12 @@ class JsMangaDetailedComponent extends MangaDetailedComponent implements JsCompo
         _runtime, "$_performMethodName(${jsonEncode(summary.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
 
-    final respTemp = MangaDetailedResp.fromJson(json);
+    final rt = MangaDetailedResp.fromJson(json);
+    final respTemp = rt.copyWith(
+      detailed: rt.detailed?.copyWith(
+        source: sourceInfo.identify,
+      ),
+    );
     if (respTemp.detailed == null &&
         respTemp.chapters == null &&
         respTemp.payload.code == 0 ) {

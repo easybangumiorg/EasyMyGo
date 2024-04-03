@@ -12,8 +12,6 @@ part 'manga_detailed.freezed.dart';
 class MangaDetailed with _$MangaDetailed {
 
   factory MangaDetailed({
-    // 必要信息
-    required String source,
     required String id,
 
     // cover 信息
@@ -32,6 +30,9 @@ class MangaDetailed with _$MangaDetailed {
 
     // 额外字段
     @Default("") String ext,
+
+    // 必要信息，但是由 Component 填充
+    @Default("") String source,
 }) = _MangaDetailed;
 
   factory MangaDetailed.fromJson(Map<String, Object?> json) =>

@@ -1,5 +1,7 @@
-import 'package:easy_mygo/database/database.dart';
+import 'dart:convert';
+
 import 'package:easy_mygo/utils/hive/hive.dart';
+import 'package:easy_mygo/utils/json.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -46,8 +48,9 @@ class ThemeController extends _$ThemeController {
 
   Future<void> _innerInit() async {
     final box = await HiveBox.themeConfig();
-    final themeMap = await box.getSingle() ?? {};
-    final themeConfig = ThemeConfig.fromJson(themeMap);
+    final themeMapJson = await box.getSingle();
+
+    final themeConfig = ThemeConfig.fromJson((themeMapJson ?? {}).cast());
     state = themeConfig;
     await box.close();
   }

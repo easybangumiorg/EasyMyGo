@@ -8,7 +8,6 @@ part of 'manga_detailed.dart';
 
 _$MangaDetailedImpl _$$MangaDetailedImplFromJson(Map<String, dynamic> json) =>
     _$MangaDetailedImpl(
-      source: json['source'] as String,
       id: json['id'] as String,
       label: json['label'] as String,
       cover: json['cover'] as String,
@@ -24,11 +23,11 @@ _$MangaDetailedImpl _$$MangaDetailedImplFromJson(Map<String, dynamic> json) =>
       status: $enumDecodeNullable(_$MangaStatusEnumMap, json['status']) ??
           MangaStatus.unknown,
       ext: json['ext'] as String? ?? "",
+      source: json['source'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$MangaDetailedImplToJson(_$MangaDetailedImpl instance) =>
     <String, dynamic>{
-      'source': instance.source,
       'id': instance.id,
       'label': instance.label,
       'cover': instance.cover,
@@ -41,6 +40,7 @@ Map<String, dynamic> _$$MangaDetailedImplToJson(_$MangaDetailedImpl instance) =>
       'isUpdate': instance.isUpdate,
       'status': _$MangaStatusEnumMap[instance.status]!,
       'ext': instance.ext,
+      'source': instance.source,
     };
 
 const _$MangaUpdateStrategyEnumMap = {

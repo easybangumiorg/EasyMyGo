@@ -8,7 +8,10 @@ enum ExtensionLoaderType {
   // 单个纯 js 文件
   js,
   // mygo 包,包里的文件格式交给 loader 去处理了
-  mygopack
+  mygopack,
+
+  // 内置拓展，统一一个
+  inner,
 }
 
 @freezed

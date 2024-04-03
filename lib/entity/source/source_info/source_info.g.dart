@@ -41,4 +41,5 @@ const _$SourceTypeEnumMap = {
 
 const _$SourceLoaderTypeEnumMap = {
   SourceLoaderType.js: 'js',
+  SourceLoaderType.inner: 'inner',
 };

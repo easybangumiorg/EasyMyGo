@@ -20,8 +20,6 @@ MangaDetailed _$MangaDetailedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MangaDetailed {
-// 必要信息
-  String get source => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError; // cover 信息
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
@@ -36,7 +34,8 @@ mixin _$MangaDetailed {
   MangaUpdateStrategy get updateStrategy => throw _privateConstructorUsedError;
   bool get isUpdate => throw _privateConstructorUsedError;
   MangaStatus get status => throw _privateConstructorUsedError; // 额外字段
-  String get ext => throw _privateConstructorUsedError;
+  String get ext => throw _privateConstructorUsedError; // 必要信息，但是由 Component 填充
+  String get source => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,8 +50,7 @@ abstract class $MangaDetailedCopyWith<$Res> {
       _$MangaDetailedCopyWithImpl<$Res, MangaDetailed>;
   @useResult
   $Res call(
-      {String source,
-      String id,
+      {String id,
       String label,
       String cover,
       String intro,
@@ -63,7 +61,8 @@ abstract class $MangaDetailedCopyWith<$Res> {
       @JsonKey(name: "update_strategy") MangaUpdateStrategy updateStrategy,
       bool isUpdate,
       MangaStatus status,
-      String ext});
+      String ext,
+      String source});
 }
 
 /// @nodoc
@@ -79,7 +78,6 @@ class _$MangaDetailedCopyWithImpl<$Res, $Val extends MangaDetailed>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -92,12 +90,9 @@ class _$MangaDetailedCopyWithImpl<$Res, $Val extends MangaDetailed>
     Object? isUpdate = null,
     Object? status = null,
     Object? ext = null,
+    Object? source = null,
   }) {
     return _then(_value.copyWith(
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -145,6 +140,10 @@ class _$MangaDetailedCopyWithImpl<$Res, $Val extends MangaDetailed>
       ext: null == ext
           ? _value.ext
           : ext // ignore: cast_nullable_to_non_nullable
+              as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -159,8 +158,7 @@ abstract class _$$MangaDetailedImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String source,
-      String id,
+      {String id,
       String label,
       String cover,
       String intro,
@@ -171,7 +169,8 @@ abstract class _$$MangaDetailedImplCopyWith<$Res>
       @JsonKey(name: "update_strategy") MangaUpdateStrategy updateStrategy,
       bool isUpdate,
       MangaStatus status,
-      String ext});
+      String ext,
+      String source});
 }
 
 /// @nodoc
@@ -185,7 +184,6 @@ class __$$MangaDetailedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? source = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -198,12 +196,9 @@ class __$$MangaDetailedImplCopyWithImpl<$Res>
     Object? isUpdate = null,
     Object? status = null,
     Object? ext = null,
+    Object? source = null,
   }) {
     return _then(_$MangaDetailedImpl(
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -252,6 +247,10 @@ class __$$MangaDetailedImplCopyWithImpl<$Res>
           ? _value.ext
           : ext // ignore: cast_nullable_to_non_nullable
               as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -260,8 +259,7 @@ class __$$MangaDetailedImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MangaDetailedImpl implements _MangaDetailed {
   _$MangaDetailedImpl(
-      {required this.source,
-      required this.id,
+      {required this.id,
       required this.label,
       required this.cover,
       required this.intro,
@@ -273,14 +271,12 @@ class _$MangaDetailedImpl implements _MangaDetailed {
       this.updateStrategy = MangaUpdateStrategy.always,
       this.isUpdate = false,
       this.status = MangaStatus.unknown,
-      this.ext = ""});
+      this.ext = "",
+      this.source = ""});
 
   factory _$MangaDetailedImpl.fromJson(Map<String, dynamic> json) =>
       _$$MangaDetailedImplFromJson(json);
 
-// 必要信息
-  @override
-  final String source;
   @override
   final String id;
 // cover 信息
@@ -316,10 +312,14 @@ class _$MangaDetailedImpl implements _MangaDetailed {
   @override
   @JsonKey()
   final String ext;
+// 必要信息，但是由 Component 填充
+  @override
+  @JsonKey()
+  final String source;
 
   @override
   String toString() {
-    return 'MangaDetailed(source: $source, id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, isDetailedLoad: $isDetailedLoad, genre: $genre, description: $description, updateStrategy: $updateStrategy, isUpdate: $isUpdate, status: $status, ext: $ext)';
+    return 'MangaDetailed(id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, isDetailedLoad: $isDetailedLoad, genre: $genre, description: $description, updateStrategy: $updateStrategy, isUpdate: $isUpdate, status: $status, ext: $ext, source: $source)';
   }
 
   @override
@@ -327,7 +327,6 @@ class _$MangaDetailedImpl implements _MangaDetailed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MangaDetailedImpl &&
-            (identical(other.source, source) || other.source == source) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.cover, cover) || other.cover == cover) &&
@@ -343,14 +342,14 @@ class _$MangaDetailedImpl implements _MangaDetailed {
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.ext, ext) || other.ext == ext));
+            (identical(other.ext, ext) || other.ext == ext) &&
+            (identical(other.source, source) || other.source == source));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      source,
       id,
       label,
       cover,
@@ -362,7 +361,8 @@ class _$MangaDetailedImpl implements _MangaDetailed {
       updateStrategy,
       isUpdate,
       status,
-      ext);
+      ext,
+      source);
 
   @JsonKey(ignore: true)
   @override
@@ -380,8 +380,7 @@ class _$MangaDetailedImpl implements _MangaDetailed {
 
 abstract class _MangaDetailed implements MangaDetailed {
   factory _MangaDetailed(
-      {required final String source,
-      required final String id,
+      {required final String id,
       required final String label,
       required final String cover,
       required final String intro,
@@ -393,13 +392,12 @@ abstract class _MangaDetailed implements MangaDetailed {
       final MangaUpdateStrategy updateStrategy,
       final bool isUpdate,
       final MangaStatus status,
-      final String ext}) = _$MangaDetailedImpl;
+      final String ext,
+      final String source}) = _$MangaDetailedImpl;
 
   factory _MangaDetailed.fromJson(Map<String, dynamic> json) =
       _$MangaDetailedImpl.fromJson;
 
-  @override // 必要信息
-  String get source;
   @override
   String get id;
   @override // cover 信息
@@ -427,6 +425,8 @@ abstract class _MangaDetailed implements MangaDetailed {
   MangaStatus get status;
   @override // 额外字段
   String get ext;
+  @override // 必要信息，但是由 Component 填充
+  String get source;
   @override
   @JsonKey(ignore: true)
   _$$MangaDetailedImplCopyWith<_$MangaDetailedImpl> get copyWith =>

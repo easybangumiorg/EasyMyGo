@@ -13,20 +13,21 @@ class HiveBox {
 
   static String key = "Mygo_single_key";
 
-  static Future<LazyBox<Map<String, dynamic>>> themeConfig() async {
+  static Future<LazyBox<Map>> themeConfig() async {
     await init;
-    return Hive.openLazyBox<Map<String, dynamic>>("theme_config");
+    return Hive.openLazyBox<Map>("theme_config");
   }
 
-  static Future<LazyBox<Map<String, dynamic>>> mangaInfo() async {
+  static Future<LazyBox<Map>> sourceConfig() async {
     await init;
-    return Hive.openLazyBox<Map<String, dynamic>>("manga_info");
+    return Hive.openLazyBox<Map>("source_config");
   }
 
-  static Future<LazyBox<Map<String, dynamic>>> novelInfo() async {
+  static Future<LazyBox<Map>> config() async {
     await init;
-    return Hive.openLazyBox<Map<String, dynamic>>("novel_info");
+    return Hive.openLazyBox<Map>("config");
   }
+
 
 }
 

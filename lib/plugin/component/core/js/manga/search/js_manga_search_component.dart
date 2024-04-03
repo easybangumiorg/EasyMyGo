@@ -44,7 +44,10 @@ class JsMangaSearchComponent extends MangaSearchComponent implements JsComponent
     final res = await JsComponentUtils.evaluateAsync(_runtime,
         "$_performMethodSearch($key,$keyword)");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
-    final respTemp = MangaSearchResp.fromJson(json);
+    final rt = MangaSearchResp.fromJson(json);
+    final respTemp = rt.copyWith(
+      data: rt.data?.map((e) => e.copyWith(source: sourceInfo.identify)).toList(),
+    );
 
     if (respTemp.data == null && respTemp.payload.code == 0) {
       throw ComponentPayload(

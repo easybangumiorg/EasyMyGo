@@ -6,7 +6,7 @@ part 'source_info.freezed.dart';
 part 'source_info.g.dart';
 
 enum SourceType { manga, novel }
-enum SourceLoaderType { js }
+enum SourceLoaderType { js, inner }
 
 @freezed
 class SourceInfo with _$SourceInfo {

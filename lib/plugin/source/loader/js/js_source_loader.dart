@@ -62,7 +62,7 @@ class JsSourceLoader extends SourceLoader {
   SourceLoaderType get type => SourceLoaderType.js;
 
   @override
-  Future<SourceData> load(String fromExtension, SourceInfo sourceInfo) async {
+  Future<SourceData> load(SourceInfo sourceInfo) async {
 
     try {
       final runtime = JsSourceUtils.newRuntime(sourceInfo);
