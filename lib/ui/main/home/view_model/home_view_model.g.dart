@@ -55,7 +55,7 @@ const _$SourceTypeEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeViewModelHash() => r'7026c15dec218400d18d91f105e5099be017e677';
+String _$homeViewModelHash() => r'a398cf06ff4ca8e776229f0776e6b5998af51aeb';
 
 /// See also [HomeViewModel].
 @ProviderFor(HomeViewModel)

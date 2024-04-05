@@ -24,17 +24,20 @@ mixin _$HomeViewState {
   @JsonKey(name: "is_error")
   bool get isError => throw _privateConstructorUsedError;
   @JsonKey(name: "error_msg")
-  String get errorMsg => throw _privateConstructorUsedError;
+  String get errorMsg => throw _privateConstructorUsedError; // 所有漫画首页源和一级 tab
   @JsonKey(name: "manga_source_list")
   List<String> get mangaSourceList => throw _privateConstructorUsedError;
   @JsonKey(name: "manga_tab_list")
-  List<MangaHomeTab> get mangaTabList => throw _privateConstructorUsedError;
+  List<MangaHomeTab> get mangaTabList =>
+      throw _privateConstructorUsedError; // 所有小说首页源和一级 tab
   @JsonKey(name: "novel_source_list")
   List<String> get novelSourceList => throw _privateConstructorUsedError;
   @JsonKey(name: "novel_tab_list")
-  List<NovelHomeTab> get novelTabList => throw _privateConstructorUsedError;
+  List<NovelHomeTab> get novelTabList =>
+      throw _privateConstructorUsedError; // 当前选择类型，只有对应类型的一级 tab 有值
   @JsonKey(name: "current_type")
-  SourceType get currentType => throw _privateConstructorUsedError;
+  SourceType get currentType =>
+      throw _privateConstructorUsedError; // 当前选择一级 tab 下标
   @JsonKey(name: "current_source_index")
   int get currentSourceIndex => throw _privateConstructorUsedError;
 
@@ -242,7 +245,9 @@ class _$HomeViewStateImpl implements _HomeViewState {
   @override
   @JsonKey(name: "error_msg")
   final String errorMsg;
+// 所有漫画首页源和一级 tab
   final List<String> _mangaSourceList;
+// 所有漫画首页源和一级 tab
   @override
   @JsonKey(name: "manga_source_list")
   List<String> get mangaSourceList {
@@ -260,7 +265,9 @@ class _$HomeViewStateImpl implements _HomeViewState {
     return EqualUnmodifiableListView(_mangaTabList);
   }
 
+// 所有小说首页源和一级 tab
   final List<String> _novelSourceList;
+// 所有小说首页源和一级 tab
   @override
   @JsonKey(name: "novel_source_list")
   List<String> get novelSourceList {
@@ -278,9 +285,11 @@ class _$HomeViewStateImpl implements _HomeViewState {
     return EqualUnmodifiableListView(_novelTabList);
   }
 
+// 当前选择类型，只有对应类型的一级 tab 有值
   @override
   @JsonKey(name: "current_type")
   final SourceType currentType;
+// 当前选择一级 tab 下标
   @override
   @JsonKey(name: "current_source_index")
   final int currentSourceIndex;
@@ -365,22 +374,22 @@ abstract class _HomeViewState implements HomeViewState {
   @override
   @JsonKey(name: "error_msg")
   String get errorMsg;
-  @override
+  @override // 所有漫画首页源和一级 tab
   @JsonKey(name: "manga_source_list")
   List<String> get mangaSourceList;
   @override
   @JsonKey(name: "manga_tab_list")
   List<MangaHomeTab> get mangaTabList;
-  @override
+  @override // 所有小说首页源和一级 tab
   @JsonKey(name: "novel_source_list")
   List<String> get novelSourceList;
   @override
   @JsonKey(name: "novel_tab_list")
   List<NovelHomeTab> get novelTabList;
-  @override
+  @override // 当前选择类型，只有对应类型的一级 tab 有值
   @JsonKey(name: "current_type")
   SourceType get currentType;
-  @override
+  @override // 当前选择一级 tab 下标
   @JsonKey(name: "current_source_index")
   int get currentSourceIndex;
   @override
