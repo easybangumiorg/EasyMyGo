@@ -15,9 +15,6 @@ class MangaTestComponent extends Component implements MangaHomeComponent {
     return MangaGetHomeTabResp(tabList: [
       MangaHomeTab(id: "1", label: "有二级", hasSecondTab: true),
       MangaHomeTab(id: "2", label: "无二级封面", hasSecondTab: false),
-      MangaHomeTab(id: "3", label: "跳转有二级", hasSecondTab: true, jumpPage: true),
-      MangaHomeTab(
-          id: "3", label: "跳转无二级无封面", hasSecondTab: false, jumpPage: true),
     ], payload: ComponentPayload.ok());
   }
 

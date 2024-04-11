@@ -11,7 +11,6 @@ _$NovelHomeTabImpl _$$NovelHomeTabImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       label: json['label'] as String,
       hasSecondTab: json['has_second_tab'] as bool,
-      jumpPage: json['jump_page'] as bool? ?? false,
       ext: json['ext'] as String? ?? '',
     );
 
@@ -20,7 +19,6 @@ Map<String, dynamic> _$$NovelHomeTabImplToJson(_$NovelHomeTabImpl instance) =>
       'id': instance.id,
       'label': instance.label,
       'has_second_tab': instance.hasSecondTab,
-      'jump_page': instance.jumpPage,
       'ext': instance.ext,
     };
 

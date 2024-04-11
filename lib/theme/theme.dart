@@ -49,8 +49,7 @@ class ThemeController extends _$ThemeController {
   Future<void> _innerInit() async {
     final box = await HiveBox.themeConfig();
     final themeMapJson = await box.getSingle();
-
-    final themeConfig = ThemeConfig.fromJson((themeMapJson ?? {}).cast());
+    final themeConfig = ThemeConfig.fromJson((themeMapJson)?.cast() ?? {});
     state = themeConfig;
     await box.close();
   }

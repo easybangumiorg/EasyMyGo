@@ -11,10 +11,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'l10n/l10n.dart';
 
 Future<void> main() async {
-  final Map<dynamic, dynamic> map = <String, String>{
-    "d": "d"
-  };
-  map as Map<String, String>;
   runApp(const ProviderScope(child: EasyBookApp()));
 }
 

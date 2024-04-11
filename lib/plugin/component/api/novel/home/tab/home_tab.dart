@@ -13,9 +13,6 @@ class NovelHomeTab with _$NovelHomeTab {
     // 是否有 二级 tab
     @JsonKey(name: "has_second_tab") required bool hasSecondTab,
 
-    // 是否需要跳转到新页面
-    @JsonKey(name: "jump_page") @Default(false) bool jumpPage,
-
     // 可以让源透传一些信息
     @Default('') String ext,
   }) = _NovelHomeTab;

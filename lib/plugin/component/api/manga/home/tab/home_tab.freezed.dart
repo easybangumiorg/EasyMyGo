@@ -23,9 +23,7 @@ mixin _$MangaHomeTab {
   String get id => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError; // 是否有 二级 tab
   @JsonKey(name: "has_second_tab")
-  bool get hasSecondTab => throw _privateConstructorUsedError; // 是否需要跳转到新页面
-  @JsonKey(name: "jump_page")
-  bool get jumpPage => throw _privateConstructorUsedError; // 可以让源透传一些信息
+  bool get hasSecondTab => throw _privateConstructorUsedError; // 可以让源透传一些信息
   String get ext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +42,6 @@ abstract class $MangaHomeTabCopyWith<$Res> {
       {String id,
       String label,
       @JsonKey(name: "has_second_tab") bool hasSecondTab,
-      @JsonKey(name: "jump_page") bool jumpPage,
       String ext});
 }
 
@@ -64,7 +61,6 @@ class _$MangaHomeTabCopyWithImpl<$Res, $Val extends MangaHomeTab>
     Object? id = null,
     Object? label = null,
     Object? hasSecondTab = null,
-    Object? jumpPage = null,
     Object? ext = null,
   }) {
     return _then(_value.copyWith(
@@ -79,10 +75,6 @@ class _$MangaHomeTabCopyWithImpl<$Res, $Val extends MangaHomeTab>
       hasSecondTab: null == hasSecondTab
           ? _value.hasSecondTab
           : hasSecondTab // ignore: cast_nullable_to_non_nullable
-              as bool,
-      jumpPage: null == jumpPage
-          ? _value.jumpPage
-          : jumpPage // ignore: cast_nullable_to_non_nullable
               as bool,
       ext: null == ext
           ? _value.ext
@@ -104,7 +96,6 @@ abstract class _$$MangaHomeTabImplCopyWith<$Res>
       {String id,
       String label,
       @JsonKey(name: "has_second_tab") bool hasSecondTab,
-      @JsonKey(name: "jump_page") bool jumpPage,
       String ext});
 }
 
@@ -122,7 +113,6 @@ class __$$MangaHomeTabImplCopyWithImpl<$Res>
     Object? id = null,
     Object? label = null,
     Object? hasSecondTab = null,
-    Object? jumpPage = null,
     Object? ext = null,
   }) {
     return _then(_$MangaHomeTabImpl(
@@ -137,10 +127,6 @@ class __$$MangaHomeTabImplCopyWithImpl<$Res>
       hasSecondTab: null == hasSecondTab
           ? _value.hasSecondTab
           : hasSecondTab // ignore: cast_nullable_to_non_nullable
-              as bool,
-      jumpPage: null == jumpPage
-          ? _value.jumpPage
-          : jumpPage // ignore: cast_nullable_to_non_nullable
               as bool,
       ext: null == ext
           ? _value.ext
@@ -157,7 +143,6 @@ class _$MangaHomeTabImpl implements _MangaHomeTab {
       {required this.id,
       required this.label,
       @JsonKey(name: "has_second_tab") required this.hasSecondTab,
-      @JsonKey(name: "jump_page") this.jumpPage = false,
       this.ext = ''});
 
   factory _$MangaHomeTabImpl.fromJson(Map<String, dynamic> json) =>
@@ -171,10 +156,6 @@ class _$MangaHomeTabImpl implements _MangaHomeTab {
   @override
   @JsonKey(name: "has_second_tab")
   final bool hasSecondTab;
-// 是否需要跳转到新页面
-  @override
-  @JsonKey(name: "jump_page")
-  final bool jumpPage;
 // 可以让源透传一些信息
   @override
   @JsonKey()
@@ -182,7 +163,7 @@ class _$MangaHomeTabImpl implements _MangaHomeTab {
 
   @override
   String toString() {
-    return 'MangaHomeTab(id: $id, label: $label, hasSecondTab: $hasSecondTab, jumpPage: $jumpPage, ext: $ext)';
+    return 'MangaHomeTab(id: $id, label: $label, hasSecondTab: $hasSecondTab, ext: $ext)';
   }
 
   @override
@@ -194,15 +175,12 @@ class _$MangaHomeTabImpl implements _MangaHomeTab {
             (identical(other.label, label) || other.label == label) &&
             (identical(other.hasSecondTab, hasSecondTab) ||
                 other.hasSecondTab == hasSecondTab) &&
-            (identical(other.jumpPage, jumpPage) ||
-                other.jumpPage == jumpPage) &&
             (identical(other.ext, ext) || other.ext == ext));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, label, hasSecondTab, jumpPage, ext);
+  int get hashCode => Object.hash(runtimeType, id, label, hasSecondTab, ext);
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +201,6 @@ abstract class _MangaHomeTab implements MangaHomeTab {
       {required final String id,
       required final String label,
       @JsonKey(name: "has_second_tab") required final bool hasSecondTab,
-      @JsonKey(name: "jump_page") final bool jumpPage,
       final String ext}) = _$MangaHomeTabImpl;
 
   factory _MangaHomeTab.fromJson(Map<String, dynamic> json) =
@@ -236,9 +213,6 @@ abstract class _MangaHomeTab implements MangaHomeTab {
   @override // 是否有 二级 tab
   @JsonKey(name: "has_second_tab")
   bool get hasSecondTab;
-  @override // 是否需要跳转到新页面
-  @JsonKey(name: "jump_page")
-  bool get jumpPage;
   @override // 可以让源透传一些信息
   String get ext;
   @override
