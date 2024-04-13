@@ -73,28 +73,30 @@ class NovelTestComponent extends Component implements NovelHomeComponent {
 
   @override
   Future<NovelGetHomeCoverResp> loadPageData(NovelHomePage page, String key) async {
+    print("loadPageData $key");
+    await Future.delayed(Duration(milliseconds: 1000));
     final page = int.tryParse(key) ?? 0;
     if (page == 10){
       return NovelGetHomeCoverResp(
-          data: _testCoverList(),
+          data: _testCoverList(key),
           nextKey: null,
           payload: ComponentPayload.ok());
     }else{
       return NovelGetHomeCoverResp(
-          data: _testCoverList(),
+          data: _testCoverList(key),
           nextKey: "${page + 1}",
           payload: ComponentPayload.ok());
     }
   }
 
-  List<NovelCover> _testCoverList() {
+  List<NovelCover> _testCoverList(String key) {
     List<NovelCover> res = [];
     for(var i = 0 ; i < 10 ; i ++){
       res.add(NovelCover(
           source: sourceInfo.identify,
           id: "${DateTime.timestamp()} $i",
-          label: "test $i",
-          cover: "",
+          label: "$key GIRLS BAND CRY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$i",
+          cover: "https://lain.bgm.tv/pic/cover/l/75/c1/431767_bX7FZ.jpg?_gl=1*cqr4mj*_ga*MTA0NTEwMzYyMC4xNzA0NjQ1ODcz*_ga_1109JLGMHN*MTcxMjk5NTc0NC4xMi4xLjE3MTI5OTY4OTguMC4wLjA.",
           intro: "",
           jumpUrl: ""));
     }

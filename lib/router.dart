@@ -1,6 +1,5 @@
 import 'package:easy_mygo/ui/main/main.dart';
-import 'package:easy_mygo/ui/splash/splash.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,7 +23,9 @@ GoRouter easyRouter(EasyRouterRef ref) => GoRouter(
     GoRoute(
       path: Routes.main,
       builder: (BuildContext context, GoRouterState state) {
-        return MainScreen();
+        return Material(
+          child: MainScreen(),
+        );
       },
     ),
   ],

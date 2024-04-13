@@ -7,8 +7,11 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'dart:math' as math;
 
 class NovelHomePageState {
+  static NovelHomePageState init = NovelHomePageState(List.empty(), null);
+
   final List<NovelCover> coverList;
   final String? nextKey;
 
@@ -27,69 +30,106 @@ class NovelHomePageState {
 }
 
 class NovelHomePageWidget extends HookConsumerWidget {
+  final EasyRefreshController _controller = EasyRefreshController(
+    controlFinishRefresh: true,
+    controlFinishLoad: true,
+  );
+
   final NovelHomePage homePage;
   final NovelHomeComponent component;
 
-  const NovelHomePageWidget(
+  NovelHomePageWidget(
       {required this.homePage, required this.component, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final novelHomePageState = useState<NovelHomePageState>(
-        NovelHomePageState(List.empty(), homePage.initKey));
-    final nextKey = novelHomePageState.value.nextKey;
-    final coverList = novelHomePageState.value.coverList;
+    final novelHomePageState =
+        useState<NovelHomePageState>(NovelHomePageState.init);
 
     onLoad(String? key, bool isAppend) async {
-      if (nextKey == null) {
+      if (key == null) {
         return IndicatorResult.noMore;
       }
-      final resp = await component.loadPageData(homePage, nextKey);
+      final resp = await component.loadPageData(homePage, key);
       if (resp.payload.isError) {
         return IndicatorResult.fail;
       } else {
         final data = resp.data;
         final nk = resp.nextKey;
-        if (nk == null || data == null || data.isEmpty) {
-          return IndicatorResult.noMore;
-        }
+
         if (isAppend) {
           novelHomePageState.value = novelHomePageState.value
               .copyWithAppend(coverList: data, nextKey: nk);
         } else {
-          novelHomePageState.value = NovelHomePageState(data, nk);
+          novelHomePageState.value = NovelHomePageState(data??[], nk);
         }
-
+        if (nk == null || data == null || data.isEmpty) {
+          return IndicatorResult.noMore;
+        }
         return IndicatorResult.success;
       }
     }
 
-    return EasyRefresh(
-        header: const MaterialHeader(position: IndicatorPosition.locator,),
-        footer: const MaterialFooter(position: IndicatorPosition.locator,),
-        onLoad: () async {
-          return await onLoad(nextKey, true);
-        },
-        onRefresh: () async {
+    useEffect(() {
+      if (novelHomePageState.value == NovelHomePageState.init) {
+        Future.microtask(() async {
           novelHomePageState.value =
               NovelHomePageState(List.empty(), homePage.initKey);
-          return await onLoad(homePage.initKey, false);
-        },
-        child: CustomScrollView(slivers: [
-          const HeaderLocator.sliver(),
-          SliverGrid.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200),
-            itemBuilder: (BuildContext context, int index) {
-              final cover = coverList.elementAtOrNull(index);
-              if (cover == null){
-                return null;
-              }
-              return NovelCoverCard(cover: cover);
+          _controller.callRefresh();
+        });
+      }
+      return null;
+    }, [novelHomePageState.value]);
+
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        const crossAxisSpacing = 20.0;
+        int crossAxisCount = (constraints.maxWidth / (150 + crossAxisSpacing)).ceil();
+        // Ensure a minimum count of 1, can be zero and result in an infinite extent
+        // below when the window size is 0.
+        crossAxisCount = math.max(1, crossAxisCount);
+        final itemWidth = (constraints.maxWidth - (crossAxisCount-1)*crossAxisSpacing) / crossAxisCount;
+        return EasyRefresh(
+            controller: _controller,
+            header: const ClassicHeader(
+              position: IndicatorPosition.locator,
+            ),
+            footer: const ClassicFooter(
+              position: IndicatorPosition.locator,
+            ),
+            onLoad: () async {
+              final res = await onLoad(novelHomePageState.value.nextKey, true);
+              _controller.finishLoad(res);
+              //_controller.resetFooter();
             },
-            itemCount: coverList.length,
-          ),
-          const FooterLocator.sliver(),
-        ]));
+            onRefresh: () async {
+              _controller.resetFooter();
+              novelHomePageState.value =
+                  NovelHomePageState(List.empty(), homePage.initKey);
+              final res = await onLoad(homePage.initKey, false);
+              _controller.finishRefresh(res);
+
+            },
+            child: CustomScrollView(slivers: [
+              const HeaderLocator.sliver(),
+              SliverGrid.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    mainAxisExtent: NovelCoverCard.measureHeight(itemWidth),
+                    crossAxisSpacing: crossAxisSpacing,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  final cover = novelHomePageState.value.coverList.elementAtOrNull(index);
+                  if (cover == null) {
+                    return null;
+                  }
+                  return NovelCoverCard(cover: cover);
+                },
+                itemCount: novelHomePageState.value.coverList.length,
+              ),
+              const FooterLocator.sliver(),
+            ]));
+      },
+    );
   }
 }

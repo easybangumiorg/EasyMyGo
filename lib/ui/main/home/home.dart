@@ -28,10 +28,14 @@ class HomePage extends HookConsumerWidget {
     final sourceBundle = SourceBundle.of(ref);
     final component = sourceBundle.getNovelHomeList().firstOrNull;
     if (component != null){
-      return NovelHomePageWidget(
-        homePage: NovelHomePage(id: "", label: ""),
-        component: component,
-      );
+
+      return Container(
+        color: Theme.of(context).colorScheme.background,
+        child: NovelHomePageWidget(
+          homePage: NovelHomePage(id: "", label: ""),
+          component: component,
+        ),
+      );;
     }
     return Text(jsonEncode(state));
   }
