@@ -43,6 +43,7 @@ class NovelHomePageWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // TODO 应该要搬到 ViewModel，不然无法复用
     final novelHomePageState =
         useState<NovelHomePageState>(NovelHomePageState.init);
 
