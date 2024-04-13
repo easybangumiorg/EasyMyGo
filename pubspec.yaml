@@ -75,6 +75,8 @@ dependencies:
 
   async: ^2.11.0
 
+  easy_refresh: ^3.3.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -100,6 +102,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
 
   hive_generator: ^2.0.1
+
 
 flutter_intl:
   enabled: true

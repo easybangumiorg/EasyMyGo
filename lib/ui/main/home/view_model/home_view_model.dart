@@ -9,7 +9,6 @@ import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:easy_mygo/plugin/source/controller/source_controller.dart';
 import 'package:easy_mygo/utils/cancelable_task/cancelable_task.dart';
 import 'package:easy_mygo/utils/hive/hive.dart';
-import 'package:easy_mygo/utils/json.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -178,9 +177,6 @@ class HomeViewModel extends _$HomeViewModel with CancelableWorkerContainer<Sourc
         );
       }
     }
-
-
-
   }
 
 }

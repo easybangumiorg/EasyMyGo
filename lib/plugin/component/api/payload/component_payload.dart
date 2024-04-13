@@ -40,4 +40,6 @@ extension ComponentPayloadExt on ComponentPayload{
       "未知错误 $code $msg"
     } ";
   }
+
+  bool get isError => code != 0;
 }

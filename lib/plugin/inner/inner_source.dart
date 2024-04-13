@@ -21,11 +21,13 @@ class InnerSourceFactory {
       readme: "纯纯 Mygo 内置源"
   );
 
-  static final test = TestMangaSource();
+  static final testManga = TestMangaSource();
+  static final testNovel = TestNovelSource();
 
   // 在这里添加
   static final _innerSources = <String, InnerSource>{
-    test.key: test
+    testManga.key: testManga,
+    testNovel.key: testNovel,
   };
 
   static InnerSource? of(String key) {

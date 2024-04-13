@@ -2,6 +2,7 @@ import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/inner/inner_source.dart';
 import 'package:easy_mygo/plugin/inner/test/component/manga/manga_test_component.dart';
+import 'package:easy_mygo/plugin/inner/test/component/novel/novel_test_component.dart';
 
 class TestMangaSource extends InnerSource {
   TestMangaSource(): super(
@@ -32,7 +33,7 @@ class TestNovelSource extends InnerSource {
   @override
   List<Component> getComponentList(SourceInfo sourceInfo) {
     return [
-
+      NovelTestComponent(sourceInfo)
     ];
   }
 }
