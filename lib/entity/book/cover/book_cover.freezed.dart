@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'novel_cover.dart';
+part of 'book_cover.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,37 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-NovelCover _$NovelCoverFromJson(Map<String, dynamic> json) {
-  return _NovelCover.fromJson(json);
+BookCover _$BookCoverFromJson(Map<String, dynamic> json) {
+  return _BookCover.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NovelCover {
-// 必要信息
-  String get id => throw _privateConstructorUsedError; // cover 信息
+mixin _$BookCover {
+  SourceType get type => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
   String get intro => throw _privateConstructorUsedError;
   @JsonKey(name: "jump_url")
-  String get jumpUrl =>
-      throw _privateConstructorUsedError; // 必要信息，但是由 Component 填充
-  String get source => throw _privateConstructorUsedError; // 额外字段
+  String get jumpUrl => throw _privateConstructorUsedError;
+  String get source => throw _privateConstructorUsedError;
   String get ext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NovelCoverCopyWith<NovelCover> get copyWith =>
+  $BookCoverCopyWith<BookCover> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NovelCoverCopyWith<$Res> {
-  factory $NovelCoverCopyWith(
-          NovelCover value, $Res Function(NovelCover) then) =
-      _$NovelCoverCopyWithImpl<$Res, NovelCover>;
+abstract class $BookCoverCopyWith<$Res> {
+  factory $BookCoverCopyWith(BookCover value, $Res Function(BookCover) then) =
+      _$BookCoverCopyWithImpl<$Res, BookCover>;
   @useResult
   $Res call(
-      {String id,
+      {SourceType type,
+      String id,
       String label,
       String cover,
       String intro,
@@ -54,9 +53,9 @@ abstract class $NovelCoverCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NovelCoverCopyWithImpl<$Res, $Val extends NovelCover>
-    implements $NovelCoverCopyWith<$Res> {
-  _$NovelCoverCopyWithImpl(this._value, this._then);
+class _$BookCoverCopyWithImpl<$Res, $Val extends BookCover>
+    implements $BookCoverCopyWith<$Res> {
+  _$BookCoverCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,6 +65,7 @@ class _$NovelCoverCopyWithImpl<$Res, $Val extends NovelCover>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -75,6 +75,10 @@ class _$NovelCoverCopyWithImpl<$Res, $Val extends NovelCover>
     Object? ext = null,
   }) {
     return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SourceType,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -108,15 +112,16 @@ class _$NovelCoverCopyWithImpl<$Res, $Val extends NovelCover>
 }
 
 /// @nodoc
-abstract class _$$NovelCoverImplCopyWith<$Res>
-    implements $NovelCoverCopyWith<$Res> {
-  factory _$$NovelCoverImplCopyWith(
-          _$NovelCoverImpl value, $Res Function(_$NovelCoverImpl) then) =
-      __$$NovelCoverImplCopyWithImpl<$Res>;
+abstract class _$$BookCoverImplCopyWith<$Res>
+    implements $BookCoverCopyWith<$Res> {
+  factory _$$BookCoverImplCopyWith(
+          _$BookCoverImpl value, $Res Function(_$BookCoverImpl) then) =
+      __$$BookCoverImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id,
+      {SourceType type,
+      String id,
       String label,
       String cover,
       String intro,
@@ -126,16 +131,17 @@ abstract class _$$NovelCoverImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NovelCoverImplCopyWithImpl<$Res>
-    extends _$NovelCoverCopyWithImpl<$Res, _$NovelCoverImpl>
-    implements _$$NovelCoverImplCopyWith<$Res> {
-  __$$NovelCoverImplCopyWithImpl(
-      _$NovelCoverImpl _value, $Res Function(_$NovelCoverImpl) _then)
+class __$$BookCoverImplCopyWithImpl<$Res>
+    extends _$BookCoverCopyWithImpl<$Res, _$BookCoverImpl>
+    implements _$$BookCoverImplCopyWith<$Res> {
+  __$$BookCoverImplCopyWithImpl(
+      _$BookCoverImpl _value, $Res Function(_$BookCoverImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? id = null,
     Object? label = null,
     Object? cover = null,
@@ -144,7 +150,11 @@ class __$$NovelCoverImplCopyWithImpl<$Res>
     Object? source = null,
     Object? ext = null,
   }) {
-    return _then(_$NovelCoverImpl(
+    return _then(_$BookCoverImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SourceType,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -179,23 +189,24 @@ class __$$NovelCoverImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NovelCoverImpl implements _NovelCover {
-  _$NovelCoverImpl(
-      {required this.id,
+class _$BookCoverImpl implements _BookCover {
+  _$BookCoverImpl(
+      {required this.type,
+      required this.id,
       required this.label,
       required this.cover,
       required this.intro,
       @JsonKey(name: "jump_url") required this.jumpUrl,
-      this.source = "",
-      this.ext = ""});
+      required this.source,
+      required this.ext});
 
-  factory _$NovelCoverImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NovelCoverImplFromJson(json);
+  factory _$BookCoverImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BookCoverImplFromJson(json);
 
-// 必要信息
+  @override
+  final SourceType type;
   @override
   final String id;
-// cover 信息
   @override
   final String label;
   @override
@@ -205,25 +216,22 @@ class _$NovelCoverImpl implements _NovelCover {
   @override
   @JsonKey(name: "jump_url")
   final String jumpUrl;
-// 必要信息，但是由 Component 填充
   @override
-  @JsonKey()
   final String source;
-// 额外字段
   @override
-  @JsonKey()
   final String ext;
 
   @override
   String toString() {
-    return 'NovelCover(id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, source: $source, ext: $ext)';
+    return 'BookCover(type: $type, id: $id, label: $label, cover: $cover, intro: $intro, jumpUrl: $jumpUrl, source: $source, ext: $ext)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NovelCoverImpl &&
+            other is _$BookCoverImpl &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.cover, cover) || other.cover == cover) &&
@@ -235,39 +243,42 @@ class _$NovelCoverImpl implements _NovelCover {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, label, cover, intro, jumpUrl, source, ext);
+  int get hashCode => Object.hash(
+      runtimeType, type, id, label, cover, intro, jumpUrl, source, ext);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NovelCoverImplCopyWith<_$NovelCoverImpl> get copyWith =>
-      __$$NovelCoverImplCopyWithImpl<_$NovelCoverImpl>(this, _$identity);
+  _$$BookCoverImplCopyWith<_$BookCoverImpl> get copyWith =>
+      __$$BookCoverImplCopyWithImpl<_$BookCoverImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NovelCoverImplToJson(
+    return _$$BookCoverImplToJson(
       this,
     );
   }
 }
 
-abstract class _NovelCover implements NovelCover {
-  factory _NovelCover(
-      {required final String id,
+abstract class _BookCover implements BookCover {
+  factory _BookCover(
+      {required final SourceType type,
+      required final String id,
       required final String label,
       required final String cover,
       required final String intro,
       @JsonKey(name: "jump_url") required final String jumpUrl,
-      final String source,
-      final String ext}) = _$NovelCoverImpl;
+      required final String source,
+      required final String ext}) = _$BookCoverImpl;
 
-  factory _NovelCover.fromJson(Map<String, dynamic> json) =
-      _$NovelCoverImpl.fromJson;
+  factory _BookCover.fromJson(Map<String, dynamic> json) =
+      _$BookCoverImpl.fromJson;
 
-  @override // 必要信息
+  @override
+  SourceType get type;
+  @override
   String get id;
-  @override // cover 信息
+  @override
   String get label;
   @override
   String get cover;
@@ -276,12 +287,12 @@ abstract class _NovelCover implements NovelCover {
   @override
   @JsonKey(name: "jump_url")
   String get jumpUrl;
-  @override // 必要信息，但是由 Component 填充
+  @override
   String get source;
-  @override // 额外字段
+  @override
   String get ext;
   @override
   @JsonKey(ignore: true)
-  _$$NovelCoverImplCopyWith<_$NovelCoverImpl> get copyWith =>
+  _$$BookCoverImplCopyWith<_$BookCoverImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -33,7 +33,7 @@ class ExtensionState with _$ExtensionState {
 /// 最终源的加载在 SourceController
 @Riverpod()
 class ExtensionController extends _$ExtensionController
-    with CancelableWorkerContainer<void> {
+    with CancelableWorkerContainer<void, void> {
   static ExtensionController of(dynamic ref) =>
       ref.watch(extensionControllerPod.notifier);
 

@@ -40,8 +40,8 @@ abstract class CancelableTask {
   }
 }
 
-class CancelableTaskWrapper extends CancelableTask {
-  final Future<void> Function(CancelableTask task) _func;
+class CancelableTaskWrapper<O> extends CancelableTask {
+  final Future<O> Function(CancelableTask task) _func;
 
   CancelableTaskWrapper(this._func);
 
@@ -68,14 +68,14 @@ class CancelableWorker<I> {
   }
 }
 
-mixin CancelableWorkerContainer<I> {
+mixin CancelableWorkerContainer<I, O> {
 
   /// 当前正在执行的任务
   @protected
   CancelableTask? _lastTask;
 
   @protected
-  Future<void> onWork(CancelableTask task,I input);
+  Future<O> onWork(CancelableTask task,I input);
 
   @protected
   void cancelCurrent(){
@@ -83,13 +83,25 @@ mixin CancelableWorkerContainer<I> {
   }
 
   @protected
-  Future<void> performWork(I input) async {
+  Future<void> performWork(I input, {Function(O?)? callback}) async {
     _lastTask?.cancel();
     await _lastTask?.join();
-    _lastTask = CancelableTaskWrapper((task) async {
-      await onWork(task, input);
+    final task = CancelableTaskWrapper((task) async {
+      try {
+        final o = await onWork(task, input);
+        callback?.call(o);
+      }catch (e) {
+        if (e == CancelableTask.hasCancel) {
+          callback?.call(null);
+          return;
+        }
+        rethrow;
+      }
+
     });
+    _lastTask = task;
   }
+
 
 
 }

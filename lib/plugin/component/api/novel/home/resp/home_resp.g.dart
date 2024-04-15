@@ -10,7 +10,7 @@ _$NovelGetHomeTabRespImpl _$$NovelGetHomeTabRespImplFromJson(
         Map<String, dynamic> json) =>
     _$NovelGetHomeTabRespImpl(
       tabList: (json['tab_list'] as List<dynamic>?)
-              ?.map((e) => NovelHomeTab.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => BookHomeTab.fromJson(e as Map<String, dynamic>))
               .toList() ??
           null,
       payload:
@@ -28,8 +28,7 @@ _$NovelGetSecondTabRespImpl _$$NovelGetSecondTabRespImplFromJson(
         Map<String, dynamic> json) =>
     _$NovelGetSecondTabRespImpl(
       tabList: (json['tab_list'] as List<dynamic>?)
-              ?.map(
-                  (e) => NovelHomeSecondTab.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => BookSecondTab.fromJson(e as Map<String, dynamic>))
               .toList() ??
           null,
       payload:

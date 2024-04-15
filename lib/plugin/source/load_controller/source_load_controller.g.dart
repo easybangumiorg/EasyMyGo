@@ -7,7 +7,7 @@ part of 'source_load_controller.dart';
 // **************************************************************************
 
 String _$sourceLoadControllerHash() =>
-    r'b904562d23eae52d1a3acf9dd9ad89d2445f700e';
+    r'4d4a29f7279d36e2fdbf731e5abd59da9428524c';
 
 /// See also [SourceLoadController].
 @ProviderFor(SourceLoadController)

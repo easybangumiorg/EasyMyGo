@@ -21,7 +21,7 @@ MangaGetHomeTabResp _$MangaGetHomeTabRespFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MangaGetHomeTabResp {
   @JsonKey(name: "tab_list")
-  List<MangaHomeTab>? get tabList => throw _privateConstructorUsedError;
+  List<BookHomeTab>? get tabList => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $MangaGetHomeTabRespCopyWith<$Res> {
       _$MangaGetHomeTabRespCopyWithImpl<$Res, MangaGetHomeTabResp>;
   @useResult
   $Res call(
-      {@JsonKey(name: "tab_list") List<MangaHomeTab>? tabList,
+      {@JsonKey(name: "tab_list") List<BookHomeTab>? tabList,
       ComponentPayload payload});
 
   $ComponentPayloadCopyWith<$Res> get payload;
@@ -63,7 +63,7 @@ class _$MangaGetHomeTabRespCopyWithImpl<$Res, $Val extends MangaGetHomeTabResp>
       tabList: freezed == tabList
           ? _value.tabList
           : tabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeTab>?,
+              as List<BookHomeTab>?,
       payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
@@ -89,7 +89,7 @@ abstract class _$$MangaGetHomeTabRespImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "tab_list") List<MangaHomeTab>? tabList,
+      {@JsonKey(name: "tab_list") List<BookHomeTab>? tabList,
       ComponentPayload payload});
 
   @override
@@ -114,7 +114,7 @@ class __$$MangaGetHomeTabRespImplCopyWithImpl<$Res>
       tabList: freezed == tabList
           ? _value._tabList
           : tabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeTab>?,
+              as List<BookHomeTab>?,
       payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
@@ -127,17 +127,17 @@ class __$$MangaGetHomeTabRespImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MangaGetHomeTabRespImpl implements _MangaGetHomeTabResp {
   _$MangaGetHomeTabRespImpl(
-      {@JsonKey(name: "tab_list") final List<MangaHomeTab>? tabList = null,
+      {@JsonKey(name: "tab_list") final List<BookHomeTab>? tabList = null,
       required this.payload})
       : _tabList = tabList;
 
   factory _$MangaGetHomeTabRespImpl.fromJson(Map<String, dynamic> json) =>
       _$$MangaGetHomeTabRespImplFromJson(json);
 
-  final List<MangaHomeTab>? _tabList;
+  final List<BookHomeTab>? _tabList;
   @override
   @JsonKey(name: "tab_list")
-  List<MangaHomeTab>? get tabList {
+  List<BookHomeTab>? get tabList {
     final value = _tabList;
     if (value == null) return null;
     if (_tabList is EqualUnmodifiableListView) return _tabList;
@@ -184,7 +184,7 @@ class _$MangaGetHomeTabRespImpl implements _MangaGetHomeTabResp {
 
 abstract class _MangaGetHomeTabResp implements MangaGetHomeTabResp {
   factory _MangaGetHomeTabResp(
-      {@JsonKey(name: "tab_list") final List<MangaHomeTab>? tabList,
+      {@JsonKey(name: "tab_list") final List<BookHomeTab>? tabList,
       required final ComponentPayload payload}) = _$MangaGetHomeTabRespImpl;
 
   factory _MangaGetHomeTabResp.fromJson(Map<String, dynamic> json) =
@@ -192,7 +192,7 @@ abstract class _MangaGetHomeTabResp implements MangaGetHomeTabResp {
 
   @override
   @JsonKey(name: "tab_list")
-  List<MangaHomeTab>? get tabList;
+  List<BookHomeTab>? get tabList;
   @override
   ComponentPayload get payload;
   @override
@@ -209,7 +209,7 @@ MangaGetSecondTabResp _$MangaGetSecondTabRespFromJson(
 /// @nodoc
 mixin _$MangaGetSecondTabResp {
   @JsonKey(name: "tab_list")
-  List<MangaHomeSecondTab>? get tabList => throw _privateConstructorUsedError;
+  List<BookSecondTab>? get tabList => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -225,7 +225,7 @@ abstract class $MangaGetSecondTabRespCopyWith<$Res> {
       _$MangaGetSecondTabRespCopyWithImpl<$Res, MangaGetSecondTabResp>;
   @useResult
   $Res call(
-      {@JsonKey(name: "tab_list") List<MangaHomeSecondTab>? tabList,
+      {@JsonKey(name: "tab_list") List<BookSecondTab>? tabList,
       ComponentPayload payload});
 
   $ComponentPayloadCopyWith<$Res> get payload;
@@ -252,7 +252,7 @@ class _$MangaGetSecondTabRespCopyWithImpl<$Res,
       tabList: freezed == tabList
           ? _value.tabList
           : tabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeSecondTab>?,
+              as List<BookSecondTab>?,
       payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
@@ -279,7 +279,7 @@ abstract class _$$MangaGetSecondTabRespImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "tab_list") List<MangaHomeSecondTab>? tabList,
+      {@JsonKey(name: "tab_list") List<BookSecondTab>? tabList,
       ComponentPayload payload});
 
   @override
@@ -305,7 +305,7 @@ class __$$MangaGetSecondTabRespImplCopyWithImpl<$Res>
       tabList: freezed == tabList
           ? _value._tabList
           : tabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeSecondTab>?,
+              as List<BookSecondTab>?,
       payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
@@ -318,18 +318,17 @@ class __$$MangaGetSecondTabRespImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MangaGetSecondTabRespImpl implements _MangaGetSecondTabResp {
   _$MangaGetSecondTabRespImpl(
-      {@JsonKey(name: "tab_list")
-      final List<MangaHomeSecondTab>? tabList = null,
+      {@JsonKey(name: "tab_list") final List<BookSecondTab>? tabList = null,
       required this.payload})
       : _tabList = tabList;
 
   factory _$MangaGetSecondTabRespImpl.fromJson(Map<String, dynamic> json) =>
       _$$MangaGetSecondTabRespImplFromJson(json);
 
-  final List<MangaHomeSecondTab>? _tabList;
+  final List<BookSecondTab>? _tabList;
   @override
   @JsonKey(name: "tab_list")
-  List<MangaHomeSecondTab>? get tabList {
+  List<BookSecondTab>? get tabList {
     final value = _tabList;
     if (value == null) return null;
     if (_tabList is EqualUnmodifiableListView) return _tabList;
@@ -376,7 +375,7 @@ class _$MangaGetSecondTabRespImpl implements _MangaGetSecondTabResp {
 
 abstract class _MangaGetSecondTabResp implements MangaGetSecondTabResp {
   factory _MangaGetSecondTabResp(
-      {@JsonKey(name: "tab_list") final List<MangaHomeSecondTab>? tabList,
+      {@JsonKey(name: "tab_list") final List<BookSecondTab>? tabList,
       required final ComponentPayload payload}) = _$MangaGetSecondTabRespImpl;
 
   factory _MangaGetSecondTabResp.fromJson(Map<String, dynamic> json) =
@@ -384,7 +383,7 @@ abstract class _MangaGetSecondTabResp implements MangaGetSecondTabResp {
 
   @override
   @JsonKey(name: "tab_list")
-  List<MangaHomeSecondTab>? get tabList;
+  List<BookSecondTab>? get tabList;
   @override
   ComponentPayload get payload;
   @override

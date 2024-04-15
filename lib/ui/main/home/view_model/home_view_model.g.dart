@@ -11,26 +11,24 @@ _$HomeViewStateImpl _$$HomeViewStateImplFromJson(Map<String, dynamic> json) =>
       loading: json['loading'] as bool? ?? true,
       isError: json['is_error'] as bool? ?? false,
       errorMsg: json['error_msg'] as String? ?? "",
-      mangaSourceList: (json['manga_source_list'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      mangaTabList: (json['manga_tab_list'] as List<dynamic>?)
-              ?.map((e) => MangaHomeTab.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      novelSourceList: (json['novel_source_list'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      novelTabList: (json['novel_tab_list'] as List<dynamic>?)
-              ?.map((e) => NovelHomeTab.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      sourceIdentifyMap:
+          (json['source_identify_map'] as Map<String, dynamic>?)?.map(
+                (k, e) =>
+                    MapEntry($enumDecode(_$SourceTypeEnumMap, k), e as String),
+              ) ??
+              const {},
       currentType:
           $enumDecodeNullable(_$SourceTypeEnumMap, json['current_type']) ??
               SourceType.manga,
-      currentSourceIndex: json['current_source_index'] as int? ?? 0,
+      currentSourceIdentify: json['current_source_identify'] as String? ?? "",
+      bookTabList: (json['home_tab_list'] as List<dynamic>?)
+              ?.map((e) => BookHomeTab.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      currentHomeTab: json['current_home_tab'] == null
+          ? null
+          : BookHomeTab.fromJson(
+              json['current_home_tab'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$HomeViewStateImplToJson(_$HomeViewStateImpl instance) =>
@@ -38,12 +36,12 @@ Map<String, dynamic> _$$HomeViewStateImplToJson(_$HomeViewStateImpl instance) =>
       'loading': instance.loading,
       'is_error': instance.isError,
       'error_msg': instance.errorMsg,
-      'manga_source_list': instance.mangaSourceList,
-      'manga_tab_list': instance.mangaTabList,
-      'novel_source_list': instance.novelSourceList,
-      'novel_tab_list': instance.novelTabList,
+      'source_identify_map': instance.sourceIdentifyMap
+          .map((k, e) => MapEntry(_$SourceTypeEnumMap[k]!, e)),
       'current_type': _$SourceTypeEnumMap[instance.currentType]!,
-      'current_source_index': instance.currentSourceIndex,
+      'current_source_identify': instance.currentSourceIdentify,
+      'home_tab_list': instance.bookTabList,
+      'current_home_tab': instance.currentHomeTab,
     };
 
 const _$SourceTypeEnumMap = {
@@ -55,7 +53,7 @@ const _$SourceTypeEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeViewModelHash() => r'a398cf06ff4ca8e776229f0776e6b5998af51aeb';
+String _$homeViewModelHash() => r'efb5773b5ee8c15b7b90c838451512f460be2829';
 
 /// See also [HomeViewModel].
 @ProviderFor(HomeViewModel)

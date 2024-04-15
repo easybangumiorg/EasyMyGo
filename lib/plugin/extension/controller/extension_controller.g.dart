@@ -28,7 +28,7 @@ Map<String, dynamic> _$$ExtensionStateImplToJson(
 // **************************************************************************
 
 String _$extensionControllerHash() =>
-    r'6fac9145cac481baa7b2ca9006efb2442e78d8fe';
+    r'e11e3407b5ccba7171054da9106fa6ceee9d9b04';
 
 /// 负责拓展加载，只加载拓展，不加载源
 /// 最终源的加载在 SourceController

@@ -22,4 +22,5 @@ class NovelHomePage with _$NovelHomePage {
 
   factory NovelHomePage.fromJson(Map<String, Object?> json) =>
       _$NovelHomePageFromJson(json);
+
 }

@@ -24,22 +24,21 @@ mixin _$HomeViewState {
   @JsonKey(name: "is_error")
   bool get isError => throw _privateConstructorUsedError;
   @JsonKey(name: "error_msg")
-  String get errorMsg => throw _privateConstructorUsedError; // 所有漫画首页源和一级 tab
-  @JsonKey(name: "manga_source_list")
-  List<String> get mangaSourceList => throw _privateConstructorUsedError;
-  @JsonKey(name: "manga_tab_list")
-  List<MangaHomeTab> get mangaTabList =>
-      throw _privateConstructorUsedError; // 所有小说首页源和一级 tab
-  @JsonKey(name: "novel_source_list")
-  List<String> get novelSourceList => throw _privateConstructorUsedError;
-  @JsonKey(name: "novel_tab_list")
-  List<NovelHomeTab> get novelTabList =>
-      throw _privateConstructorUsedError; // 当前选择类型，只有对应类型的一级 tab 有值
+  String get errorMsg => throw _privateConstructorUsedError; // 所有源的 Identify
+  @JsonKey(name: "source_identify_map")
+  Map<SourceType, String> get sourceIdentifyMap =>
+      throw _privateConstructorUsedError; // 当前选择源类型
   @JsonKey(name: "current_type")
   SourceType get currentType =>
-      throw _privateConstructorUsedError; // 当前选择一级 tab 下标
-  @JsonKey(name: "current_source_index")
-  int get currentSourceIndex => throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // 当前选择源 Identify
+  @JsonKey(name: "current_source_identify")
+  String get currentSourceIdentify =>
+      throw _privateConstructorUsedError; // 一级 tab 和 二级 tab
+  @JsonKey(name: "home_tab_list")
+  List<BookHomeTab> get bookTabList =>
+      throw _privateConstructorUsedError; // 当前选择 tab
+  @JsonKey(name: "current_home_tab")
+  BookHomeTab? get currentHomeTab => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,12 +56,14 @@ abstract class $HomeViewStateCopyWith<$Res> {
       {bool loading,
       @JsonKey(name: "is_error") bool isError,
       @JsonKey(name: "error_msg") String errorMsg,
-      @JsonKey(name: "manga_source_list") List<String> mangaSourceList,
-      @JsonKey(name: "manga_tab_list") List<MangaHomeTab> mangaTabList,
-      @JsonKey(name: "novel_source_list") List<String> novelSourceList,
-      @JsonKey(name: "novel_tab_list") List<NovelHomeTab> novelTabList,
+      @JsonKey(name: "source_identify_map")
+      Map<SourceType, String> sourceIdentifyMap,
       @JsonKey(name: "current_type") SourceType currentType,
-      @JsonKey(name: "current_source_index") int currentSourceIndex});
+      @JsonKey(name: "current_source_identify") String currentSourceIdentify,
+      @JsonKey(name: "home_tab_list") List<BookHomeTab> bookTabList,
+      @JsonKey(name: "current_home_tab") BookHomeTab? currentHomeTab});
+
+  $BookHomeTabCopyWith<$Res>? get currentHomeTab;
 }
 
 /// @nodoc
@@ -81,12 +82,11 @@ class _$HomeViewStateCopyWithImpl<$Res, $Val extends HomeViewState>
     Object? loading = null,
     Object? isError = null,
     Object? errorMsg = null,
-    Object? mangaSourceList = null,
-    Object? mangaTabList = null,
-    Object? novelSourceList = null,
-    Object? novelTabList = null,
+    Object? sourceIdentifyMap = null,
     Object? currentType = null,
-    Object? currentSourceIndex = null,
+    Object? currentSourceIdentify = null,
+    Object? bookTabList = null,
+    Object? currentHomeTab = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -101,31 +101,39 @@ class _$HomeViewStateCopyWithImpl<$Res, $Val extends HomeViewState>
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
               as String,
-      mangaSourceList: null == mangaSourceList
-          ? _value.mangaSourceList
-          : mangaSourceList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      mangaTabList: null == mangaTabList
-          ? _value.mangaTabList
-          : mangaTabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeTab>,
-      novelSourceList: null == novelSourceList
-          ? _value.novelSourceList
-          : novelSourceList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      novelTabList: null == novelTabList
-          ? _value.novelTabList
-          : novelTabList // ignore: cast_nullable_to_non_nullable
-              as List<NovelHomeTab>,
+      sourceIdentifyMap: null == sourceIdentifyMap
+          ? _value.sourceIdentifyMap
+          : sourceIdentifyMap // ignore: cast_nullable_to_non_nullable
+              as Map<SourceType, String>,
       currentType: null == currentType
           ? _value.currentType
           : currentType // ignore: cast_nullable_to_non_nullable
               as SourceType,
-      currentSourceIndex: null == currentSourceIndex
-          ? _value.currentSourceIndex
-          : currentSourceIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      currentSourceIdentify: null == currentSourceIdentify
+          ? _value.currentSourceIdentify
+          : currentSourceIdentify // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookTabList: null == bookTabList
+          ? _value.bookTabList
+          : bookTabList // ignore: cast_nullable_to_non_nullable
+              as List<BookHomeTab>,
+      currentHomeTab: freezed == currentHomeTab
+          ? _value.currentHomeTab
+          : currentHomeTab // ignore: cast_nullable_to_non_nullable
+              as BookHomeTab?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BookHomeTabCopyWith<$Res>? get currentHomeTab {
+    if (_value.currentHomeTab == null) {
+      return null;
+    }
+
+    return $BookHomeTabCopyWith<$Res>(_value.currentHomeTab!, (value) {
+      return _then(_value.copyWith(currentHomeTab: value) as $Val);
+    });
   }
 }
 
@@ -141,12 +149,15 @@ abstract class _$$HomeViewStateImplCopyWith<$Res>
       {bool loading,
       @JsonKey(name: "is_error") bool isError,
       @JsonKey(name: "error_msg") String errorMsg,
-      @JsonKey(name: "manga_source_list") List<String> mangaSourceList,
-      @JsonKey(name: "manga_tab_list") List<MangaHomeTab> mangaTabList,
-      @JsonKey(name: "novel_source_list") List<String> novelSourceList,
-      @JsonKey(name: "novel_tab_list") List<NovelHomeTab> novelTabList,
+      @JsonKey(name: "source_identify_map")
+      Map<SourceType, String> sourceIdentifyMap,
       @JsonKey(name: "current_type") SourceType currentType,
-      @JsonKey(name: "current_source_index") int currentSourceIndex});
+      @JsonKey(name: "current_source_identify") String currentSourceIdentify,
+      @JsonKey(name: "home_tab_list") List<BookHomeTab> bookTabList,
+      @JsonKey(name: "current_home_tab") BookHomeTab? currentHomeTab});
+
+  @override
+  $BookHomeTabCopyWith<$Res>? get currentHomeTab;
 }
 
 /// @nodoc
@@ -163,12 +174,11 @@ class __$$HomeViewStateImplCopyWithImpl<$Res>
     Object? loading = null,
     Object? isError = null,
     Object? errorMsg = null,
-    Object? mangaSourceList = null,
-    Object? mangaTabList = null,
-    Object? novelSourceList = null,
-    Object? novelTabList = null,
+    Object? sourceIdentifyMap = null,
     Object? currentType = null,
-    Object? currentSourceIndex = null,
+    Object? currentSourceIdentify = null,
+    Object? bookTabList = null,
+    Object? currentHomeTab = freezed,
   }) {
     return _then(_$HomeViewStateImpl(
       loading: null == loading
@@ -183,30 +193,26 @@ class __$$HomeViewStateImplCopyWithImpl<$Res>
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
               as String,
-      mangaSourceList: null == mangaSourceList
-          ? _value._mangaSourceList
-          : mangaSourceList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      mangaTabList: null == mangaTabList
-          ? _value._mangaTabList
-          : mangaTabList // ignore: cast_nullable_to_non_nullable
-              as List<MangaHomeTab>,
-      novelSourceList: null == novelSourceList
-          ? _value._novelSourceList
-          : novelSourceList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      novelTabList: null == novelTabList
-          ? _value._novelTabList
-          : novelTabList // ignore: cast_nullable_to_non_nullable
-              as List<NovelHomeTab>,
+      sourceIdentifyMap: null == sourceIdentifyMap
+          ? _value._sourceIdentifyMap
+          : sourceIdentifyMap // ignore: cast_nullable_to_non_nullable
+              as Map<SourceType, String>,
       currentType: null == currentType
           ? _value.currentType
           : currentType // ignore: cast_nullable_to_non_nullable
               as SourceType,
-      currentSourceIndex: null == currentSourceIndex
-          ? _value.currentSourceIndex
-          : currentSourceIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      currentSourceIdentify: null == currentSourceIdentify
+          ? _value.currentSourceIdentify
+          : currentSourceIdentify // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookTabList: null == bookTabList
+          ? _value._bookTabList
+          : bookTabList // ignore: cast_nullable_to_non_nullable
+              as List<BookHomeTab>,
+      currentHomeTab: freezed == currentHomeTab
+          ? _value.currentHomeTab
+          : currentHomeTab // ignore: cast_nullable_to_non_nullable
+              as BookHomeTab?,
     ));
   }
 }
@@ -218,20 +224,15 @@ class _$HomeViewStateImpl implements _HomeViewState {
       {this.loading = true,
       @JsonKey(name: "is_error") this.isError = false,
       @JsonKey(name: "error_msg") this.errorMsg = "",
-      @JsonKey(name: "manga_source_list")
-      final List<String> mangaSourceList = const [],
-      @JsonKey(name: "manga_tab_list")
-      final List<MangaHomeTab> mangaTabList = const [],
-      @JsonKey(name: "novel_source_list")
-      final List<String> novelSourceList = const [],
-      @JsonKey(name: "novel_tab_list")
-      final List<NovelHomeTab> novelTabList = const [],
+      @JsonKey(name: "source_identify_map")
+      final Map<SourceType, String> sourceIdentifyMap = const {},
       @JsonKey(name: "current_type") this.currentType = SourceType.manga,
-      @JsonKey(name: "current_source_index") this.currentSourceIndex = 0})
-      : _mangaSourceList = mangaSourceList,
-        _mangaTabList = mangaTabList,
-        _novelSourceList = novelSourceList,
-        _novelTabList = novelTabList;
+      @JsonKey(name: "current_source_identify") this.currentSourceIdentify = "",
+      @JsonKey(name: "home_tab_list")
+      final List<BookHomeTab> bookTabList = const [],
+      @JsonKey(name: "current_home_tab") this.currentHomeTab = null})
+      : _sourceIdentifyMap = sourceIdentifyMap,
+        _bookTabList = bookTabList;
 
   factory _$HomeViewStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeViewStateImplFromJson(json);
@@ -245,58 +246,45 @@ class _$HomeViewStateImpl implements _HomeViewState {
   @override
   @JsonKey(name: "error_msg")
   final String errorMsg;
-// 所有漫画首页源和一级 tab
-  final List<String> _mangaSourceList;
-// 所有漫画首页源和一级 tab
+// 所有源的 Identify
+  final Map<SourceType, String> _sourceIdentifyMap;
+// 所有源的 Identify
   @override
-  @JsonKey(name: "manga_source_list")
-  List<String> get mangaSourceList {
-    if (_mangaSourceList is EqualUnmodifiableListView) return _mangaSourceList;
+  @JsonKey(name: "source_identify_map")
+  Map<SourceType, String> get sourceIdentifyMap {
+    if (_sourceIdentifyMap is EqualUnmodifiableMapView)
+      return _sourceIdentifyMap;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_mangaSourceList);
+    return EqualUnmodifiableMapView(_sourceIdentifyMap);
   }
 
-  final List<MangaHomeTab> _mangaTabList;
-  @override
-  @JsonKey(name: "manga_tab_list")
-  List<MangaHomeTab> get mangaTabList {
-    if (_mangaTabList is EqualUnmodifiableListView) return _mangaTabList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_mangaTabList);
-  }
-
-// 所有小说首页源和一级 tab
-  final List<String> _novelSourceList;
-// 所有小说首页源和一级 tab
-  @override
-  @JsonKey(name: "novel_source_list")
-  List<String> get novelSourceList {
-    if (_novelSourceList is EqualUnmodifiableListView) return _novelSourceList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_novelSourceList);
-  }
-
-  final List<NovelHomeTab> _novelTabList;
-  @override
-  @JsonKey(name: "novel_tab_list")
-  List<NovelHomeTab> get novelTabList {
-    if (_novelTabList is EqualUnmodifiableListView) return _novelTabList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_novelTabList);
-  }
-
-// 当前选择类型，只有对应类型的一级 tab 有值
+// 当前选择源类型
   @override
   @JsonKey(name: "current_type")
   final SourceType currentType;
-// 当前选择一级 tab 下标
+// 当前选择源 Identify
   @override
-  @JsonKey(name: "current_source_index")
-  final int currentSourceIndex;
+  @JsonKey(name: "current_source_identify")
+  final String currentSourceIdentify;
+// 一级 tab 和 二级 tab
+  final List<BookHomeTab> _bookTabList;
+// 一级 tab 和 二级 tab
+  @override
+  @JsonKey(name: "home_tab_list")
+  List<BookHomeTab> get bookTabList {
+    if (_bookTabList is EqualUnmodifiableListView) return _bookTabList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bookTabList);
+  }
+
+// 当前选择 tab
+  @override
+  @JsonKey(name: "current_home_tab")
+  final BookHomeTab? currentHomeTab;
 
   @override
   String toString() {
-    return 'HomeViewState(loading: $loading, isError: $isError, errorMsg: $errorMsg, mangaSourceList: $mangaSourceList, mangaTabList: $mangaTabList, novelSourceList: $novelSourceList, novelTabList: $novelTabList, currentType: $currentType, currentSourceIndex: $currentSourceIndex)';
+    return 'HomeViewState(loading: $loading, isError: $isError, errorMsg: $errorMsg, sourceIdentifyMap: $sourceIdentifyMap, currentType: $currentType, currentSourceIdentify: $currentSourceIdentify, bookTabList: $bookTabList, currentHomeTab: $currentHomeTab)';
   }
 
   @override
@@ -309,17 +297,15 @@ class _$HomeViewStateImpl implements _HomeViewState {
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg) &&
             const DeepCollectionEquality()
-                .equals(other._mangaSourceList, _mangaSourceList) &&
-            const DeepCollectionEquality()
-                .equals(other._mangaTabList, _mangaTabList) &&
-            const DeepCollectionEquality()
-                .equals(other._novelSourceList, _novelSourceList) &&
-            const DeepCollectionEquality()
-                .equals(other._novelTabList, _novelTabList) &&
+                .equals(other._sourceIdentifyMap, _sourceIdentifyMap) &&
             (identical(other.currentType, currentType) ||
                 other.currentType == currentType) &&
-            (identical(other.currentSourceIndex, currentSourceIndex) ||
-                other.currentSourceIndex == currentSourceIndex));
+            (identical(other.currentSourceIdentify, currentSourceIdentify) ||
+                other.currentSourceIdentify == currentSourceIdentify) &&
+            const DeepCollectionEquality()
+                .equals(other._bookTabList, _bookTabList) &&
+            (identical(other.currentHomeTab, currentHomeTab) ||
+                other.currentHomeTab == currentHomeTab));
   }
 
   @JsonKey(ignore: true)
@@ -329,12 +315,11 @@ class _$HomeViewStateImpl implements _HomeViewState {
       loading,
       isError,
       errorMsg,
-      const DeepCollectionEquality().hash(_mangaSourceList),
-      const DeepCollectionEquality().hash(_mangaTabList),
-      const DeepCollectionEquality().hash(_novelSourceList),
-      const DeepCollectionEquality().hash(_novelTabList),
+      const DeepCollectionEquality().hash(_sourceIdentifyMap),
       currentType,
-      currentSourceIndex);
+      currentSourceIdentify,
+      const DeepCollectionEquality().hash(_bookTabList),
+      currentHomeTab);
 
   @JsonKey(ignore: true)
   @override
@@ -355,13 +340,14 @@ abstract class _HomeViewState implements HomeViewState {
       {final bool loading,
       @JsonKey(name: "is_error") final bool isError,
       @JsonKey(name: "error_msg") final String errorMsg,
-      @JsonKey(name: "manga_source_list") final List<String> mangaSourceList,
-      @JsonKey(name: "manga_tab_list") final List<MangaHomeTab> mangaTabList,
-      @JsonKey(name: "novel_source_list") final List<String> novelSourceList,
-      @JsonKey(name: "novel_tab_list") final List<NovelHomeTab> novelTabList,
+      @JsonKey(name: "source_identify_map")
+      final Map<SourceType, String> sourceIdentifyMap,
       @JsonKey(name: "current_type") final SourceType currentType,
-      @JsonKey(name: "current_source_index")
-      final int currentSourceIndex}) = _$HomeViewStateImpl;
+      @JsonKey(name: "current_source_identify")
+      final String currentSourceIdentify,
+      @JsonKey(name: "home_tab_list") final List<BookHomeTab> bookTabList,
+      @JsonKey(name: "current_home_tab")
+      final BookHomeTab? currentHomeTab}) = _$HomeViewStateImpl;
 
   factory _HomeViewState.fromJson(Map<String, dynamic> json) =
       _$HomeViewStateImpl.fromJson;
@@ -374,24 +360,21 @@ abstract class _HomeViewState implements HomeViewState {
   @override
   @JsonKey(name: "error_msg")
   String get errorMsg;
-  @override // 所有漫画首页源和一级 tab
-  @JsonKey(name: "manga_source_list")
-  List<String> get mangaSourceList;
-  @override
-  @JsonKey(name: "manga_tab_list")
-  List<MangaHomeTab> get mangaTabList;
-  @override // 所有小说首页源和一级 tab
-  @JsonKey(name: "novel_source_list")
-  List<String> get novelSourceList;
-  @override
-  @JsonKey(name: "novel_tab_list")
-  List<NovelHomeTab> get novelTabList;
-  @override // 当前选择类型，只有对应类型的一级 tab 有值
+  @override // 所有源的 Identify
+  @JsonKey(name: "source_identify_map")
+  Map<SourceType, String> get sourceIdentifyMap;
+  @override // 当前选择源类型
   @JsonKey(name: "current_type")
   SourceType get currentType;
-  @override // 当前选择一级 tab 下标
-  @JsonKey(name: "current_source_index")
-  int get currentSourceIndex;
+  @override // 当前选择源 Identify
+  @JsonKey(name: "current_source_identify")
+  String get currentSourceIdentify;
+  @override // 一级 tab 和 二级 tab
+  @JsonKey(name: "home_tab_list")
+  List<BookHomeTab> get bookTabList;
+  @override // 当前选择 tab
+  @JsonKey(name: "current_home_tab")
+  BookHomeTab? get currentHomeTab;
   @override
   @JsonKey(ignore: true)
   _$$HomeViewStateImplCopyWith<_$HomeViewStateImpl> get copyWith =>

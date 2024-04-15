@@ -13,7 +13,6 @@ class NovelCover with _$NovelCover {
 
   factory NovelCover({
     // 必要信息
-    required String source,
     required String id,
 
     // cover 信息
@@ -23,6 +22,9 @@ class NovelCover with _$NovelCover {
 
     @JsonKey(name: "jump_url")
     required String jumpUrl,
+
+    // 必要信息，但是由 Component 填充
+    @Default("") String source,
 
     // 额外字段
     @Default("") String ext,

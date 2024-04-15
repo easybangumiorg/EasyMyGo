@@ -1,3 +1,4 @@
+import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/manga/manga_cover/manga_cover.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';
@@ -13,29 +14,29 @@ class MangaTestComponent extends Component implements MangaHomeComponent {
   @override
   Future<MangaGetHomeTabResp> getHomeTab() async {
     return MangaGetHomeTabResp(tabList: [
-      MangaHomeTab(id: "1", label: "有二级", hasSecondTab: true),
-      MangaHomeTab(id: "2", label: "无二级封面", hasSecondTab: false),
+      BookHomeTab(id: "1", label: "有二级", hasSecondTab: true),
+      BookHomeTab(id: "2", label: "无二级封面", hasSecondTab: false),
     ], payload: ComponentPayload.ok());
   }
 
   @override
-  Future<MangaGetSecondTabResp> getSecondTab(MangaHomeTab tab) async {
+  Future<MangaGetSecondTabResp> getSecondTab(BookHomeTab tab) async {
     if (tab.id == "1") {
       return MangaGetSecondTabResp(tabList: [
-        MangaHomeSecondTab(id: "11", label: "带封面11"),
-        MangaHomeSecondTab(id: "12", label: "不带封面12"),
+        BookSecondTab(id: "11", label: "带封面11"),
+        BookSecondTab(id: "12", label: "不带封面12"),
       ], payload: ComponentPayload.ok());
     } else if (tab.id == "3") {
       return MangaGetSecondTabResp(tabList: [
-        MangaHomeSecondTab(id: "31", label: "带封面31"),
-        MangaHomeSecondTab(id: "32", label: "不带封面32"),
+        BookSecondTab(id: "31", label: "带封面31"),
+        BookSecondTab(id: "32", label: "不带封面32"),
       ], payload: ComponentPayload.ok());
     }
     return MangaGetSecondTabResp(tabList: [], payload: ComponentPayload.ok());
   }
 
   @override
-  Future<MangaGetHomePageResp> getPageWithHomeTab(MangaHomeTab tab) async {
+  Future<MangaGetHomePageResp> getPageWithHomeTab(BookHomeTab tab) async {
     if (tab.id == "2") {
       return MangaGetHomePageResp(
           page: MangaHomePage(id: "21", label: "21带封面", hasCover: true),
@@ -50,7 +51,7 @@ class MangaTestComponent extends Component implements MangaHomeComponent {
 
   @override
   Future<MangaGetHomePageResp> getPageWithSecondTab(
-      MangaHomeTab homeTab, MangaHomeSecondTab secondTab) async {
+      BookHomeTab homeTab, BookSecondTab secondTab) async {
     if (secondTab.id == "11") {
       return MangaGetHomePageResp(
           page: MangaHomePage(id: "11", label: "11带封面", hasCover: true),

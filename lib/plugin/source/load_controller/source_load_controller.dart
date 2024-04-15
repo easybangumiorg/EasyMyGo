@@ -38,7 +38,7 @@ class SourceLoadState {
 }
 
 @Riverpod()
-class SourceLoadController extends _$SourceLoadController with CancelableWorkerContainer<ExtensionState> {
+class SourceLoadController extends _$SourceLoadController with CancelableWorkerContainer<ExtensionState, void> {
 
   static SourceLoadController of(dynamic ref) =>
       ref.watch(sourceLoadControllerPod.notifier);

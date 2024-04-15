@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/novel/novel_cover/novel_cover.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/tab/home_tab.dart';
@@ -14,7 +15,7 @@ part 'home_resp.freezed.dart';
 @freezed
 class NovelGetHomeTabResp with _$NovelGetHomeTabResp {
   factory NovelGetHomeTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<NovelHomeTab>? tabList,
+    @JsonKey(name: "tab_list")@Default(null) List<BookHomeTab>? tabList,
     required ComponentPayload payload,
   }) = _NovelGetHomeTabResp;
 
@@ -26,7 +27,7 @@ class NovelGetHomeTabResp with _$NovelGetHomeTabResp {
 @freezed
 class NovelGetSecondTabResp with _$NovelGetSecondTabResp {
   factory NovelGetSecondTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<NovelHomeSecondTab>? tabList,
+    @JsonKey(name: "tab_list")@Default(null) List<BookSecondTab>? tabList,
     required ComponentPayload payload,
   }) = _NovelGetSecondTabResp;
 

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/novel_home_component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
@@ -59,7 +60,7 @@ class JsNovelHomeComponent extends NovelHomeComponent implements JsComponent {
   }
 
   @override
-  Future<NovelGetSecondTabResp> getSecondTab(NovelHomeTab tab) async {
+  Future<NovelGetSecondTabResp> getSecondTab(BookHomeTab tab) async {
     final res = await JsComponentUtils.evaluateAsync(_runtime,
         "$_performMethodNameGetSecondTab(${jsonEncode(tab.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
@@ -77,7 +78,7 @@ class JsNovelHomeComponent extends NovelHomeComponent implements JsComponent {
   }
 
   @override
-  Future<NovelGetHomePageResp> getPageWithHomeTab(NovelHomeTab tab) async {
+  Future<NovelGetHomePageResp> getPageWithHomeTab(BookHomeTab tab) async {
     final res = await JsComponentUtils.evaluateAsync(_runtime,
         "$_performMethodNameGetPageWithHomeTab(${jsonEncode(tab.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
@@ -96,7 +97,7 @@ class JsNovelHomeComponent extends NovelHomeComponent implements JsComponent {
 
   @override
   Future<NovelGetHomePageResp> getPageWithSecondTab(
-      NovelHomeTab homeTab, NovelHomeSecondTab secondTab) async {
+      BookHomeTab homeTab, BookSecondTab secondTab) async {
     final res = await JsComponentUtils.evaluateAsync(_runtime,
         "$_performMethodNameGetPageWithSecondTab(${jsonEncode(homeTab.toJson())}, ${jsonEncode(secondTab.toJson())})");
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
