@@ -26,7 +26,6 @@ class HomeViewState with _$HomeViewState {
     @Default(false) @JsonKey(name: "is_error") bool isError,
     @Default("") @JsonKey(name: "error_msg") String errorMsg,
 
-
     // 所有源的 Identify
     @Default({}) @JsonKey(name: "source_identify_map") Map<SourceType, String> sourceIdentifyMap,
     // 当前选择源类型
@@ -88,7 +87,6 @@ class HomeViewModel extends _$HomeViewModel with CancelableWorkerContainer<Sourc
 
     final mangaSourceList = mangaHomeList.map((e) => e.sourceInfo.identify).toList();
     final novelSourceList = novelHomeList.map((e) => e.sourceInfo.identify).toList();
-
 
     SourceType currentType = state.currentType;
     String currentIdentify = state.currentSourceIdentify;

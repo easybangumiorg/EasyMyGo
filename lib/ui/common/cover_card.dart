@@ -14,7 +14,7 @@ class BookCoverCard extends StatelessWidget {
   static const double titleHeight = maxLine * (titleFontSize * titleFontLineHeight);
 
   // 根据宽度测量高度
-  // 19 / 27 的海报 + 120，然后能展示多少行文字随缘
+  // 19 / 27 的海报 + 两行文字高度
   static double measureHeight(double width) {
     final coverHeight = width / coverRatio;
     return coverHeight + titleHeight;
