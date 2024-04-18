@@ -4,7 +4,7 @@ import 'package:easy_mygo/c.dart';
 import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
 import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/page/book_cover/novel_cover_page.dart';
+import 'package:easy_mygo/repository/book_cover/page/novel_cover_page.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/component/core/js/manga/search/js_manga_search_component.dart';
 import 'package:easy_mygo/plugin/extension/loader/extension_loader.dart';
@@ -27,6 +27,11 @@ class HomePage extends HookConsumerWidget {
 
     final state = HomeViewModel.watch(ref);
     final sourceBundle = SourceBundle.of(ref);
+
+
+
+
+
     final component = sourceBundle.getNovelHomeList().firstOrNull;
     if (component != null){
 

@@ -1,9 +1,11 @@
 import 'package:easy_mygo/entity/novel/novel_cover/novel_cover.dart';
-import 'package:easy_mygo/page/book_cover/book_cover_page.dart';
+import 'package:easy_mygo/l10n/l10n.dart';
+import 'package:easy_mygo/repository/book_cover/page/book_cover_page.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/novel_home_component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/source/controller/source_controller.dart';
 import 'package:easy_mygo/ui/common/cover_card.dart';
+import 'package:easy_mygo/ui/common/loading_icon.dart';
 import 'package:easy_mygo/ui/main/home/page/view_model/home_page_view_model.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/cupertino.dart';
@@ -79,11 +81,27 @@ class HomeBookPageWidget extends HookConsumerWidget {
                 crossAxisCount;
         return EasyRefresh(
             controller: _controller,
-            header: const ClassicHeader(
+            header: ClassicHeader(
+              dragText: S.current.pull_to_refresh,
+              armedText: S.current.release_ready,
+              readyText: S.current.loading,
+              processingText: S.current.loading,
+              processedText: S.current.success,
+              showMessage: false,
+              iconDimension: 64,
               position: IndicatorPosition.locator,
+              pullIconBuilder: LoadingIcon.easyPullIconBuilder,
             ),
-            footer: const ClassicFooter(
+            footer: ClassicFooter(
+              dragText: S.current.pull_to_refresh,
+              armedText: S.current.release_ready,
+              readyText: S.current.loading,
+              processingText: S.current.loading,
+              processedText: S.current.success,
+              showMessage: false,
+              iconDimension: 64,
               position: IndicatorPosition.locator,
+              pullIconBuilder: LoadingIcon.easyPullIconBuilder,
             ),
             onLoad: () async {
               await load(true);

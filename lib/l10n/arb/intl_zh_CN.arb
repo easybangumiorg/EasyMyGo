@@ -7,5 +7,10 @@
   "home": "主页",
   "more": "更多",
   "history": "历史",
-  "library": "书架"
+  "library": "书架",
+  "pull_to_refresh": "下拉刷新",
+  "release_ready": "释放刷新",
+  "loading": "加载中...",
+  "success": "成功",
+  "last_update_time": "最后更新时间"
 }

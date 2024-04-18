@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:easy_mygo/entity/book/cover/book_cover.dart';
 import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
-import 'package:easy_mygo/page/book_cover/book_cover_page.dart';
-import 'package:easy_mygo/page/book_cover/manga_cover_page.dart';
+import 'package:easy_mygo/repository/book_cover/page/book_cover_page.dart';
+import 'package:easy_mygo/repository/book_cover/page/manga_cover_page.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:easy_mygo/plugin/source/controller/source_controller.dart';
 import 'package:easy_mygo/utils/cancelable_task/cancelable_task.dart';

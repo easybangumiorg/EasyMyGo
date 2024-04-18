@@ -99,6 +99,56 @@ class S {
       args: [],
     );
   }
+
+  /// `下拉刷新`
+  String get pull_to_refresh {
+    return Intl.message(
+      '下拉刷新',
+      name: 'pull_to_refresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `释放刷新`
+  String get release_ready {
+    return Intl.message(
+      '释放刷新',
+      name: 'release_ready',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `加载中...`
+  String get loading {
+    return Intl.message(
+      '加载中...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `成功`
+  String get success {
+    return Intl.message(
+      '成功',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `最后更新时间`
+  String get last_update_time {
+    return Intl.message(
+      '最后更新时间',
+      name: 'last_update_time',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

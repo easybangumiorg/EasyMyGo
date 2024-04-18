@@ -33,7 +33,7 @@ class HomeViewState with _$HomeViewState {
     // 当前选择源 Identify
     @Default("") @JsonKey(name: "current_source_identify") String currentSourceIdentify,
 
-    // 一级 tab 和 二级 tab
+    // 所有一级 Tab
     @Default([]) @JsonKey(name: "home_tab_list") List<BookHomeTab> bookTabList,
 
     // 当前选择 tab

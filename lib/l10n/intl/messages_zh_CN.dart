@@ -25,7 +25,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("纯纯 Mygo"),
         "history": MessageLookupByLibrary.simpleMessage("历史"),
         "home": MessageLookupByLibrary.simpleMessage("主页"),
+        "last_update_time": MessageLookupByLibrary.simpleMessage("最后更新时间"),
         "library": MessageLookupByLibrary.simpleMessage("书架"),
-        "more": MessageLookupByLibrary.simpleMessage("更多")
+        "loading": MessageLookupByLibrary.simpleMessage("加载中..."),
+        "more": MessageLookupByLibrary.simpleMessage("更多"),
+        "pull_to_refresh": MessageLookupByLibrary.simpleMessage("下拉刷新"),
+        "release_ready": MessageLookupByLibrary.simpleMessage("释放刷新"),
+        "success": MessageLookupByLibrary.simpleMessage("成功")
       };
 }
