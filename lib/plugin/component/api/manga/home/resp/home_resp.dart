@@ -1,9 +1,6 @@
-
-
 import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/manga/manga_cover/manga_cover.dart';
 import 'package:easy_mygo/plugin/component/api/manga/home/page/home_page.dart';
-import 'package:easy_mygo/plugin/component/api/manga/home/tab/home_tab.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -18,20 +15,20 @@ class MangaGetHomeTabResp with _$MangaGetHomeTabResp {
     required ComponentPayload payload,
   }) = _MangaGetHomeTabResp;
 
-  factory MangaGetHomeTabResp.fromJson(Map<String, Object?> json)
-  => _$MangaGetHomeTabRespFromJson(json);
+  factory MangaGetHomeTabResp.fromJson(Map<String, Object?> json) =>
+      _$MangaGetHomeTabRespFromJson(json);
 }
 
 /// 获取二级 tab
 @freezed
 class MangaGetSecondTabResp with _$MangaGetSecondTabResp {
   factory MangaGetSecondTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<BookSecondTab>? tabList,
+    @JsonKey(name: "tab_list") @Default(null) List<BookSecondTab>? tabList,
     required ComponentPayload payload,
   }) = _MangaGetSecondTabResp;
 
-  factory MangaGetSecondTabResp.fromJson(Map<String, Object?> json)
-  => _$MangaGetSecondTabRespFromJson(json);
+  factory MangaGetSecondTabResp.fromJson(Map<String, Object?> json) =>
+      _$MangaGetSecondTabRespFromJson(json);
 }
 
 /// 获取 tab 对应的 page
@@ -42,8 +39,8 @@ class MangaGetHomePageResp with _$MangaGetHomePageResp {
     required ComponentPayload payload,
   }) = _MangaGetHomePageResp;
 
-  factory MangaGetHomePageResp.fromJson(Map<String, Object?> json)
-  => _$MangaGetHomePageRespFromJson(json);
+  factory MangaGetHomePageResp.fromJson(Map<String, Object?> json) =>
+      _$MangaGetHomePageRespFromJson(json);
 }
 
 /// 加载 page 里某一页数据
@@ -57,6 +54,6 @@ class MangaGetHomeCoverResp with _$MangaGetHomeCoverResp {
     required ComponentPayload payload,
   }) = _MangaGetHomeCoverResp;
 
-  factory MangaGetHomeCoverResp.fromJson(Map<String, Object?> json)
-  => _$MangaGetHomeCoverRespFromJson(json);
+  factory MangaGetHomeCoverResp.fromJson(Map<String, Object?> json) =>
+      _$MangaGetHomeCoverRespFromJson(json);
 }

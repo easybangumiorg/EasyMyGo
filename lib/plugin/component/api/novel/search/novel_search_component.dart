@@ -1,12 +1,8 @@
-
-
 import 'package:easy_mygo/plugin/component/api/component.dart';
-import 'package:easy_mygo/plugin/component/api/manga/search/resp/search_resp.dart';
 import 'package:easy_mygo/plugin/component/api/novel/search/resp/search_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 
 abstract class NovelSearchComponent extends Component {
-
   NovelSearchComponent(super.sourceInfo);
 
   Future<String> getInitKey(String key);
@@ -28,5 +24,4 @@ abstract class NovelSearchComponent extends Component {
       }
     }
   }
-
 }

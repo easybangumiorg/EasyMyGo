@@ -1,5 +1,3 @@
-
-import 'package:easy_mygo/entity/manga/manga_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'manga_summary.g.dart';
@@ -9,7 +7,6 @@ part 'manga_summary.freezed.dart';
 
 @freezed
 class MangaSummary with _$MangaSummary {
-
   factory MangaSummary({
     // 必要信息
     required String source,

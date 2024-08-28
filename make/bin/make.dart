@@ -59,10 +59,10 @@ Future<bool> makeAndroid() async {
         "build",
         "apk",
         "--target=./lib/app.dart",
-        "--build-name=${versionName}",
-        "--build-number=${versionCode}",
-        "--dart-define=VERSION_NAME=${versionName}",
-        "--dart-define=VERSION_CODE=${versionCode}",
+        "--build-name=$versionName",
+        "--build-number=$versionCode",
+        "--dart-define=VERSION_NAME=$versionName",
+        "--dart-define=VERSION_CODE=$versionCode",
         "--release"
       ],
       runInShell: true);
@@ -85,10 +85,10 @@ Future<bool> makeMac() async {
         "build",
         "macos",
         "--target=./lib/app.dart",
-        "--build-name=${versionName}",
-        "--build-number=${versionCode}",
-        "--dart-define=VERSION_NAME=${versionName}",
-        "--dart-define=VERSION_CODE=${versionCode}",
+        "--build-name=$versionName",
+        "--build-number=$versionCode",
+        "--dart-define=VERSION_NAME=$versionName",
+        "--dart-define=VERSION_CODE=$versionCode",
         "--release"
       ],
       runInShell: true);
@@ -99,7 +99,7 @@ Future<bool> makeMac() async {
 }
 
 Future<YamlMap> loadPubspec() async {
-  final file = new File("./pubspec.yaml");
+  final file = File("./pubspec.yaml");
   final yaml = await file.readAsString();
   return await loadYaml(yaml);
 }

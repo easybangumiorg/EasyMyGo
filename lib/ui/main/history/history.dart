@@ -10,6 +10,6 @@ class HistoryPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: implement build
-    return Text('history');
+    return const Text('history');
   }
 }

@@ -1,12 +1,9 @@
-
-
 import 'dart:collection';
 
 import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/source/config_controller/source_config_controller.dart';
 import 'package:easy_mygo/plugin/source/load_controller/source_load_controller.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/detailed/manga_detailed_component.dart';
@@ -29,7 +26,6 @@ part 'source_controller.g.dart';
 
 /// 源数据 x 配置
 class SourceConfigWrapper {
-
   static List<SourceConfigWrapper> of(dynamic ref) =>
       ref.watch(sourceConfigWrapperPod);
 
@@ -63,9 +59,9 @@ List<SourceConfigWrapper> sourceConfigWrapper(SourceConfigWrapperRef ref) {
 
   return sourceState.sourceList
       .map((e) => SourceConfigWrapper(
-      configMap[e.info.identify] ??
-          SourceConfigItem(key: e.info.key, package: e.info.fromPackage),
-      e))
+          configMap[e.info.identify] ??
+              SourceConfigItem(key: e.info.key, package: e.info.fromPackage),
+          e))
       .toList(growable: false);
 }
 
@@ -76,59 +72,63 @@ SourceBundle sourceBundle(SourceBundleRef ref) {
 }
 
 class SourceBundle {
-
-  static SourceBundle of(dynamic ref) =>
-      ref.watch(sourceBundlePod);
-
+  static SourceBundle of(dynamic ref) => ref.watch(sourceBundlePod);
 
   final LinkedHashMap<String, SourceConfigWrapper> sourceMap = LinkedHashMap();
 
-  final LinkedHashMap<String, MangaHomeComponent> mangaHomeMap = LinkedHashMap();
-  final LinkedHashMap<String, MangaReadComponent> mangaReadMap = LinkedHashMap();
-  final LinkedHashMap<String, MangaSearchComponent> mangaSearchMap = LinkedHashMap();
-  final LinkedHashMap<String, MangaDetailedComponent> mangaDetailedMap = LinkedHashMap();
+  final LinkedHashMap<String, MangaHomeComponent> mangaHomeMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, MangaReadComponent> mangaReadMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, MangaSearchComponent> mangaSearchMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, MangaDetailedComponent> mangaDetailedMap =
+      LinkedHashMap();
 
-  final LinkedHashMap<String, NovelHomeComponent> novelHomeMap = LinkedHashMap();
-  final LinkedHashMap<String, NovelReadComponent> novelReadMap = LinkedHashMap();
-  final LinkedHashMap<String, NovelSearchComponent> novelSearchMap = LinkedHashMap();
-  final LinkedHashMap<String, NovelDetailedComponent> novelDetailedMap = LinkedHashMap();
+  final LinkedHashMap<String, NovelHomeComponent> novelHomeMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, NovelReadComponent> novelReadMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, NovelSearchComponent> novelSearchMap =
+      LinkedHashMap();
+  final LinkedHashMap<String, NovelDetailedComponent> novelDetailedMap =
+      LinkedHashMap();
 
   SourceBundle(List<SourceConfigWrapper> sourceList) {
     sourceList.sort((a, b) => a.config.order.compareTo(b.config.order));
     for (final source in sourceList) {
-      if(source.source.state != SourceState.loaded) {
+      if (source.source.state != SourceState.loaded) {
         continue;
       }
       sourceMap[source.source.info.identify] = source;
       final List<Component> components = source.source.components ?? [];
-      for(final component in components){
-        if (component is MangaHomeComponent){
+      for (final component in components) {
+        if (component is MangaHomeComponent) {
           mangaHomeMap[source.source.info.identify] = component;
         }
-        if (component is MangaReadComponent){
+        if (component is MangaReadComponent) {
           mangaReadMap[source.source.info.identify] = component;
         }
-        if (component is MangaSearchComponent){
+        if (component is MangaSearchComponent) {
           mangaSearchMap[source.source.info.identify] = component;
         }
-        if (component is MangaDetailedComponent){
+        if (component is MangaDetailedComponent) {
           mangaDetailedMap[source.source.info.identify] = component;
         }
-        if (component is NovelHomeComponent){
+        if (component is NovelHomeComponent) {
           novelHomeMap[source.source.info.identify] = component;
         }
-        if (component is NovelReadComponent){
+        if (component is NovelReadComponent) {
           novelReadMap[source.source.info.identify] = component;
         }
-        if (component is NovelSearchComponent){
+        if (component is NovelSearchComponent) {
           novelSearchMap[source.source.info.identify] = component;
         }
-        if (component is NovelDetailedComponent){
+        if (component is NovelDetailedComponent) {
           novelDetailedMap[source.source.info.identify] = component;
         }
       }
     }
-
   }
 
   SourceConfigWrapper? getSourceConfigWrapper(String identify) {
@@ -186,5 +186,4 @@ class SourceBundle {
   List<NovelSearchComponent> getNovelSearchList() {
     return novelSearchMap.values.toList();
   }
-
 }

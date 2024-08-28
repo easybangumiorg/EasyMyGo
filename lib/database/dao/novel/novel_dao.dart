@@ -1,7 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:easy_mygo/database/db/manga/manga_db.dart';
 import 'package:easy_mygo/database/db/novel/novel_db.dart';
-import 'package:easy_mygo/entity/manga/manga_info/manga_info.dart';
 import 'package:easy_mygo/entity/novel/novel_info/novel_info.dart';
 
 part 'novel_dao.g.dart';

@@ -1,6 +1,3 @@
-
-import 'package:easy_mygo/entity/manga/manga_enum.dart';
-import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
 import 'package:easy_mygo/entity/novel/novel_enum.dart';
 import 'package:easy_mygo/entity/novel/novel_summary/novel_summary.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +9,6 @@ part 'novel_detailed.freezed.dart';
 
 @freezed
 class NovelDetailed with _$NovelDetailed {
-
   factory NovelDetailed({
     // 必要信息
     required String source,
@@ -22,13 +18,15 @@ class NovelDetailed with _$NovelDetailed {
     required String label,
     required String cover,
     required String intro,
-    @JsonKey(name: "jump_url")  required String jumpUrl,
+    @JsonKey(name: "jump_url") required String jumpUrl,
 
     // detailed
     @Default(false) @JsonKey(name: "is_detailed_load") bool isDetailedLoad,
     @Default("") String genre,
     @Default("") String description,
-    @JsonKey(name: "update_strategy")  @Default(NovelUpdateStrategy.always) NovelUpdateStrategy updateStrategy,
+    @JsonKey(name: "update_strategy")
+    @Default(NovelUpdateStrategy.always)
+    NovelUpdateStrategy updateStrategy,
     @Default(false) bool isUpdate,
     @Default(NovelStatus.unknown) NovelStatus status,
 
@@ -41,7 +39,6 @@ class NovelDetailed with _$NovelDetailed {
 }
 
 extension MangaDetailedExt on NovelDetailed {
-
   static final _identifyValues = Expando<String>();
   String get identify {
     return _identifyValues[this] ??= "$id-|-$source";
@@ -51,5 +48,4 @@ extension MangaDetailedExt on NovelDetailed {
   NovelSummary get mangaSummary {
     return _summaryValues[this] ??= NovelSummary(source: source, id: id);
   }
-
 }

@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:easy_mygo/c.dart';

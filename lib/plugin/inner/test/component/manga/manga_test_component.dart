@@ -5,7 +5,6 @@ import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/home/manga_home_component.dart';
 import 'package:easy_mygo/plugin/component/api/manga/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/component/api/manga/home/resp/home_resp.dart';
-import 'package:easy_mygo/plugin/component/api/manga/home/tab/home_tab.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 
 class MangaTestComponent extends Component implements MangaHomeComponent {
@@ -76,12 +75,12 @@ class MangaTestComponent extends Component implements MangaHomeComponent {
   Future<MangaGetHomeCoverResp> loadPageData(
       MangaHomePage page, String key) async {
     final page = int.tryParse(key) ?? 0;
-    if (page == 10){
+    if (page == 10) {
       return MangaGetHomeCoverResp(
           data: _testCoverList(),
           nextKey: null,
           payload: ComponentPayload.ok());
-    }else{
+    } else {
       return MangaGetHomeCoverResp(
           data: _testCoverList(),
           nextKey: "${page + 1}",
@@ -91,7 +90,7 @@ class MangaTestComponent extends Component implements MangaHomeComponent {
 
   List<MangaCover> _testCoverList() {
     List<MangaCover> res = [];
-    for(var i = 0 ; i < 10 ; i ++){
+    for (var i = 0; i < 10; i++) {
       res.add(MangaCover(
           source: sourceInfo.identify,
           id: "${DateTime.timestamp()} $i",

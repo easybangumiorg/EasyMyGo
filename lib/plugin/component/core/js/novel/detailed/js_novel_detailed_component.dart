@@ -1,16 +1,12 @@
 import 'dart:convert';
 
-import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
 import 'package:easy_mygo/entity/novel/novel_summary/novel_summary.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
-import 'package:easy_mygo/plugin/component/api/manga/detailed/manga_detailed_component.dart';
-import 'package:easy_mygo/plugin/component/api/manga/detailed/resp/detailed_resp.dart';
 import 'package:easy_mygo/plugin/component/api/novel/detailed/novel_detailed_component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/detailed/resp/detailed_resp.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart';
-import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 
 class JsNovelDetailedComponent extends NovelDetailedComponent

@@ -1,5 +1,3 @@
-
-import 'package:easy_mygo/entity/manga/manga_summary/manga_summary.dart';
 import 'package:easy_mygo/entity/novel/novel_summary/novel_summary.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +8,6 @@ part 'novel_cover.freezed.dart';
 
 @freezed
 class NovelCover with _$NovelCover {
-
   factory NovelCover({
     // 必要信息
     required String id,
@@ -19,9 +16,7 @@ class NovelCover with _$NovelCover {
     required String label,
     required String cover,
     required String intro,
-
-    @JsonKey(name: "jump_url")
-    required String jumpUrl,
+    @JsonKey(name: "jump_url") required String jumpUrl,
 
     // 必要信息，但是由 Component 填充
     @Default("") String source,
@@ -35,7 +30,6 @@ class NovelCover with _$NovelCover {
 }
 
 extension MangaCoverExt on NovelCover {
-
   static final _identifyValues = Expando<String>();
   String get identify {
     return _identifyValues[this] ??= "$id-|-$source";
@@ -45,5 +39,4 @@ extension MangaCoverExt on NovelCover {
   NovelSummary get mangaSummary {
     return _summaryValues[this] ??= NovelSummary(source: source, id: id);
   }
-
 }

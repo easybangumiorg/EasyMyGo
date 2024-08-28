@@ -5,7 +5,6 @@ import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/novel_home_component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/resp/home_resp.dart';
-import 'package:easy_mygo/plugin/component/api/novel/home/tab/home_tab.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart';
@@ -15,14 +14,18 @@ class JsNovelHomeComponent extends NovelHomeComponent implements JsComponent {
   static const methodNameGetTab = "novel_home_getHomeTab";
   static const methodNameGetSecondTab = "novel_home_getSecondTab";
   static const methodNameGetPageWithHomeTab = "novel_home_getPageWithHomeTab";
-  static const methodNameGetPageWithSecondTab = "novel_home_getPageWithSecondTab";
+  static const methodNameGetPageWithSecondTab =
+      "novel_home_getPageWithSecondTab";
   static const methodNameLoadPageData = "novel_home_loadPageData";
 
   static const _performMethodNameGetTab = "perform_novel_home_getHomeTab";
   static const _performMethodNameGetSecondTab = "perform_home_getSecondTab";
-  static const _performMethodNameGetPageWithHomeTab = "perform_novel_home_getPageWithHomeTab";
-  static const _performMethodNameGetPageWithSecondTab = "perform_novel_home_getPageWithSecondTab";
-  static const _performMethodNameLoadPageData = "perform_novel_home_loadPageData";
+  static const _performMethodNameGetPageWithHomeTab =
+      "perform_novel_home_getPageWithHomeTab";
+  static const _performMethodNameGetPageWithSecondTab =
+      "perform_novel_home_getPageWithSecondTab";
+  static const _performMethodNameLoadPageData =
+      "perform_novel_home_loadPageData";
 
   static final _performJSCode = """"
     ${JsComponentUtils.getPerformFunctionJsCode(_performMethodNameGetTab, methodNameGetTab, 0)}
@@ -122,8 +125,9 @@ class JsNovelHomeComponent extends NovelHomeComponent implements JsComponent {
     final json = await JsComponentUtils.jsonDecodeWithCheck(_runtime, res);
     final rt = NovelGetHomeCoverResp.fromJson(json);
     final respTemp = rt.copyWith(
-      data: rt.data?.map((e) => e.copyWith(source: sourceInfo.identify)).toList()
-    );
+        data: rt.data
+            ?.map((e) => e.copyWith(source: sourceInfo.identify))
+            .toList());
     if (respTemp.data == null && respTemp.payload.code == 0) {
       throw ComponentPayload(
           code: ComponentPayload.codeParseResultError,

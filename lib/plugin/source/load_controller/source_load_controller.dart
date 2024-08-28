@@ -4,7 +4,6 @@ import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/extension/controller/extension_controller.dart';
 import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
 import 'package:easy_mygo/utils/cancelable_task/cancelable_task.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'source_load_controller.g.dart';
@@ -38,8 +37,8 @@ class SourceLoadState {
 }
 
 @Riverpod()
-class SourceLoadController extends _$SourceLoadController with CancelableWorkerContainer<ExtensionState, void> {
-
+class SourceLoadController extends _$SourceLoadController
+    with CancelableWorkerContainer<ExtensionState, void> {
   static SourceLoadController of(dynamic ref) =>
       ref.watch(sourceLoadControllerPod.notifier);
 
@@ -67,13 +66,13 @@ class SourceLoadController extends _$SourceLoadController with CancelableWorkerC
   }
 
   @override
-  Future<void> onWork(CancelableTask task ,ExtensionState input) async {
+  Future<void> onWork(CancelableTask task, ExtensionState input) async {
     task.checkCancel();
     final extensionDataList = input.extensions.values;
     final List<SourceInfo> info = [];
 
     for (var extensionData in extensionDataList) {
-      if(extensionData.state != ExtensionLoadState.loaded){
+      if (extensionData.state != ExtensionLoadState.loaded) {
         continue;
       }
       for (var sourceInfo in extensionData.sources ?? []) {
@@ -92,7 +91,4 @@ class SourceLoadController extends _$SourceLoadController with CancelableWorkerC
     task.checkCancel();
     state = state.copyWith(loading: false, sourceList: data);
   }
-
-
-
 }

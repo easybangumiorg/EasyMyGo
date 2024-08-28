@@ -1,10 +1,6 @@
-
-
-
 import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/novel/novel_cover/novel_cover.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
-import 'package:easy_mygo/plugin/component/api/novel/home/tab/home_tab.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,24 +11,24 @@ part 'home_resp.freezed.dart';
 @freezed
 class NovelGetHomeTabResp with _$NovelGetHomeTabResp {
   factory NovelGetHomeTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<BookHomeTab>? tabList,
+    @JsonKey(name: "tab_list") @Default(null) List<BookHomeTab>? tabList,
     required ComponentPayload payload,
   }) = _NovelGetHomeTabResp;
 
-  factory NovelGetHomeTabResp.fromJson(Map<String, Object?> json)
-  => _$NovelGetHomeTabRespFromJson(json);
+  factory NovelGetHomeTabResp.fromJson(Map<String, Object?> json) =>
+      _$NovelGetHomeTabRespFromJson(json);
 }
 
 /// 获取二级 tab
 @freezed
 class NovelGetSecondTabResp with _$NovelGetSecondTabResp {
   factory NovelGetSecondTabResp({
-    @JsonKey(name: "tab_list")@Default(null) List<BookSecondTab>? tabList,
+    @JsonKey(name: "tab_list") @Default(null) List<BookSecondTab>? tabList,
     required ComponentPayload payload,
   }) = _NovelGetSecondTabResp;
 
-  factory NovelGetSecondTabResp.fromJson(Map<String, Object?> json)
-  => _$NovelGetSecondTabRespFromJson(json);
+  factory NovelGetSecondTabResp.fromJson(Map<String, Object?> json) =>
+      _$NovelGetSecondTabRespFromJson(json);
 }
 
 /// 获取 tab 对应的 page
@@ -43,8 +39,8 @@ class NovelGetHomePageResp with _$NovelGetHomePageResp {
     required ComponentPayload payload,
   }) = _NovelGetHomePageResp;
 
-  factory NovelGetHomePageResp.fromJson(Map<String, Object?> json)
-  => _$NovelGetHomePageRespFromJson(json);
+  factory NovelGetHomePageResp.fromJson(Map<String, Object?> json) =>
+      _$NovelGetHomePageRespFromJson(json);
 }
 
 /// 加载 page 里某一页数据
@@ -58,6 +54,6 @@ class NovelGetHomeCoverResp with _$NovelGetHomeCoverResp {
     required ComponentPayload payload,
   }) = _NovelGetHomeCoverResp;
 
-  factory NovelGetHomeCoverResp.fromJson(Map<String, Object?> json)
-  => _$NovelGetHomeCoverRespFromJson(json);
+  factory NovelGetHomeCoverResp.fromJson(Map<String, Object?> json) =>
+      _$NovelGetHomeCoverRespFromJson(json);
 }

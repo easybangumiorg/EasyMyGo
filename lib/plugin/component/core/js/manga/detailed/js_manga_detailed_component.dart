@@ -7,16 +7,15 @@ import 'package:easy_mygo/plugin/component/api/manga/detailed/resp/detailed_resp
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
 import 'package:easy_mygo/plugin/component/core/js/utils/js_component_utils.dart';
-import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:flutter_js/javascript_runtime.dart';
 
-class JsMangaDetailedComponent extends MangaDetailedComponent implements JsComponent {
-
-
+class JsMangaDetailedComponent extends MangaDetailedComponent
+    implements JsComponent {
   static const methodName = "manga_detailed_getMangaDetailed";
   static const _performMethodName = "perform_manga_detailed_getMangaDetailed";
 
-  static final _performJSCode = JsComponentUtils.getPerformFunctionJsCode(_performMethodName, methodName, 1);
+  static final _performJSCode = JsComponentUtils.getPerformFunctionJsCode(
+      _performMethodName, methodName, 1);
 
   late JavascriptRuntime _runtime;
 
@@ -41,7 +40,7 @@ class JsMangaDetailedComponent extends MangaDetailedComponent implements JsCompo
     );
     if (respTemp.detailed == null &&
         respTemp.chapters == null &&
-        respTemp.payload.code == 0 ) {
+        respTemp.payload.code == 0) {
       throw ComponentPayload(
           code: ComponentPayload.codeParseResultError,
           msg: "parse error",
@@ -49,14 +48,14 @@ class JsMangaDetailedComponent extends MangaDetailedComponent implements JsCompo
     }
     return respTemp.copyWith(
         payload: respTemp.payload.copyWith(
-          raw: res.rawResult,
-        )
-    );
+      raw: res.rawResult,
+    ));
   }
 
   @override
   Future<bool> isAvailable() async {
-    return await JsComponentUtils.checkFunction(_runtime, [methodName], [_performMethodName]);
+    return await JsComponentUtils.checkFunction(
+        _runtime, [methodName], [_performMethodName]);
   }
 
   @override

@@ -1,4 +1,3 @@
-
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
@@ -7,15 +6,10 @@ import 'package:easy_mygo/entity/source/source_data/source_data.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/core/js/js_component.dart';
-import 'package:easy_mygo/plugin/component/core/js/manga/detailed/js_manga_detailed_component.dart';
-import 'package:easy_mygo/plugin/component/core/js/manga/read/js_manga_read_component.dart';
-import 'package:easy_mygo/plugin/component/core/js/manga/search/js_manga_search_component.dart';
 import 'package:easy_mygo/plugin/source/loader/js/js_source_utils.dart';
 import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
 
 class JsSourceLoader extends SourceLoader {
-
-
   /// 解析 js 文件元数据
   /// // @key <key>
   /// // @label <label>
@@ -26,7 +20,7 @@ class JsSourceLoader extends SourceLoader {
   @override
   Future<SourceInfo?> parse(String fromExtension, String filePath) async {
     final file = File(filePath);
-    if(! await file.exists()){
+    if (!await file.exists()) {
       return null;
     }
     final readStream = file.openRead();
@@ -34,19 +28,19 @@ class JsSourceLoader extends SourceLoader {
     final HashMap<String, dynamic> map = HashMap();
 
     await for (var value in lines) {
-      if(!value.startsWith("//")){
+      if (!value.startsWith("//")) {
         break;
       }
       final l = value.replaceAll("//", "").trim();
       final ss = l.split(" ");
-      if(ss.length < 2){
+      if (ss.length < 2) {
         return null;
       }
       final key = ss[0].replaceFirst("@", "").trim();
       final val = ss.sublist(1).join(" ");
-      if (key == "version_code"){
+      if (key == "version_code") {
         map[key] = int.tryParse(val);
-      }else{
+      } else {
         map[key] = val;
       }
     }
@@ -55,7 +49,6 @@ class JsSourceLoader extends SourceLoader {
     map["loader_type"] = SourceLoaderType.js.name;
     map["path"] = filePath;
     return SourceInfo.fromJson(map);
-
   }
 
   @override
@@ -63,7 +56,6 @@ class JsSourceLoader extends SourceLoader {
 
   @override
   Future<SourceData> load(SourceInfo sourceInfo) async {
-
     try {
       final runtime = JsSourceUtils.newRuntime(sourceInfo);
       final file = File(sourceInfo.path);
@@ -74,22 +66,23 @@ class JsSourceLoader extends SourceLoader {
       final content = await file.readAsString();
       await runtime.evaluateAsync(content);
 
-
       final List<Component> componentList = [];
-      final List<JsComponent> jsComponentList = JsComponent.create(sourceInfo, runtime);
+      final List<JsComponent> jsComponentList =
+          JsComponent.create(sourceInfo, runtime);
       for (var value in jsComponentList) {
-        if(await value.isAvailable()){
+        if (await value.isAvailable()) {
           await value.onLoad();
           componentList.add(value);
         }
       }
 
-      return SourceData(info: sourceInfo,
+      return SourceData(
+          info: sourceInfo,
           state: SourceState.loaded,
           components: componentList);
-    }catch(e){
-      return SourceData(info: sourceInfo, state: SourceState.error, errorMsg: e.toString());
+    } catch (e) {
+      return SourceData(
+          info: sourceInfo, state: SourceState.error, errorMsg: e.toString());
     }
   }
-
 }

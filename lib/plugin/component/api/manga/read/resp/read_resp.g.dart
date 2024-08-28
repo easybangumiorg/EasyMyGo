@@ -9,9 +9,8 @@ part of 'read_resp.dart';
 _$MangaReadRespImpl _$$MangaReadRespImplFromJson(Map<String, dynamic> json) =>
     _$MangaReadRespImpl(
       pictures: (json['pictures'] as List<dynamic>?)
-              ?.map((e) => MangaPicture.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          null,
+          ?.map((e) => MangaPicture.fromJson(e as Map<String, dynamic>))
+          .toList(),
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );

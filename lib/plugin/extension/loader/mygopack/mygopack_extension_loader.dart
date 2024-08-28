@@ -7,7 +7,6 @@ import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
 import 'package:easy_mygo/plugin/extension/loader/extension_loader.dart';
 import 'package:easy_mygo/plugin/extension/utils/extension_utils.dart';
-import 'package:archive/archive_io.dart';
 import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
 import 'package:easy_mygo/utils/file_index/file_index_utils.dart';
 import 'package:easy_mygo/utils/zip/zip_utils.dart';
@@ -32,14 +31,14 @@ class MygopackExtensionLoader extends ExtensionLoader {
     final dir = Directory(path).absolute; // 这里取绝对路径
 
     // 版本检查
-    if (extensionInfo.libVersion < ExtensionLoader.libVersionMin ) {
+    if (extensionInfo.libVersion < ExtensionLoader.libVersionMin) {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,
           state: ExtensionLoadState.error,
           errorMsg: "插件版本过旧！");
     }
-    if (extensionInfo.libVersion > ExtensionLoader.libVersionMax ) {
+    if (extensionInfo.libVersion > ExtensionLoader.libVersionMax) {
       return ExtensionData(
           info: extensionInfo,
           folderPath: dir.path,

@@ -1,4 +1,3 @@
-
 import 'package:easy_mygo/entity/book/home_tab/book_home_tab.dart';
 import 'package:easy_mygo/entity/novel/novel_cover/novel_cover.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
@@ -35,7 +34,8 @@ class NovelTestComponent extends Component implements NovelHomeComponent {
   }
 
   @override
-  Future<NovelGetHomePageResp> getPageWithSecondTab(BookHomeTab homeTab, BookSecondTab secondTab) async {
+  Future<NovelGetHomePageResp> getPageWithSecondTab(
+      BookHomeTab homeTab, BookSecondTab secondTab) async {
     if (secondTab.id == "11") {
       return NovelGetHomePageResp(
           page: NovelHomePage(id: "11", label: "11带封面", hasCover: true),
@@ -73,16 +73,17 @@ class NovelTestComponent extends Component implements NovelHomeComponent {
   }
 
   @override
-  Future<NovelGetHomeCoverResp> loadPageData(NovelHomePage page, String key) async {
+  Future<NovelGetHomeCoverResp> loadPageData(
+      NovelHomePage page, String key) async {
     print("loadPageData $key");
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     final page = int.tryParse(key) ?? 0;
-    if (page == 10){
+    if (page == 10) {
       return NovelGetHomeCoverResp(
           data: _testCoverList(key),
           nextKey: null,
           payload: ComponentPayload.ok());
-    }else{
+    } else {
       return NovelGetHomeCoverResp(
           data: _testCoverList(key),
           nextKey: "${page + 1}",
@@ -92,16 +93,16 @@ class NovelTestComponent extends Component implements NovelHomeComponent {
 
   List<NovelCover> _testCoverList(String key) {
     List<NovelCover> res = [];
-    for(var i = 0 ; i < 10 ; i ++){
+    for (var i = 0; i < 10; i++) {
       res.add(NovelCover(
           source: sourceInfo.identify,
           id: "${DateTime.timestamp()} $i",
           label: "$key GIRLS BAND CRY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$i",
-          cover: "https://lain.bgm.tv/pic/cover/l/75/c1/431767_bX7FZ.jpg?_gl=1*cqr4mj*_ga*MTA0NTEwMzYyMC4xNzA0NjQ1ODcz*_ga_1109JLGMHN*MTcxMjk5NTc0NC4xMi4xLjE3MTI5OTY4OTguMC4wLjA.",
+          cover:
+              "https://lain.bgm.tv/pic/cover/l/75/c1/431767_bX7FZ.jpg?_gl=1*cqr4mj*_ga*MTA0NTEwMzYyMC4xNzA0NjQ1ODcz*_ga_1109JLGMHN*MTcxMjk5NTc0NC4xMi4xLjE3MTI5OTY4OTguMC4wLjA.",
           intro: "",
           jumpUrl: ""));
     }
     return res;
   }
-
 }

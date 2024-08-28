@@ -1,4 +1,3 @@
-
 import 'package:easy_mygo/database/database.dart';
 import 'package:easy_mygo/router.dart';
 import 'package:easy_mygo/theme/theme.dart';

@@ -1,5 +1,3 @@
-
-import 'package:easy_mygo/entity/novel/novel_chapter/novel_chapter.dart';
 import 'package:easy_mygo/entity/novel/novel_detailed/novel_detailed.dart';
 import 'package:easy_mygo/entity/novel/novel_volume/novel_volume.dart';
 import 'package:easy_mygo/plugin/component/api/component.dart';

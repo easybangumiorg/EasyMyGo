@@ -10,9 +10,8 @@ _$NovelGetHomeTabRespImpl _$$NovelGetHomeTabRespImplFromJson(
         Map<String, dynamic> json) =>
     _$NovelGetHomeTabRespImpl(
       tabList: (json['tab_list'] as List<dynamic>?)
-              ?.map((e) => BookHomeTab.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          null,
+          ?.map((e) => BookHomeTab.fromJson(e as Map<String, dynamic>))
+          .toList(),
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );
@@ -28,9 +27,8 @@ _$NovelGetSecondTabRespImpl _$$NovelGetSecondTabRespImplFromJson(
         Map<String, dynamic> json) =>
     _$NovelGetSecondTabRespImpl(
       tabList: (json['tab_list'] as List<dynamic>?)
-              ?.map((e) => BookSecondTab.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          null,
+          ?.map((e) => BookSecondTab.fromJson(e as Map<String, dynamic>))
+          .toList(),
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );
@@ -63,10 +61,9 @@ _$NovelGetHomeCoverRespImpl _$$NovelGetHomeCoverRespImplFromJson(
         Map<String, dynamic> json) =>
     _$NovelGetHomeCoverRespImpl(
       data: (json['data'] as List<dynamic>?)
-              ?.map((e) => NovelCover.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          null,
-      nextKey: json['next_key'] as String? ?? null,
+          ?.map((e) => NovelCover.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      nextKey: json['next_key'] as String?,
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );

@@ -24,21 +24,13 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final state = HomeViewModel.watch(ref);
     final sourceBundle = SourceBundle.of(ref);
 
-
-
-
-
     final component = sourceBundle.getNovelHomeList().firstOrNull;
-    if (component != null){
-
-
-
+    if (component != null) {
       return Container(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         child: HomeBookPageWidget(
           homePage: NovelBookHomeCoverPage(
             component,

@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:easy_mygo/c.dart';
 import 'package:easy_mygo/entity/extension/extension_info/extension_info.dart';
 import 'package:easy_mygo/entity/source/source_info/source_info.dart';
@@ -14,12 +12,12 @@ class InnerSourceFactory {
       label: "内置源",
       versionName: EasyConstant.versionName,
       versionCode: EasyConstant.versionCode,
+
       /// 内置源不用检查库版本
       libVersion: ExtensionLoader.libVersionMax,
       loadType: ExtensionLoaderType.inner,
       path: "",
-      readme: "纯纯 Mygo 内置源"
-  );
+      readme: "纯纯 Mygo 内置源");
 
   static final testManga = TestMangaSource();
   static final testNovel = TestNovelSource();
