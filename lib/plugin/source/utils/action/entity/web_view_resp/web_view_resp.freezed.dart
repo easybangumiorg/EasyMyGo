@@ -29,8 +29,12 @@ mixin _$WebViewResp {
   @JsonKey(name: "intercept_resource")
   String get interceptResource => throw _privateConstructorUsedError;
 
+  /// Serializes this WebViewResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WebViewRespCopyWith<WebViewResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$WebViewRespCopyWithImpl<$Res, $Val extends WebViewResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class _$WebViewRespCopyWithImpl<$Res, $Val extends WebViewResp>
     ) as $Val);
   }
 
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $WebViewStrategyCopyWith<$Res> get strategy {
@@ -130,6 +138,8 @@ class __$$WebViewRespImplCopyWithImpl<$Res>
       _$WebViewRespImpl _value, $Res Function(_$WebViewRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,12 +226,14 @@ class _$WebViewRespImpl implements _WebViewResp {
                 other.interceptResource == interceptResource));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, strategy, url, isTimeout, content, interceptResource);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WebViewRespImplCopyWith<_$WebViewRespImpl> get copyWith =>
@@ -247,20 +259,24 @@ abstract class _WebViewResp implements WebViewResp {
   factory _WebViewResp.fromJson(Map<String, dynamic> json) =
       _$WebViewRespImpl.fromJson;
 
-  @override // 当次结果的策略
-  WebViewStrategy get strategy;
-  @override // url
-  String get url;
-  @override // 是否是超时
+// 当次结果的策略
+  @override
+  WebViewStrategy get strategy; // url
+  @override
+  String get url; // 是否是超时
+  @override
   @JsonKey(name: "is_timeout")
-  bool get isTimeout;
-  @override // 回调时当前页面的数据
-  String get content;
-  @override // 命中回调正则的资源字段
+  bool get isTimeout; // 回调时当前页面的数据
+  @override
+  String get content; // 命中回调正则的资源字段
+  @override
   @JsonKey(name: "intercept_resource")
   String get interceptResource;
+
+  /// Create a copy of WebViewResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WebViewRespImplCopyWith<_$WebViewRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

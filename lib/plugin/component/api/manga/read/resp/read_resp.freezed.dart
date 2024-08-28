@@ -23,8 +23,12 @@ mixin _$MangaReadResp {
   List<MangaPicture>? get pictures => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaReadResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaReadRespCopyWith<MangaReadResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$MangaReadRespCopyWithImpl<$Res, $Val extends MangaReadResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$MangaReadRespCopyWithImpl<$Res, $Val extends MangaReadResp>
     ) as $Val);
   }
 
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -99,6 +107,8 @@ class __$$MangaReadRespImplCopyWithImpl<$Res>
       _$MangaReadRespImpl _value, $Res Function(_$MangaReadRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,12 +166,14 @@ class _$MangaReadRespImpl implements _MangaReadResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_pictures), payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaReadRespImplCopyWith<_$MangaReadRespImpl> get copyWith =>
@@ -187,8 +199,11 @@ abstract class _MangaReadResp implements MangaReadResp {
   List<MangaPicture>? get pictures;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaReadRespImplCopyWith<_$MangaReadRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

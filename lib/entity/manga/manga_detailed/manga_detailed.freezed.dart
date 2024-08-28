@@ -37,8 +37,12 @@ mixin _$MangaDetailed {
   String get ext => throw _privateConstructorUsedError; // 必要信息，但是由 Component 填充
   String get source => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaDetailed to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaDetailedCopyWith<MangaDetailed> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$MangaDetailedCopyWithImpl<$Res, $Val extends MangaDetailed>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaDetailed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,6 +187,8 @@ class __$$MangaDetailedImplCopyWithImpl<$Res>
       _$MangaDetailedImpl _value, $Res Function(_$MangaDetailedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaDetailed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -346,7 +354,7 @@ class _$MangaDetailedImpl implements _MangaDetailed {
             (identical(other.source, source) || other.source == source));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -364,7 +372,9 @@ class _$MangaDetailedImpl implements _MangaDetailed {
       ext,
       source);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaDetailedImplCopyWith<_$MangaDetailedImpl> get copyWith =>
@@ -399,8 +409,8 @@ abstract class _MangaDetailed implements MangaDetailed {
       _$MangaDetailedImpl.fromJson;
 
   @override
-  String get id;
-  @override // cover 信息
+  String get id; // cover 信息
+  @override
   String get label;
   @override
   String get cover;
@@ -408,8 +418,8 @@ abstract class _MangaDetailed implements MangaDetailed {
   String get intro;
   @override
   @JsonKey(name: "jump_url")
-  String get jumpUrl;
-  @override // detailed
+  String get jumpUrl; // detailed
+  @override
   @JsonKey(name: "is_detailed_load")
   bool get isDetailedLoad;
   @override
@@ -422,13 +432,16 @@ abstract class _MangaDetailed implements MangaDetailed {
   @override
   bool get isUpdate;
   @override
-  MangaStatus get status;
-  @override // 额外字段
-  String get ext;
-  @override // 必要信息，但是由 Component 填充
-  String get source;
+  MangaStatus get status; // 额外字段
   @override
-  @JsonKey(ignore: true)
+  String get ext; // 必要信息，但是由 Component 填充
+  @override
+  String get source;
+
+  /// Create a copy of MangaDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaDetailedImplCopyWith<_$MangaDetailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

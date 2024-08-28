@@ -26,8 +26,12 @@ mixin _$BookHomeTab {
   bool get hasSecondTab => throw _privateConstructorUsedError; // 可以让源透传一些信息
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this BookHomeTab to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BookHomeTab
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BookHomeTabCopyWith<BookHomeTab> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$BookHomeTabCopyWithImpl<$Res, $Val extends BookHomeTab>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BookHomeTab
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$BookHomeTabImplCopyWithImpl<$Res>
       _$BookHomeTabImpl _value, $Res Function(_$BookHomeTabImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BookHomeTab
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,11 +186,13 @@ class _$BookHomeTabImpl implements _BookHomeTab {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, label, hasSecondTab, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BookHomeTab
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BookHomeTabImplCopyWith<_$BookHomeTabImpl> get copyWith =>
@@ -209,14 +219,17 @@ abstract class _BookHomeTab implements BookHomeTab {
   @override
   String get id;
   @override
-  String get label;
-  @override // 是否有 二级 tab
-  @JsonKey(name: "has_second_tab")
-  bool get hasSecondTab;
-  @override // 可以让源透传一些信息
-  String get ext;
+  String get label; // 是否有 二级 tab
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "has_second_tab")
+  bool get hasSecondTab; // 可以让源透传一些信息
+  @override
+  String get ext;
+
+  /// Create a copy of BookHomeTab
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BookHomeTabImplCopyWith<_$BookHomeTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -231,8 +244,12 @@ mixin _$BookSecondTab {
   String get label => throw _privateConstructorUsedError; // 可以让源透传一些信息
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this BookSecondTab to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BookSecondTab
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BookSecondTabCopyWith<BookSecondTab> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -256,6 +273,8 @@ class _$BookSecondTabCopyWithImpl<$Res, $Val extends BookSecondTab>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BookSecondTab
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,6 +318,8 @@ class __$$BookSecondTabImplCopyWithImpl<$Res>
       _$BookSecondTabImpl _value, $Res Function(_$BookSecondTabImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BookSecondTab
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -355,11 +376,13 @@ class _$BookSecondTabImpl implements _BookSecondTab {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, label, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BookSecondTab
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BookSecondTabImplCopyWith<_$BookSecondTabImpl> get copyWith =>
@@ -385,11 +408,14 @@ abstract class _BookSecondTab implements BookSecondTab {
   @override
   String get id;
   @override
-  String get label;
-  @override // 可以让源透传一些信息
-  String get ext;
+  String get label; // 可以让源透传一些信息
   @override
-  @JsonKey(ignore: true)
+  String get ext;
+
+  /// Create a copy of BookSecondTab
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BookSecondTabImplCopyWith<_$BookSecondTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

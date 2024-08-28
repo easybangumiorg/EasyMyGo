@@ -24,8 +24,12 @@ mixin _$MangaGetHomeTabResp {
   List<BookHomeTab>? get tabList => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaGetHomeTabResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaGetHomeTabRespCopyWith<MangaGetHomeTabResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$MangaGetHomeTabRespCopyWithImpl<$Res, $Val extends MangaGetHomeTabResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,6 +77,8 @@ class _$MangaGetHomeTabRespCopyWithImpl<$Res, $Val extends MangaGetHomeTabResp>
     ) as $Val);
   }
 
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -104,6 +112,8 @@ class __$$MangaGetHomeTabRespImplCopyWithImpl<$Res>
       $Res Function(_$MangaGetHomeTabRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,12 +172,14 @@ class _$MangaGetHomeTabRespImpl implements _MangaGetHomeTabResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_tabList), payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaGetHomeTabRespImplCopyWith<_$MangaGetHomeTabRespImpl> get copyWith =>
@@ -195,8 +207,11 @@ abstract class _MangaGetHomeTabResp implements MangaGetHomeTabResp {
   List<BookHomeTab>? get tabList;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaGetHomeTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaGetHomeTabRespImplCopyWith<_$MangaGetHomeTabRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -212,8 +227,12 @@ mixin _$MangaGetSecondTabResp {
   List<BookSecondTab>? get tabList => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaGetSecondTabResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaGetSecondTabRespCopyWith<MangaGetSecondTabResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -242,6 +261,8 @@ class _$MangaGetSecondTabRespCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,6 +281,8 @@ class _$MangaGetSecondTabRespCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -295,6 +318,8 @@ class __$$MangaGetSecondTabRespImplCopyWithImpl<$Res>
       $Res Function(_$MangaGetSecondTabRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -353,12 +378,14 @@ class _$MangaGetSecondTabRespImpl implements _MangaGetSecondTabResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_tabList), payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaGetSecondTabRespImplCopyWith<_$MangaGetSecondTabRespImpl>
@@ -386,8 +413,11 @@ abstract class _MangaGetSecondTabResp implements MangaGetSecondTabResp {
   List<BookSecondTab>? get tabList;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaGetSecondTabResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaGetSecondTabRespImplCopyWith<_$MangaGetSecondTabRespImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -401,8 +431,12 @@ mixin _$MangaGetHomePageResp {
   MangaHomePage? get page => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaGetHomePageResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaGetHomePageRespCopyWith<MangaGetHomePageResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -430,6 +464,8 @@ class _$MangaGetHomePageRespCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -448,6 +484,8 @@ class _$MangaGetHomePageRespCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MangaHomePageCopyWith<$Res>? get page {
@@ -460,6 +498,8 @@ class _$MangaGetHomePageRespCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -493,6 +533,8 @@ class __$$MangaGetHomePageRespImplCopyWithImpl<$Res>
       $Res Function(_$MangaGetHomePageRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -540,11 +582,13 @@ class _$MangaGetHomePageRespImpl implements _MangaGetHomePageResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, page, payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaGetHomePageRespImplCopyWith<_$MangaGetHomePageRespImpl>
@@ -572,8 +616,11 @@ abstract class _MangaGetHomePageResp implements MangaGetHomePageResp {
   MangaHomePage? get page;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaGetHomePageResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaGetHomePageRespImplCopyWith<_$MangaGetHomePageRespImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -591,8 +638,12 @@ mixin _$MangaGetHomeCoverResp {
   String? get nextKey => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaGetHomeCoverResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaGetHomeCoverRespCopyWith<MangaGetHomeCoverResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -622,6 +673,8 @@ class _$MangaGetHomeCoverRespCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -645,6 +698,8 @@ class _$MangaGetHomeCoverRespCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -681,6 +736,8 @@ class __$$MangaGetHomeCoverRespImplCopyWithImpl<$Res>
       $Res Function(_$MangaGetHomeCoverRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -750,12 +807,14 @@ class _$MangaGetHomeCoverRespImpl implements _MangaGetHomeCoverResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_data), nextKey, payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaGetHomeCoverRespImplCopyWith<_$MangaGetHomeCoverRespImpl>
@@ -780,14 +839,17 @@ abstract class _MangaGetHomeCoverResp implements MangaGetHomeCoverResp {
       _$MangaGetHomeCoverRespImpl.fromJson;
 
   @override
-  List<MangaCover>? get data;
-  @override // 下一页的 key，如果为空则代表最后一页
+  List<MangaCover>? get data; // 下一页的 key，如果为空则代表最后一页
+  @override
   @JsonKey(name: "next_key")
   String? get nextKey;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaGetHomeCoverResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaGetHomeCoverRespImplCopyWith<_$MangaGetHomeCoverRespImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

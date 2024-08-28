@@ -24,8 +24,12 @@ mixin _$MangaDetailedResp {
   List<MangaChapter>? get chapters => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaDetailedResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaDetailedRespCopyWith<MangaDetailedResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$MangaDetailedRespCopyWithImpl<$Res, $Val extends MangaDetailedResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +84,8 @@ class _$MangaDetailedRespCopyWithImpl<$Res, $Val extends MangaDetailedResp>
     ) as $Val);
   }
 
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MangaDetailedCopyWith<$Res>? get detailed {
@@ -90,6 +98,8 @@ class _$MangaDetailedRespCopyWithImpl<$Res, $Val extends MangaDetailedResp>
     });
   }
 
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -126,6 +136,8 @@ class __$$MangaDetailedRespImplCopyWithImpl<$Res>
       $Res Function(_$MangaDetailedRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -195,12 +207,14 @@ class _$MangaDetailedRespImpl implements _MangaDetailedResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, detailed,
       const DeepCollectionEquality().hash(_chapters), payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaDetailedRespImplCopyWith<_$MangaDetailedRespImpl> get copyWith =>
@@ -230,8 +244,11 @@ abstract class _MangaDetailedResp implements MangaDetailedResp {
   List<MangaChapter>? get chapters;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of MangaDetailedResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaDetailedRespImplCopyWith<_$MangaDetailedRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -30,8 +30,12 @@ mixin _$BookCover {
   String get source => throw _privateConstructorUsedError;
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this BookCover to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BookCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BookCoverCopyWith<BookCover> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$BookCoverCopyWithImpl<$Res, $Val extends BookCover>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BookCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$BookCoverImplCopyWithImpl<$Res>
       _$BookCoverImpl _value, $Res Function(_$BookCoverImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BookCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,12 +249,14 @@ class _$BookCoverImpl implements _BookCover {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, id, label, cover, intro, jumpUrl, source, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BookCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BookCoverImplCopyWith<_$BookCoverImpl> get copyWith =>
@@ -291,8 +301,11 @@ abstract class _BookCover implements BookCover {
   String get source;
   @override
   String get ext;
+
+  /// Create a copy of BookCover
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BookCoverImplCopyWith<_$BookCoverImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

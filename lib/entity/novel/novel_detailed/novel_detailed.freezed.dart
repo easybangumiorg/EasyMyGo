@@ -38,8 +38,12 @@ mixin _$NovelDetailed {
   NovelStatus get status => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelDetailed to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelDetailedCopyWith<NovelDetailed> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +80,8 @@ class _$NovelDetailedCopyWithImpl<$Res, $Val extends NovelDetailed>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelDetailed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,6 +188,8 @@ class __$$NovelDetailedImplCopyWithImpl<$Res>
       _$NovelDetailedImpl _value, $Res Function(_$NovelDetailedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelDetailed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -346,7 +354,7 @@ class _$NovelDetailedImpl implements _NovelDetailed {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -364,7 +372,9 @@ class _$NovelDetailedImpl implements _NovelDetailed {
       status,
       ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelDetailedImplCopyWith<_$NovelDetailedImpl> get copyWith =>
@@ -398,11 +408,12 @@ abstract class _NovelDetailed implements NovelDetailed {
   factory _NovelDetailed.fromJson(Map<String, dynamic> json) =
       _$NovelDetailedImpl.fromJson;
 
-  @override // 必要信息
+// 必要信息
+  @override
   String get source;
   @override
-  String get id;
-  @override // cover 信息
+  String get id; // cover 信息
+  @override
   String get label;
   @override
   String get cover;
@@ -410,8 +421,8 @@ abstract class _NovelDetailed implements NovelDetailed {
   String get intro;
   @override
   @JsonKey(name: "jump_url")
-  String get jumpUrl;
-  @override // detailed
+  String get jumpUrl; // detailed
+  @override
   @JsonKey(name: "is_detailed_load")
   bool get isDetailedLoad;
   @override
@@ -424,11 +435,14 @@ abstract class _NovelDetailed implements NovelDetailed {
   @override
   bool get isUpdate;
   @override
-  NovelStatus get status;
-  @override // 额外字段
-  String get ext;
+  NovelStatus get status; // 额外字段
   @override
-  @JsonKey(ignore: true)
+  String get ext;
+
+  /// Create a copy of NovelDetailed
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelDetailedImplCopyWith<_$NovelDetailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

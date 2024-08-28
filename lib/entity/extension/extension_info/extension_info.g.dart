@@ -11,8 +11,8 @@ _$ExtensionInfoImpl _$$ExtensionInfoImplFromJson(Map<String, dynamic> json) =>
       package: json['package'] as String,
       label: json['label'] as String,
       versionName: json['version_name'] as String,
-      versionCode: json['version_code'] as int,
-      libVersion: json['lib_version'] as int,
+      versionCode: (json['version_code'] as num).toInt(),
+      libVersion: (json['lib_version'] as num).toInt(),
       loadType: $enumDecode(
           _$ExtensionLoaderTypeEnumMap, json['extension_load_type']),
       path: json['path'] as String,

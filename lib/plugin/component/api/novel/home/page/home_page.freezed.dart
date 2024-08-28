@@ -28,8 +28,12 @@ mixin _$NovelHomePage {
   String get initKey => throw _privateConstructorUsedError; // 可以让源透传一些信息
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelHomePage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelHomePageCopyWith<NovelHomePage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$NovelHomePageCopyWithImpl<$Res, $Val extends NovelHomePage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelHomePage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +122,8 @@ class __$$NovelHomePageImplCopyWithImpl<$Res>
       _$NovelHomePageImpl _value, $Res Function(_$NovelHomePageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelHomePage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -198,12 +206,14 @@ class _$NovelHomePageImpl implements _NovelHomePage {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, label, hasCover, initKey, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelHomePageImplCopyWith<_$NovelHomePageImpl> get copyWith =>
@@ -231,17 +241,20 @@ abstract class _NovelHomePage implements NovelHomePage {
   @override
   String get id;
   @override
-  String get label;
-  @override // 是否有 封面
-  @JsonKey(name: "has_cover")
-  bool get hasCover;
-  @override // 初始页面 key
-  @JsonKey(name: "init_key")
-  String get initKey;
-  @override // 可以让源透传一些信息
-  String get ext;
+  String get label; // 是否有 封面
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "has_cover")
+  bool get hasCover; // 初始页面 key
+  @override
+  @JsonKey(name: "init_key")
+  String get initKey; // 可以让源透传一些信息
+  @override
+  String get ext;
+
+  /// Create a copy of NovelHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelHomePageImplCopyWith<_$NovelHomePageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

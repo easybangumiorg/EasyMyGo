@@ -30,8 +30,12 @@ mixin _$MangaCover {
   String get source => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaCover to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaCoverCopyWith<MangaCover> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$MangaCoverCopyWithImpl<$Res, $Val extends MangaCover>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +138,8 @@ class __$$MangaCoverImplCopyWithImpl<$Res>
       _$MangaCoverImpl _value, $Res Function(_$MangaCoverImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,12 +239,14 @@ class _$MangaCoverImpl implements _MangaCover {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, label, cover, intro, jumpUrl, source, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaCoverImplCopyWith<_$MangaCoverImpl> get copyWith =>
@@ -264,8 +274,8 @@ abstract class _MangaCover implements MangaCover {
       _$MangaCoverImpl.fromJson;
 
   @override
-  String get id;
-  @override // cover 信息
+  String get id; // cover 信息
+  @override
   String get label;
   @override
   String get cover;
@@ -273,13 +283,16 @@ abstract class _MangaCover implements MangaCover {
   String get intro;
   @override
   @JsonKey(name: "jump_url")
-  String get jumpUrl;
-  @override // 必要信息，但是由 Component 填充
-  String get source;
-  @override // 额外字段
-  String get ext;
+  String get jumpUrl; // 必要信息，但是由 Component 填充
   @override
-  @JsonKey(ignore: true)
+  String get source; // 额外字段
+  @override
+  String get ext;
+
+  /// Create a copy of MangaCover
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaCoverImplCopyWith<_$MangaCoverImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

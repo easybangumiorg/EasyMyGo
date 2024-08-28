@@ -9,7 +9,7 @@ part of 'component_payload.dart';
 _$ComponentPayloadImpl _$$ComponentPayloadImplFromJson(
         Map<String, dynamic> json) =>
     _$ComponentPayloadImpl(
-      code: json['code'] as int? ?? 0,
+      code: (json['code'] as num?)?.toInt() ?? 0,
       msg: json['msg'] as String? ?? "",
       raw: json['raw'] ?? "",
     );

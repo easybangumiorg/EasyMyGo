@@ -31,8 +31,12 @@ mixin _$NovelCover {
   String get source => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelCover to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelCoverCopyWith<NovelCover> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$NovelCoverCopyWithImpl<$Res, $Val extends NovelCover>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +139,8 @@ class __$$NovelCoverImplCopyWithImpl<$Res>
       _$NovelCoverImpl _value, $Res Function(_$NovelCoverImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelCover
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -233,12 +241,14 @@ class _$NovelCoverImpl implements _NovelCover {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, label, cover, intro, jumpUrl, source, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelCover
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelCoverImplCopyWith<_$NovelCoverImpl> get copyWith =>
@@ -265,9 +275,10 @@ abstract class _NovelCover implements NovelCover {
   factory _NovelCover.fromJson(Map<String, dynamic> json) =
       _$NovelCoverImpl.fromJson;
 
-  @override // 必要信息
-  String get id;
-  @override // cover 信息
+// 必要信息
+  @override
+  String get id; // cover 信息
+  @override
   String get label;
   @override
   String get cover;
@@ -275,13 +286,16 @@ abstract class _NovelCover implements NovelCover {
   String get intro;
   @override
   @JsonKey(name: "jump_url")
-  String get jumpUrl;
-  @override // 必要信息，但是由 Component 填充
-  String get source;
-  @override // 额外字段
-  String get ext;
+  String get jumpUrl; // 必要信息，但是由 Component 填充
   @override
-  @JsonKey(ignore: true)
+  String get source; // 额外字段
+  @override
+  String get ext;
+
+  /// Create a copy of NovelCover
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelCoverImplCopyWith<_$NovelCoverImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

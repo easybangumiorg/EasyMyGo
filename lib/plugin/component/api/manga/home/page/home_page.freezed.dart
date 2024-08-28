@@ -28,8 +28,12 @@ mixin _$MangaHomePage {
   String get initKey => throw _privateConstructorUsedError; // 可以让源透传一些信息
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaHomePage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaHomePageCopyWith<MangaHomePage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$MangaHomePageCopyWithImpl<$Res, $Val extends MangaHomePage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaHomePage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +122,8 @@ class __$$MangaHomePageImplCopyWithImpl<$Res>
       _$MangaHomePageImpl _value, $Res Function(_$MangaHomePageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaHomePage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -198,12 +206,14 @@ class _$MangaHomePageImpl implements _MangaHomePage {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, label, hasCover, initKey, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaHomePageImplCopyWith<_$MangaHomePageImpl> get copyWith =>
@@ -231,17 +241,20 @@ abstract class _MangaHomePage implements MangaHomePage {
   @override
   String get id;
   @override
-  String get label;
-  @override // 是否有 封面
-  @JsonKey(name: "has_cover")
-  bool get hasCover;
-  @override // 初始页面 key
-  @JsonKey(name: "init_key")
-  String get initKey;
-  @override // 可以让源透传一些信息
-  String get ext;
+  String get label; // 是否有 封面
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "has_cover")
+  bool get hasCover; // 初始页面 key
+  @override
+  @JsonKey(name: "init_key")
+  String get initKey; // 可以让源透传一些信息
+  @override
+  String get ext;
+
+  /// Create a copy of MangaHomePage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaHomePageImplCopyWith<_$MangaHomePageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

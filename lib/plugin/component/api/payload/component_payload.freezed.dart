@@ -27,8 +27,12 @@ mixin _$ComponentPayload {
   @JsonKey(name: "raw")
   dynamic get raw => throw _privateConstructorUsedError;
 
+  /// Serializes this ComponentPayload to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ComponentPayload
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ComponentPayloadCopyWith<ComponentPayload> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$ComponentPayloadCopyWithImpl<$Res, $Val extends ComponentPayload>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ComponentPayload
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$ComponentPayloadImplCopyWithImpl<$Res>
       $Res Function(_$ComponentPayloadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ComponentPayload
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,12 +170,14 @@ class _$ComponentPayloadImpl implements _ComponentPayload {
             const DeepCollectionEquality().equals(other.raw, raw));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, code, msg, const DeepCollectionEquality().hash(raw));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ComponentPayload
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ComponentPayloadImplCopyWith<_$ComponentPayloadImpl> get copyWith =>
@@ -196,12 +206,15 @@ abstract class _ComponentPayload implements ComponentPayload {
   int get code;
   @override
   @JsonKey(name: "msg")
-  String get msg;
-  @override // 业务端返回的解析前的原始数据
+  String get msg; // 业务端返回的解析前的原始数据
+  @override
   @JsonKey(name: "raw")
   dynamic get raw;
+
+  /// Create a copy of ComponentPayload
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ComponentPayloadImplCopyWith<_$ComponentPayloadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

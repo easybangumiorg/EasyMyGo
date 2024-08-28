@@ -29,8 +29,12 @@ mixin _$HomePageState {
   @JsonKey(name: "error_msg")
   String get errorMsg => throw _privateConstructorUsedError;
 
+  /// Serializes this HomePageState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HomePageStateCopyWith<HomePageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
       _$HomePageStateImpl _value, $Res Function(_$HomePageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +197,7 @@ class _$HomePageStateImpl implements _HomePageState {
                 other.errorMsg == errorMsg));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -198,7 +206,9 @@ class _$HomePageStateImpl implements _HomePageState {
       isError,
       errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HomePageStateImplCopyWith<_$HomePageStateImpl> get copyWith =>
@@ -234,8 +244,11 @@ abstract class _HomePageState implements HomePageState {
   @override
   @JsonKey(name: "error_msg")
   String get errorMsg;
+
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HomePageStateImplCopyWith<_$HomePageStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

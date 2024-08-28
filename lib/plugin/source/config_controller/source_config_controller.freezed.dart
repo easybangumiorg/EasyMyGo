@@ -25,8 +25,12 @@ mixin _$SourceConfigItem {
   bool get enabled => throw _privateConstructorUsedError;
   int get order => throw _privateConstructorUsedError;
 
+  /// Serializes this SourceConfigItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SourceConfigItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SourceConfigItemCopyWith<SourceConfigItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$SourceConfigItemCopyWithImpl<$Res, $Val extends SourceConfigItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SourceConfigItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$SourceConfigItemImplCopyWithImpl<$Res>
       $Res Function(_$SourceConfigItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SourceConfigItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,11 +174,13 @@ class _$SourceConfigItemImpl implements _SourceConfigItem {
             (identical(other.order, order) || other.order == order));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, package, enabled, order);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SourceConfigItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SourceConfigItemImplCopyWith<_$SourceConfigItemImpl> get copyWith =>
@@ -203,8 +213,11 @@ abstract class _SourceConfigItem implements SourceConfigItem {
   bool get enabled;
   @override
   int get order;
+
+  /// Create a copy of SourceConfigItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SourceConfigItemImplCopyWith<_$SourceConfigItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

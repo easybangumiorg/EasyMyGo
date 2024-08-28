@@ -8,8 +8,8 @@ part of 'theme.dart';
 
 _$ThemeConfigImpl _$$ThemeConfigImplFromJson(Map<String, dynamic> json) =>
     _$ThemeConfigImpl(
-      seedColorIndex: json['seedColorIndex'] as int? ?? 0,
-      darkModeIndex: json['darkModeIndex'] as int? ?? 0,
+      seedColorIndex: (json['seedColorIndex'] as num?)?.toInt() ?? 0,
+      darkModeIndex: (json['darkModeIndex'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$ThemeConfigImplToJson(_$ThemeConfigImpl instance) =>

@@ -24,8 +24,12 @@ mixin _$FileIndexItem {
   List<String> get path => throw _privateConstructorUsedError; // 文件大小
   int get size => throw _privateConstructorUsedError;
 
+  /// Serializes this FileIndexItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FileIndexItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FileIndexItemCopyWith<FileIndexItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$FileIndexItemCopyWithImpl<$Res, $Val extends FileIndexItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FileIndexItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$FileIndexItemImplCopyWithImpl<$Res>
       _$FileIndexItemImpl _value, $Res Function(_$FileIndexItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FileIndexItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,12 +151,14 @@ class _$FileIndexItemImpl implements _FileIndexItem {
             (identical(other.size, size) || other.size == size));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_path), size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FileIndexItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FileIndexItemImplCopyWith<_$FileIndexItemImpl> get copyWith =>
@@ -170,12 +180,16 @@ abstract class _FileIndexItem implements FileIndexItem {
   factory _FileIndexItem.fromJson(Map<String, dynamic> json) =
       _$FileIndexItemImpl.fromJson;
 
-  @override // 文件相对路径 ["a", "b"] => "a/b"
-  List<String> get path;
-  @override // 文件大小
-  int get size;
+// 文件相对路径 ["a", "b"] => "a/b"
   @override
-  @JsonKey(ignore: true)
+  List<String> get path; // 文件大小
+  @override
+  int get size;
+
+  /// Create a copy of FileIndexItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FileIndexItemImplCopyWith<_$FileIndexItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

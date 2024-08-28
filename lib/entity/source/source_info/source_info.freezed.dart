@@ -36,8 +36,12 @@ mixin _$SourceInfo {
   String get description => throw _privateConstructorUsedError;
   String get header => throw _privateConstructorUsedError;
 
+  /// Serializes this SourceInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SourceInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SourceInfoCopyWith<SourceInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -71,6 +75,8 @@ class _$SourceInfoCopyWithImpl<$Res, $Val extends SourceInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SourceInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,6 +165,8 @@ class __$$SourceInfoImplCopyWithImpl<$Res>
       _$SourceInfoImpl _value, $Res Function(_$SourceInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SourceInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -292,12 +300,14 @@ class _$SourceInfoImpl implements _SourceInfo {
             (identical(other.header, header) || other.header == header));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, fromPackage, label, type,
       versionName, versionCode, path, loaderType, description, header);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SourceInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SourceInfoImplCopyWith<_$SourceInfoImpl> get copyWith =>
@@ -327,9 +337,10 @@ abstract class _SourceInfo implements SourceInfo {
   factory _SourceInfo.fromJson(Map<String, dynamic> json) =
       _$SourceInfoImpl.fromJson;
 
-  @override // 单个 Extension 里的所有 Source 的 key 需要唯一
-  String get key;
-  @override // 所在 Extension 的包名
+// 单个 Extension 里的所有 Source 的 key 需要唯一
+  @override
+  String get key; // 所在 Extension 的包名
+  @override
   @JsonKey(name: 'from_package')
   String get fromPackage;
   @override
@@ -351,8 +362,11 @@ abstract class _SourceInfo implements SourceInfo {
   String get description;
   @override
   String get header;
+
+  /// Create a copy of SourceInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SourceInfoImplCopyWith<_$SourceInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

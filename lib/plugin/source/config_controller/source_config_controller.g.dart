@@ -12,7 +12,7 @@ _$SourceConfigItemImpl _$$SourceConfigItemImplFromJson(
       key: json['key'] as String,
       package: json['package'] as String,
       enabled: json['enabled'] as bool? ?? true,
-      order: json['order'] as int? ?? 999,
+      order: (json['order'] as num?)?.toInt() ?? 999,
     );
 
 Map<String, dynamic> _$$SourceConfigItemImplToJson(

@@ -833,6 +833,72 @@ class NovelInfo extends DataClass implements Insertable<NovelInfo> {
         customOrder: customOrder ?? this.customOrder,
         ext: ext ?? this.ext,
       );
+  NovelInfo copyWithCompanion(NovelTableCompanion data) {
+    return NovelInfo(
+      source: data.source.present ? data.source.value : this.source,
+      id: data.id.present ? data.id.value : this.id,
+      label: data.label.present ? data.label.value : this.label,
+      cover: data.cover.present ? data.cover.value : this.cover,
+      intro: data.intro.present ? data.intro.value : this.intro,
+      jumpUrl: data.jumpUrl.present ? data.jumpUrl.value : this.jumpUrl,
+      isDetailedLoad: data.isDetailedLoad.present
+          ? data.isDetailedLoad.value
+          : this.isDetailedLoad,
+      genre: data.genre.present ? data.genre.value : this.genre,
+      description:
+          data.description.present ? data.description.value : this.description,
+      updateStrategy: data.updateStrategy.present
+          ? data.updateStrategy.value
+          : this.updateStrategy,
+      isUpdate: data.isUpdate.present ? data.isUpdate.value : this.isUpdate,
+      status: data.status.present ? data.status.value : this.status,
+      lastUpdateTime: data.lastUpdateTime.present
+          ? data.lastUpdateTime.value
+          : this.lastUpdateTime,
+      sourceName:
+          data.sourceName.present ? data.sourceName.value : this.sourceName,
+      isReversal:
+          data.isReversal.present ? data.isReversal.value : this.isReversal,
+      sortKey: data.sortKey.present ? data.sortKey.value : this.sortKey,
+      volumeListJson: data.volumeListJson.present
+          ? data.volumeListJson.value
+          : this.volumeListJson,
+      chapterMapJson: data.chapterMapJson.present
+          ? data.chapterMapJson.value
+          : this.chapterMapJson,
+      lastHistoryTime: data.lastHistoryTime.present
+          ? data.lastHistoryTime.value
+          : this.lastHistoryTime,
+      lastReadVolumeId: data.lastReadVolumeId.present
+          ? data.lastReadVolumeId.value
+          : this.lastReadVolumeId,
+      lastReadVolumeLabel: data.lastReadVolumeLabel.present
+          ? data.lastReadVolumeLabel.value
+          : this.lastReadVolumeLabel,
+      lastReadVolumeIndex: data.lastReadVolumeIndex.present
+          ? data.lastReadVolumeIndex.value
+          : this.lastReadVolumeIndex,
+      lastReadChapterId: data.lastReadChapterId.present
+          ? data.lastReadChapterId.value
+          : this.lastReadChapterId,
+      lastReadChapterLabel: data.lastReadChapterLabel.present
+          ? data.lastReadChapterLabel.value
+          : this.lastReadChapterLabel,
+      lastReadVolumeProcess: data.lastReadVolumeProcess.present
+          ? data.lastReadVolumeProcess.value
+          : this.lastReadVolumeProcess,
+      lastReadBookMarkJson: data.lastReadBookMarkJson.present
+          ? data.lastReadBookMarkJson.value
+          : this.lastReadBookMarkJson,
+      tags: data.tags.present ? data.tags.value : this.tags,
+      starTime: data.starTime.present ? data.starTime.value : this.starTime,
+      pinTime: data.pinTime.present ? data.pinTime.value : this.pinTime,
+      customOrder:
+          data.customOrder.present ? data.customOrder.value : this.customOrder,
+      ext: data.ext.present ? data.ext.value : this.ext,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('NovelInfo(')
@@ -1341,6 +1407,7 @@ class NovelTableCompanion extends UpdateCompanion<NovelInfo> {
 
 abstract class _$NovelDB extends GeneratedDatabase {
   _$NovelDB(QueryExecutor e) : super(e);
+  $NovelDBManager get managers => $NovelDBManager(this);
   late final $NovelTableTable novelTable = $NovelTableTable(this);
   late final NovelDao novelDao = NovelDao(this as NovelDB);
   @override
@@ -1348,4 +1415,576 @@ abstract class _$NovelDB extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [novelTable];
+}
+
+typedef $$NovelTableTableCreateCompanionBuilder = NovelTableCompanion Function({
+  required String source,
+  required String id,
+  Value<String> label,
+  Value<String> cover,
+  Value<String> intro,
+  Value<String> jumpUrl,
+  Value<bool> isDetailedLoad,
+  Value<String> genre,
+  Value<String> description,
+  Value<NovelUpdateStrategy> updateStrategy,
+  Value<bool> isUpdate,
+  required NovelStatus status,
+  Value<int> lastUpdateTime,
+  Value<String> sourceName,
+  Value<bool> isReversal,
+  Value<String> sortKey,
+  Value<String> volumeListJson,
+  Value<String> chapterMapJson,
+  Value<int> lastHistoryTime,
+  Value<String> lastReadVolumeId,
+  Value<String> lastReadVolumeLabel,
+  Value<int> lastReadVolumeIndex,
+  Value<String> lastReadChapterId,
+  Value<String> lastReadChapterLabel,
+  Value<int> lastReadVolumeProcess,
+  Value<String> lastReadBookMarkJson,
+  Value<String> tags,
+  Value<int> starTime,
+  Value<int> pinTime,
+  Value<int> customOrder,
+  Value<String> ext,
+  Value<int> rowid,
+});
+typedef $$NovelTableTableUpdateCompanionBuilder = NovelTableCompanion Function({
+  Value<String> source,
+  Value<String> id,
+  Value<String> label,
+  Value<String> cover,
+  Value<String> intro,
+  Value<String> jumpUrl,
+  Value<bool> isDetailedLoad,
+  Value<String> genre,
+  Value<String> description,
+  Value<NovelUpdateStrategy> updateStrategy,
+  Value<bool> isUpdate,
+  Value<NovelStatus> status,
+  Value<int> lastUpdateTime,
+  Value<String> sourceName,
+  Value<bool> isReversal,
+  Value<String> sortKey,
+  Value<String> volumeListJson,
+  Value<String> chapterMapJson,
+  Value<int> lastHistoryTime,
+  Value<String> lastReadVolumeId,
+  Value<String> lastReadVolumeLabel,
+  Value<int> lastReadVolumeIndex,
+  Value<String> lastReadChapterId,
+  Value<String> lastReadChapterLabel,
+  Value<int> lastReadVolumeProcess,
+  Value<String> lastReadBookMarkJson,
+  Value<String> tags,
+  Value<int> starTime,
+  Value<int> pinTime,
+  Value<int> customOrder,
+  Value<String> ext,
+  Value<int> rowid,
+});
+
+class $$NovelTableTableFilterComposer
+    extends FilterComposer<_$NovelDB, $NovelTableTable> {
+  $$NovelTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get source => $state.composableBuilder(
+      column: $state.table.source,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cover => $state.composableBuilder(
+      column: $state.table.cover,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get intro => $state.composableBuilder(
+      column: $state.table.intro,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get jumpUrl => $state.composableBuilder(
+      column: $state.table.jumpUrl,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isDetailedLoad => $state.composableBuilder(
+      column: $state.table.isDetailedLoad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get genre => $state.composableBuilder(
+      column: $state.table.genre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnWithTypeConverterFilters<NovelUpdateStrategy, NovelUpdateStrategy, int>
+      get updateStrategy => $state.composableBuilder(
+          column: $state.table.updateStrategy,
+          builder: (column, joinBuilders) => ColumnWithTypeConverterFilters(
+              column,
+              joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isUpdate => $state.composableBuilder(
+      column: $state.table.isUpdate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnWithTypeConverterFilters<NovelStatus, NovelStatus, int> get status =>
+      $state.composableBuilder(
+          column: $state.table.status,
+          builder: (column, joinBuilders) => ColumnWithTypeConverterFilters(
+              column,
+              joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastUpdateTime => $state.composableBuilder(
+      column: $state.table.lastUpdateTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sourceName => $state.composableBuilder(
+      column: $state.table.sourceName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isReversal => $state.composableBuilder(
+      column: $state.table.isReversal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sortKey => $state.composableBuilder(
+      column: $state.table.sortKey,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get volumeListJson => $state.composableBuilder(
+      column: $state.table.volumeListJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get chapterMapJson => $state.composableBuilder(
+      column: $state.table.chapterMapJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastHistoryTime => $state.composableBuilder(
+      column: $state.table.lastHistoryTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadVolumeId => $state.composableBuilder(
+      column: $state.table.lastReadVolumeId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadVolumeLabel => $state.composableBuilder(
+      column: $state.table.lastReadVolumeLabel,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastReadVolumeIndex => $state.composableBuilder(
+      column: $state.table.lastReadVolumeIndex,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadChapterId => $state.composableBuilder(
+      column: $state.table.lastReadChapterId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadChapterLabel => $state.composableBuilder(
+      column: $state.table.lastReadChapterLabel,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastReadVolumeProcess => $state.composableBuilder(
+      column: $state.table.lastReadVolumeProcess,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadBookMarkJson => $state.composableBuilder(
+      column: $state.table.lastReadBookMarkJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tags => $state.composableBuilder(
+      column: $state.table.tags,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get starTime => $state.composableBuilder(
+      column: $state.table.starTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get pinTime => $state.composableBuilder(
+      column: $state.table.pinTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get customOrder => $state.composableBuilder(
+      column: $state.table.customOrder,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get ext => $state.composableBuilder(
+      column: $state.table.ext,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$NovelTableTableOrderingComposer
+    extends OrderingComposer<_$NovelDB, $NovelTableTable> {
+  $$NovelTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get source => $state.composableBuilder(
+      column: $state.table.source,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cover => $state.composableBuilder(
+      column: $state.table.cover,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get intro => $state.composableBuilder(
+      column: $state.table.intro,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get jumpUrl => $state.composableBuilder(
+      column: $state.table.jumpUrl,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isDetailedLoad => $state.composableBuilder(
+      column: $state.table.isDetailedLoad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get genre => $state.composableBuilder(
+      column: $state.table.genre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get updateStrategy => $state.composableBuilder(
+      column: $state.table.updateStrategy,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isUpdate => $state.composableBuilder(
+      column: $state.table.isUpdate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get status => $state.composableBuilder(
+      column: $state.table.status,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastUpdateTime => $state.composableBuilder(
+      column: $state.table.lastUpdateTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sourceName => $state.composableBuilder(
+      column: $state.table.sourceName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isReversal => $state.composableBuilder(
+      column: $state.table.isReversal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sortKey => $state.composableBuilder(
+      column: $state.table.sortKey,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get volumeListJson => $state.composableBuilder(
+      column: $state.table.volumeListJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get chapterMapJson => $state.composableBuilder(
+      column: $state.table.chapterMapJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastHistoryTime => $state.composableBuilder(
+      column: $state.table.lastHistoryTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadVolumeId => $state.composableBuilder(
+      column: $state.table.lastReadVolumeId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadVolumeLabel => $state.composableBuilder(
+      column: $state.table.lastReadVolumeLabel,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastReadVolumeIndex => $state.composableBuilder(
+      column: $state.table.lastReadVolumeIndex,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadChapterId => $state.composableBuilder(
+      column: $state.table.lastReadChapterId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadChapterLabel => $state.composableBuilder(
+      column: $state.table.lastReadChapterLabel,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastReadVolumeProcess => $state.composableBuilder(
+      column: $state.table.lastReadVolumeProcess,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadBookMarkJson => $state.composableBuilder(
+      column: $state.table.lastReadBookMarkJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tags => $state.composableBuilder(
+      column: $state.table.tags,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get starTime => $state.composableBuilder(
+      column: $state.table.starTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get pinTime => $state.composableBuilder(
+      column: $state.table.pinTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get customOrder => $state.composableBuilder(
+      column: $state.table.customOrder,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get ext => $state.composableBuilder(
+      column: $state.table.ext,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$NovelTableTableTableManager extends RootTableManager<
+    _$NovelDB,
+    $NovelTableTable,
+    NovelInfo,
+    $$NovelTableTableFilterComposer,
+    $$NovelTableTableOrderingComposer,
+    $$NovelTableTableCreateCompanionBuilder,
+    $$NovelTableTableUpdateCompanionBuilder,
+    (NovelInfo, BaseReferences<_$NovelDB, $NovelTableTable, NovelInfo>),
+    NovelInfo,
+    PrefetchHooks Function()> {
+  $$NovelTableTableTableManager(_$NovelDB db, $NovelTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$NovelTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$NovelTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> source = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<String> label = const Value.absent(),
+            Value<String> cover = const Value.absent(),
+            Value<String> intro = const Value.absent(),
+            Value<String> jumpUrl = const Value.absent(),
+            Value<bool> isDetailedLoad = const Value.absent(),
+            Value<String> genre = const Value.absent(),
+            Value<String> description = const Value.absent(),
+            Value<NovelUpdateStrategy> updateStrategy = const Value.absent(),
+            Value<bool> isUpdate = const Value.absent(),
+            Value<NovelStatus> status = const Value.absent(),
+            Value<int> lastUpdateTime = const Value.absent(),
+            Value<String> sourceName = const Value.absent(),
+            Value<bool> isReversal = const Value.absent(),
+            Value<String> sortKey = const Value.absent(),
+            Value<String> volumeListJson = const Value.absent(),
+            Value<String> chapterMapJson = const Value.absent(),
+            Value<int> lastHistoryTime = const Value.absent(),
+            Value<String> lastReadVolumeId = const Value.absent(),
+            Value<String> lastReadVolumeLabel = const Value.absent(),
+            Value<int> lastReadVolumeIndex = const Value.absent(),
+            Value<String> lastReadChapterId = const Value.absent(),
+            Value<String> lastReadChapterLabel = const Value.absent(),
+            Value<int> lastReadVolumeProcess = const Value.absent(),
+            Value<String> lastReadBookMarkJson = const Value.absent(),
+            Value<String> tags = const Value.absent(),
+            Value<int> starTime = const Value.absent(),
+            Value<int> pinTime = const Value.absent(),
+            Value<int> customOrder = const Value.absent(),
+            Value<String> ext = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              NovelTableCompanion(
+            source: source,
+            id: id,
+            label: label,
+            cover: cover,
+            intro: intro,
+            jumpUrl: jumpUrl,
+            isDetailedLoad: isDetailedLoad,
+            genre: genre,
+            description: description,
+            updateStrategy: updateStrategy,
+            isUpdate: isUpdate,
+            status: status,
+            lastUpdateTime: lastUpdateTime,
+            sourceName: sourceName,
+            isReversal: isReversal,
+            sortKey: sortKey,
+            volumeListJson: volumeListJson,
+            chapterMapJson: chapterMapJson,
+            lastHistoryTime: lastHistoryTime,
+            lastReadVolumeId: lastReadVolumeId,
+            lastReadVolumeLabel: lastReadVolumeLabel,
+            lastReadVolumeIndex: lastReadVolumeIndex,
+            lastReadChapterId: lastReadChapterId,
+            lastReadChapterLabel: lastReadChapterLabel,
+            lastReadVolumeProcess: lastReadVolumeProcess,
+            lastReadBookMarkJson: lastReadBookMarkJson,
+            tags: tags,
+            starTime: starTime,
+            pinTime: pinTime,
+            customOrder: customOrder,
+            ext: ext,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String source,
+            required String id,
+            Value<String> label = const Value.absent(),
+            Value<String> cover = const Value.absent(),
+            Value<String> intro = const Value.absent(),
+            Value<String> jumpUrl = const Value.absent(),
+            Value<bool> isDetailedLoad = const Value.absent(),
+            Value<String> genre = const Value.absent(),
+            Value<String> description = const Value.absent(),
+            Value<NovelUpdateStrategy> updateStrategy = const Value.absent(),
+            Value<bool> isUpdate = const Value.absent(),
+            required NovelStatus status,
+            Value<int> lastUpdateTime = const Value.absent(),
+            Value<String> sourceName = const Value.absent(),
+            Value<bool> isReversal = const Value.absent(),
+            Value<String> sortKey = const Value.absent(),
+            Value<String> volumeListJson = const Value.absent(),
+            Value<String> chapterMapJson = const Value.absent(),
+            Value<int> lastHistoryTime = const Value.absent(),
+            Value<String> lastReadVolumeId = const Value.absent(),
+            Value<String> lastReadVolumeLabel = const Value.absent(),
+            Value<int> lastReadVolumeIndex = const Value.absent(),
+            Value<String> lastReadChapterId = const Value.absent(),
+            Value<String> lastReadChapterLabel = const Value.absent(),
+            Value<int> lastReadVolumeProcess = const Value.absent(),
+            Value<String> lastReadBookMarkJson = const Value.absent(),
+            Value<String> tags = const Value.absent(),
+            Value<int> starTime = const Value.absent(),
+            Value<int> pinTime = const Value.absent(),
+            Value<int> customOrder = const Value.absent(),
+            Value<String> ext = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              NovelTableCompanion.insert(
+            source: source,
+            id: id,
+            label: label,
+            cover: cover,
+            intro: intro,
+            jumpUrl: jumpUrl,
+            isDetailedLoad: isDetailedLoad,
+            genre: genre,
+            description: description,
+            updateStrategy: updateStrategy,
+            isUpdate: isUpdate,
+            status: status,
+            lastUpdateTime: lastUpdateTime,
+            sourceName: sourceName,
+            isReversal: isReversal,
+            sortKey: sortKey,
+            volumeListJson: volumeListJson,
+            chapterMapJson: chapterMapJson,
+            lastHistoryTime: lastHistoryTime,
+            lastReadVolumeId: lastReadVolumeId,
+            lastReadVolumeLabel: lastReadVolumeLabel,
+            lastReadVolumeIndex: lastReadVolumeIndex,
+            lastReadChapterId: lastReadChapterId,
+            lastReadChapterLabel: lastReadChapterLabel,
+            lastReadVolumeProcess: lastReadVolumeProcess,
+            lastReadBookMarkJson: lastReadBookMarkJson,
+            tags: tags,
+            starTime: starTime,
+            pinTime: pinTime,
+            customOrder: customOrder,
+            ext: ext,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$NovelTableTableProcessedTableManager = ProcessedTableManager<
+    _$NovelDB,
+    $NovelTableTable,
+    NovelInfo,
+    $$NovelTableTableFilterComposer,
+    $$NovelTableTableOrderingComposer,
+    $$NovelTableTableCreateCompanionBuilder,
+    $$NovelTableTableUpdateCompanionBuilder,
+    (NovelInfo, BaseReferences<_$NovelDB, $NovelTableTable, NovelInfo>),
+    NovelInfo,
+    PrefetchHooks Function()>;
+
+class $NovelDBManager {
+  final _$NovelDB _db;
+  $NovelDBManager(this._db);
+  $$NovelTableTableTableManager get novelTable =>
+      $$NovelTableTableTableManager(_db, _db.novelTable);
 }

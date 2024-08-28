@@ -9,8 +9,9 @@ part of 'read_resp.dart';
 _$NovelReadRespImpl _$$NovelReadRespImplFromJson(Map<String, dynamic> json) =>
     _$NovelReadRespImpl(
       chapters: (json['chapters'] as List<dynamic>?)
-          ?.map((e) => NovelChapter.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => NovelChapter.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          null,
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );

@@ -23,8 +23,12 @@ mixin _$ThemeConfig {
   int get seedColorIndex => throw _privateConstructorUsedError;
   int get darkModeIndex => throw _privateConstructorUsedError;
 
+  /// Serializes this ThemeConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThemeConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThemeConfigCopyWith<ThemeConfig> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$ThemeConfigCopyWithImpl<$Res, $Val extends ThemeConfig>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThemeConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$ThemeConfigImplCopyWithImpl<$Res>
       _$ThemeConfigImpl _value, $Res Function(_$ThemeConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThemeConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,11 +144,13 @@ class _$ThemeConfigImpl implements _ThemeConfig {
                 other.darkModeIndex == darkModeIndex));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, seedColorIndex, darkModeIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThemeConfigImplCopyWith<_$ThemeConfigImpl> get copyWith =>
@@ -165,8 +175,11 @@ abstract class _ThemeConfig implements ThemeConfig {
   int get seedColorIndex;
   @override
   int get darkModeIndex;
+
+  /// Create a copy of ThemeConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThemeConfigImplCopyWith<_$ThemeConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

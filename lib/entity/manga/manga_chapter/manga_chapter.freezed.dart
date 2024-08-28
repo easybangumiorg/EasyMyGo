@@ -30,8 +30,12 @@ mixin _$MangaChapter {
       throw _privateConstructorUsedError; // 交给源维护，可以用于透传一些东西
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaChapter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaChapterCopyWith<MangaChapter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$MangaChapterCopyWithImpl<$Res, $Val extends MangaChapter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaChapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$MangaChapterImplCopyWithImpl<$Res>
       _$MangaChapterImpl _value, $Res Function(_$MangaChapterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaChapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +219,14 @@ class _$MangaChapterImpl implements _MangaChapter {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, id, showType,
       const DeepCollectionEquality().hash(_parameter), ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaChapterImplCopyWith<_$MangaChapterImpl> get copyWith =>
@@ -241,19 +251,23 @@ abstract class _MangaChapter implements MangaChapter {
   factory _MangaChapter.fromJson(Map<String, dynamic> json) =
       _$MangaChapterImpl.fromJson;
 
-  @override // 章节名称
-  String get label;
-  @override // 章节 Id
-  String get id;
-  @override // 展示类型
-  @JsonKey(name: "show_type")
-  ChapterShowType get showType;
-  @override // 最终会传递给阅读器的参数，这里先预埋
-  Map<String, String> get parameter;
-  @override // 交给源维护，可以用于透传一些东西
-  String get ext;
+// 章节名称
   @override
-  @JsonKey(ignore: true)
+  String get label; // 章节 Id
+  @override
+  String get id; // 展示类型
+  @override
+  @JsonKey(name: "show_type")
+  ChapterShowType get showType; // 最终会传递给阅读器的参数，这里先预埋
+  @override
+  Map<String, String> get parameter; // 交给源维护，可以用于透传一些东西
+  @override
+  String get ext;
+
+  /// Create a copy of MangaChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaChapterImplCopyWith<_$MangaChapterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

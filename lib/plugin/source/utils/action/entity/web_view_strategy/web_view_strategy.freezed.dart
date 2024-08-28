@@ -34,8 +34,12 @@ mixin _$WebViewStrategy {
       throw _privateConstructorUsedError; // 在页面加载完成后执行的js代码，可用于主动加载资源
   String? get actionJS => throw _privateConstructorUsedError;
 
+  /// Serializes this WebViewStrategy to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WebViewStrategy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WebViewStrategyCopyWith<WebViewStrategy> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$WebViewStrategyCopyWithImpl<$Res, $Val extends WebViewStrategy>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WebViewStrategy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,6 +142,8 @@ class __$$WebViewStrategyImplCopyWithImpl<$Res>
       _$WebViewStrategyImpl _value, $Res Function(_$WebViewStrategyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WebViewStrategy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -258,7 +266,7 @@ class _$WebViewStrategyImpl implements _WebViewStrategy {
                 other.actionJS == actionJS));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -270,7 +278,9 @@ class _$WebViewStrategyImpl implements _WebViewStrategy {
       const DeepCollectionEquality().hash(_header),
       actionJS);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WebViewStrategy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WebViewStrategyImplCopyWith<_$WebViewStrategyImpl> get copyWith =>
@@ -298,24 +308,29 @@ abstract class _WebViewStrategy implements WebViewStrategy {
   factory _WebViewStrategy.fromJson(Map<String, dynamic> json) =
       _$WebViewStrategyImpl.fromJson;
 
-  @override // 超时
-  int get timeout;
-  @override // 解码类型
-  String get encoding;
-  @override // 回调正则，回调正则。在检测到特定请求时返回结果。默认为空则在页面加载完成后自动回调（因为ajax等因素可能得到的源码不完整，另外注意超时）
-  @JsonKey(name: "callback_regex")
-  String? get callBackRegex;
-  @override // 是否拦截 blob 数据
-  @JsonKey(name: "is_intercept_blob")
-  bool get isInterceptBlob;
-  @override // UA
-  String? get userAgent;
-  @override // header
-  Map<String, String>? get header;
-  @override // 在页面加载完成后执行的js代码，可用于主动加载资源
-  String? get actionJS;
+// 超时
   @override
-  @JsonKey(ignore: true)
+  int get timeout; // 解码类型
+  @override
+  String
+      get encoding; // 回调正则，回调正则。在检测到特定请求时返回结果。默认为空则在页面加载完成后自动回调（因为ajax等因素可能得到的源码不完整，另外注意超时）
+  @override
+  @JsonKey(name: "callback_regex")
+  String? get callBackRegex; // 是否拦截 blob 数据
+  @override
+  @JsonKey(name: "is_intercept_blob")
+  bool get isInterceptBlob; // UA
+  @override
+  String? get userAgent; // header
+  @override
+  Map<String, String>? get header; // 在页面加载完成后执行的js代码，可用于主动加载资源
+  @override
+  String? get actionJS;
+
+  /// Create a copy of WebViewStrategy
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WebViewStrategyImplCopyWith<_$WebViewStrategyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

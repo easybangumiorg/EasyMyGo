@@ -24,8 +24,12 @@ mixin _$ExtensionState {
   Map<String, ExtensionData> get extensions =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ExtensionState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExtensionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExtensionStateCopyWith<ExtensionState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$ExtensionStateCopyWithImpl<$Res, $Val extends ExtensionState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExtensionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$ExtensionStateImplCopyWithImpl<$Res>
       _$ExtensionStateImpl _value, $Res Function(_$ExtensionStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExtensionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,12 +152,14 @@ class _$ExtensionStateImpl implements _ExtensionState {
                 .equals(other._extensions, _extensions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, loading, const DeepCollectionEquality().hash(_extensions));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExtensionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExtensionStateImplCopyWith<_$ExtensionStateImpl> get copyWith =>
@@ -176,8 +186,11 @@ abstract class _ExtensionState implements ExtensionState {
   bool get loading;
   @override
   Map<String, ExtensionData> get extensions;
+
+  /// Create a copy of ExtensionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExtensionStateImplCopyWith<_$ExtensionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

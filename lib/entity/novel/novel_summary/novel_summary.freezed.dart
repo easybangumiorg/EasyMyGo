@@ -25,8 +25,12 @@ mixin _$NovelSummary {
   String get id => throw _privateConstructorUsedError; // 额外字段
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelSummary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelSummary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelSummaryCopyWith<NovelSummary> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$NovelSummaryCopyWithImpl<$Res, $Val extends NovelSummary>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelSummary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$NovelSummaryImplCopyWithImpl<$Res>
       _$NovelSummaryImpl _value, $Res Function(_$NovelSummaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelSummary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +158,13 @@ class _$NovelSummaryImpl implements _NovelSummary {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, source, id, ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelSummary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelSummaryImplCopyWith<_$NovelSummaryImpl> get copyWith =>
@@ -177,14 +187,18 @@ abstract class _NovelSummary implements NovelSummary {
   factory _NovelSummary.fromJson(Map<String, dynamic> json) =
       _$NovelSummaryImpl.fromJson;
 
-  @override // 必要信息
+// 必要信息
+  @override
   String get source;
   @override
-  String get id;
-  @override // 额外字段
-  String get ext;
+  String get id; // 额外字段
   @override
-  @JsonKey(ignore: true)
+  String get ext;
+
+  /// Create a copy of NovelSummary
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelSummaryImplCopyWith<_$NovelSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

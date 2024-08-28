@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:yaml/yaml.dart';
 
 void main(List<String> args) async {
@@ -19,12 +17,21 @@ void main(List<String> args) async {
       await makeMac();
       break;
     case "windows":
+      await pubGet();
+      await runnerBuild();
+      await makeWindows();
       break;
     case "linux":
       break;
+    case "all":
+      await pubGet();
+      await runnerBuild();
+      await makeAndroid();
+      await makeMac();
+      await makeWindows();
     default:
       print(
-          "Action not found！ use dart run make [android|ios|macos|windows|linux]");
+          "Action not found！ use dart run make [android|ios|macos|windows|linux|all]");
   }
 }
 
@@ -84,6 +91,32 @@ Future<bool> makeMac() async {
       [
         "build",
         "macos",
+        "--target=./lib/app.dart",
+        "--build-name=$versionName",
+        "--build-number=$versionCode",
+        "--dart-define=VERSION_NAME=$versionName",
+        "--dart-define=VERSION_CODE=$versionCode",
+        "--release"
+      ],
+      runInShell: true);
+  await stdout.addStream(process.stdout);
+  await stderr.addStream(process.stderr);
+  final exitCode = await process.exitCode;
+  return exitCode == 0;
+}
+
+Future<bool> makeWindows() async {
+  final map = await loadPubspec();
+  final String version = map.value["version"];
+  final list = version.split("+");
+  final versionName = list[0];
+  final versionCode = list[1];
+
+  final process = await Process.start(
+      "flutter",
+      [
+        "build",
+        "windows",
         "--target=./lib/app.dart",
         "--build-name=$versionName",
         "--build-number=$versionCode",

@@ -27,8 +27,12 @@ mixin _$NovelSearchResp {
   String? get nextKey => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelSearchResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelSearchRespCopyWith<NovelSearchResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$NovelSearchRespCopyWithImpl<$Res, $Val extends NovelSearchResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class _$NovelSearchRespCopyWithImpl<$Res, $Val extends NovelSearchResp>
     ) as $Val);
   }
 
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -114,6 +122,8 @@ class __$$NovelSearchRespImplCopyWithImpl<$Res>
       _$NovelSearchRespImpl _value, $Res Function(_$NovelSearchRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,12 +195,14 @@ class _$NovelSearchRespImpl implements _NovelSearchResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_data), nextKey, payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelSearchRespImplCopyWith<_$NovelSearchRespImpl> get copyWith =>
@@ -214,15 +226,19 @@ abstract class _NovelSearchResp implements NovelSearchResp {
   factory _NovelSearchResp.fromJson(Map<String, dynamic> json) =
       _$NovelSearchRespImpl.fromJson;
 
-  @override // 当页结果
-  List<NovelCover>? get data;
-  @override // 下一页的 key，为 null 则代表没有下一页
+// 当页结果
+  @override
+  List<NovelCover>? get data; // 下一页的 key，为 null 则代表没有下一页
+  @override
   @JsonKey(name: "next_key")
   String? get nextKey;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of NovelSearchResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelSearchRespImplCopyWith<_$NovelSearchRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

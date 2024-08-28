@@ -32,8 +32,12 @@ mixin _$NovelChapter {
       throw _privateConstructorUsedError; // 最终会传递给阅读器的参数，这里先预埋
   Map<String, String> get parameter => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelChapter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelChapterCopyWith<NovelChapter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$NovelChapterCopyWithImpl<$Res, $Val extends NovelChapter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelChapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,6 +133,8 @@ class __$$NovelChapterImplCopyWithImpl<$Res>
       _$NovelChapterImpl _value, $Res Function(_$NovelChapterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelChapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,12 +238,14 @@ class _$NovelChapterImpl implements _NovelChapter {
                 .equals(other._parameter, _parameter));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, id, src, loadFrom,
       loadType, const DeepCollectionEquality().hash(_parameter));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelChapterImplCopyWith<_$NovelChapterImpl> get copyWith =>
@@ -261,22 +271,26 @@ abstract class _NovelChapter implements NovelChapter {
   factory _NovelChapter.fromJson(Map<String, dynamic> json) =
       _$NovelChapterImpl.fromJson;
 
-  @override // 章节标题
-  String get label;
-  @override // 章节 id
-  String get id;
-  @override // 根据加载方式不同有不同含义
-  String get src;
-  @override // 加载方式
-  @JsonKey(name: "load_from")
-  NovelChapterLoadFrom get loadFrom;
-  @override // 加载类型
-  @JsonKey(name: "load_type")
-  NovelChapterLoadType get loadType;
-  @override // 最终会传递给阅读器的参数，这里先预埋
-  Map<String, String> get parameter;
+// 章节标题
   @override
-  @JsonKey(ignore: true)
+  String get label; // 章节 id
+  @override
+  String get id; // 根据加载方式不同有不同含义
+  @override
+  String get src; // 加载方式
+  @override
+  @JsonKey(name: "load_from")
+  NovelChapterLoadFrom get loadFrom; // 加载类型
+  @override
+  @JsonKey(name: "load_type")
+  NovelChapterLoadType get loadType; // 最终会传递给阅读器的参数，这里先预埋
+  @override
+  Map<String, String> get parameter;
+
+  /// Create a copy of NovelChapter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelChapterImplCopyWith<_$NovelChapterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

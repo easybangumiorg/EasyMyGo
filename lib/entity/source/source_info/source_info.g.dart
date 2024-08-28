@@ -13,7 +13,7 @@ _$SourceInfoImpl _$$SourceInfoImplFromJson(Map<String, dynamic> json) =>
       label: json['label'] as String,
       type: $enumDecode(_$SourceTypeEnumMap, json['type']),
       versionName: json['version_name'] as String,
-      versionCode: json['version_code'] as int,
+      versionCode: (json['version_code'] as num).toInt(),
       path: json['path'] as String,
       loaderType: $enumDecode(_$SourceLoaderTypeEnumMap, json['loader_type']),
       description: json['description'] as String? ?? "",

@@ -13,8 +13,9 @@ _$NovelDetailedRespImpl _$$NovelDetailedRespImplFromJson(
           ? null
           : NovelDetailed.fromJson(json['detailed'] as Map<String, dynamic>),
       volumes: (json['volumes'] as List<dynamic>?)
-          ?.map((e) => NovelVolume.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => NovelVolume.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          null,
       payload:
           ComponentPayload.fromJson(json['payload'] as Map<String, dynamic>),
     );

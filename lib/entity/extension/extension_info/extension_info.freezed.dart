@@ -34,8 +34,12 @@ mixin _$ExtensionInfo {
   String get path => throw _privateConstructorUsedError;
   String get readme => throw _privateConstructorUsedError;
 
+  /// Serializes this ExtensionInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExtensionInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExtensionInfoCopyWith<ExtensionInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -67,6 +71,8 @@ class _$ExtensionInfoCopyWithImpl<$Res, $Val extends ExtensionInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExtensionInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,6 +149,8 @@ class __$$ExtensionInfoImplCopyWithImpl<$Res>
       _$ExtensionInfoImpl _value, $Res Function(_$ExtensionInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExtensionInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,12 +263,14 @@ class _$ExtensionInfoImpl implements _ExtensionInfo {
             (identical(other.readme, readme) || other.readme == readme));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, package, label, versionName,
       versionCode, libVersion, loadType, path, readme);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExtensionInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExtensionInfoImplCopyWith<_$ExtensionInfoImpl> get copyWith =>
@@ -289,7 +299,8 @@ abstract class _ExtensionInfo implements ExtensionInfo {
   factory _ExtensionInfo.fromJson(Map<String, dynamic> json) =
       _$ExtensionInfoImpl.fromJson;
 
-  @override // 包名唯一
+// 包名唯一
+  @override
   String get package;
   @override
   String get label;
@@ -309,8 +320,11 @@ abstract class _ExtensionInfo implements ExtensionInfo {
   String get path;
   @override
   String get readme;
+
+  /// Create a copy of ExtensionInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExtensionInfoImplCopyWith<_$ExtensionInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

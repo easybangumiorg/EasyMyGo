@@ -9,7 +9,7 @@ part of 'file_index_item.dart';
 _$FileIndexItemImpl _$$FileIndexItemImplFromJson(Map<String, dynamic> json) =>
     _$FileIndexItemImpl(
       path: (json['path'] as List<dynamic>).map((e) => e as String).toList(),
-      size: json['size'] as int,
+      size: (json['size'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$FileIndexItemImplToJson(_$FileIndexItemImpl instance) =>

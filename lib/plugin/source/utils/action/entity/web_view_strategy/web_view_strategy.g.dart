@@ -9,7 +9,7 @@ part of 'web_view_strategy.dart';
 _$WebViewStrategyImpl _$$WebViewStrategyImplFromJson(
         Map<String, dynamic> json) =>
     _$WebViewStrategyImpl(
-      timeout: json['timeout'] as int? ?? 8000,
+      timeout: (json['timeout'] as num?)?.toInt() ?? 8000,
       encoding: json['encoding'] as String? ?? "utf-8",
       callBackRegex: json['callback_regex'] as String? ?? null,
       isInterceptBlob: json['is_intercept_blob'] as bool? ?? false,

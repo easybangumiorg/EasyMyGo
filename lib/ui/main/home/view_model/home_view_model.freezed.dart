@@ -33,15 +33,19 @@ mixin _$HomeViewState {
       throw _privateConstructorUsedError; // 当前选择源 Identify
   @JsonKey(name: "current_source_identify")
   String get currentSourceIdentify =>
-      throw _privateConstructorUsedError; // 一级 tab 和 二级 tab
+      throw _privateConstructorUsedError; // 所有一级 Tab
   @JsonKey(name: "home_tab_list")
   List<BookHomeTab> get bookTabList =>
       throw _privateConstructorUsedError; // 当前选择 tab
   @JsonKey(name: "current_home_tab")
   BookHomeTab? get currentHomeTab => throw _privateConstructorUsedError;
 
+  /// Serializes this HomeViewState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HomeViewStateCopyWith<HomeViewState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +80,8 @@ class _$HomeViewStateCopyWithImpl<$Res, $Val extends HomeViewState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,6 +130,8 @@ class _$HomeViewStateCopyWithImpl<$Res, $Val extends HomeViewState>
     ) as $Val);
   }
 
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BookHomeTabCopyWith<$Res>? get currentHomeTab {
@@ -168,6 +176,8 @@ class __$$HomeViewStateImplCopyWithImpl<$Res>
       _$HomeViewStateImpl _value, $Res Function(_$HomeViewStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -266,9 +276,9 @@ class _$HomeViewStateImpl implements _HomeViewState {
   @override
   @JsonKey(name: "current_source_identify")
   final String currentSourceIdentify;
-// 一级 tab 和 二级 tab
+// 所有一级 Tab
   final List<BookHomeTab> _bookTabList;
-// 一级 tab 和 二级 tab
+// 所有一级 Tab
   @override
   @JsonKey(name: "home_tab_list")
   List<BookHomeTab> get bookTabList {
@@ -308,7 +318,7 @@ class _$HomeViewStateImpl implements _HomeViewState {
                 other.currentHomeTab == currentHomeTab));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -321,7 +331,9 @@ class _$HomeViewStateImpl implements _HomeViewState {
       const DeepCollectionEquality().hash(_bookTabList),
       currentHomeTab);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HomeViewStateImplCopyWith<_$HomeViewStateImpl> get copyWith =>
@@ -359,24 +371,27 @@ abstract class _HomeViewState implements HomeViewState {
   bool get isError;
   @override
   @JsonKey(name: "error_msg")
-  String get errorMsg;
-  @override // 所有源的 Identify
+  String get errorMsg; // 所有源的 Identify
+  @override
   @JsonKey(name: "source_identify_map")
-  Map<SourceType, String> get sourceIdentifyMap;
-  @override // 当前选择源类型
+  Map<SourceType, String> get sourceIdentifyMap; // 当前选择源类型
+  @override
   @JsonKey(name: "current_type")
-  SourceType get currentType;
-  @override // 当前选择源 Identify
+  SourceType get currentType; // 当前选择源 Identify
+  @override
   @JsonKey(name: "current_source_identify")
-  String get currentSourceIdentify;
-  @override // 一级 tab 和 二级 tab
+  String get currentSourceIdentify; // 所有一级 Tab
+  @override
   @JsonKey(name: "home_tab_list")
-  List<BookHomeTab> get bookTabList;
-  @override // 当前选择 tab
+  List<BookHomeTab> get bookTabList; // 当前选择 tab
+  @override
   @JsonKey(name: "current_home_tab")
   BookHomeTab? get currentHomeTab;
+
+  /// Create a copy of HomeViewState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HomeViewStateImplCopyWith<_$HomeViewStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

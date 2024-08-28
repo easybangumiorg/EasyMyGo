@@ -31,8 +31,12 @@ mixin _$MygoPackManifest {
   int get libVersion => throw _privateConstructorUsedError;
   String get readme => throw _privateConstructorUsedError;
 
+  /// Serializes this MygoPackManifest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MygoPackManifest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MygoPackManifestCopyWith<MygoPackManifest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$MygoPackManifestCopyWithImpl<$Res, $Val extends MygoPackManifest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MygoPackManifest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +132,8 @@ class __$$MygoPackManifestImplCopyWithImpl<$Res>
       $Res Function(_$MygoPackManifestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MygoPackManifest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,12 +226,14 @@ class _$MygoPackManifestImpl implements _MygoPackManifest {
             (identical(other.readme, readme) || other.readme == readme));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, package, label, versionName,
       versionCode, libVersion, readme);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MygoPackManifest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MygoPackManifestImplCopyWith<_$MygoPackManifestImpl> get copyWith =>
@@ -250,7 +260,8 @@ abstract class _MygoPackManifest implements MygoPackManifest {
   factory _MygoPackManifest.fromJson(Map<String, dynamic> json) =
       _$MygoPackManifestImpl.fromJson;
 
-  @override // 包名唯一
+// 包名唯一
+  @override
   String get package;
   @override
   String get label;
@@ -265,8 +276,11 @@ abstract class _MygoPackManifest implements MygoPackManifest {
   int get libVersion;
   @override
   String get readme;
+
+  /// Create a copy of MygoPackManifest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MygoPackManifestImplCopyWith<_$MygoPackManifestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

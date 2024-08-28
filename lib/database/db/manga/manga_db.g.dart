@@ -806,6 +806,67 @@ class MangaInfo extends DataClass implements Insertable<MangaInfo> {
         markJson: markJson ?? this.markJson,
         ext: ext ?? this.ext,
       );
+  MangaInfo copyWithCompanion(MangaTableCompanion data) {
+    return MangaInfo(
+      source: data.source.present ? data.source.value : this.source,
+      id: data.id.present ? data.id.value : this.id,
+      label: data.label.present ? data.label.value : this.label,
+      cover: data.cover.present ? data.cover.value : this.cover,
+      intro: data.intro.present ? data.intro.value : this.intro,
+      jumpUrl: data.jumpUrl.present ? data.jumpUrl.value : this.jumpUrl,
+      isDetailedLoad: data.isDetailedLoad.present
+          ? data.isDetailedLoad.value
+          : this.isDetailedLoad,
+      genre: data.genre.present ? data.genre.value : this.genre,
+      description:
+          data.description.present ? data.description.value : this.description,
+      updateStrategy: data.updateStrategy.present
+          ? data.updateStrategy.value
+          : this.updateStrategy,
+      isUpdate: data.isUpdate.present ? data.isUpdate.value : this.isUpdate,
+      status: data.status.present ? data.status.value : this.status,
+      lastUpdateTime: data.lastUpdateTime.present
+          ? data.lastUpdateTime.value
+          : this.lastUpdateTime,
+      sourceName:
+          data.sourceName.present ? data.sourceName.value : this.sourceName,
+      isReversal:
+          data.isReversal.present ? data.isReversal.value : this.isReversal,
+      sortKey: data.sortKey.present ? data.sortKey.value : this.sortKey,
+      chapterListJson: data.chapterListJson.present
+          ? data.chapterListJson.value
+          : this.chapterListJson,
+      pictureMapJson: data.pictureMapJson.present
+          ? data.pictureMapJson.value
+          : this.pictureMapJson,
+      lastHistoryTime: data.lastHistoryTime.present
+          ? data.lastHistoryTime.value
+          : this.lastHistoryTime,
+      lastReadChapterId: data.lastReadChapterId.present
+          ? data.lastReadChapterId.value
+          : this.lastReadChapterId,
+      lastReadChapterLabel: data.lastReadChapterLabel.present
+          ? data.lastReadChapterLabel.value
+          : this.lastReadChapterLabel,
+      lastReadChapterCount: data.lastReadChapterCount.present
+          ? data.lastReadChapterCount.value
+          : this.lastReadChapterCount,
+      lastReadImageIndex: data.lastReadImageIndex.present
+          ? data.lastReadImageIndex.value
+          : this.lastReadImageIndex,
+      lastReadChapterImageCount: data.lastReadChapterImageCount.present
+          ? data.lastReadChapterImageCount.value
+          : this.lastReadChapterImageCount,
+      tags: data.tags.present ? data.tags.value : this.tags,
+      starTime: data.starTime.present ? data.starTime.value : this.starTime,
+      pinTime: data.pinTime.present ? data.pinTime.value : this.pinTime,
+      customOrder:
+          data.customOrder.present ? data.customOrder.value : this.customOrder,
+      markJson: data.markJson.present ? data.markJson.value : this.markJson,
+      ext: data.ext.present ? data.ext.value : this.ext,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('MangaInfo(')
@@ -1298,6 +1359,7 @@ class MangaTableCompanion extends UpdateCompanion<MangaInfo> {
 
 abstract class _$MangaDB extends GeneratedDatabase {
   _$MangaDB(QueryExecutor e) : super(e);
+  $MangaDBManager get managers => $MangaDBManager(this);
   late final $MangaTableTable mangaTable = $MangaTableTable(this);
   late final MangaDao mangaDao = MangaDao(this as MangaDB);
   @override
@@ -1305,4 +1367,561 @@ abstract class _$MangaDB extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [mangaTable];
+}
+
+typedef $$MangaTableTableCreateCompanionBuilder = MangaTableCompanion Function({
+  required String source,
+  required String id,
+  Value<String> label,
+  Value<String> cover,
+  Value<String> intro,
+  Value<String> jumpUrl,
+  Value<bool> isDetailedLoad,
+  Value<String> genre,
+  Value<String> description,
+  Value<MangaUpdateStrategy> updateStrategy,
+  Value<bool> isUpdate,
+  required MangaStatus status,
+  Value<int> lastUpdateTime,
+  Value<String> sourceName,
+  Value<bool> isReversal,
+  Value<String> sortKey,
+  Value<String> chapterListJson,
+  Value<String> pictureMapJson,
+  Value<int> lastHistoryTime,
+  Value<String> lastReadChapterId,
+  Value<String> lastReadChapterLabel,
+  Value<int> lastReadChapterCount,
+  Value<int> lastReadImageIndex,
+  Value<int> lastReadChapterImageCount,
+  Value<String> tags,
+  Value<int> starTime,
+  Value<int> pinTime,
+  Value<int> customOrder,
+  Value<String> markJson,
+  Value<String> ext,
+  Value<int> rowid,
+});
+typedef $$MangaTableTableUpdateCompanionBuilder = MangaTableCompanion Function({
+  Value<String> source,
+  Value<String> id,
+  Value<String> label,
+  Value<String> cover,
+  Value<String> intro,
+  Value<String> jumpUrl,
+  Value<bool> isDetailedLoad,
+  Value<String> genre,
+  Value<String> description,
+  Value<MangaUpdateStrategy> updateStrategy,
+  Value<bool> isUpdate,
+  Value<MangaStatus> status,
+  Value<int> lastUpdateTime,
+  Value<String> sourceName,
+  Value<bool> isReversal,
+  Value<String> sortKey,
+  Value<String> chapterListJson,
+  Value<String> pictureMapJson,
+  Value<int> lastHistoryTime,
+  Value<String> lastReadChapterId,
+  Value<String> lastReadChapterLabel,
+  Value<int> lastReadChapterCount,
+  Value<int> lastReadImageIndex,
+  Value<int> lastReadChapterImageCount,
+  Value<String> tags,
+  Value<int> starTime,
+  Value<int> pinTime,
+  Value<int> customOrder,
+  Value<String> markJson,
+  Value<String> ext,
+  Value<int> rowid,
+});
+
+class $$MangaTableTableFilterComposer
+    extends FilterComposer<_$MangaDB, $MangaTableTable> {
+  $$MangaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get source => $state.composableBuilder(
+      column: $state.table.source,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cover => $state.composableBuilder(
+      column: $state.table.cover,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get intro => $state.composableBuilder(
+      column: $state.table.intro,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get jumpUrl => $state.composableBuilder(
+      column: $state.table.jumpUrl,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isDetailedLoad => $state.composableBuilder(
+      column: $state.table.isDetailedLoad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get genre => $state.composableBuilder(
+      column: $state.table.genre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnWithTypeConverterFilters<MangaUpdateStrategy, MangaUpdateStrategy, int>
+      get updateStrategy => $state.composableBuilder(
+          column: $state.table.updateStrategy,
+          builder: (column, joinBuilders) => ColumnWithTypeConverterFilters(
+              column,
+              joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isUpdate => $state.composableBuilder(
+      column: $state.table.isUpdate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnWithTypeConverterFilters<MangaStatus, MangaStatus, int> get status =>
+      $state.composableBuilder(
+          column: $state.table.status,
+          builder: (column, joinBuilders) => ColumnWithTypeConverterFilters(
+              column,
+              joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastUpdateTime => $state.composableBuilder(
+      column: $state.table.lastUpdateTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sourceName => $state.composableBuilder(
+      column: $state.table.sourceName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isReversal => $state.composableBuilder(
+      column: $state.table.isReversal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sortKey => $state.composableBuilder(
+      column: $state.table.sortKey,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get chapterListJson => $state.composableBuilder(
+      column: $state.table.chapterListJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pictureMapJson => $state.composableBuilder(
+      column: $state.table.pictureMapJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastHistoryTime => $state.composableBuilder(
+      column: $state.table.lastHistoryTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadChapterId => $state.composableBuilder(
+      column: $state.table.lastReadChapterId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastReadChapterLabel => $state.composableBuilder(
+      column: $state.table.lastReadChapterLabel,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastReadChapterCount => $state.composableBuilder(
+      column: $state.table.lastReadChapterCount,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastReadImageIndex => $state.composableBuilder(
+      column: $state.table.lastReadImageIndex,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get lastReadChapterImageCount => $state.composableBuilder(
+      column: $state.table.lastReadChapterImageCount,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tags => $state.composableBuilder(
+      column: $state.table.tags,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get starTime => $state.composableBuilder(
+      column: $state.table.starTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get pinTime => $state.composableBuilder(
+      column: $state.table.pinTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get customOrder => $state.composableBuilder(
+      column: $state.table.customOrder,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get markJson => $state.composableBuilder(
+      column: $state.table.markJson,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get ext => $state.composableBuilder(
+      column: $state.table.ext,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$MangaTableTableOrderingComposer
+    extends OrderingComposer<_$MangaDB, $MangaTableTable> {
+  $$MangaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get source => $state.composableBuilder(
+      column: $state.table.source,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cover => $state.composableBuilder(
+      column: $state.table.cover,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get intro => $state.composableBuilder(
+      column: $state.table.intro,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get jumpUrl => $state.composableBuilder(
+      column: $state.table.jumpUrl,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isDetailedLoad => $state.composableBuilder(
+      column: $state.table.isDetailedLoad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get genre => $state.composableBuilder(
+      column: $state.table.genre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get updateStrategy => $state.composableBuilder(
+      column: $state.table.updateStrategy,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isUpdate => $state.composableBuilder(
+      column: $state.table.isUpdate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get status => $state.composableBuilder(
+      column: $state.table.status,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastUpdateTime => $state.composableBuilder(
+      column: $state.table.lastUpdateTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sourceName => $state.composableBuilder(
+      column: $state.table.sourceName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isReversal => $state.composableBuilder(
+      column: $state.table.isReversal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sortKey => $state.composableBuilder(
+      column: $state.table.sortKey,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get chapterListJson => $state.composableBuilder(
+      column: $state.table.chapterListJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pictureMapJson => $state.composableBuilder(
+      column: $state.table.pictureMapJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastHistoryTime => $state.composableBuilder(
+      column: $state.table.lastHistoryTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadChapterId => $state.composableBuilder(
+      column: $state.table.lastReadChapterId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastReadChapterLabel => $state.composableBuilder(
+      column: $state.table.lastReadChapterLabel,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastReadChapterCount => $state.composableBuilder(
+      column: $state.table.lastReadChapterCount,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastReadImageIndex => $state.composableBuilder(
+      column: $state.table.lastReadImageIndex,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get lastReadChapterImageCount =>
+      $state.composableBuilder(
+          column: $state.table.lastReadChapterImageCount,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tags => $state.composableBuilder(
+      column: $state.table.tags,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get starTime => $state.composableBuilder(
+      column: $state.table.starTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get pinTime => $state.composableBuilder(
+      column: $state.table.pinTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get customOrder => $state.composableBuilder(
+      column: $state.table.customOrder,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get markJson => $state.composableBuilder(
+      column: $state.table.markJson,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get ext => $state.composableBuilder(
+      column: $state.table.ext,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$MangaTableTableTableManager extends RootTableManager<
+    _$MangaDB,
+    $MangaTableTable,
+    MangaInfo,
+    $$MangaTableTableFilterComposer,
+    $$MangaTableTableOrderingComposer,
+    $$MangaTableTableCreateCompanionBuilder,
+    $$MangaTableTableUpdateCompanionBuilder,
+    (MangaInfo, BaseReferences<_$MangaDB, $MangaTableTable, MangaInfo>),
+    MangaInfo,
+    PrefetchHooks Function()> {
+  $$MangaTableTableTableManager(_$MangaDB db, $MangaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$MangaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$MangaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> source = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<String> label = const Value.absent(),
+            Value<String> cover = const Value.absent(),
+            Value<String> intro = const Value.absent(),
+            Value<String> jumpUrl = const Value.absent(),
+            Value<bool> isDetailedLoad = const Value.absent(),
+            Value<String> genre = const Value.absent(),
+            Value<String> description = const Value.absent(),
+            Value<MangaUpdateStrategy> updateStrategy = const Value.absent(),
+            Value<bool> isUpdate = const Value.absent(),
+            Value<MangaStatus> status = const Value.absent(),
+            Value<int> lastUpdateTime = const Value.absent(),
+            Value<String> sourceName = const Value.absent(),
+            Value<bool> isReversal = const Value.absent(),
+            Value<String> sortKey = const Value.absent(),
+            Value<String> chapterListJson = const Value.absent(),
+            Value<String> pictureMapJson = const Value.absent(),
+            Value<int> lastHistoryTime = const Value.absent(),
+            Value<String> lastReadChapterId = const Value.absent(),
+            Value<String> lastReadChapterLabel = const Value.absent(),
+            Value<int> lastReadChapterCount = const Value.absent(),
+            Value<int> lastReadImageIndex = const Value.absent(),
+            Value<int> lastReadChapterImageCount = const Value.absent(),
+            Value<String> tags = const Value.absent(),
+            Value<int> starTime = const Value.absent(),
+            Value<int> pinTime = const Value.absent(),
+            Value<int> customOrder = const Value.absent(),
+            Value<String> markJson = const Value.absent(),
+            Value<String> ext = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MangaTableCompanion(
+            source: source,
+            id: id,
+            label: label,
+            cover: cover,
+            intro: intro,
+            jumpUrl: jumpUrl,
+            isDetailedLoad: isDetailedLoad,
+            genre: genre,
+            description: description,
+            updateStrategy: updateStrategy,
+            isUpdate: isUpdate,
+            status: status,
+            lastUpdateTime: lastUpdateTime,
+            sourceName: sourceName,
+            isReversal: isReversal,
+            sortKey: sortKey,
+            chapterListJson: chapterListJson,
+            pictureMapJson: pictureMapJson,
+            lastHistoryTime: lastHistoryTime,
+            lastReadChapterId: lastReadChapterId,
+            lastReadChapterLabel: lastReadChapterLabel,
+            lastReadChapterCount: lastReadChapterCount,
+            lastReadImageIndex: lastReadImageIndex,
+            lastReadChapterImageCount: lastReadChapterImageCount,
+            tags: tags,
+            starTime: starTime,
+            pinTime: pinTime,
+            customOrder: customOrder,
+            markJson: markJson,
+            ext: ext,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String source,
+            required String id,
+            Value<String> label = const Value.absent(),
+            Value<String> cover = const Value.absent(),
+            Value<String> intro = const Value.absent(),
+            Value<String> jumpUrl = const Value.absent(),
+            Value<bool> isDetailedLoad = const Value.absent(),
+            Value<String> genre = const Value.absent(),
+            Value<String> description = const Value.absent(),
+            Value<MangaUpdateStrategy> updateStrategy = const Value.absent(),
+            Value<bool> isUpdate = const Value.absent(),
+            required MangaStatus status,
+            Value<int> lastUpdateTime = const Value.absent(),
+            Value<String> sourceName = const Value.absent(),
+            Value<bool> isReversal = const Value.absent(),
+            Value<String> sortKey = const Value.absent(),
+            Value<String> chapterListJson = const Value.absent(),
+            Value<String> pictureMapJson = const Value.absent(),
+            Value<int> lastHistoryTime = const Value.absent(),
+            Value<String> lastReadChapterId = const Value.absent(),
+            Value<String> lastReadChapterLabel = const Value.absent(),
+            Value<int> lastReadChapterCount = const Value.absent(),
+            Value<int> lastReadImageIndex = const Value.absent(),
+            Value<int> lastReadChapterImageCount = const Value.absent(),
+            Value<String> tags = const Value.absent(),
+            Value<int> starTime = const Value.absent(),
+            Value<int> pinTime = const Value.absent(),
+            Value<int> customOrder = const Value.absent(),
+            Value<String> markJson = const Value.absent(),
+            Value<String> ext = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MangaTableCompanion.insert(
+            source: source,
+            id: id,
+            label: label,
+            cover: cover,
+            intro: intro,
+            jumpUrl: jumpUrl,
+            isDetailedLoad: isDetailedLoad,
+            genre: genre,
+            description: description,
+            updateStrategy: updateStrategy,
+            isUpdate: isUpdate,
+            status: status,
+            lastUpdateTime: lastUpdateTime,
+            sourceName: sourceName,
+            isReversal: isReversal,
+            sortKey: sortKey,
+            chapterListJson: chapterListJson,
+            pictureMapJson: pictureMapJson,
+            lastHistoryTime: lastHistoryTime,
+            lastReadChapterId: lastReadChapterId,
+            lastReadChapterLabel: lastReadChapterLabel,
+            lastReadChapterCount: lastReadChapterCount,
+            lastReadImageIndex: lastReadImageIndex,
+            lastReadChapterImageCount: lastReadChapterImageCount,
+            tags: tags,
+            starTime: starTime,
+            pinTime: pinTime,
+            customOrder: customOrder,
+            markJson: markJson,
+            ext: ext,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$MangaTableTableProcessedTableManager = ProcessedTableManager<
+    _$MangaDB,
+    $MangaTableTable,
+    MangaInfo,
+    $$MangaTableTableFilterComposer,
+    $$MangaTableTableOrderingComposer,
+    $$MangaTableTableCreateCompanionBuilder,
+    $$MangaTableTableUpdateCompanionBuilder,
+    (MangaInfo, BaseReferences<_$MangaDB, $MangaTableTable, MangaInfo>),
+    MangaInfo,
+    PrefetchHooks Function()>;
+
+class $MangaDBManager {
+  final _$MangaDB _db;
+  $MangaDBManager(this._db);
+  $$MangaTableTableTableManager get mangaTable =>
+      $$MangaTableTableTableManager(_db, _db.mangaTable);
 }

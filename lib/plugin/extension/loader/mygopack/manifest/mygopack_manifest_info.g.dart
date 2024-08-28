@@ -12,8 +12,8 @@ _$MygoPackManifestImpl _$$MygoPackManifestImplFromJson(
       package: json['package'] as String,
       label: json['label'] as String,
       versionName: json['version_name'] as String,
-      versionCode: json['version_code'] as int,
-      libVersion: json['lib_version'] as int,
+      versionCode: (json['version_code'] as num).toInt(),
+      libVersion: (json['lib_version'] as num).toInt(),
       readme: json['readme'] as String? ?? "",
     );
 

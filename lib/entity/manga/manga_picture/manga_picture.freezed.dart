@@ -25,8 +25,12 @@ mixin _$MangaPicture {
   PictureLoadType get type => throw _privateConstructorUsedError;
   Map<String, String> get parameter => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaPicture to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaPicture
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaPictureCopyWith<MangaPicture> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$MangaPictureCopyWithImpl<$Res, $Val extends MangaPicture>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MangaPicture
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$MangaPictureImplCopyWithImpl<$Res>
       _$MangaPictureImpl _value, $Res Function(_$MangaPictureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MangaPicture
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,12 +169,14 @@ class _$MangaPictureImpl implements _MangaPicture {
                 .equals(other._parameter, _parameter));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, url, type, const DeepCollectionEquality().hash(_parameter));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaPicture
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MangaPictureImplCopyWith<_$MangaPictureImpl> get copyWith =>
@@ -189,14 +199,18 @@ abstract class _MangaPicture implements MangaPicture {
   factory _MangaPicture.fromJson(Map<String, dynamic> json) =
       _$MangaPictureImpl.fromJson;
 
-  @override // 图片 Url
+// 图片 Url
+  @override
   String get url;
   @override
   PictureLoadType get type;
   @override
   Map<String, String> get parameter;
+
+  /// Create a copy of MangaPicture
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MangaPictureImplCopyWith<_$MangaPictureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

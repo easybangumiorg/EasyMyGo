@@ -30,8 +30,12 @@ mixin _$NovelVolume {
       throw _privateConstructorUsedError; // 交给源维护，可以用于透传一些东西
   String get ext => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelVolume to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelVolume
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelVolumeCopyWith<NovelVolume> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$NovelVolumeCopyWithImpl<$Res, $Val extends NovelVolume>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelVolume
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$NovelVolumeImplCopyWithImpl<$Res>
       _$NovelVolumeImpl _value, $Res Function(_$NovelVolumeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelVolume
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,7 +218,7 @@ class _$NovelVolumeImpl implements _NovelVolume {
             (identical(other.ext, ext) || other.ext == ext));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -220,7 +228,9 @@ class _$NovelVolumeImpl implements _NovelVolume {
       const DeepCollectionEquality().hash(_parameter),
       ext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelVolume
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelVolumeImplCopyWith<_$NovelVolumeImpl> get copyWith =>
@@ -245,19 +255,23 @@ abstract class _NovelVolume implements NovelVolume {
   factory _NovelVolume.fromJson(Map<String, dynamic> json) =
       _$NovelVolumeImpl.fromJson;
 
-  @override // 卷名称
-  String get label;
-  @override // 卷 id
-  String get id;
-  @override // 组织形式
-  @JsonKey(name: "organize_type")
-  dynamic get organizeType;
-  @override // 最终会传递给阅读器的参数，这里先预埋
-  Map<String, String> get parameter;
-  @override // 交给源维护，可以用于透传一些东西
-  String get ext;
+// 卷名称
   @override
-  @JsonKey(ignore: true)
+  String get label; // 卷 id
+  @override
+  String get id; // 组织形式
+  @override
+  @JsonKey(name: "organize_type")
+  dynamic get organizeType; // 最终会传递给阅读器的参数，这里先预埋
+  @override
+  Map<String, String> get parameter; // 交给源维护，可以用于透传一些东西
+  @override
+  String get ext;
+
+  /// Create a copy of NovelVolume
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelVolumeImplCopyWith<_$NovelVolumeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -28,8 +28,12 @@ mixin _$ExtensionData {
   @JsonKey(name: "folder_path")
   String get folderPath => throw _privateConstructorUsedError;
 
+  /// Serializes this ExtensionData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExtensionDataCopyWith<ExtensionData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$ExtensionDataCopyWithImpl<$Res, $Val extends ExtensionData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class _$ExtensionDataCopyWithImpl<$Res, $Val extends ExtensionData>
     ) as $Val);
   }
 
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExtensionInfoCopyWith<$Res> get info {
@@ -129,6 +137,8 @@ class __$$ExtensionDataImplCopyWithImpl<$Res>
       _$ExtensionDataImpl _value, $Res Function(_$ExtensionDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -220,7 +230,7 @@ class _$ExtensionDataImpl implements _ExtensionData {
                 other.folderPath == folderPath));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -230,7 +240,9 @@ class _$ExtensionDataImpl implements _ExtensionData {
       errorMsg,
       folderPath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExtensionDataImplCopyWith<_$ExtensionDataImpl> get copyWith =>
@@ -264,12 +276,15 @@ abstract class _ExtensionData implements ExtensionData {
   ExtensionLoadState get state;
   @override
   @JsonKey(name: "error_msg")
-  String get errorMsg;
-  @override // 该插件的文件夹
+  String get errorMsg; // 该插件的文件夹
+  @override
   @JsonKey(name: "folder_path")
   String get folderPath;
+
+  /// Create a copy of ExtensionData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExtensionDataImplCopyWith<_$ExtensionDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,8 +23,12 @@ mixin _$NovelReadResp {
   List<NovelChapter>? get chapters => throw _privateConstructorUsedError;
   ComponentPayload get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this NovelReadResp to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NovelReadRespCopyWith<NovelReadResp> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$NovelReadRespCopyWithImpl<$Res, $Val extends NovelReadResp>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$NovelReadRespCopyWithImpl<$Res, $Val extends NovelReadResp>
     ) as $Val);
   }
 
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ComponentPayloadCopyWith<$Res> get payload {
@@ -99,6 +107,8 @@ class __$$NovelReadRespImplCopyWithImpl<$Res>
       _$NovelReadRespImpl _value, $Res Function(_$NovelReadRespImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,12 +166,14 @@ class _$NovelReadRespImpl implements _NovelReadResp {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_chapters), payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NovelReadRespImplCopyWith<_$NovelReadRespImpl> get copyWith =>
@@ -187,8 +199,11 @@ abstract class _NovelReadResp implements NovelReadResp {
   List<NovelChapter>? get chapters;
   @override
   ComponentPayload get payload;
+
+  /// Create a copy of NovelReadResp
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NovelReadRespImplCopyWith<_$NovelReadRespImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
