@@ -5,7 +5,6 @@ import 'package:easy_mygo/plugin/component/api/component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/novel_home_component.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/page/home_page.dart';
 import 'package:easy_mygo/plugin/component/api/novel/home/resp/home_resp.dart';
-import 'package:easy_mygo/plugin/component/api/novel/home/tab/home_tab.dart';
 import 'package:easy_mygo/plugin/component/api/payload/component_payload.dart';
 
 class NovelTestComponent extends Component implements NovelHomeComponent {
@@ -98,8 +97,7 @@ class NovelTestComponent extends Component implements NovelHomeComponent {
           source: sourceInfo.identify,
           id: "${DateTime.timestamp()} $i",
           label: "$key GIRLS BAND CRY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$i",
-          cover:
-              "https://lain.bgm.tv/pic/cover/l/75/c1/431767_bX7FZ.jpg?_gl=1*cqr4mj*_ga*MTA0NTEwMzYyMC4xNzA0NjQ1ODcz*_ga_1109JLGMHN*MTcxMjk5NTc0NC4xMi4xLjE3MTI5OTY4OTguMC4wLjA.",
+          cover: "https://lain.bgm.tv/pic/cover/l/75/c1/431767_bX7FZ.jpg",
           intro: "",
           jumpUrl: ""));
     }

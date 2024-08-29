@@ -10,7 +10,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-
 part 'database.g.dart';
 
 sealed class DatabaseState {
@@ -76,11 +75,12 @@ class DatabaseController extends _$DatabaseController {
     try {
       state = DatabaseStateLoading.current;
       final applicationDir = await EasyConstant.applicationPath;
+
       final mangaFile = File(join(applicationDir.path, "manga.db"));
       final mangaDB = MangaDB(NativeDatabase(mangaFile));
-
       final novelFile = File(join(applicationDir.path, "novel.db"));
       final novelDB = NovelDB(NativeDatabase(novelFile));
+
       final sta = DatabaseStateReady(mangaDB: mangaDB, novelDB: novelDB);
       DB._current = sta;
       state = sta;

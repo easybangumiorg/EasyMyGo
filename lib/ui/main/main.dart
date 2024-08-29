@@ -1,6 +1,7 @@
 import 'package:easy_mygo/l10n/l10n.dart';
 import 'package:easy_mygo/ui/main/history/history.dart';
 import 'package:easy_mygo/ui/main/home/home.dart';
+import 'package:easy_mygo/ui/main/library/library.dart';
 import 'package:easy_mygo/ui/main/more/more.dart';
 import 'package:easy_mygo/utils/platform.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class MainScreen extends HookConsumerWidget {
     PageData(
         icon: const Icon(Icons.book),
         labelGetter: (c) => S.of(c).library,
-        page: const HistoryPage()),
+        page: const LibraryPage()),
     PageData(
         icon: const Icon(Icons.history),
         labelGetter: (c) => S.of(c).history,

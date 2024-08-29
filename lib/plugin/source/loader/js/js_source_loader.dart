@@ -11,11 +11,11 @@ import 'package:easy_mygo/plugin/source/loader/source_loader.dart';
 
 class JsSourceLoader extends SourceLoader {
   /// 解析 js 文件元数据
-  /// // @key <key>
-  /// // @label <label>
-  /// // @version_name <version_name>
-  /// // @version_code <version_code>
-  /// // [@description <description>]
+  /// @key <key>
+  /// @label <label>
+  /// @version_name <version_name>
+  /// @version_code <version_code>
+  /// [@description <description>]
   ///
   @override
   Future<SourceInfo?> parse(String fromExtension, String filePath) async {

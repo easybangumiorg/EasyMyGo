@@ -21,7 +21,6 @@ class EasyBookApp extends HookConsumerWidget {
     // =============== 初始化前监听 ======================
 
     final ThemeConfig themeConfig = ThemeController.watch(ref);
-
     final DatabaseController databaseController = DatabaseController.of(ref);
     final DatabaseState dbSta = DatabaseController.watch(ref);
 
